@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\FlutterProjects\\delta\\build\\flutter_local_notifications\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Win10\\.gradle\\caches\\transforms-2\\files-2.1\\43f8d2a07c35acd6f2affd40de0a63c6\\core-1.3.0\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\FlutterProjects\\delta\\build\\flutter_local_notifications\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Win10\\.gradle\\caches\\transforms-2\\files-2.1\\43f8d2a07c35acd6f2affd40de0a63c6\\core-1.3.0\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\FlutterProjects\\delta\\build\\flutter_local_notifications\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Win10\\.gradle\\caches\\transforms-2\\files-2.1\\43f8d2a07c35acd6f2affd40de0a63c6\\core-1.3.0\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\FlutterProjects\\delta\\build\\flutter_local_notifications\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Win10\\.gradle\\caches\\transforms-2\\files-2.1\\43f8d2a07c35acd6f2affd40de0a63c6\\core-1.3.0\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]

@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\FlutterProjects\\delta\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "map": [
+                {
+                    "source": "D:\\FlutterProjects\\delta\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "from": {
+                        "startLines": "3,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "172,816",
+                        "endLines": "7,18",
+                        "endColumns": "12,12",
+                        "endOffsets": "464,1038"
+                    },
+                    "to": {
+                        "startLines": "2,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,352",
+                        "endLines": "6,10",
+                        "endColumns": "12,12",
+                        "endOffsets": "347,574"
+                    }
+                }
+            ]
+        }
+    ]
+}

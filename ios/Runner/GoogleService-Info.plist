@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>918895030465-7ukqcseihpcuns16hshrv57cj84lbsim.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.918895030465-7ukqcseihpcuns16hshrv57cj84lbsim</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>918895030465-eh34hqstrgk695s96dv4hegck53kdia0.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDK01FcpVp4d1wSP4_xN4JkF21MQnFRtjk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>918895030465</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nr.delta</string>
+	<key>PROJECT_ID</key>
+	<string>delta-1a18e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>delta-1a18e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:918895030465:ios:9a9f8d6d00a48192ac2440</string>
+</dict>
+</plist>

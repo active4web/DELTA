@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\FlutterProjects\\delta\\build\\flutter_local_notifications\\intermediates\\res\\merged\\release\\values-fa\\values-fa.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Win10\\.gradle\\caches\\transforms-2\\files-2.1\\43f8d2a07c35acd6f2affd40de0a63c6\\core-1.3.0\\res\\values-fa\\values-fa.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "D:\\FlutterProjects\\delta\\build\\flutter_local_notifications\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-fa\\values-fa.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Win10\\.gradle\\caches\\transforms-2\\files-2.1\\43f8d2a07c35acd6f2affd40de0a63c6\\core-1.3.0\\res\\values-fa\\values-fa.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
