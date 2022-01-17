@@ -150,13 +150,19 @@ class _DesignsState extends State<Designs> {
                                     Container(
                                       alignment: Alignment.topCenter,
                                       width: size.width * .44,
-                                      height: size.height * .1,
+                                      height: size.height * .193,
                                       child: null ??
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             child: CarouselSlider(
-                                              items: itemSliders,
+                                              items: snapshot.data.result
+                                                  .allProjects[index].allSlider
+                                                  .map((e) => Image.network(
+                                                        e.img,
+                                                        fit: BoxFit.cover,
+                                                      ))
+                                                  .toList(),
                                               options: CarouselOptions(
                                                 autoPlay: true,
                                                 viewportFraction: .95,
@@ -203,20 +209,6 @@ class _DesignsState extends State<Designs> {
                                           ),
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    child: Text(
-                                      snapshot.data.result.allProjects[index]
-                                          .smallDescription,
-                                      textDirection: TextDirection.rtl,
-                                      style: TextStyle(
-                                        fontFamily: 'GE SS Two',
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w300,
-                                      ),
                                     ),
                                   ),
                                 ),

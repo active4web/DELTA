@@ -129,7 +129,7 @@ class _ContractOffersState extends State<ContractOffers> {
   TextEditingController Id14 = TextEditingController();
   TextEditingController Id15 = TextEditingController();
   TextEditingController Id16 = TextEditingController();
-  var baseurl = 'https://wasselni.ps/delta/';
+  var baseurl = 'https://mdecco.com/app/';
   List _list0;
   int Id0;
   List _list1;
@@ -201,1046 +201,1078 @@ class _ContractOffersState extends State<ContractOffers> {
                 key: '1234567890', token_id: token, cat_id: widget.cat_id)
             .asStream(),
         builder: (context, snapshot) {
-          if (snapshot.data != null) {
-            return Scaffold(
-                appBar: AppBar(
-                  leading: new IconButton(
-                    icon: new Icon(Icons.arrow_back_sharp),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  actions: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: Builder(
-                        builder: (context) => Container(
-                          alignment: Alignment.topRight,
-                          margin: EdgeInsets.only(top: 6.0, right: 10.0),
-                          child: IconButton(
-                            icon: ImageIcon(
-                              AssetImage("assets/images/menu.png"),
-                              size: 25,
-                            ),
-                            onPressed: () =>
-                                Scaffold.of(context).openEndDrawer(),
-                            tooltip: MaterialLocalizations.of(context)
-                                .openAppDrawerTooltip,
-                          ),
-                        ),
+          return Scaffold(
+              appBar: snapshot.data != null
+                  ? AppBar(
+                      leading: new IconButton(
+                        icon: new Icon(Icons.arrow_back_sharp),
+                        onPressed: () => Navigator.of(context).pop(),
                       ),
-                    ),
-                  ],
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "${snapshot.data.result.categoryDate.title}",
-                        style: TextStyle(
-                          fontFamily: 'GE SS Two',
-                          fontSize: 17,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                    ],
-                  ),
-                  backgroundColor: Color(0xff3b6745),
-                ),
-                endDrawer: NewWidget(size: size, token: token),
-                body: SingleChildScrollView(
-                    child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${snapshot.data.result.categoryDate.title}",
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            fontFamily: 'GE SS Two',
-                            fontSize: 17,
-                            color: Color(0xfff3a005),
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
+                      actions: [
                         Container(
-                          width: sWidth * .8,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "${snapshot.data.result.categoryDate.description}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                fontFamily: 'GE SS Two',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w300,
+                          alignment: Alignment.center,
+                          child: Builder(
+                            builder: (context) => Container(
+                              alignment: Alignment.topRight,
+                              margin: EdgeInsets.only(top: 6.0, right: 10.0),
+                              child: IconButton(
+                                icon: ImageIcon(
+                                  AssetImage("assets/images/menu.png"),
+                                  size: 25,
+                                ),
+                                onPressed: () =>
+                                    Scaffold.of(context).openEndDrawer(),
+                                tooltip: MaterialLocalizations.of(context)
+                                    .openAppDrawerTooltip,
                               ),
                             ),
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  //0
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[0].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w300,
-                              ),
+                          Text(
+                            "${snapshot.data.result.categoryDate.title}",
+                            style: TextStyle(
+                              fontFamily: 'GE SS Two',
+                              fontSize: 17,
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[0].type == 2
-                                  ? Container(
-                                      width: sWidth * .8, child: TextField())
-                                  : Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 5.0, bottom: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              border: Border(),
-                                            ),
-                                            height: 50,
-                                            width: size.width * .8,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                              ),
-                                              width: size.width * .8,
-                                              child: _list0 != null
-                                                  ? DropdownButton(
-                                                      isExpanded: true,
-                                                      items: _list0.map((e) {
-                                                        return new DropdownMenuItem(
-                                                          child: Container(
-                                                              alignment: Alignment
-                                                                  .centerRight,
-                                                              child: new Text(
-                                                                e.title,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'GE SS Two',
-                                                                  fontSize: 17,
-                                                                  color: const Color(
-                                                                      -384871238),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                ),
-                                                                textDirection:
-                                                                    TextDirection
-                                                                        .rtl,
-                                                              )),
-                                                          value: e.answerId,
-                                                        );
-                                                      }).toList(),
-                                                      onChanged: (val) {
-                                                        setState(() {
-                                                          Id0 = val;
-                                                          print(Id0.toString());
-                                                        });
-                                                      },
-                                                      value: Id0,
-                                                    )
-                                                  : Container(),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                            ),
-                          )
                         ],
                       ),
-                    ),
-                  ),
-                  //1
-                  Card(
-                      elevation: 15,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14)),
-                      child: Container(
-                        width: sWidth * .95,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                      backgroundColor: Color(0xff3b6745),
+                    )
+                  : null,
+              endDrawer: NewWidget(size: size, token: token),
+              body: snapshot.data != null
+                  ? SingleChildScrollView(
+                      child: Column(children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "${snapshot.data.result.lableList[1].title}",
-                                textDirection: TextDirection.rtl,
-                                style: TextStyle(
-                                  color: Color(0xffaa6414),
-                                  fontFamily: 'GE SS Two',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                ),
+                            Text(
+                              "${snapshot.data.result.categoryDate.title}",
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                fontFamily: 'GE SS Two',
+                                fontSize: 17,
+                                color: Color(0xfff3a005),
+                                fontWeight: FontWeight.w300,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                child: snapshot.data.result.lableList[1].type ==
-                                        2
-                                    ? Container(
-                                        width: sWidth * .8, child: TextField())
-                                    : Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 5.0, bottom: 8.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                border: Border(),
-                                              ),
-                                              height: 50,
-                                              width: size.width * .8,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                ),
-                                                width: size.width * .8,
-                                                child: _list1 != null
-                                                    ? DropdownButton(
-                                                        isExpanded: true,
-                                                        items: _list1.map((e) {
-                                                          return new DropdownMenuItem(
-                                                            child: Container(
-                                                                alignment: Alignment
-                                                                    .centerRight,
-                                                                child: new Text(
-                                                                  e.title,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontFamily:
-                                                                        'GE SS Two',
-                                                                    fontSize:
-                                                                        17,
-                                                                    color: const Color(
-                                                                        -384871238),
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w300,
-                                                                  ),
-                                                                  textDirection:
-                                                                      TextDirection
-                                                                          .rtl,
-                                                                )),
-                                                            value: e.answerId,
-                                                          );
-                                                        }).toList(),
-                                                        onChanged: (val) {
-                                                          setState(() {
-                                                            Id1 = val;
-                                                            print(
-                                                                Id1.toString());
-                                                          });
-                                                        },
-                                                        value: Id1,
-                                                      )
-                                                    : Container(),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                              ),
-                            )
                           ],
                         ),
-                      )),
-                  //2
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[2].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[2].type == 2
-                                  ? Container(
-                                      width: sWidth * .8,
-                                      child: TextField(
-                                        // controller: workersController,
-                                        textDirection: TextDirection.rtl,
-                                      ))
-                                  : Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 5.0, bottom: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              border: Border(),
-                                            ),
-                                            height: 50,
-                                            width: size.width * .8,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                              ),
-                                              width: size.width * .8,
-                                              child: _list2 != null
-                                                  ? DropdownButton(
-                                                      isExpanded: true,
-                                                      items: _list2.map((e) {
-                                                        return new DropdownMenuItem(
-                                                          child: Container(
-                                                              alignment: Alignment
-                                                                  .centerRight,
-                                                              child: new Text(
-                                                                e.title,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'GE SS Two',
-                                                                  fontSize: 17,
-                                                                  color: const Color(
-                                                                      -384871238),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                ),
-                                                                textDirection:
-                                                                    TextDirection
-                                                                        .rtl,
-                                                              )),
-                                                          value: e.answerId,
-                                                        );
-                                                      }).toList(),
-                                                      onChanged: (val) {
-                                                        setState(() {
-                                                          Id2 = val;
-                                                          print(Id2.toString());
-                                                        });
-                                                      },
-                                                      value: Id2,
-                                                    )
-                                                  : Container(),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                            ),
-                          )
-                        ],
                       ),
-                    ),
-                  ),
-                  //3
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[3].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[3].type == 2
-                                  ? Container(
-                                      width: sWidth * .8,
-                                      child: TextField(
-                                        // controller: workersController,
-                                        textDirection: TextDirection.rtl,
-                                      ))
-                                  : Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 5.0, bottom: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              border: Border(),
-                                            ),
-                                            height: 50,
-                                            width: size.width * .8,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                              ),
-                                              width: size.width * .8,
-                                              child: _list2 != null
-                                                  ? DropdownButton(
-                                                      isExpanded: true,
-                                                      items: _list3.map((e) {
-                                                        return new DropdownMenuItem(
-                                                          child: Container(
-                                                              alignment: Alignment
-                                                                  .centerRight,
-                                                              child: new Text(
-                                                                e.title,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'GE SS Two',
-                                                                  fontSize: 17,
-                                                                  color: const Color(
-                                                                      -384871238),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                ),
-                                                                textDirection:
-                                                                    TextDirection
-                                                                        .rtl,
-                                                              )),
-                                                          value: e.answerId,
-                                                        );
-                                                      }).toList(),
-                                                      onChanged: (val) {
-                                                        setState(() {
-                                                          Id3 = val;
-                                                          print(Id3.toString());
-                                                        });
-                                                      },
-                                                      value: Id3,
-                                                    )
-                                                  : Container(),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-//text
-                  //4
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[4].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                                child: snapshot.data.result.lableList[4].type ==
-                                        2
-                                    ? Container(
-                                        width: sWidth * .8,
-                                        child: Container(
-                                          child: TextField(
-                                            controller: Id4,
-                                            textDirection: TextDirection.rtl,
-                                          ),
-                                        ))
-                                    : Container()
-                                // Padding(
-                                //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                                //   child: Row(
-                                //     mainAxisAlignment: MainAxisAlignment.center,
-                                //     children: [
-                                //       Container(
-                                //         decoration: BoxDecoration(
-                                //           border: Border(),
-                                //         ),
-                                //         height: 50,
-                                //         width: size.width * .8,
-                                //         child: Container(
-                                //           decoration: BoxDecoration(
-                                //             color: Colors.white,
-                                //           ),
-                                //           width: size.width*.8,
-                                //           child: _list3!=null?
-                                //           DropdownButton(
-                                //             isExpanded: true,
-                                //             items: _list3.map((e) {
-                                //               return new DropdownMenuItem(
-                                //                 child: Container(
-                                //                     alignment: Alignment.centerRight,
-                                //                     child: new Text(
-                                //                       e.title, style: TextStyle(
-                                //                       fontFamily: 'GE SS Two',
-                                //                       fontSize: 17,
-                                //                       color: const Color(0xff848484),
-                                //                       fontWeight: FontWeight.w300,
-                                //                     ),textDirection: TextDirection.rtl,)
-                                //
-                                //                 ),
-                                //                 value:  e.answerId,
-                                //               );
-                                //             }).toList(),
-                                //             onChanged: (val){
-                                //               setState(() {
-                                //                 Id3=val;
-                                //                 print(Id3.toString());
-                                //               });
-                                //             },value:Id3 ,
-                                //           ):Container(),
-                                //         ),)
-                                //     ],
-                                //   ),
-                                // ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: sWidth * .8,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "${snapshot.data.result.categoryDate.description}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w300,
+                                  ),
                                 ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //5
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[5].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[5].type == 2
-                                  ? Container(
-                                      width: sWidth * .8,
-                                      child: Container(
-                                        child: TextField(
-                                          controller: Id5,
-                                          textDirection: TextDirection.rtl,
-                                        ),
-                                      ))
-                                  : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
-                  //6
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[6].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
+                      //0
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[0].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child:
+                                      snapshot.data.result.lableList[0].type ==
+                                              2
+                                          ? Container(
+                                              width: sWidth * .8,
+                                              child: TextField())
+                                          : Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0, bottom: 8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      border: Border(),
+                                                    ),
+                                                    height: 50,
+                                                    width: size.width * .8,
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                      ),
+                                                      width: size.width * .8,
+                                                      child: _list0 != null
+                                                          ? DropdownButton(
+                                                              isExpanded: true,
+                                                              items: _list0
+                                                                  .map((e) {
+                                                                return new DropdownMenuItem(
+                                                                  child: Container(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: new Text(
+                                                                        e.title,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              'GE SS Two',
+                                                                          fontSize:
+                                                                              17,
+                                                                          color:
+                                                                              const Color(-384871238),
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                        textDirection:
+                                                                            TextDirection.rtl,
+                                                                      )),
+                                                                  value: e
+                                                                      .answerId,
+                                                                );
+                                                              }).toList(),
+                                                              onChanged: (val) {
+                                                                setState(() {
+                                                                  Id0 = val;
+                                                                  print(Id0
+                                                                      .toString());
+                                                                });
+                                                              },
+                                                              value: Id0,
+                                                            )
+                                                          : Container(),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[6].type == 2
-                                  ? Container(
-                                      width: sWidth * .8,
-                                      child: Container(
-                                        child: TextField(
-                                          controller: Id6,
-                                          textDirection: TextDirection.rtl,
-                                        ),
-                                      ))
-                                  : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  //7
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[7].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
+                      //1
+                      Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[1].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child:
+                                        snapshot.data.result.lableList[1]
+                                                    .type ==
+                                                2
+                                            ? Container(
+                                                width: sWidth * .8,
+                                                child: TextField())
+                                            : Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 5.0, bottom: 8.0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        border: Border(),
+                                                      ),
+                                                      height: 50,
+                                                      width: size.width * .8,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                        ),
+                                                        width: size.width * .8,
+                                                        child: _list1 != null
+                                                            ? DropdownButton(
+                                                                isExpanded:
+                                                                    true,
+                                                                items: _list1
+                                                                    .map((e) {
+                                                                  return new DropdownMenuItem(
+                                                                    child: Container(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                    value: e
+                                                                        .answerId,
+                                                                  );
+                                                                }).toList(),
+                                                                onChanged:
+                                                                    (val) {
+                                                                  setState(() {
+                                                                    Id1 = val;
+                                                                    print(Id1
+                                                                        .toString());
+                                                                  });
+                                                                },
+                                                                value: Id1,
+                                                              )
+                                                            : Container(),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
+                      //2
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[2].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child:
+                                      snapshot.data.result.lableList[2].type ==
+                                              2
+                                          ? Container(
+                                              width: sWidth * .8,
+                                              child: TextField(
+                                                // controller: workersController,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                              ))
+                                          : Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0, bottom: 8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      border: Border(),
+                                                    ),
+                                                    height: 50,
+                                                    width: size.width * .8,
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                      ),
+                                                      width: size.width * .8,
+                                                      child: _list2 != null
+                                                          ? DropdownButton(
+                                                              isExpanded: true,
+                                                              items: _list2
+                                                                  .map((e) {
+                                                                return new DropdownMenuItem(
+                                                                  child: Container(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: new Text(
+                                                                        e.title,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              'GE SS Two',
+                                                                          fontSize:
+                                                                              17,
+                                                                          color:
+                                                                              const Color(-384871238),
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                        textDirection:
+                                                                            TextDirection.rtl,
+                                                                      )),
+                                                                  value: e
+                                                                      .answerId,
+                                                                );
+                                                              }).toList(),
+                                                              onChanged: (val) {
+                                                                setState(() {
+                                                                  Id2 = val;
+                                                                  print(Id2
+                                                                      .toString());
+                                                                });
+                                                              },
+                                                              value: Id2,
+                                                            )
+                                                          : Container(),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[7].type == 2
-                                  ? Container(
-                                      width: sWidth * .8,
-                                      child: Container(
-                                        child: TextField(
-                                          controller: Id7,
-                                          textDirection: TextDirection.rtl,
-                                        ),
-                                      ))
-                                  : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  //8
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[8].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
+                      //3
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[3].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child:
+                                      snapshot.data.result.lableList[3].type ==
+                                              2
+                                          ? Container(
+                                              width: sWidth * .8,
+                                              child: TextField(
+                                                // controller: workersController,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                              ))
+                                          : Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0, bottom: 8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      border: Border(),
+                                                    ),
+                                                    height: 50,
+                                                    width: size.width * .8,
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                      ),
+                                                      width: size.width * .8,
+                                                      child: _list2 != null
+                                                          ? DropdownButton(
+                                                              isExpanded: true,
+                                                              items: _list3
+                                                                  .map((e) {
+                                                                return new DropdownMenuItem(
+                                                                  child: Container(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: new Text(
+                                                                        e.title,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              'GE SS Two',
+                                                                          fontSize:
+                                                                              17,
+                                                                          color:
+                                                                              const Color(-384871238),
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                        textDirection:
+                                                                            TextDirection.rtl,
+                                                                      )),
+                                                                  value: e
+                                                                      .answerId,
+                                                                );
+                                                              }).toList(),
+                                                              onChanged: (val) {
+                                                                setState(() {
+                                                                  Id3 = val;
+                                                                  print(Id3
+                                                                      .toString());
+                                                                });
+                                                              },
+                                                              value: Id3,
+                                                            )
+                                                          : Container(),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[8].type == 2
-                                  ? Container(
-                                      width: sWidth * .8,
-                                      child: Container(
-                                        child: TextField(
-                                          controller: Id8,
-                                          textDirection: TextDirection.rtl,
-                                        ),
-                                      ))
-                                  : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  //9
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[9].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
+//text
+                      //4
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[4].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                    child: snapshot.data.result.lableList[4]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: Container(
+                                              child: TextField(
+                                                controller: Id4,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                              ),
+                                            ))
+                                        : Container()
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                    //   child: Row(
+                                    //     mainAxisAlignment: MainAxisAlignment.center,
+                                    //     children: [
+                                    //       Container(
+                                    //         decoration: BoxDecoration(
+                                    //           border: Border(),
+                                    //         ),
+                                    //         height: 50,
+                                    //         width: size.width * .8,
+                                    //         child: Container(
+                                    //           decoration: BoxDecoration(
+                                    //             color: Colors.white,
+                                    //           ),
+                                    //           width: size.width*.8,
+                                    //           child: _list3!=null?
+                                    //           DropdownButton(
+                                    //             isExpanded: true,
+                                    //             items: _list3.map((e) {
+                                    //               return new DropdownMenuItem(
+                                    //                 child: Container(
+                                    //                     alignment: Alignment.centerRight,
+                                    //                     child: new Text(
+                                    //                       e.title, style: TextStyle(
+                                    //                       fontFamily: 'GE SS Two',
+                                    //                       fontSize: 17,
+                                    //                       color: const Color(0xff848484),
+                                    //                       fontWeight: FontWeight.w300,
+                                    //                     ),textDirection: TextDirection.rtl,)
+                                    //
+                                    //                 ),
+                                    //                 value:  e.answerId,
+                                    //               );
+                                    //             }).toList(),
+                                    //             onChanged: (val){
+                                    //               setState(() {
+                                    //                 Id3=val;
+                                    //                 print(Id3.toString());
+                                    //               });
+                                    //             },value:Id3 ,
+                                    //           ):Container(),
+                                    //         ),)
+                                    //     ],
+                                    //   ),
+                                    // ),
+                                    ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child: snapshot.data.result.lableList[9].type == 2
-                                  ? Container(
-                                      width: sWidth * .8,
-                                      child: Container(
-                                        child: TextField(
-                                          controller: Id9,
-                                          textDirection: TextDirection.rtl,
-                                        ),
-                                      ))
-                                  : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  //10
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[10].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
+                      //5
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[5].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[5].type ==
+                                          2
+                                      ? Container(
+                                          width: sWidth * .8,
+                                          child: Container(
+                                            child: TextField(
+                                              controller: Id5,
+                                              textDirection: TextDirection.rtl,
+                                            ),
+                                          ))
+                                      : Container()
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child:
-                                  snapshot.data.result.lableList[10].type == 2
+                        ),
+                      ),
+                      //6
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[6].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[6].type ==
+                                          2
+                                      ? Container(
+                                          width: sWidth * .8,
+                                          child: Container(
+                                            child: TextField(
+                                              controller: Id6,
+                                              textDirection: TextDirection.rtl,
+                                            ),
+                                          ))
+                                      : Container()
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      //7
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[7].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[7].type ==
+                                          2
+                                      ? Container(
+                                          width: sWidth * .8,
+                                          child: Container(
+                                            child: TextField(
+                                              controller: Id7,
+                                              textDirection: TextDirection.rtl,
+                                            ),
+                                          ))
+                                      : Container()
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      //8
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[8].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[8].type ==
+                                          2
+                                      ? Container(
+                                          width: sWidth * .8,
+                                          child: Container(
+                                            child: TextField(
+                                              controller: Id8,
+                                              textDirection: TextDirection.rtl,
+                                            ),
+                                          ))
+                                      : Container()
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      //9
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[9].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[9].type ==
+                                          2
+                                      ? Container(
+                                          width: sWidth * .8,
+                                          child: Container(
+                                            child: TextField(
+                                              controller: Id9,
+                                              textDirection: TextDirection.rtl,
+                                            ),
+                                          ))
+                                      : Container()
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      //10
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[10].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[10].type ==
+                                          2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
@@ -1250,87 +1282,88 @@ class _ContractOffersState extends State<ContractOffers> {
                                             ),
                                           ))
                                       : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //11
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[11].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child:
-                                  snapshot.data.result.lableList[11].type == 2
+                        ),
+                      ),
+                      //11
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[11].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[11].type ==
+                                          2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
@@ -1340,87 +1373,88 @@ class _ContractOffersState extends State<ContractOffers> {
                                             ),
                                           ))
                                       : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //12
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[12].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child:
-                                  snapshot.data.result.lableList[12].type == 2
+                        ),
+                      ),
+                      //12
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[12].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[12].type ==
+                                          2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
@@ -1430,87 +1464,88 @@ class _ContractOffersState extends State<ContractOffers> {
                                             ),
                                           ))
                                       : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //13
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[13].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child:
-                                  snapshot.data.result.lableList[13].type == 2
+                        ),
+                      ),
+                      //13
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[13].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[13].type ==
+                                          2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
@@ -1520,87 +1555,88 @@ class _ContractOffersState extends State<ContractOffers> {
                                             ),
                                           ))
                                       : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //14
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[14].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child:
-                                  snapshot.data.result.lableList[14].type == 2
+                        ),
+                      ),
+                      //14
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[14].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[14].type ==
+                                          2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
@@ -1610,87 +1646,88 @@ class _ContractOffersState extends State<ContractOffers> {
                                             ),
                                           ))
                                       : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //15
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[15].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child:
-                                  snapshot.data.result.lableList[15].type == 2
+                        ),
+                      ),
+                      //15
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[15].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[15].type ==
+                                          2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
@@ -1700,87 +1737,88 @@ class _ContractOffersState extends State<ContractOffers> {
                                             ),
                                           ))
                                       : Container()
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //16
-                  Card(
-                    elevation: 15,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Container(
-                      width: sWidth * .95,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "${snapshot.data.result.lableList[16].title}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                color: Color(0xffaa6414),
-                                fontFamily: 'GE SS Two',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child:
-                                  snapshot.data.result.lableList[16].type == 2
+                        ),
+                      ),
+                      //16
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[16].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  child: snapshot
+                                              .data.result.lableList[16].type ==
+                                          2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
@@ -1801,59 +1839,59 @@ class _ContractOffersState extends State<ContractOffers> {
                                             ),
                                           ),
                                         )
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Container(
-                              //         decoration: BoxDecoration(
-                              //           border: Border(),
-                              //         ),
-                              //         height: 50,
-                              //         width: size.width * .8,
-                              //         child: Container(
-                              //           decoration: BoxDecoration(
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: size.width*.8,
-                              //           child: _list15!=null?
-                              //           DropdownButton(
-                              //             isExpanded: true,
-                              //             items: _list15.map((e) {
-                              //               return new DropdownMenuItem(
-                              //                 child: Container(
-                              //                     alignment: Alignment.centerRight,
-                              //                     child: new Text(
-                              //                       e.title, style: TextStyle(
-                              //                       fontFamily: 'GE SS Two',
-                              //                       fontSize: 17,
-                              //                       color: const Color(0xff848484),
-                              //                       fontWeight: FontWeight.w300,
-                              //                     ),textDirection: TextDirection.rtl,)
-                              //
-                              //                 ),
-                              //                 value:  e.answerId,
-                              //               );
-                              //             }).toList(),
-                              //             onChanged: (val){
-                              //               setState(() {
-                              //                 Id15=val;
-                              //                 print(Id5.toString());
-                              //               });
-                              //             },value:Id5 ,
-                              //           ):Container(),
-                              //         ),)
-                              //     ],
-                              //   ),
-                              // )
-                              ,
-                            ),
-                          )
-                        ],
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
+                                  //   child: Row(
+                                  //     mainAxisAlignment: MainAxisAlignment.center,
+                                  //     children: [
+                                  //       Container(
+                                  //         decoration: BoxDecoration(
+                                  //           border: Border(),
+                                  //         ),
+                                  //         height: 50,
+                                  //         width: size.width * .8,
+                                  //         child: Container(
+                                  //           decoration: BoxDecoration(
+                                  //             color: Colors.white,
+                                  //           ),
+                                  //           width: size.width*.8,
+                                  //           child: _list15!=null?
+                                  //           DropdownButton(
+                                  //             isExpanded: true,
+                                  //             items: _list15.map((e) {
+                                  //               return new DropdownMenuItem(
+                                  //                 child: Container(
+                                  //                     alignment: Alignment.centerRight,
+                                  //                     child: new Text(
+                                  //                       e.title, style: TextStyle(
+                                  //                       fontFamily: 'GE SS Two',
+                                  //                       fontSize: 17,
+                                  //                       color: const Color(0xff848484),
+                                  //                       fontWeight: FontWeight.w300,
+                                  //                     ),textDirection: TextDirection.rtl,)
+                                  //
+                                  //                 ),
+                                  //                 value:  e.answerId,
+                                  //               );
+                                  //             }).toList(),
+                                  //             onChanged: (val){
+                                  //               setState(() {
+                                  //                 Id15=val;
+                                  //                 print(Id5.toString());
+                                  //               });
+                                  //             },value:Id5 ,
+                                  //           ):Container(),
+                                  //         ),)
+                                  //     ],
+                                  //   ),
+                                  // )
+                                  ,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
 //               Padding(
 //                 padding: const EdgeInsets.all(15.0),
 //                 child: Row(
@@ -2653,260 +2691,262 @@ class _ContractOffersState extends State<ContractOffers> {
 //                     ),
 //                   ),
 //
-                  ////
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: sWidth * .8,
+                      ////
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: sWidth * .8,
 
-                          //  alignment: Alignment.center,
-                          child: Text(
-                              "${snapshot.data.result.categoryDate.details}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                fontFamily: 'GE SS Two',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w300,
-                              )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: size.height * .06,
-                          width: size.width * .35,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints.tightFor(
-                                height: size.height * 1, width: size.width * 1),
-                            child: ElevatedButton(
-                                child: Text(
-                                  'الغاء',
+                              //  alignment: Alignment.center,
+                              child: Text(
+                                  "${snapshot.data.result.categoryDate.details}",
+                                  textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
                                     fontSize: 17,
-                                    color: Colors.white,
                                     fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 20,
-                                  primary: Color(0xfff3a005),
-                                  onPrimary: Colors.orangeAccent,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    Id0 = null;
-                                    Id1 = null;
-                                    Id2 = null;
-                                    Id3 = null;
-                                    Id4.text = '';
-                                    Id5.text = '';
-                                    Id6.text = '';
-                                    Id7.text = '';
-                                    Id8.text = '';
-                                    Id9.text = '';
-                                    Id10.text = '';
-                                    Id11.text = '';
-                                    Id12.text = '';
-                                    Id13.text = '';
-                                    Id14.text = '';
-                                    Id15.text = '';
-                                  });
-                                }),
-                          ),
+                                  )),
+                            ),
+                          ],
                         ),
-                        Container(
-                          height: size.height * .06,
-                          width: size.width * .35,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints.tightFor(
-                                height: size.height * 1, width: size.width * 1),
-                            child: ElevatedButton(
-                                child: Text(
-                                  'ارسال',
-                                  style: TextStyle(
-                                    fontFamily: 'GE SS Two',
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 20,
-                                  primary: Color(0xfff3a005),
-                                  onPrimary: Colors.orangeAccent,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                ),
-                                onPressed: () {
-                                  if (Id0 != null &&
-                                      Id1 != null &&
-                                      Id2 != null &&
-                                      Id3 != null &&
-                                      Id4.text != null &&
-                                      Id5.text != null &&
-                                      Id6.text != null &&
-                                      Id7.text != null &&
-                                      Id8.text != null &&
-                                      Id9.text != null &&
-                                      Id10.text != null &&
-                                      Id11.text != null &&
-                                      Id12.text != null &&
-                                      Id13.text != null &&
-                                      Id14.text != null &&
-                                      Id15.text != null &&
-                                      Id4.text != '' &&
-                                      Id5.text != '' &&
-                                      Id6.text != '' &&
-                                      Id7.text != '' &&
-                                      Id8.text != '' &&
-                                      Id9.text != '' &&
-                                      Id10.text != '' &&
-                                      Id11.text != '' &&
-                                      Id12.text != '' &&
-                                      Id13.text != '' &&
-                                      Id14.text != '' &&
-                                      Id15.text != '') {
-                                    String a0 =
-                                        "${snapshot.data.result.lableList[0].lebalId}.$Id0";
-                                    String a1 =
-                                        "${snapshot.data.result.lableList[1].lebalId}.$Id1";
-                                    String a2 =
-                                        "${snapshot.data.result.lableList[2].lebalId}.$Id2";
-                                    String a3 =
-                                        "${snapshot.data.result.lableList[3].lebalId}.$Id3";
-                                    String a4 =
-                                        '${snapshot.data.result.lableList[4].lebalId}."${Id4.text}"';
-                                    String a5 =
-                                        '${snapshot.data.result.lableList[5].lebalId}."${Id5.text}"';
-                                    String a6 =
-                                        '${snapshot.data.result.lableList[6].lebalId}."${Id6.text}"';
-                                    String a7 =
-                                        '${snapshot.data.result.lableList[7].lebalId}."${Id7.text}"';
-                                    String a8 =
-                                        '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
-                                    String a9 =
-                                        '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
-                                    String a10 =
-                                        '${snapshot.data.result.lableList[10].lebalId}."${Id10.text}"';
-                                    String a11 =
-                                        '${snapshot.data.result.lableList[11].lebalId}."${Id11.text}"';
-                                    String a12 =
-                                        '${snapshot.data.result.lableList[12].lebalId}."${Id12.text}"';
-                                    String a13 =
-                                        '${snapshot.data.result.lableList[13].lebalId}."${Id13.text}"';
-                                    String a14 =
-                                        '${snapshot.data.result.lableList[14].lebalId}."${Id14.text}"';
-                                    String a15 =
-                                        '${snapshot.data.result.lableList[15].lebalId}."${Id15.text}"';
-                                    //  String a16='${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
-                                    String answer =
-                                        '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15';
-                                    _repo
-                                        .sendCostBuildF(
-                                      key: '1234567890',
-                                      token_id: widget.jwt,
-                                      cat_id: widget.cat_id,
-                                      file: proFile,
-                                      answer: "$answer",
-                                    )
-                                        .then((value) {
-                                      if (value.status == true) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (_) => SendDone()));
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: size.height * .06,
+                              width: size.width * .35,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints.tightFor(
+                                    height: size.height * 1,
+                                    width: size.width * 1),
+                                child: ElevatedButton(
+                                    child: Text(
+                                      'الغاء',
+                                      style: TextStyle(
+                                        fontFamily: 'GE SS Two',
+                                        fontSize: 17,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 20,
+                                      primary: Color(0xfff3a005),
+                                      onPrimary: Colors.orangeAccent,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        Id0 = null;
+                                        Id1 = null;
+                                        Id2 = null;
+                                        Id3 = null;
+                                        Id4.text = '';
+                                        Id5.text = '';
+                                        Id6.text = '';
+                                        Id7.text = '';
+                                        Id8.text = '';
+                                        Id9.text = '';
+                                        Id10.text = '';
+                                        Id11.text = '';
+                                        Id12.text = '';
+                                        Id13.text = '';
+                                        Id14.text = '';
+                                        Id15.text = '';
+                                      });
+                                    }),
+                              ),
+                            ),
+                            Container(
+                              height: size.height * .06,
+                              width: size.width * .35,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints.tightFor(
+                                    height: size.height * 1,
+                                    width: size.width * 1),
+                                child: ElevatedButton(
+                                    child: Text(
+                                      'ارسال',
+                                      style: TextStyle(
+                                        fontFamily: 'GE SS Two',
+                                        fontSize: 17,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 20,
+                                      primary: Color(0xfff3a005),
+                                      onPrimary: Colors.orangeAccent,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                    ),
+                                    onPressed: () {
+                                      if (Id0 != null &&
+                                          Id1 != null &&
+                                          Id2 != null &&
+                                          Id3 != null &&
+                                          Id4.text != null &&
+                                          Id5.text != null &&
+                                          Id6.text != null &&
+                                          Id7.text != null &&
+                                          Id8.text != null &&
+                                          Id9.text != null &&
+                                          Id10.text != null &&
+                                          Id11.text != null &&
+                                          Id12.text != null &&
+                                          Id13.text != null &&
+                                          Id14.text != null &&
+                                          Id15.text != null &&
+                                          Id4.text != '' &&
+                                          Id5.text != '' &&
+                                          Id6.text != '' &&
+                                          Id7.text != '' &&
+                                          Id8.text != '' &&
+                                          Id9.text != '' &&
+                                          Id10.text != '' &&
+                                          Id11.text != '' &&
+                                          Id12.text != '' &&
+                                          Id13.text != '' &&
+                                          Id14.text != '' &&
+                                          Id15.text != '') {
+                                        String a0 =
+                                            "${snapshot.data.result.lableList[0].lebalId}.$Id0";
+                                        String a1 =
+                                            "${snapshot.data.result.lableList[1].lebalId}.$Id1";
+                                        String a2 =
+                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2";
+                                        String a3 =
+                                            "${snapshot.data.result.lableList[3].lebalId}.$Id3";
+                                        String a4 =
+                                            '${snapshot.data.result.lableList[4].lebalId}."${Id4.text}"';
+                                        String a5 =
+                                            '${snapshot.data.result.lableList[5].lebalId}."${Id5.text}"';
+                                        String a6 =
+                                            '${snapshot.data.result.lableList[6].lebalId}."${Id6.text}"';
+                                        String a7 =
+                                            '${snapshot.data.result.lableList[7].lebalId}."${Id7.text}"';
+                                        String a8 =
+                                            '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
+                                        String a9 =
+                                            '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
+                                        String a10 =
+                                            '${snapshot.data.result.lableList[10].lebalId}."${Id10.text}"';
+                                        String a11 =
+                                            '${snapshot.data.result.lableList[11].lebalId}."${Id11.text}"';
+                                        String a12 =
+                                            '${snapshot.data.result.lableList[12].lebalId}."${Id12.text}"';
+                                        String a13 =
+                                            '${snapshot.data.result.lableList[13].lebalId}."${Id13.text}"';
+                                        String a14 =
+                                            '${snapshot.data.result.lableList[14].lebalId}."${Id14.text}"';
+                                        String a15 =
+                                            '${snapshot.data.result.lableList[15].lebalId}."${Id15.text}"';
+                                        //  String a16='${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
+                                        String answer =
+                                            '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15';
+                                        _repo
+                                            .sendCostBuildF(
+                                          key: '1234567890',
+                                          token_id: widget.jwt,
+                                          cat_id: widget.cat_id,
+                                          file: proFile,
+                                          answer: "$answer",
+                                        )
+                                            .then((value) {
+                                          if (value.status == true) {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        SendDone()));
+                                          } else {
+                                            var snackBar = SnackBar(
+                                                content: Text(
+                                                    'حدث خطأ يرجي اعادة المحاولة '));
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(snackBar);
+                                          }
+                                        });
                                       } else {
                                         var snackBar = SnackBar(
                                             content: Text(
-                                                'حدث خطأ يرجي اعادة المحاولة '));
+                                                'من فضلك ادخل جميع البيانات صحيحة '));
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(snackBar);
                                       }
-                                    });
-                                  } else {
-                                    var snackBar = SnackBar(
-                                        content: Text(
-                                            'من فضلك ادخل جميع البيانات صحيحة '));
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(snackBar);
-                                  }
-                                }),
-                          ),
+                                    }),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: size.height * .06,
-                          width: size.width * .55,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints.tightFor(
-                                height: size.height * 1, width: size.width * 1),
-                            child: ElevatedButton(
-                                child: Text(
-                                  'الرجوع للقائمة الرئيسية',
-                                  style: TextStyle(
-                                    fontFamily: 'GE SS Two',
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 20,
-                                  primary: Color(0xfff3a005),
-                                  onPrimary: Colors.orangeAccent,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => HomeBar()));
-                                }),
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: size.height * .06,
+                              width: size.width * .55,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints.tightFor(
+                                    height: size.height * 1,
+                                    width: size.width * 1),
+                                child: ElevatedButton(
+                                    child: Text(
+                                      'الرجوع للقائمة الرئيسية',
+                                      style: TextStyle(
+                                        fontFamily: 'GE SS Two',
+                                        fontSize: 17,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 20,
+                                      primary: Color(0xfff3a005),
+                                      onPrimary: Colors.orangeAccent,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => HomeBar()));
+                                    }),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                ])));
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+                      ),
+                    ]))
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    ));
         });
   }
 }

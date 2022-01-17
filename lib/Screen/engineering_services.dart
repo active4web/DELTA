@@ -82,7 +82,9 @@ class _EngineeringServicesState extends State<EngineeringServices> {
   TextEditingController Id8 = TextEditingController();
   //TextEditingController Id9 = TextEditingController();
   List _list0;
+  List _list10;
   int Id0;
+  int id10;
 
   Future<void> openG() async {
     FilePickerResult result =
@@ -279,8 +281,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                                         onChanged: (val) {
                                                           setState(() {
                                                             Id0 = val;
-                                                            print(
-                                                                Id0.toString());
+                                                            print(val);
                                                           });
                                                         },
                                                         value: Id0,
@@ -1118,6 +1119,107 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                         ),
                       ),
                     ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[10].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[10].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list10 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list10
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                id10 = val;
+                                                                print(id10);
+                                                                print(val);
+                                                              });
+                                                            },
+                                                            value: id10,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Row(
@@ -1184,6 +1286,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                       Id6.text = '';
                                       Id7.text = '';
                                       Id8.text = '';
+                                      id10 = null;
                                     });
                                   }),
                             ),
@@ -1227,6 +1330,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                         Id5.text != '' &&
                                         Id6.text != '' &&
                                         Id7.text != '' &&
+                                        id10 != null &&
                                         Id8.text != '') {
                                       String a0 =
                                           "${snapshot.data.result.lableList[0].lebalId}.$Id0";
@@ -1246,11 +1350,13 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                           '${snapshot.data.result.lableList[7].lebalId}."${Id7.text}"';
                                       String a8 =
                                           '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
+                                      String a10 =
+                                          "${snapshot.data.result.lableList[10].lebalId}.$id10";
                                       //        String a9= '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
 
                                       //  String a16='${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
                                       String answer =
-                                          '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8';
+                                          '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a10';
                                       _repo
                                           .sendCostBuildF(
                                         key: '1234567890',
@@ -1821,9 +1927,10 @@ class _EngineeringServicesState extends State<EngineeringServices> {
     });
     setState(() {
       _list0 = data.result.lableList[0].listAnwser.toList();
+      _list10 = data.result.lableList[10].listAnwser.toList();
     });
     return data;
   }
 
-  var baseurl = 'https://wasselni.ps/delta/';
+  var baseurl = 'https://mdecco.com/app/';
 }

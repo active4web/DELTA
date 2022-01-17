@@ -12,25 +12,20 @@ import '../../draw.dart';
 import 'technical_support.dart';
 
 class SendTicket extends StatefulWidget {
-   SendTicket({Key key,this.jwt}) : super(key: key);
-    String jwt;
+  SendTicket({Key key, this.jwt}) : super(key: key);
+  String jwt;
   @override
   _SendTicketState createState() => _SendTicketState();
 }
 
 class _SendTicketState extends State<SendTicket> {
   String token;
-  Dio dio=Dio();
+  Dio dio = Dio();
   //TicketList
-  Future<UserTicketsListM> TicketList({
-    @required String key,
-    @required String token
-  }) async {
+  Future<UserTicketsListM> TicketList(
+      {@required String key, @required String token}) async {
     UserTicketsListM data;
-    FormData formData = new FormData.fromMap({
-      "key": key,
-      "token_id": token
-    });
+    FormData formData = new FormData.fromMap({"key": key, "token_id": token});
     await dio
         .post(
       baseurl + '/pages/tickets_types',
@@ -42,13 +37,14 @@ class _SendTicketState extends State<SendTicket> {
       data = UserTicketsListM.fromMap(value.data);
     });
     setState(() {
-      _list0=data.result.ticketsTypes.toList();
+      _list0 = data.result.ticketsTypes.toList();
     });
     return data;
   }
+
   List _list0;
   int Id0;
-  var baseurl = 'https://wasselni.ps/delta/';
+  var baseurl = 'https://mdecco.com/app/';
 
   TextEditingController controllerTitle = TextEditingController();
   TextEditingController controllerContent = TextEditingController();
@@ -60,13 +56,12 @@ class _SendTicketState extends State<SendTicket> {
     });
   }
 
-
   @override
   void initState() {
     token = "";
     gettoken();
     print(token);
-    this.TicketList(key: '1234567890',token: widget.jwt);
+    this.TicketList(key: '1234567890', token: widget.jwt);
     super.initState();
   }
 
@@ -76,16 +71,13 @@ class _SendTicketState extends State<SendTicket> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-
         appBar: AppBar(
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back_sharp),
             onPressed: () => Navigator.of(context).pop(),
           ),
           actions: [
-
             //cccxcx
-
 
             Container(
               alignment: Alignment.center,
@@ -121,16 +113,14 @@ class _SendTicketState extends State<SendTicket> {
           ),
           backgroundColor: Color(0xff3b6745),
         ),
-        endDrawer:  NewWidget(size: size, token: token),
+        endDrawer: NewWidget(size: size, token: token),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 5.0, bottom: 8.0),
+                padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
                 child: Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       decoration: BoxDecoration(
@@ -145,45 +135,32 @@ class _SendTicketState extends State<SendTicket> {
                         width: size.width * .8,
                         child: _list0 != null
                             ? DropdownButton(
-                          isExpanded: true,
-                          items:
-                          _list0.map((e) {
-                            return new DropdownMenuItem(
-                              child:
-                              Container(
-                                  alignment:
-                                  Alignment
-                                      .centerRight,
-                                  child:
-                                  new Text(
-                                    e.name,
-                                    style:
-                                    TextStyle(
-                                      fontFamily:
-                                      'GE SS Two',
-                                      fontSize:
-                                      17,
-                                      color:
-                                      const Color(-384871238),
-                                      fontWeight:
-                                      FontWeight.w300,
-                                    ),
-                                    textDirection:
-                                    TextDirection.rtl,
-                                  )),
-                              value:
-                              e.id,
-                            );
-                          }).toList(),
-                          onChanged: (val) {
-                            setState(() {
-                              Id0 = val;
-                              print(Id0
-                                  .toString());
-                            });
-                          },
-                          value: Id0,
-                        )
+                                isExpanded: true,
+                                items: _list0.map((e) {
+                                  return new DropdownMenuItem(
+                                    child: Container(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text(
+                                          e.name,
+                                          style: TextStyle(
+                                            fontFamily: 'GE SS Two',
+                                            fontSize: 17,
+                                            color: const Color(-384871238),
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                          textDirection: TextDirection.rtl,
+                                        )),
+                                    value: e.id,
+                                  );
+                                }).toList(),
+                                onChanged: (val) {
+                                  setState(() {
+                                    Id0 = val;
+                                    print(Id0.toString());
+                                  });
+                                },
+                                value: Id0,
+                              )
                             : Container(),
                       ),
                     )
@@ -203,18 +180,14 @@ class _SendTicketState extends State<SendTicket> {
                         color: Colors.white38,
                       ),
                       child: TextField(
-                        controller: controllerTitle,
+                          controller: controllerTitle,
                           decoration: InputDecoration(
                             hintText: '    الموضوع  ',
-                            hintStyle:    TextStyle(
-                              fontFamily:
-                              'GE SS Two',
-                              fontSize:
-                              17,
-                              color:
-                              const Color(-384871238),
-                              fontWeight:
-                              FontWeight.w300,
+                            hintStyle: TextStyle(
+                              fontFamily: 'GE SS Two',
+                              fontSize: 17,
+                              color: const Color(-384871238),
+                              fontWeight: FontWeight.w300,
                             ),
                             hintTextDirection: TextDirection.rtl,
                             //    prefixIcon: Icon(Icons.email)
@@ -237,19 +210,15 @@ class _SendTicketState extends State<SendTicket> {
                         color: Colors.white38,
                       ),
                       child: TextField(
-                        controller: controllerContent,
-                        maxLines: 6,
+                          controller: controllerContent,
+                          maxLines: 6,
                           decoration: InputDecoration(
                             hintText: '    محتوي الشكوي  ',
-                            hintStyle:    TextStyle(
-                              fontFamily:
-                              'GE SS Two',
-                              fontSize:
-                              17,
-                              color:
-                              const Color(-384871238),
-                              fontWeight:
-                              FontWeight.w300,
+                            hintStyle: TextStyle(
+                              fontFamily: 'GE SS Two',
+                              fontSize: 17,
+                              color: const Color(-384871238),
+                              fontWeight: FontWeight.w300,
                             ),
                             hintTextDirection: TextDirection.rtl,
                             //    prefixIcon: Icon(Icons.email)
@@ -259,7 +228,6 @@ class _SendTicketState extends State<SendTicket> {
                   ],
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.all(35.0),
                 child: Container(
@@ -286,20 +254,34 @@ class _SendTicketState extends State<SendTicket> {
                         primary: Color(0xfff3a005),
                         onPrimary: Colors.orangeAccent,
                         shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30))),
                       ),
-                      onPressed: ()async {
-                        _repo.makeTicket(key: '1234567890', token: token, ticket_type_id: Id0.toString(), title: controllerTitle.text, content: controllerContent.text)
-                            .then((value){
-                           if(value.status!=false){
-                             var snackBar = SnackBar(content: Text('${value.message}'));
-                             ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                             Navigator.push(context,MaterialPageRoute(builder: (_)=>TechSupport()));
-                           }else{
-                             var snackBar = SnackBar(content: Text('${value.message}'));
-                             ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                           }
-                          });
+                      onPressed: () async {
+                        _repo
+                            .makeTicket(
+                                key: '1234567890',
+                                token: token,
+                                ticket_type_id: Id0.toString(),
+                                title: controllerTitle.text,
+                                content: controllerContent.text)
+                            .then((value) {
+                          if (value.status != false) {
+                            var snackBar =
+                                SnackBar(content: Text('${value.message}'));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => TechSupport()));
+                          } else {
+                            var snackBar =
+                                SnackBar(content: Text('${value.message}'));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
+                        });
                       },
                     ),
                   ),
@@ -309,7 +291,4 @@ class _SendTicketState extends State<SendTicket> {
           ),
         ));
   }
-
 }
-
-

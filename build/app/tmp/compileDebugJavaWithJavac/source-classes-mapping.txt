@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/nr/delta/BuildConfig.java
- com.nr.delta.BuildConfig

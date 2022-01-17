@@ -62,6 +62,8 @@ class CategoryDate {
     this.description,
     this.id,
     this.details,
+    this.appStoreLink,
+    this.playStoreLink,
     this.color,
   });
 
@@ -69,6 +71,8 @@ class CategoryDate {
   String description;
   int id;
   String details;
+  String playStoreLink;
+  String appStoreLink;
   dynamic color;
 
   factory CategoryDate.fromJson(String str) => CategoryDate.fromMap(json.decode(str));
@@ -80,6 +84,8 @@ class CategoryDate {
     description: json["description"],
     id: json["id"],
     details: json["details"],
+    playStoreLink: json["app_link_andorid"],
+    appStoreLink: json["app_link_ios"],
     color: json["color"],
   );
 
@@ -88,6 +94,8 @@ class CategoryDate {
     "description": description,
     "id": id,
     "details": details,
+    "app_link_andorid": playStoreLink,
+    "app_link_ios": appStoreLink,
     "color": color,
   };
 }

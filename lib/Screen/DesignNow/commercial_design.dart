@@ -234,6 +234,26 @@ class _CommercialDesignState extends State<CommercialDesign> {
   int Id12;
   List _list13;
   int Id13;
+  List _list19;
+  int Id19;
+  List _list21;
+  int Id21;
+  List _list20;
+  int answer20;
+  List _list31;
+  int answer31;
+  List _list22;
+  int Id22;
+  List _list23;
+  int Id23;
+  List _list24;
+  int Id24;
+  List _list26;
+  int Id26;
+  List _list27;
+  int Id27;
+  List _list28;
+  int Id28;
   TextEditingController Id5 = TextEditingController();
   TextEditingController Id6 = TextEditingController();
   TextEditingController Id7 = TextEditingController();
@@ -243,9 +263,10 @@ class _CommercialDesignState extends State<CommercialDesign> {
   TextEditingController Id15 = TextEditingController();
   TextEditingController Id16 = TextEditingController();
   TextEditingController Id17 = TextEditingController();
+  TextEditingController Id20 = TextEditingController();
   Dio dio = Dio();
   Repository _repo = Repository();
-  var baseurl = 'https://wasselni.ps/delta/';
+  var baseurl = 'https://mdecco.com/app/';
 
   //getCommercialServiceF
   Future<CommercialDesignM> getCommercialServiceF({
@@ -276,6 +297,16 @@ class _CommercialDesignState extends State<CommercialDesign> {
       _list11 = data.result.lableList[11].listAnwser.toList();
       _list12 = data.result.lableList[12].listAnwser.toList();
       _list13 = data.result.lableList[13].listAnwser.toList();
+      _list19 = data.result.lableList[19].listAnwser.toList();
+      _list20 = data.result.lableList[20].listAnwser.toList();
+      _list21 = data.result.lableList[21].listAnwser.toList();
+      _list22 = data.result.lableList[22].listAnwser.toList();
+      _list23 = data.result.lableList[23].listAnwser.toList();
+      _list24 = data.result.lableList[24].listAnwser.toList();
+      _list26 = data.result.lableList[26].listAnwser.toList();
+      _list27 = data.result.lableList[27].listAnwser.toList();
+      _list28 = data.result.lableList[28].listAnwser.toList();
+      _list31 = data.result.lableList[13].listAnwser.toList();
     });
     return data;
   }
@@ -533,7 +564,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                                 .centerRight,
                                                                         child:
                                                                             new Text(
-                                                                          e.title,
+                                                                          "e.title",
                                                                           style:
                                                                               TextStyle(
                                                                             fontFamily:
@@ -1879,7 +1910,942 @@ class _CommercialDesignState extends State<CommercialDesign> {
                             ),
                           ),
                         ),
-                        /////////////xc zxczxczx////zxczxczxc
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[19].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[19]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list19 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list19
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id19 = val;
+                                                                print(Id19
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id19,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[20].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[20]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list20 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list20
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                answer20 = val;
+                                                                print(answer20
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: answer20,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[21].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[21]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list21 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list21
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id21 = val;
+                                                                print(Id21
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id21,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[22].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[22]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list22 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list22
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id22 = val;
+                                                                print(Id22
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id22,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[23].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[23]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list23 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list23
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id23 = val;
+                                                                print(Id23
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id23,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[24].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[24]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list24 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list24
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id24 = val;
+                                                                print(Id24
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id24,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[26].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[26]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list26 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list26
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id26 = val;
+                                                                print(Id26
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id26,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[27].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[27]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list27 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list27
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id27 = val;
+                                                                print(Id27
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id27,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[28].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[28]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list28 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list28
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                Id28 = val;
+                                                                print(Id28
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: Id28,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                         //14
                         Card(
                           elevation: 15,
@@ -2168,7 +3134,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[13].title}",
+                                    "${snapshot.data.result.lableList[25].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2181,7 +3147,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[13]
+                                    child: snapshot.data.result.lableList[25]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2204,1094 +3170,117 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                 size: 35,
                                               ),
                                             ),
-                                          )
-                                    // Padding(
-                                    //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                                    //   child: Row(
-                                    //     mainAxisAlignment: MainAxisAlignment.center,
-                                    //     children: [
-                                    //       Container(
-                                    //         decoration: BoxDecoration(
-                                    //           border: Border(),
-                                    //         ),
-                                    //         height: 50,
-                                    //         width: size.width * .8,
-                                    //         child: Container(
-                                    //           decoration: BoxDecoration(
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           width: size.width*.8,
-                                    //           child: _list15!=null?
-                                    //           DropdownButton(
-                                    //             isExpanded: true,
-                                    //             items: _list15.map((e) {
-                                    //               return new DropdownMenuItem(
-                                    //                 child: Container(
-                                    //                     alignment: Alignment.centerRight,
-                                    //                     child: new Text(
-                                    //                       e.title, style: TextStyle(
-                                    //                       fontFamily: 'GE SS Two',
-                                    //                       fontSize: 17,
-                                    //                       color: const Color(0xff848484),
-                                    //                       fontWeight: FontWeight.w300,
-                                    //                     ),textDirection: TextDirection.rtl,)
-                                    //
-                                    //                 ),
-                                    //                 value:  e.answerId,
-                                    //               );
-                                    //             }).toList(),
-                                    //             onChanged: (val){
-                                    //               setState(() {
-                                    //                 Id15=val;
-                                    //                 print(Id5.toString());
-                                    //               });
-                                    //             },value:Id5 ,
-                                    //           ):Container(),
-                                    //         ),)
-                                    //     ],
-                                    //   ),
-                                    // )
-                                    ,
+                                          ),
                                   ),
                                 )
                               ],
                             ),
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .95,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 child: Text(
-                        //               "عرض",
-                        //               style: TextStyle(
-                        //                 fontFamily: 'GE SS Two',
-                        //                 fontSize: 13,
-                        //                 fontWeight: FontWeight.w300,
-                        //               ),
-                        //             )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .15,
-                        //                 child: Center(child: TextField())),
-                        //             Container(
-                        //                 child: Text(
-                        //               "طول",
-                        //               style: TextStyle(
-                        //                 fontFamily: 'GE SS Two',
-                        //                 fontSize: 13,
-                        //                 fontWeight: FontWeight.w300,
-                        //               ),
-                        //             )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .15,
-                        //                 child: Center(child: TextField())),
-                        //             Container(
-                        //                 width: sWidth * .21,
-                        //                 child: Text(
-                        //                   "ابعاد الارض",
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 12,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .5,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.end,
-                        //           children: [
-                        //             Container(
-                        //                 child: Text(
-                        //               "متر مربع",
-                        //               style: TextStyle(
-                        //                 fontFamily: 'GE SS Two',
-                        //                 fontSize: 13,
-                        //                 fontWeight: FontWeight.w300,
-                        //               ),
-                        //             )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .25,
-                        //                 child: Center(child: TextField())),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Container(
-                        //           width: sWidth * .27,
-                        //           child: Text(
-                        //             "مساحة المبني",
-                        //             style: TextStyle(
-                        //               fontFamily: 'GE SS Two',
-                        //               fontSize: 15,
-                        //               fontWeight: FontWeight.w300,
-                        //             ),
-                        //           )),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .4,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 width: sWidth * .05,
-                        //                 child: Column(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     IconButton(
-                        //                       icon:
-                        //                           Icon(Icons.keyboard_arrow_up_outlined),
-                        //                       onPressed: () {
-                        //                         _increment_workers();
-                        //                         print(_counter_workers);
-                        //                       },
-                        //                     ),
-                        //                     IconButton(
-                        //                       icon: Icon(
-                        //                           Icons.keyboard_arrow_down_outlined),
-                        //                       onPressed: () {
-                        //                         _dicrement_workers();
-                        //                         print(_counter_workers);
-                        //                       },
-                        //                     )
-                        //                   ],
-                        //                 )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .1,
-                        //                 height: sWidth * .1,
-                        //                 child: Center(child: Text("$_counter_workers"))),
-                        //             Container(
-                        //                 width: sWidth * .2,
-                        //                 child: Text(
-                        //                   "عدد العاملين",
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 17,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .4,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 width: sWidth * .05,
-                        //                 child: Column(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     IconButton(
-                        //                       icon:
-                        //                           Icon(Icons.keyboard_arrow_up_outlined),
-                        //                       onPressed: () {
-                        //                         _increment_users();
-                        //                         print(_counter_users);
-                        //                       },
-                        //                     ),
-                        //                     IconButton(
-                        //                       icon: Icon(
-                        //                           Icons.keyboard_arrow_down_outlined),
-                        //                       onPressed: () {
-                        //                         _dicrement_users();
-                        //                         print(_counter_users);
-                        //                       },
-                        //                     )
-                        //                   ],
-                        //                 )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .1,
-                        //                 height: sWidth * .1,
-                        //                 child: Center(child: Text("$_counter_users"))),
-                        //             Container(
-                        //                 width: sWidth * .25,
-                        //                 child: Text(
-                        //                   "عدد المستخدمين ",
-                        //                   textDirection: TextDirection.rtl,
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 17,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // //trade
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: <Widget>[
-                        //       Expanded(
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: sWidth * .3,
-                        //               child: ListTile(
-                        //                 title: const Text('لا'),
-                        //                 leading: Radio<SingingCharacterTrade>(
-                        //                   value: SingingCharacterTrade.no,
-                        //                   groupValue: _character_Trade,
-                        //                   onChanged: (SingingCharacterTrade value) {
-                        //                     setState(() {
-                        //                       _character_Trade = value;
-                        //                       print(_character_Trade);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Container(
-                        //               width: sWidth * .33,
-                        //               child: ListTile(
-                        //                 title: const Text('نعم'),
-                        //                 leading: Radio<SingingCharacterTrade>(
-                        //                   value: SingingCharacterTrade.yes,
-                        //                   groupValue: _character_Trade,
-                        //                   onChanged: (SingingCharacterTrade value) {
-                        //                     setState(() {
-                        //                       _character_Trade = value;
-                        //                       print(_character_Trade);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.all(8.0),
-                        //         child: Container(
-                        //             width: sWidth * .25,
-                        //             child: Text(
-                        //               "يحتوي عل محال تجارية",
-                        //               textDirection: TextDirection.rtl,
-                        //               style: TextStyle(
-                        //                 fontFamily: 'GE SS Two',
-                        //                 fontSize: 13,
-                        //                 fontWeight: FontWeight.w300,
-                        //               ),
-                        //             )),
-                        //       )
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // //Contain
-                        //
-                        // Padding(
-                        //   padding: const EdgeInsets.all(5.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.center,
-                        //     children: <Widget>[
-                        //       Expanded(
-                        //         child: Row(
-                        //           children: [
-                        //             Expanded(
-                        //               child: Container(
-                        //                 // width: sWidth * .33,
-                        //                 child: ListTile(
-                        //                   title: const Text(
-                        //                     'قاعات مناسبات',
-                        //                     style: TextStyle(fontSize: 13),
-                        //                   ),
-                        //                   leading: Radio<SingingCharacterContainBuild>(
-                        //                     value: SingingCharacterContainBuild
-                        //                         .wedding_halls,
-                        //                     groupValue: _character_ContainBuild,
-                        //                     onChanged:
-                        //                         (SingingCharacterContainBuild value) {
-                        //                       setState(() {
-                        //                         _character_ContainBuild = value;
-                        //                         print(_character_ContainBuild);
-                        //                       });
-                        //                     },
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Expanded(
-                        //               child: Container(
-                        //                 //  width: sWidth * .33,
-                        //                 child: ListTile(
-                        //                   title: const Text('قاعات دراسيه',
-                        //                       style: TextStyle(fontSize: 14)),
-                        //                   leading: Radio<SingingCharacterContainBuild>(
-                        //                     value:
-                        //                         SingingCharacterContainBuild.Classrooms,
-                        //                     groupValue: _character_ContainBuild,
-                        //                     onChanged:
-                        //                         (SingingCharacterContainBuild value) {
-                        //                       setState(() {
-                        //                         _character_ContainBuild = value;
-                        //                         print(_character_ContainBuild);
-                        //                       });
-                        //                     },
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Expanded(
-                        //               child: Container(
-                        //                 //  width: sWidth * .33,
-                        //                 child: ListTile(
-                        //                   title: const Text(
-                        //                     'قاعات اجتماعات',
-                        //                     style: TextStyle(fontSize: 13),
-                        //                   ),
-                        //                   leading: Radio<SingingCharacterContainBuild>(
-                        //                     value: SingingCharacterContainBuild
-                        //                         .meeting_rooms,
-                        //                     groupValue: _character_ContainBuild,
-                        //                     onChanged:
-                        //                         (SingingCharacterContainBuild value) {
-                        //                       setState(() {
-                        //                         _character_ContainBuild = value;
-                        //                         print(_character_ContainBuild);
-                        //                       });
-                        //                     },
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // //parking
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Container(
-                        //       width: sWidth * .6,
-                        //       child: Text(
-                        //         "يحتوي المبني علي موقف سيارات",
-                        //         textDirection: TextDirection.rtl,
-                        //         style: TextStyle(
-                        //           fontFamily: 'GE SS Two',
-                        //           fontSize: 15,
-                        //           fontWeight: FontWeight.w300,
-                        //         ),
-                        //       )),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: <Widget>[
-                        //       Expanded(
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: sWidth * .3,
-                        //               child: ListTile(
-                        //                 title: const Text('لا'),
-                        //                 leading: Radio<SingingCharacterParking>(
-                        //                   value: SingingCharacterParking.no,
-                        //                   groupValue: _character_Parking,
-                        //                   onChanged: (SingingCharacterParking value) {
-                        //                     setState(() {
-                        //                       _character_Parking = value;
-                        //                       print(_character_Parking);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Container(
-                        //               width: sWidth * .33,
-                        //               child: ListTile(
-                        //                 title: const Text('نعم'),
-                        //                 leading: Radio<SingingCharacterParking>(
-                        //                   value: SingingCharacterParking.yes,
-                        //                   groupValue: _character_Parking,
-                        //                   onChanged: (SingingCharacterParking value) {
-                        //                     setState(() {
-                        //                       _character_Parking = value;
-                        //                       print(_character_Parking);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: <Widget>[
-                        //       Expanded(
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: sWidth * .3,
-                        //               child: ListTile(
-                        //                 title: const Text('تحت الارض'),
-                        //                 leading: Radio<SingingCharacterParkingLoc>(
-                        //                   value: SingingCharacterParkingLoc.under,
-                        //                   groupValue: _character_ParkingLoc,
-                        //                   onChanged: (SingingCharacterParkingLoc value) {
-                        //                     setState(() {
-                        //                       _character_ParkingLoc = value;
-                        //                       print(_character_ParkingLoc);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Container(
-                        //               width: sWidth * .35,
-                        //               child: ListTile(
-                        //                 title: const Text('فوق الارض'),
-                        //                 leading: Radio<SingingCharacterParkingLoc>(
-                        //                   value: SingingCharacterParkingLoc.up,
-                        //                   groupValue: _character_ParkingLoc,
-                        //                   onChanged: (SingingCharacterParkingLoc value) {
-                        //                     setState(() {
-                        //                       _character_ParkingLoc = value;
-                        //                       print(_character_ParkingLoc);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // //floors
-                        //
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Expanded(
-                        //         child: Container(
-                        //           child: Row(
-                        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //             children: <Widget>[
-                        //               Expanded(
-                        //                 child: Row(
-                        //                   children: [
-                        //                     Container(
-                        //                       width: sWidth * .32,
-                        //                       child: ListTile(
-                        //                         title: const Text('فوق الارض'),
-                        //                         leading: Radio<SingingCharacterfloors>(
-                        //                           value: SingingCharacterfloors.up,
-                        //                           groupValue: _character_floors,
-                        //                           onChanged:
-                        //                               (SingingCharacterfloors value) {
-                        //                             setState(() {
-                        //                               _character_floors = value;
-                        //                               print(_character_floors);
-                        //                             });
-                        //                           },
-                        //                         ),
-                        //                       ),
-                        //                     ),
-                        //                     Container(
-                        //                       width: sWidth * .32,
-                        //                       child: ListTile(
-                        //                         title: const Text('تحت الارض'),
-                        //                         leading: Radio<SingingCharacterfloors>(
-                        //                           value: SingingCharacterfloors.under,
-                        //                           groupValue: _character_floors,
-                        //                           onChanged:
-                        //                               (SingingCharacterfloors value) {
-                        //                             setState(() {
-                        //                               _character_floors = value;
-                        //                               print(_character_floors);
-                        //                             });
-                        //                           },
-                        //                         ),
-                        //                       ),
-                        //                     ),
-                        //                   ],
-                        //                 ),
-                        //               ),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //       Container(
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 width: sWidth * .05,
-                        //                 child: Column(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     IconButton(
-                        //                       icon:
-                        //                           Icon(Icons.keyboard_arrow_up_outlined),
-                        //                       onPressed: () {
-                        //                         _increment_floors();
-                        //                         print(_counter_floors);
-                        //                       },
-                        //                     ),
-                        //                     IconButton(
-                        //                       icon: Icon(
-                        //                           Icons.keyboard_arrow_down_outlined),
-                        //                       onPressed: () {
-                        //                         _dicrement_floors();
-                        //                         print(_counter_floors);
-                        //                       },
-                        //                     )
-                        //                   ],
-                        //                 )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .1,
-                        //                 height: sWidth * .1,
-                        //                 child: Center(child: Text("$_counter_floors"))),
-                        //             Container(
-                        //                 width: sWidth * .15,
-                        //                 child: Text(
-                        //                   "عدد الطوابق ",
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 17,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // //special gate
-                        //
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: <Widget>[
-                        //       Expanded(
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: sWidth * .3,
-                        //               child: ListTile(
-                        //                 title: const Text('لا'),
-                        //                 leading: Radio<SingingCharacterSpecialGate>(
-                        //                   value: SingingCharacterSpecialGate.no,
-                        //                   groupValue: _character_SpecialGate,
-                        //                   onChanged: (SingingCharacterSpecialGate value) {
-                        //                     setState(() {
-                        //                       _character_SpecialGate = value;
-                        //                       print(_character_SpecialGate);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Container(
-                        //               width: sWidth * .33,
-                        //               child: ListTile(
-                        //                 title: const Text('نعم'),
-                        //                 leading: Radio<SingingCharacterSpecialGate>(
-                        //                   value: SingingCharacterSpecialGate.yes,
-                        //                   groupValue: _character_SpecialGate,
-                        //                   onChanged: (SingingCharacterSpecialGate value) {
-                        //                     setState(() {
-                        //                       _character_SpecialGate = value;
-                        //                       print(_character_SpecialGate);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.all(8.0),
-                        //         child: Container(
-                        //             width: sWidth * .25,
-                        //             child: Text(
-                        //               "مدخل خاص لطوابق معينه",
-                        //               textDirection: TextDirection.rtl,
-                        //               style: TextStyle(
-                        //                 fontFamily: 'GE SS Two',
-                        //                 fontSize: 13,
-                        //                 fontWeight: FontWeight.w300,
-                        //               ),
-                        //             )),
-                        //       )
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // //residential flats
-                        //
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Expanded(
-                        //         child: Container(
-                        //           child: Row(
-                        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //             children: <Widget>[
-                        //               Expanded(
-                        //                 child: Row(
-                        //                   children: [
-                        //                     Container(
-                        //                       width: sWidth * .32,
-                        //                       child: ListTile(
-                        //                         title: const Text('لا'),
-                        //                         leading: Radio<SingingCharacterFlats>(
-                        //                           value: SingingCharacterFlats.no,
-                        //                           groupValue: _character_Flats,
-                        //                           onChanged:
-                        //                               (SingingCharacterFlats value) {
-                        //                             setState(() {
-                        //                               _character_Flats = value;
-                        //                               print(_character_Flats);
-                        //                             });
-                        //                           },
-                        //                         ),
-                        //                       ),
-                        //                     ),
-                        //                     Container(
-                        //                       width: sWidth * .32,
-                        //                       child: ListTile(
-                        //                         title: const Text('نعم'),
-                        //                         leading: Radio<SingingCharacterFlats>(
-                        //                           value: SingingCharacterFlats.yes,
-                        //                           groupValue: _character_Flats,
-                        //                           onChanged:
-                        //                               (SingingCharacterFlats value) {
-                        //                             setState(() {
-                        //                               _character_Flats = value;
-                        //                               print(_character_Flats);
-                        //                             });
-                        //                           },
-                        //                         ),
-                        //                       ),
-                        //                     ),
-                        //                   ],
-                        //                 ),
-                        //               ),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //       Container(
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 width: sWidth * .05,
-                        //                 child: Column(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     IconButton(
-                        //                       icon:
-                        //                           Icon(Icons.keyboard_arrow_up_outlined),
-                        //                       onPressed: () {
-                        //                         _increment_flats();
-                        //                         print(_counter_flats);
-                        //                       },
-                        //                     ),
-                        //                     IconButton(
-                        //                       icon: Icon(
-                        //                           Icons.keyboard_arrow_down_outlined),
-                        //                       onPressed: () {
-                        //                         _dicrement_flats();
-                        //                         print(_counter_flats);
-                        //                       },
-                        //                     )
-                        //                   ],
-                        //                 )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .1,
-                        //                 height: sWidth * .1,
-                        //                 child: Center(child: Text("$_counter_flats"))),
-                        //             Container(
-                        //                 width: sWidth * .15,
-                        //                 child: Text(
-                        //                   "شقق سكنية ",
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 17,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // Container(
-                        //   child: ListView(
-                        //     shrinkWrap: true,
-                        //     children: values.keys.map((String key) {
-                        //       return new CheckboxListTile(
-                        //         title: new Text(key),
-                        //         value: values[key],
-                        //         activeColor: Color(0xff3b6745),
-                        //         checkColor: Colors.white,
-                        //         onChanged: (bool value) {
-                        //           setState(() {
-                        //             values[key] = value;
-                        //           });
-                        //         },
-                        //       );
-                        //     }).toList(),
-                        //   ),
-                        // ),
-                        // RaisedButton(
-                        //   child: Text(
-                        //     " تأكيد الاختيارات ",
-                        //     style: TextStyle(fontSize: 18),
-                        //   ),
-                        //   onPressed: getCheckboxItems,
-                        //   color: Color(0xff3b6745),
-                        //   textColor: Colors.white,
-                        //   splashColor: Colors.grey,
-                        //   padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        // ),
-                        //
-                        // //comerUp
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .4,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 width: sWidth * .05,
-                        //                 child: Column(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     IconButton(
-                        //                       icon:
-                        //                           Icon(Icons.keyboard_arrow_up_outlined),
-                        //                       onPressed: () {
-                        //                         _increment_serviceElevator();
-                        //                         print(_counter_serviceElevator);
-                        //                       },
-                        //                     ),
-                        //                     IconButton(
-                        //                       icon: Icon(
-                        //                           Icons.keyboard_arrow_down_outlined),
-                        //                       onPressed: () {
-                        //                         _dicrement_serviceElevator();
-                        //                         print(_counter_serviceElevator);
-                        //                       },
-                        //                     )
-                        //                   ],
-                        //                 )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .1,
-                        //                 height: sWidth * .1,
-                        //                 child: Center(child: Text("$_counter_serviceElevator"))),
-                        //             Container(
-                        //                 width: sWidth * .2,
-                        //                 child: Text(
-                        //                   "عدد المصاعد الخدمية ",
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 16,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // //usersUp
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .4,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 width: sWidth * .05,
-                        //                 child: Column(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     IconButton(
-                        //                       icon:
-                        //                           Icon(Icons.keyboard_arrow_up_outlined),
-                        //                       onPressed: () {
-                        //                         _increment_usersElevator();
-                        //                         print(_counter_usersElevator);
-                        //                       },
-                        //                     ),
-                        //                     IconButton(
-                        //                       icon: Icon(
-                        //                           Icons.keyboard_arrow_down_outlined),
-                        //                       onPressed: () {
-                        //                         _dicrement_usersElevator();
-                        //                         print(_counter_usersElevator);
-                        //                       },
-                        //                     )
-                        //                   ],
-                        //                 )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .1,
-                        //                 height: sWidth * .1,
-                        //                 child: Center(child: Text("$_counter_usersElevator"))),
-                        //             Container(
-                        //                 width: sWidth * .2,
-                        //                 child: Text(
-                        //                   "عدد مصاعد المستخدمين ",
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 16,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // //workers
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .4,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Container(
-                        //                 width: sWidth * .05,
-                        //                 child: Column(
-                        //                   mainAxisAlignment: MainAxisAlignment.center,
-                        //                   children: [
-                        //                     IconButton(
-                        //                       icon:
-                        //                       Icon(Icons.keyboard_arrow_up_outlined),
-                        //                       onPressed: () {
-                        //                         _increment_workersElevator();
-                        //                         print(_counter_workersElevator);
-                        //                       },
-                        //                     ),
-                        //                     IconButton(
-                        //                       icon: Icon(
-                        //                           Icons.keyboard_arrow_down_outlined),
-                        //                       onPressed: () {
-                        //                         _dicrement_bedroom();
-                        //                         print(_counter_workersElevator);
-                        //                       },
-                        //                     )
-                        //                   ],
-                        //                 )),
-                        //             Container(
-                        //                 decoration: BoxDecoration(
-                        //                     color: Colors.grey,
-                        //                     borderRadius: BorderRadius.circular(10)),
-                        //                 width: sWidth * .1,
-                        //                 height: sWidth * .1,
-                        //                 child: Center(child: Text("$_counter_workersElevator"))),
-                        //             Container(
-                        //                 width: sWidth * .2,
-                        //                 child: Text(
-                        //                   "عدد مصاعد العاملين ",
-                        //                   style: TextStyle(
-                        //                     fontFamily: 'GE SS Two',
-                        //                     fontSize: 16,
-                        //                     fontWeight: FontWeight.w300,
-                        //                   ),
-                        //                 )),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: <Widget>[
-                        //       Expanded(
-                        //         child: Row(
-                        //           children: [
-                        //             Container(
-                        //               width: sWidth * .3,
-                        //               child: ListTile(
-                        //                 title: const Text('لا'),
-                        //                 leading: Radio<SingingCharacterLoc>(
-                        //                   value: SingingCharacterLoc.no,
-                        //                   groupValue: _character_Loc,
-                        //                   onChanged: (SingingCharacterLoc value) {
-                        //                     setState(() {
-                        //                       _character_Loc = value;
-                        //                       print(_character_Loc);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Container(
-                        //               width: sWidth * .33,
-                        //               child: ListTile(
-                        //                 title: const Text('نعم'),
-                        //                 leading: Radio<SingingCharacterLoc>(
-                        //                   value: SingingCharacterLoc.yes,
-                        //                   groupValue: _character_Loc,
-                        //                   onChanged: (SingingCharacterLoc value) {
-                        //                     setState(() {
-                        //                       _character_Loc = value;
-                        //                       print(_character_Loc);
-                        //                     });
-                        //                   },
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.all(8.0),
-                        //         child: Container(
-                        //             width: sWidth * .25,
-                        //             child: Text(
-                        //               "ارفاق كروكي الموقع",
-                        //               textDirection: TextDirection.rtl,
-                        //               style: TextStyle(
-                        //                 fontFamily: 'GE SS Two',
-                        //                 fontSize: 15,
-                        //                 fontWeight: FontWeight.w300,
-                        //               ),
-                        //             )),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        //
-                        // Padding(
-                        //   padding: const EdgeInsets.all(3.0),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.center,
-                        //     children: [
-                        //       Container(
-                        //         width: sWidth * .85,
-                        //         height: sHeight * .15,
-                        //         decoration: BoxDecoration(
-                        //             color: Colors.black12,
-                        //             borderRadius: BorderRadius.circular(10)),
-                        //         //  alignment: Alignment.center,
-                        //         child: TextField(
-                        //             decoration: InputDecoration(hintText: "تكلم عن الوظائف  و الفراغات المطلوبة",hintTextDirection: TextDirection.rtl),
-                        //             maxLines: 7,
-                        //             textDirection: TextDirection.rtl,
-                        //             style: TextStyle(
-                        //               fontFamily: 'GE SS Two',
-                        //               fontSize: 17,
-                        //               fontWeight: FontWeight.w300,
-                        //             )),
-                        //       ),
-                        //
-                        //     ],
-                        //   ),
-                        // ),
-
-                        //btn
+                        Card(
+                          elevation: 15,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Container(
+                            width: sWidth * .95,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.lableList[13].title}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      color: Color(0xffaa6414),
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: snapshot.data.result.lableList[13]
+                                                .type ==
+                                            2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField(
+                                              textDirection: TextDirection.rtl,
+                                            ))
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list31 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list31
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                answer31 = val;
+                                                                print(answer31
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: answer31,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Row(
@@ -3432,11 +3421,28 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                               '${snapshot.data.result.lableList[15].lebalId}."${Id15.text}"';
                                           String a16 =
                                               '${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
-                                          String a17 = houseType == "معماري"
-                                              ? '${snapshot.data.result.lableList[17].lebalId}."${0}"'
-                                              : '${snapshot.data.result.lableList[17].lebalId}."${1}"';
+                                          String a19 =
+                                              '${snapshot.data.result.lableList[19].lebalId}."$Id19"';
+                                          String a20 =
+                                              '${snapshot.data.result.lableList[20].lebalId}.$answer20';
+                                          String a21 =
+                                              '${snapshot.data.result.lableList[21].lebalId}."$Id21"';
+                                          String a22 =
+                                              '${snapshot.data.result.lableList[22].lebalId}."$Id22"';
+                                          String a23 =
+                                              '${snapshot.data.result.lableList[23].lebalId}."$Id23"';
+                                          String a24 =
+                                              '${snapshot.data.result.lableList[24].lebalId}."$Id24"';
+                                          String a26 =
+                                              '${snapshot.data.result.lableList[26].lebalId}."$Id26"';
+                                          String a27 =
+                                              '${snapshot.data.result.lableList[27].lebalId}."$Id27"';
+                                          String a28 =
+                                              '${snapshot.data.result.lableList[28].lebalId}."$Id28"';
+                                          String a29 =
+                                              '${snapshot.data.result.lableList[13].lebalId}."$answer31"';
                                           String answer =
-                                              '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15,$a16,$a17';
+                                              '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15,$a16,$a19,$a20,$a21,$a22,$a23,$a24,$a26,$a27,$a28,$a29,';
                                           _repo
                                               .sendCostBuildF(
                                             key: '1234567890',

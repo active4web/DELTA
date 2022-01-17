@@ -1,72 +1,55 @@
-// To parse this JSON data, do
-//
-//     final registrationM = registrationMFromMap(jsonString);
-
-import 'dart:convert';
-
-class RegistrationM {
-  RegistrationM({
-    this.message,
-    this.codenum,
-    this.status,
-    this.result,
-  });
-
+class RegisterationModel {
   String message;
   int codenum;
   bool status;
   Result result;
 
-  factory RegistrationM.fromJson(String str) => RegistrationM.fromMap(json.decode(str));
+  RegisterationModel({this.message, this.codenum, this.status, this.result});
 
-  String toJson() => json.encode(toMap());
+  RegisterationModel.fromJson(Map<String, dynamic> json) {
+    message = json['message'];
+    codenum = json['codenum'];
+    status = json['status'];
+    result =
+        json['result'] != null ? new Result.fromJson(json['result']) : null;
+  }
 
-  factory RegistrationM.fromMap(Map<String, dynamic> json) => RegistrationM(
-    message: json["message"],
-    codenum: json["codenum"],
-    status: json["status"],
-    result: Result.fromMap(json["result"]),
-  );
-
-  Map<String, dynamic> toMap() => {
-    "message": message,
-    "codenum": codenum,
-    "status": status,
-    "result": result.toMap(),
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
+    data['codenum'] = this.codenum;
+    data['status'] = this.status;
+    if (this.result != null) {
+      data['result'] = this.result.toJson();
+    }
+    return data;
+  }
 }
 
 class Result {
-  Result({
-    this.clientData,
-  });
+  List<ClientData> clientData;
 
-  List<ClientDatum> clientData;
+  Result({this.clientData});
 
-  factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
+  Result.fromJson(Map<String, dynamic> json) {
+    if (json['client_data'] != null) {
+      clientData = new List<ClientData>();
+      json['client_data'].forEach((v) {
+        clientData.add(new ClientData.fromJson(v));
+      });
+    }
+  }
 
-  String toJson() => json.encode(toMap());
-
-  factory Result.fromMap(Map<String, dynamic> json) => Result(
-    clientData: List<ClientDatum>.from(json["client_data"].map((x) => ClientDatum.fromMap(x))),
-  );
-
-  Map<String, dynamic> toMap() => {
-    "client_data": List<dynamic>.from(clientData.map((x) => x.toMap())),
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.clientData != null) {
+      data['client_data'] = this.clientData.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-class ClientDatum {
-  ClientDatum({
-    this.name,
-    this.phone,
-    this.id,
-    this.fullname,
-    this.lang,
-    this.country,
-    this.token,
-  });
-
+class ClientData {
   String name;
   String phone;
   int id;
@@ -75,27 +58,34 @@ class ClientDatum {
   String country;
   String token;
 
-  factory ClientDatum.fromJson(String str) => ClientDatum.fromMap(json.decode(str));
+  ClientData(
+      {this.name,
+      this.phone,
+      this.id,
+      this.fullname,
+      this.lang,
+      this.country,
+      this.token});
 
-  String toJson() => json.encode(toMap());
+  ClientData.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    phone = json['phone'];
+    id = json['id'];
+    fullname = json['fullname'];
+    lang = json['lang'];
+    country = json['country'];
+    token = json['token'];
+  }
 
-  factory ClientDatum.fromMap(Map<String, dynamic> json) => ClientDatum(
-    name: json["name"],
-    phone: json["phone"],
-    id: json["id"],
-    fullname: json["fullname"],
-    lang: json["lang"],
-    country: json["country"],
-    token: json["token"],
-  );
-
-  Map<String, dynamic> toMap() => {
-    "name": name,
-    "phone": phone,
-    "id": id,
-    "fullname": fullname,
-    "lang": lang,
-    "country": country,
-    "token": token,
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['phone'] = this.phone;
+    data['id'] = this.id;
+    data['fullname'] = this.fullname;
+    data['lang'] = this.lang;
+    data['country'] = this.country;
+    data['token'] = this.token;
+    return data;
+  }
 }

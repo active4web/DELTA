@@ -37,7 +37,6 @@ SingingCharacter2 _character7 = SingingCharacter2.daily;
 SingingCharacter3 _character8 = SingingCharacter3.private;
 SingingCharacter4 _character9 = SingingCharacter4.female;
 
-TextEditingController Id0 = TextEditingController();
 TextEditingController Id1 = TextEditingController();
 TextEditingController Id2 = TextEditingController();
 TextEditingController Id3 = TextEditingController();
@@ -48,6 +47,28 @@ TextEditingController Id7 = TextEditingController();
 TextEditingController Id8 = TextEditingController();
 TextEditingController Id9 = TextEditingController();
 TextEditingController Id10 = TextEditingController();
+List _list1;
+int listId1;
+List _list2;
+int listId2;
+List _list3;
+int listId3;
+List _list4;
+int listId4;
+List _list5;
+int listId5;
+List _list6;
+int listId6;
+List _list7;
+int listId7;
+List _list8;
+int listId8;
+List _list9;
+int listId9;
+List _list10;
+int listId10;
+List _list22;
+int listId22;
 
 List _list11;
 int Id11;
@@ -111,7 +132,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
     });
   }
 
-  var baseurl = 'https://wasselni.ps/delta/';
+  var baseurl = 'https://mdecco.com/app/';
   String token;
   Dio dio = Dio();
   Future<RealStateM> getRealStateF({
@@ -133,6 +154,17 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
       data = RealStateM.fromMap(value.data);
     });
     setState(() {
+      _list1 = data.result.lableList[0].listAnwser.toList();
+      _list7 = data.result.lableList[6].listAnwser.toList();
+      _list2 = data.result.lableList[14].listAnwser.toList();
+      _list3 = data.result.lableList[15].listAnwser.toList();
+      _list4 = data.result.lableList[16].listAnwser.toList();
+      _list5 = data.result.lableList[17].listAnwser.toList();
+      _list6 = data.result.lableList[18].listAnwser.toList();
+      _list8 = data.result.lableList[19].listAnwser.toList();
+      _list9 = data.result.lableList[20].listAnwser.toList();
+      _list10 = data.result.lableList[21].listAnwser.toList();
+      _list22 = data.result.lableList[22].listAnwser.toList();
       _list11 = data.result.lableList[11].listAnwser.toList();
       _list12 = data.result.lableList[12].listAnwser.toList();
       _list13 = data.result.lableList[13].listAnwser.toList();
@@ -286,65 +318,79 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[0].type ==
-                                          2
-                                      ? Container(
-                                          width: sWidth * .8,
-                                          child: Container(
-                                            child: TextField(
-                                              controller: Id0,
-                                              textDirection: TextDirection.rtl,
-                                            ),
-                                          ))
-                                      : Container()
-                                  // Padding(
-                                  //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                                  //   child: Row(
-                                  //     mainAxisAlignment: MainAxisAlignment.center,
-                                  //     children: [
-                                  //       Container(
-                                  //         decoration: BoxDecoration(
-                                  //           border: Border(),
-                                  //         ),
-                                  //         height: 50,
-                                  //         width: size.width * .8,
-                                  //         child: Container(
-                                  //           decoration: BoxDecoration(
-                                  //             color: Colors.white,
-                                  //           ),
-                                  //           width: size.width*.8,
-                                  //           child: _list3!=null?
-                                  //           DropdownButton(
-                                  //             isExpanded: true,
-                                  //             items: _list3.map((e) {
-                                  //               return new DropdownMenuItem(
-                                  //                 child: Container(
-                                  //                     alignment: Alignment.centerRight,
-                                  //                     child: new Text(
-                                  //                       e.title, style: TextStyle(
-                                  //                       fontFamily: 'GE SS Two',
-                                  //                       fontSize: 17,
-                                  //                       color: const Color(0xff848484),
-                                  //                       fontWeight: FontWeight.w300,
-                                  //                     ),textDirection: TextDirection.rtl,)
-                                  //
-                                  //                 ),
-                                  //                 value:  e.answerId,
-                                  //               );
-                                  //             }).toList(),
-                                  //             onChanged: (val){
-                                  //               setState(() {
-                                  //                 Id3=val;
-                                  //                 print(Id3.toString());
-                                  //               });
-                                  //             },value:Id3 ,
-                                  //           ):Container(),
-                                  //         ),)
-                                  //     ],
-                                  //   ),
-                                  // ),
-                                  ),
+                                child: snapshot.data.result.lableList[0].type ==
+                                        2
+                                    ? Container(
+                                        width: sWidth * .8,
+                                        child: Container(
+                                          child: TextField(
+                                            // controller: Id0,
+                                            textDirection: TextDirection.rtl,
+                                          ),
+                                        ))
+                                    : Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 5.0, bottom: 8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                border: Border(),
+                                              ),
+                                              height: 50,
+                                              width: size.width * .8,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                ),
+                                                width: size.width * .8,
+                                                child: _list1 != null
+                                                    ? DropdownButton(
+                                                        isExpanded: true,
+                                                        items: _list1.map((e) {
+                                                          return new DropdownMenuItem(
+                                                            child: Container(
+                                                                alignment: Alignment
+                                                                    .centerRight,
+                                                                child: new Text(
+                                                                  e.title,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        'GE SS Two',
+                                                                    fontSize:
+                                                                        17,
+                                                                    color: const Color(
+                                                                        0xff848484),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                                  textDirection:
+                                                                      TextDirection
+                                                                          .rtl,
+                                                                )),
+                                                            value: e.answerId,
+                                                          );
+                                                        }).toList(),
+                                                        onChanged: (val) {
+                                                          setState(() {
+                                                            listId1 = val;
+                                                            print(
+                                                                Id3.toString());
+                                                          });
+                                                        },
+                                                        value: listId1,
+                                                      )
+                                                    : Container(),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                              ),
                             )
                           ],
                         ),
@@ -836,54 +882,68 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                             textDirection: TextDirection.rtl,
                                           ),
                                         ))
-                                    : Container()
-                                // Padding(
-                                //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                                //   child: Row(
-                                //     mainAxisAlignment: MainAxisAlignment.center,
-                                //     children: [
-                                //       Container(
-                                //         decoration: BoxDecoration(
-                                //           border: Border(),
-                                //         ),
-                                //         height: 50,
-                                //         width: size.width * .8,
-                                //         child: Container(
-                                //           decoration: BoxDecoration(
-                                //             color: Colors.white,
-                                //           ),
-                                //           width: size.width*.8,
-                                //           child: _list15!=null?
-                                //           DropdownButton(
-                                //             isExpanded: true,
-                                //             items: _list15.map((e) {
-                                //               return new DropdownMenuItem(
-                                //                 child: Container(
-                                //                     alignment: Alignment.centerRight,
-                                //                     child: new Text(
-                                //                       e.title, style: TextStyle(
-                                //                       fontFamily: 'GE SS Two',
-                                //                       fontSize: 17,
-                                //                       color: const Color(0xff848484),
-                                //                       fontWeight: FontWeight.w300,
-                                //                     ),textDirection: TextDirection.rtl,)
-                                //
-                                //                 ),
-                                //                 value:  e.answerId,
-                                //               );
-                                //             }).toList(),
-                                //             onChanged: (val){
-                                //               setState(() {
-                                //                 Id15=val;
-                                //                 print(Id5.toString());
-                                //               });
-                                //             },value:Id5 ,
-                                //           ):Container(),
-                                //         ),)
-                                //     ],
-                                //   ),
-                                // )
-                                ,
+                                    : Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 5.0, bottom: 8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                border: Border(),
+                                              ),
+                                              height: 50,
+                                              width: size.width * .8,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                ),
+                                                width: size.width * .8,
+                                                child: _list7 != null
+                                                    ? DropdownButton(
+                                                        isExpanded: true,
+                                                        items: _list7.map((e) {
+                                                          return new DropdownMenuItem(
+                                                            child: Container(
+                                                                alignment: Alignment
+                                                                    .centerRight,
+                                                                child: new Text(
+                                                                  e.title,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        'GE SS Two',
+                                                                    fontSize:
+                                                                        17,
+                                                                    color: const Color(
+                                                                        0xff848484),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                                  textDirection:
+                                                                      TextDirection
+                                                                          .rtl,
+                                                                )),
+                                                            value: e.answerId,
+                                                          );
+                                                        }).toList(),
+                                                        onChanged: (val) {
+                                                          setState(() {
+                                                            listId7 = val;
+                                                            print(
+                                                                Id5.toString());
+                                                          });
+                                                        },
+                                                        value: listId7,
+                                                      )
+                                                    : Container(),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                               ),
                             )
                           ],
@@ -916,65 +976,81 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[7].type ==
-                                        2
-                                    ? Container(
-                                        width: sWidth * .8,
-                                        child: Container(
-                                          child: TextField(
-                                            controller: Id7,
-                                            textDirection: TextDirection.rtl,
-                                          ),
-                                        ))
-                                    : Container()
-                                // Padding(
-                                //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                                //   child: Row(
-                                //     mainAxisAlignment: MainAxisAlignment.center,
-                                //     children: [
-                                //       Container(
-                                //         decoration: BoxDecoration(
-                                //           border: Border(),
-                                //         ),
-                                //         height: 50,
-                                //         width: size.width * .8,
-                                //         child: Container(
-                                //           decoration: BoxDecoration(
-                                //             color: Colors.white,
-                                //           ),
-                                //           width: size.width*.8,
-                                //           child: _list15!=null?
-                                //           DropdownButton(
-                                //             isExpanded: true,
-                                //             items: _list15.map((e) {
-                                //               return new DropdownMenuItem(
-                                //                 child: Container(
-                                //                     alignment: Alignment.centerRight,
-                                //                     child: new Text(
-                                //                       e.title, style: TextStyle(
-                                //                       fontFamily: 'GE SS Two',
-                                //                       fontSize: 17,
-                                //                       color: const Color(0xff848484),
-                                //                       fontWeight: FontWeight.w300,
-                                //                     ),textDirection: TextDirection.rtl,)
-                                //
-                                //                 ),
-                                //                 value:  e.answerId,
-                                //               );
-                                //             }).toList(),
-                                //             onChanged: (val){
-                                //               setState(() {
-                                //                 Id15=val;
-                                //                 print(Id5.toString());
-                                //               });
-                                //             },value:Id5 ,
-                                //           ):Container(),
-                                //         ),)
-                                //     ],
-                                //   ),
-                                // )
-                                ,
-                              ),
+                                  child: snapshot
+                                              .data.result.lableList[7].type ==
+                                          2
+                                      ? Container(
+                                          width: sWidth * .8,
+                                          child: Container(
+                                            child: TextField(
+                                              controller: Id7,
+                                              textDirection: TextDirection.rtl,
+                                            ),
+                                          ))
+                                      : Container()
+                                  //Padding(
+                                  //     padding: const EdgeInsets.only(
+                                  //         top: 5.0, bottom: 8.0),
+                                  //     child: Row(
+                                  //       mainAxisAlignment:
+                                  //           MainAxisAlignment.center,
+                                  //       children: [
+                                  //         Container(
+                                  //           decoration: BoxDecoration(
+                                  //             border: Border(),
+                                  //           ),
+                                  //           height: 50,
+                                  //           width: size.width * .8,
+                                  //           child: Container(
+                                  //             decoration: BoxDecoration(
+                                  //               color: Colors.white,
+                                  //             ),
+                                  //             width: size.width * .8,
+                                  //             child: _list7 != null
+                                  //                 ? DropdownButton(
+                                  //                     isExpanded: true,
+                                  //                     items: _list7.map((e) {
+                                  //                       return new DropdownMenuItem(
+                                  //                         child: Container(
+                                  //                             alignment: Alignment
+                                  //                                 .centerRight,
+                                  //                             child: new Text(
+                                  //                               e.title,
+                                  //                               style:
+                                  //                                   TextStyle(
+                                  //                                 fontFamily:
+                                  //                                     'GE SS Two',
+                                  //                                 fontSize:
+                                  //                                     17,
+                                  //                                 color: const Color(
+                                  //                                     0xff848484),
+                                  //                                 fontWeight:
+                                  //                                     FontWeight
+                                  //                                         .w300,
+                                  //                               ),
+                                  //                               textDirection:
+                                  //                                   TextDirection
+                                  //                                       .rtl,
+                                  //                             )),
+                                  //                         value: e.answerId,
+                                  //                       );
+                                  //                     }).toList(),
+                                  //                     onChanged: (val) {
+                                  //                       setState(() {
+                                  //                         Id14 = val;
+                                  //                         print(
+                                  //                             Id5.toString());
+                                  //                       });
+                                  //                     },
+                                  //                     value: Id14,
+                                  //                   )
+                                  //                 : Container(),
+                                  //           ),
+                                  //         )
+                                  //       ],
+                                  //     ),
+                                  //   ),
+                                  ),
                             )
                           ],
                         ),
@@ -1557,6 +1633,915 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                         ),
                       ),
                     ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[14].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[14].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list3 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items:
+                                                                _list2.map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId2 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId2,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[15].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[15].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list3 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items:
+                                                                _list3.map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId3 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId3,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[16].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[16].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list4 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items:
+                                                                _list4.map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId4 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId4,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[17].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[17].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list5 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items:
+                                                                _list5.map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId5 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId5,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[18].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[18].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list6 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items:
+                                                                _list6.map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId6 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId6,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[19].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[19].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list8 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items:
+                                                                _list8.map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId8 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId8,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[20].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[20].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list9 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items:
+                                                                _list9.map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId9 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId9,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[21].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[21].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list10 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list10
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId10 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId10,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 15,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Container(
+                        width: sWidth * .95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${snapshot.data.result.lableList[22].title}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: Color(0xffaa6414),
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child:
+                                    snapshot.data.result.lableList[22].type == 2
+                                        ? Container(
+                                            width: sWidth * .8,
+                                            child: TextField())
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0, bottom: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    border: Border(),
+                                                  ),
+                                                  height: 50,
+                                                  width: size.width * .8,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                    ),
+                                                    width: size.width * .8,
+                                                    child: _list22 != null
+                                                        ? DropdownButton(
+                                                            isExpanded: true,
+                                                            items: _list22
+                                                                .map((e) {
+                                                              return new DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .centerRight,
+                                                                        child:
+                                                                            new Text(
+                                                                          e.title,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontFamily:
+                                                                                'GE SS Two',
+                                                                            fontSize:
+                                                                                17,
+                                                                            color:
+                                                                                const Color(-384871238),
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                          textDirection:
+                                                                              TextDirection.rtl,
+                                                                        )),
+                                                                value:
+                                                                    e.answerId,
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (val) {
+                                                              setState(() {
+                                                                listId22 = val;
+                                                                print(Id12
+                                                                    .toString());
+                                                              });
+                                                            },
+                                                            value: listId22,
+                                                          )
+                                                        : Container(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Row(
@@ -1614,7 +2599,17 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      Id0.text = '';
+                                      listId1 = null;
+                                      listId2 = null;
+                                      listId3 = null;
+                                      listId4 = null;
+                                      listId5 = null;
+                                      listId6 = null;
+                                      listId7 = null;
+                                      listId8 = null;
+                                      listId9 = null;
+                                      listId10 = null;
+                                      listId22 = null;
                                       Id1.text = '';
                                       Id2.text = '';
                                       Id3.text = '';
@@ -1661,7 +2656,17 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                             Radius.circular(15))),
                                   ),
                                   onPressed: () {
-                                    if (Id0.text != '' &&
+                                    if (listId1 != null &&
+                                        listId2 != null &&
+                                        listId3 != null &&
+                                        listId4 != null &&
+                                        listId5 != null &&
+                                        listId6 != null &&
+                                        listId7 != null &&
+                                        listId8 != null &&
+                                        listId9 != null &&
+                                        listId10 != null &&
+                                        listId22 != null &&
                                         Id1.text != '' &&
                                         Id2.text != '' &&
                                         Id2.text != '' &&
@@ -1675,7 +2680,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         Id12 != null &&
                                         Id13 != null) {
                                       String a0 =
-                                          '${snapshot.data.result.lableList[0].lebalId}."${Id0.text}"';
+                                          '${snapshot.data.result.lableList[0].lebalId}."$listId1"';
                                       String a1 =
                                           '${snapshot.data.result.lableList[1].lebalId}."${Id1.text}"';
                                       String a2 =
@@ -1699,11 +2704,29 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                       String a11 =
                                           "${snapshot.data.result.lableList[11].lebalId}.$Id11";
                                       String a12 =
-                                          "${snapshot.data.result.lableList[0].lebalId}.$Id12";
+                                          "${snapshot.data.result.lableList[12].lebalId}.$Id12";
                                       String a13 =
-                                          "${snapshot.data.result.lableList[0].lebalId}.$Id13";
+                                          "${snapshot.data.result.lableList[13].lebalId}.$Id13";
+                                      String a14 =
+                                          "${snapshot.data.result.lableList[14].lebalId}.$listId2";
+                                      String a15 =
+                                          "${snapshot.data.result.lableList[15].lebalId}.$listId3";
+                                      String a16 =
+                                          "${snapshot.data.result.lableList[16].lebalId}.$listId4";
+                                      String a17 =
+                                          "${snapshot.data.result.lableList[17].lebalId}.$listId5";
+                                      String a18 =
+                                          "${snapshot.data.result.lableList[18].lebalId}.$listId6";
+                                      String a19 =
+                                          "${snapshot.data.result.lableList[19].lebalId}.$listId8";
+                                      String a20 =
+                                          "${snapshot.data.result.lableList[20].lebalId}.$listId9";
+                                      String a21 =
+                                          "${snapshot.data.result.lableList[21].lebalId}.$listId10";
+                                      String a22 =
+                                          "${snapshot.data.result.lableList[22].lebalId}.$listId22";
                                       String answer =
-                                          '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13';
+                                          '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15,$a16,$a17,$a18,$a19,$a20,$a21,$a22';
                                       _repo
                                           .sendCostBuildF(
                                         key: '1234567890',

@@ -16,6 +16,7 @@ import 'package:delta/DataModel/atricle_cat.dart';
 import 'package:delta/DataModel/contact_infoM.dart';
 import 'package:delta/DataModel/del_notifyM.dart';
 import 'package:delta/DataModel/edit_pro.dart';
+import 'package:delta/DataModel/gallery_model.dart';
 import 'package:delta/DataModel/home_model.dart';
 import 'package:delta/DataModel/introM.dart';
 import 'package:delta/DataModel/login_model.dart';
@@ -43,7 +44,7 @@ import 'package:flutter/material.dart';
 //Intro
 
 class Repository {
-  var baseurl = 'https://wasselni.ps/delta/';
+  var baseurl = 'https://mdecco.com/app/';
   Dio dio = new Dio();
 
   //Intro
@@ -87,7 +88,27 @@ class Repository {
     return data;
   }
 
-  Future<RegistrationM> registerAccount(
+  Future<OffersAndDesignsModel> getConstructionCosts({
+    @required String key,
+    @required String token,
+    @required String catId,
+  }) async {
+    OffersAndDesignsModel data;
+    FormData formData =
+        new FormData.fromMap({"key": key, "token_id": token, "cat_id": catId});
+    await dio
+        .post(
+      baseurl + '/user_api/set_construction_costs',
+      data: formData,
+    )
+        .then((value) {
+      print(value.data);
+      data = OffersAndDesignsModel.fromJson(value.data);
+    });
+    return data;
+  }
+
+  Future<RegisterationModel> registerAccount(
       {@required String phone,
       @required String key,
       @required String fullname,
@@ -97,7 +118,7 @@ class Repository {
       @required String lang,
       @required String firebase_id,
       @required String country}) async {
-    RegistrationM data;
+    RegisterationModel data;
     FormData formData = new FormData.fromMap({
       "phone": phone,
       "key": key,
@@ -117,7 +138,7 @@ class Repository {
         .then((value) {
       print('done');
       print(value.data);
-      data = RegistrationM.fromMap(value.data);
+      data = RegisterationModel.fromJson(value.data);
     });
     return data;
   }
@@ -563,6 +584,27 @@ class Repository {
     return data;
   }
 
+  Future<BuildCostM> getBuildingCostFinishedKey({
+    @required String key,
+    @required String token_id,
+    @required String cat_id,
+  }) async {
+    BuildCostM data;
+    FormData formData = new FormData.fromMap(
+        {"key": key, "token_id": token_id, "cat_id": cat_id});
+    await dio
+        .post(
+      baseurl + '/user_api/set_buildingcostfinishKey',
+      data: formData,
+    )
+        .then((value) {
+      print('done');
+      print(value.data);
+      data = BuildCostM.fromMap(value.data);
+    });
+    return data;
+  }
+
   //getContractingOffersM
   Future<ContractingOffersM> getContractingOffersF({
     @required String key,
@@ -784,12 +826,14 @@ class Repository {
   }
 
   //sendCostBuildF
-  Future<ResAnsM> sendCostBuildF(
-      {@required String key,
-      @required String token_id,
-      @required String cat_id,
-      @required String answer,
-      dynamic file}) async {
+  Future<ResAnsM> sendCostBuildF({
+    @required String key,
+    @required String token_id,
+    @required String cat_id,
+    @required String answer,
+    dynamic file,
+    dynamic file2,
+  }) async {
     ResAnsM data;
     FormData formData = new FormData.fromMap({
       "key": key,
@@ -797,6 +841,7 @@ class Repository {
       "cat_id": cat_id,
       "answer": answer,
       "pdffile": file,
+      "pdffile2": file2,
     });
     await dio
         .post(
@@ -960,6 +1005,64 @@ class Repository {
       print('done');
       print(value.data);
       data = OrderDetailsMoneyM.fromMap(value.data);
+    });
+    return data;
+  }
+
+  Future<GalleryOfferModel> getAllDesigns(
+      {@required String key,
+      @required String token_id,
+      @required String lang,
+      @required String limit,
+      @required String pageNumber}) async {
+    GalleryOfferModel data;
+    FormData formData = new FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "limit": limit,
+      "page_number": pageNumber
+    });
+    await dio
+        .post(
+      baseurl + '/store/get_all_designs',
+      data: formData,
+    )
+        .then((value) {
+      print(value.data);
+      data = GalleryOfferModel.fromJson(value.data);
+    });
+    return data;
+  }
+
+  Future<Response> sendPaymentDetails(
+      {@required String token_id,
+      @required int designId,
+      @required String name,
+      @required String phone,
+      @required String address,
+      @required String message,
+      @required String email,
+      @required int paymentType}) async {
+    Response data;
+    FormData formData = new FormData.fromMap({
+      "key": "1234567890",
+      "token_id": token_id,
+      "id_design": designId,
+      "email": email,
+      "name": name,
+      "phone": phone,
+      "address": address,
+      "message": message,
+      "payment_type": paymentType
+    });
+    await dio
+        .post(
+      baseurl + '/store/add_to_cart',
+      data: formData,
+    )
+        .then((value) {
+      print(value.data);
+      data = value;
     });
     return data;
   }

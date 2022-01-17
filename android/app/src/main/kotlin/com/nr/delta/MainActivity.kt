@@ -1,4 +1,4 @@
-package com.nr.delta
+package com.company.mdeccoco
 
 import io.flutter.embedding.android.FlutterActivity
 

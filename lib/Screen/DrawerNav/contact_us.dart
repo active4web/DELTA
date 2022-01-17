@@ -155,18 +155,23 @@ class _ContactUsState extends State<ContactUs> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
-                          width: size.width * .8,
-                          height: size.height * .05,
-                          child: Text(
-                            "${snapshot.data.result.hotline}",
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              fontFamily: 'GE SS Two',
-                              fontSize: 17,
-                              // fontWeight: FontWeight.w400,
-                            ),
-                          ))
+                      InkWell(
+                        onTap: (){
+                          Utils.openPhoneCall(phoneNumber: snapshot.data.result.hotline);
+                        },
+                        child: Container(
+                            width: size.width * .8,
+                            height: size.height * .05,
+                            child: Text(
+                              "${snapshot.data.result.hotline}",
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                fontFamily: 'GE SS Two',
+                                fontSize: 17,
+                                // fontWeight: FontWeight.w400,
+                              ),
+                            )),
+                      )
                     ],
                   ),
                 ),
@@ -176,18 +181,23 @@ class _ContactUsState extends State<ContactUs> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
-                          width: size.width * .8,
-                          height: size.height * .05,
-                          child: Text(
-                            "${snapshot.data.result.supportEmail}",
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              fontFamily: 'GE SS Two',
-                              fontSize: 17,
-                              // fontWeight: FontWeight.w400,
-                            ),
-                          ))
+                      InkWell(
+                        onTap: (){
+                          Utils.openEmail(toEmail: snapshot.data.result.supportEmail,);
+                        },
+                        child: Container(
+                            width: size.width * .8,
+                            height: size.height * .05,
+                            child: Text(
+                              "${snapshot.data.result.supportEmail}",
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                fontFamily: 'GE SS Two',
+                                fontSize: 17,
+                                // fontWeight: FontWeight.w400,
+                              ),
+                            )),
+                      )
                     ],
                   ),
                 ),
@@ -234,13 +244,13 @@ class _ContactUsState extends State<ContactUs> {
                   ),
                 ),
 
-
                 Padding(
                   padding:
                   const EdgeInsets.only(top: 5.0, bottom: 1.0, right: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      if(snapshot.data.result.whatsapp != "")
                       GestureDetector(
                         onTap:(){
                           Utils.openLink(url: 'https://web.whatsapp.com/send?phone=${snapshot.data.result.whatsapp}');
@@ -254,8 +264,10 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                         ),
                       ),
+                      if(snapshot.data.result.twitter != "")
                       GestureDetector(
                         onTap:(){
+                          print(snapshot.data.result.twitter);
                           Utils.openLink(url: '${snapshot.data.result.twitter}');
                         },
                         child: Container(
@@ -267,8 +279,10 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                         ),
                       ),
+                      if(snapshot.data.result.linkedin != "")
                       GestureDetector(
                         onTap:(){
+                          print("hello");
                           Utils.openLink(url: '${snapshot.data.result.linkedin}');
                         },
                         child: Container(
@@ -280,6 +294,7 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                         ),
                       ),
+                      if(snapshot.data.result.facebook != "")
                       GestureDetector(
                         onTap:(){
                           Utils.openLink(url: '${snapshot.data.result.facebook}');

@@ -1,16 +1,16 @@
 import 'dart:ui';
-
 import 'package:delta/DataModel/home_model.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/DesignNow/design_now_home.dart';
 import 'package:delta/Screen/DrawerNav/not_logged_in.dart';
+import 'package:delta/Screen/Home/building_cost.dart';
 import 'package:delta/Screen/Home/designs.dart';
 import 'package:delta/draw.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils.dart';
 import '../Real_estate_investment.dart';
-import '../build_cost.dart';
+import '../concrete_structure.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import '../contract_offers.dart';
@@ -895,20 +895,9 @@ class _HomePageState extends State<HomePage> {
                                               var jwt = pref.getString('token');
 
                                               jwt != null
-                                                  ? Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (_) =>
-                                                              BuildingCost(
-                                                                cat_id: snapshot
-                                                                    .data
-                                                                    .result
-                                                                    .allCategories[
-                                                                        0]
-                                                                    .catId
-                                                                    .toString(),
-                                                                jwt: jwt,
-                                                              )))
+                                                  ? Utils.openLink(
+                                                      url:
+                                                          "https://www.facebook.com/mdeccotr/")
                                                   : Navigator.push(
                                                       context,
                                                       MaterialPageRoute(

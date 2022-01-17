@@ -37,7 +37,7 @@ class _GeneralFixState extends State<GeneralFix> {
   }
 
   Dio dio = Dio();
-  var baseurl = 'https://wasselni.ps/delta/';
+  var baseurl = 'https://mdecco.com/app/';
   Future<GeneralFixM> getGeneralFixF({
     @required String key,
     @required String token_id,
@@ -346,15 +346,21 @@ class _GeneralFixState extends State<GeneralFix> {
                                       ),
                                       onPressed: () {
                                         if (Id0 != null) {
+                                          print(widget.cat_id);
+                                          print(snapshot.data.result.lableList[0].lebalId);
+                                          print(Id0);
                                           String a0 =
                                               "${snapshot.data.result.lableList[0].lebalId}.$Id0";
                                           String answer = '$a0';
+                                          print(a0);
+                                          print(answer);
                                           _repo
                                               .sendCostBuildF(
                                             key: '1234567890',
                                             token_id: widget.jwt,
                                             cat_id: widget.cat_id,
                                             answer: "$answer",
+
                                           )
                                               .then((value) {
                                             if (value.status == true) {

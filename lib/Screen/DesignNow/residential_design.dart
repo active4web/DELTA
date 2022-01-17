@@ -18,36 +18,30 @@ class ResidentalDesign extends StatefulWidget {
   _ResidentalDesignState createState() => _ResidentalDesignState();
 }
 
-
-
 enum SingingCharacter4 { classic, modern }
 SingingCharacter4 _character_design = SingingCharacter4.modern;
-
 
 enum SingingCharacter3 { yes, no }
 SingingCharacter3 _character_living = SingingCharacter3.yes;
 
-
 enum SingingCharacterneighbor { yes, no }
 SingingCharacterneighbor _character_neighbor = SingingCharacterneighbor.yes;
-
 
 enum SingingCharacterpool { yes, no }
 SingingCharacterpool _character_pool = SingingCharacterpool.yes;
 
-enum SingingCharacterArchDesign  { yes, no }
-SingingCharacterArchDesign _character_ArchDesign = SingingCharacterArchDesign.yes;
+enum SingingCharacterArchDesign { yes, no }
+SingingCharacterArchDesign _character_ArchDesign =
+    SingingCharacterArchDesign.yes;
 
-enum SingingCharacterLoc  { yes, no }
+enum SingingCharacterLoc { yes, no }
 SingingCharacterLoc _character_Loc = SingingCharacterLoc.yes;
 
 enum SingingCharacterKitchen { open, close }
 SingingCharacterKitchen _character_kitchen = SingingCharacterKitchen.open;
 
-
 enum SingingCharacter { bathroom, no_bathroom }
 SingingCharacter _character_bath = SingingCharacter.bathroom;
-
 
 enum SingingCharacterPoolSide { inside, outside }
 SingingCharacterPoolSide _character_PoolSide = SingingCharacterPoolSide.inside;
@@ -55,17 +49,22 @@ SingingCharacterPoolSide _character_PoolSide = SingingCharacterPoolSide.inside;
 enum SingingCharacterGarden { no, yes }
 SingingCharacterGarden _character_Garden = SingingCharacterGarden.yes;
 
-enum SingingCharacterDirection { north,South,east,West }
-SingingCharacterDirection _character_Direction = SingingCharacterDirection.north;
+enum SingingCharacterDirection { north, South, east, West }
+SingingCharacterDirection _character_Direction =
+    SingingCharacterDirection.north;
 
-enum SingingCharacterSystem { hurudi, fungal_slab,Solid_slab, Flat_slabs_for_large_spaces}
+enum SingingCharacterSystem {
+  hurudi,
+  fungal_slab,
+  Solid_slab,
+  Flat_slabs_for_large_spaces
+}
 SingingCharacterSystem _character_System = SingingCharacterSystem.hurudi;
 
-
-enum SingingCharacterHurudi { pumice,Bajaur,Bumchi}
+enum SingingCharacterHurudi { pumice, Bajaur, Bumchi }
 SingingCharacterHurudi _character_hurudi = SingingCharacterHurudi.pumice;
 
-enum SingingCharacterWall { Separators, Bumchi, Block, Concrete}
+enum SingingCharacterWall { Separators, Bumchi, Block, Concrete }
 SingingCharacterWall _character_wall = SingingCharacterWall.Separators;
 
 class _ResidentalDesignState extends State<ResidentalDesign> {
@@ -134,7 +133,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
       _counter_sides--;
     });
   }
-
 
   void _increment_out() {
     setState(() {
@@ -782,7 +780,8 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                       leading: Radio<SingingCharacterKitchen>(
                                         value: SingingCharacterKitchen.close,
                                         groupValue: _character_kitchen,
-                                        onChanged: (SingingCharacterKitchen value) {
+                                        onChanged:
+                                            (SingingCharacterKitchen value) {
                                           setState(() {
                                             _character_kitchen = value;
                                             print(_character_kitchen);
@@ -798,7 +797,8 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                       leading: Radio<SingingCharacterKitchen>(
                                         value: SingingCharacterKitchen.open,
                                         groupValue: _character_kitchen,
-                                        onChanged: (SingingCharacterKitchen value) {
+                                        onChanged:
+                                            (SingingCharacterKitchen value) {
                                           setState(() {
                                             _character_kitchen = value;
                                             print(_character_kitchen);
@@ -881,7 +881,7 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 children: [
                                   IconButton(
                                     icon:
-                                    Icon(Icons.keyboard_arrow_up_outlined),
+                                        Icon(Icons.keyboard_arrow_up_outlined),
                                     onPressed: () {
                                       _increment_livingroom();
                                       print(_counter_livingroom);
@@ -903,7 +903,8 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                   borderRadius: BorderRadius.circular(10)),
                               width: sWidth * .1,
                               height: sWidth * .1,
-                              child: Center(child: Text("$_counter_livingroom"))),
+                              child:
+                                  Center(child: Text("$_counter_livingroom"))),
                           Container(
                               width: sWidth * .2,
                               child: Text(
@@ -1117,7 +1118,7 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 children: [
                                   IconButton(
                                     icon:
-                                    Icon(Icons.keyboard_arrow_up_outlined),
+                                        Icon(Icons.keyboard_arrow_up_outlined),
                                     onPressed: () {
                                       _increment_sides();
                                       print(_counter_sides);
@@ -1259,7 +1260,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -1280,7 +1280,7 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 children: [
                                   IconButton(
                                     icon:
-                                    Icon(Icons.keyboard_arrow_up_outlined),
+                                        Icon(Icons.keyboard_arrow_up_outlined),
                                     onPressed: () {
                                       _increment_out();
                                       print(_counter_out);
@@ -1440,7 +1440,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -1491,7 +1490,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -1527,7 +1525,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                   ],
                 ),
               ),
-
 
               ///////////////////////////////
               Padding(
@@ -1613,7 +1610,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -1649,7 +1645,8 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               child: ListTile(
                                 title: const Text('فلات سلاب للمساحات الكبيرة'),
                                 leading: Radio<SingingCharacterSystem>(
-                                  value: SingingCharacterSystem.Flat_slabs_for_large_spaces,
+                                  value: SingingCharacterSystem
+                                      .Flat_slabs_for_large_spaces,
                                   groupValue: _character_System,
                                   onChanged: (SingingCharacterSystem value) {
                                     setState(() {
@@ -1664,7 +1661,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -1713,7 +1709,8 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                             child: Container(
                               //  width: sWidth * .33,
                               child: ListTile(
-                                title: const Text('بومشي',style: TextStyle( fontSize: 14)),
+                                title: const Text('بومشي',
+                                    style: TextStyle(fontSize: 14)),
                                 leading: Radio<SingingCharacterHurudi>(
                                   value: SingingCharacterHurudi.Bumchi,
                                   groupValue: _character_hurudi,
@@ -1731,7 +1728,10 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                             child: Container(
                               //  width: sWidth * .33,
                               child: ListTile(
-                                title: const Text('باجور',style: TextStyle( fontSize: 15),),
+                                title: const Text(
+                                  'باجور',
+                                  style: TextStyle(fontSize: 15),
+                                ),
                                 leading: Radio<SingingCharacterHurudi>(
                                   value: SingingCharacterHurudi.Bajaur,
                                   groupValue: _character_hurudi,
@@ -1748,11 +1748,10 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
-           //wall
+              //wall
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -1864,7 +1863,6 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -2001,15 +1999,14 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                       width: size.width * .35,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(15))),
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: ConstrainedBox(
                         constraints: BoxConstraints.tightFor(
-                            height:size.height * 1, width: size.width * 1),
+                            height: size.height * 1, width: size.width * 1),
                         child: ElevatedButton(
                             child: Text(
                               'الغاء',
-                              style:   TextStyle(
+                              style: TextStyle(
                                 fontFamily: 'GE SS Two',
                                 fontSize: 17,
                                 color: const Color(0xff848484),
@@ -2018,17 +2015,15 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                             ),
                             style: ElevatedButton.styleFrom(
                               elevation: 20,
-                              primary:  Color(0xfff3a005),
+                              primary: Color(0xfff3a005),
                               onPrimary: Colors.orangeAccent,
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
+                                      BorderRadius.all(Radius.circular(15))),
                             ),
                             onPressed: () {
-
                               Navigator.pop(context);
-                            }
-                        ),
+                            }),
                       ),
                     ),
                     Container(
@@ -2036,15 +2031,14 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                       width: size.width * .35,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(15))),
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: ConstrainedBox(
                         constraints: BoxConstraints.tightFor(
-                            height:size.height * 1, width: size.width * 1),
+                            height: size.height * 1, width: size.width * 1),
                         child: ElevatedButton(
                             child: Text(
                               'ارسال',
-                              style:   TextStyle(
+                              style: TextStyle(
                                 fontFamily: 'GE SS Two',
                                 fontSize: 17,
                                 color: const Color(0xff848484),
@@ -2053,24 +2047,24 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                             ),
                             style: ElevatedButton.styleFrom(
                               elevation: 20,
-                              primary:  Color(0xfff3a005),
+                              primary: Color(0xfff3a005),
                               onPrimary: Colors.orangeAccent,
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
+                                      BorderRadius.all(Radius.circular(15))),
                             ),
                             onPressed: () {
-
-                              Navigator.push(context, MaterialPageRoute(builder: (_)=>SendDone()));
-                            }
-                        ),
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => SendDone()));
+                            }),
                       ),
                     ),
                   ],
                 ),
               ),
             ],
-
           ),
         ));
   }

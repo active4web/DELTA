@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:delta/DataModel/FormsModels/other_servicesM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/utils.dart';
@@ -204,20 +206,29 @@ class _otherServicesState extends State<otherServices> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            " قم بمشاركة التطبيق",
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              fontFamily: 'GE SS Two',
-                              fontSize: 20,
-                              color: Color(0xfff3a005),
-                              fontWeight: FontWeight.w300,
+                      child: InkWell(
+                        onTap: (){
+                          if(Platform.isAndroid){
+                            Utils.openLink(url: snapshot.data.result.categoryDate.playStoreLink);
+                          }else{
+                            Utils.openLink(url: snapshot.data.result.categoryDate.appStoreLink);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              " قم بمشاركة التطبيق",
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                fontFamily: 'GE SS Two',
+                                fontSize: 20,
+                                color: Color(0xfff3a005),
+                                fontWeight: FontWeight.w300,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ])));

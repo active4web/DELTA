@@ -1,25 +1,25 @@
 import 'package:delta/DataModel/FormsModels/design_nowM.dart';
 import 'package:delta/DataModel/offers_and_dsigns_model.dart';
 import 'package:delta/Repository/Repository.dart';
-import 'package:delta/Screen/DesignNow/special_design_now_offers.dart';
+import 'package:delta/Screen/DesignNow/offers_and_designs%20_types.dart';
+import 'package:delta/Screen/concrete_structure.dart';
 import 'package:delta/Screen/other_services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../draw.dart';
-import 'residental_types.dart';
-import 'architectural_residential_design.dart';
+import '../building_cost_finished_key.dart';
 
-class OffersAndDesigns extends StatefulWidget {
-  OffersAndDesigns({Key key, this.jwt, this.cat_id}) : super(key: key);
+class BuildingCost extends StatefulWidget {
+  BuildingCost({Key key, this.jwt, this.cat_id}) : super(key: key);
   String jwt;
   String cat_id;
   @override
-  _OffersAndDesignsState createState() => _OffersAndDesignsState();
+  _BuildingCostState createState() => _BuildingCostState();
 }
 
-class _OffersAndDesignsState extends State<OffersAndDesigns> {
+class _BuildingCostState extends State<BuildingCost> {
   String token;
   Future<String> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -30,7 +30,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
   @override
   void initState() {
     gettoken();
-    _repo.getOffersAndDesigns(
+    _repo.getConstructionCosts(
         key: "1234567890", token: token, catId: widget.cat_id);
     super.initState();
   }
@@ -41,11 +41,10 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
     var size = MediaQuery.of(context).size;
     var sHeight = MediaQuery.of(context).size.height;
     var sWidth = MediaQuery.of(context).size.width;
-
     return Material(
         child: StreamBuilder<OffersAndDesignsModel>(
       stream: _repo
-          .getOffersAndDesigns(
+          .getConstructionCosts(
               key: "1234567890", token: token.toString(), catId: widget.cat_id)
           .asStream(),
       builder: (context, snapshot) {
@@ -143,7 +142,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => ResidentialTypes(
+                                          builder: (_) => ConcreteStructure(
                                                 cat_id: snapshot.data.result
                                                     .lableList[0].lebalId
                                                     .toString(),
@@ -187,8 +186,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) =>
-                                              SpecialDesignNowOffers(
+                                          builder: (_) => BuildingCostFinishKey(
                                                 cat_id: snapshot.data.result
                                                     .lableList[1].lebalId
                                                     .toString(),
