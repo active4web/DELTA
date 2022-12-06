@@ -4,10 +4,9 @@ import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
-import 'package:intro_slider/slide_object.dart';
-import 'package:intro_slider/scrollbar_behavior_enum.dart';
+// import 'package:intro_slider/slide_object.dart';
+// import 'package:intro_slider/scrollbar_behavior_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'DataModel/introM.dart';
 import 'Screen/login.dart';
 
@@ -305,7 +304,7 @@ class IntroScreenState extends State<IntroScreen> {
               backgroundColorAllSlides: Colors.grey,
 
               // Scrollbar
-              verticalScrollbarBehavior: scrollbarBehavior.HIDE,
+            //  verticalScrollbarBehavior: scrollbarBehavior.HIDE,
             );
           } else {
             return Center(child: CircularProgressIndicator());

@@ -23,9 +23,10 @@ import 'package:delta/Screen/DrawerNav/profile.dart';
 import 'package:delta/Screen/DrawerNav/technical_support.dart';
 
 class CommercialDesign extends StatefulWidget {
-  CommercialDesign({Key key, this.jwt, this.cat_id}) : super(key: key);
+  CommercialDesign({Key key, this.message,this.jwt, this.cat_id}) : super(key: key);
   String jwt;
   String cat_id;
+  String message;
 
   @override
   _CommercialDesignState createState() => _CommercialDesignState();
@@ -557,7 +558,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             items:
                                                                 _list0.map((e) {
                                                               return new DropdownMenuItem(
-                                                                child:
+                                                                 child:
                                                                     Container(
                                                                         alignment:
                                                                             Alignment
@@ -1060,6 +1061,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id5,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1152,6 +1154,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id6,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1244,6 +1247,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id7,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1336,6 +1340,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id8,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1428,6 +1433,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id9,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -2879,6 +2885,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id14,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -2971,6 +2978,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id15,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -3457,7 +3465,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (_) =>
-                                                          SendDone()));
+                                                          SendDone(message: value.message,)));
                                             } else {
                                               var snackBar = SnackBar(
                                                   content: Text(

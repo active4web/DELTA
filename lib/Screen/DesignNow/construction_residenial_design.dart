@@ -15,9 +15,10 @@ import 'package:delta/Screen/Home/home_bar.dart';
 import '../send_done.dart';
 
 class ConstResidenial extends StatefulWidget {
-  ConstResidenial({Key key, this.jwt, this.cat_id}) : super(key: key);
+  ConstResidenial({Key key, this.message,this.jwt, this.cat_id}) : super(key: key);
   String jwt;
   String cat_id;
+  String message;
   @override
   _ConstResidenialState createState() => _ConstResidenialState();
 }
@@ -834,7 +835,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (_) =>
-                                                        SendDone()));
+                                                        SendDone(message: value.message)));
                                           } else {
                                             var snackBar = SnackBar(
                                                 content: Text(

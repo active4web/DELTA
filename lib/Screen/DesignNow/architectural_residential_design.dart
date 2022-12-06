@@ -15,10 +15,10 @@ import 'package:delta/Screen/Home/home_bar.dart';
 import '../send_done.dart';
 
 class ArchResidentialDesign extends StatefulWidget {
-  ArchResidentialDesign({Key key, this.jwt, this.cat_id}) : super(key: key);
+  ArchResidentialDesign({Key key,this.message, this.jwt, this.cat_id}) : super(key: key);
   String jwt;
   String cat_id;
-
+  String message;
   @override
   _ArchResidentialDesignState createState() => _ArchResidentialDesignState();
 }
@@ -1101,6 +1101,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id8,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1192,6 +1193,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id9,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1283,6 +1285,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id10,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1478,6 +1481,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id12,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1762,6 +1766,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id15,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1853,6 +1858,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id16,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1908,6 +1914,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                            keyboardType: TextInputType.number,
                                               controller: Id17,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1999,6 +2006,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id18,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -2499,6 +2507,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id30,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -3723,7 +3732,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (_) =>
-                                                        SendDone()));
+                                                        SendDone(message: value.message,)));
                                           } else {
                                             var snackBar = SnackBar(
                                                 content: Text(

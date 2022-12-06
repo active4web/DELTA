@@ -16,6 +16,7 @@ class BuildingCostFinishKey extends StatefulWidget {
   BuildingCostFinishKey({Key key, this.cat_id, this.jwt}) : super(key: key);
   String cat_id;
   String jwt;
+
   @override
   _BuildingCostFinishKeyState createState() => _BuildingCostFinishKeyState();
 }
@@ -1117,6 +1118,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: areaController,
                                               textDirection: TextDirection.rtl,
                                             ))
@@ -1675,6 +1677,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller:
                                                     bedRoomNumberController,
                                                 textDirection:
@@ -1767,6 +1770,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: resipitionController,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1858,6 +1862,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: kitchenController,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1948,6 +1953,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller:
                                                   bathRoomNumberController,
                                               textDirection: TextDirection.rtl,
@@ -2040,6 +2046,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: phoneNumberController,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -3343,35 +3350,38 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                             '${snapshot.data.result.lableList[9].lebalId}."${bedRoomNumberController.text}"';
                                         String a10 =
                                             '${snapshot.data.result.lableList[10].lebalId}."${resipitionController.text}"';
-                                        String a11 =
-                                            '${snapshot.data.result.lableList[11].lebalId}."${kitchenController.text}"';
-                                        String a12 =
-                                            '${snapshot.data.result.lableList[14].lebalId}."${bathRoomNumberController.text}"';
+                                        // String a11 =
+                                        //     kitchenController.text;
+                                        // String a12 =
+                                        //     bathRoomNumberController.text;
                                         String a13 =
                                             '${snapshot.data.result.lableList[13].lebalId}."${phoneNumberController.text}"';
                                         String a14 =
                                             '${snapshot.data.result.lableList[12].lebalId}."${EmailAddressController.text}"';
 
                                         String answer =
-                                            '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14';
+                                            '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a13,$a14';
+
+                                     String   st1 =kitchenController.text;
+                                       String st2 = bathRoomNumberController.text;
                                         _repo
                                             .sendCostBuildF(
                                                 key: '1234567890',
                                                 token_id: widget.jwt,
                                                 cat_id: widget.cat_id,
-                                                answer: "$answer")
+                                                answer: "$answer",
+                                          st1: "$st1",
+                                          st2 : "$st2"
+                                        )
                                             .then((value) {
                                           if (value.status == true) {
-                                            Fluttertoast.showToast(
-                                                    msg:
-                                                        "تمت العملية بنجاح يتم إرسال التكلفة التقديرية النهائية")
-                                                .then((value) {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          SendDone()));
-                                            });
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        SendDone(message: value.message))
+                                            );
+
                                           } else {
                                             var snackBar = SnackBar(
                                                 content: Text(

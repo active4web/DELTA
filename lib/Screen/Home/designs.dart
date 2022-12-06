@@ -144,36 +144,38 @@ class _DesignsState extends State<Designs> {
                             child: Container(
                                 child: Column(
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.topCenter,
-                                      width: size.width * .44,
-                                      height: size.height * .193,
-                                      child: null ??
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: CarouselSlider(
-                                              items: snapshot.data.result
-                                                  .allProjects[index].allSlider
-                                                  .map((e) => Image.network(
-                                                        e.img,
-                                                        fit: BoxFit.cover,
-                                                      ))
-                                                  .toList(),
-                                              options: CarouselOptions(
-                                                autoPlay: true,
-                                                viewportFraction: .95,
-                                                aspectRatio: 2,
-                                                height: size.height * .35,
-                                                enlargeCenterPage: true,
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.topCenter,
+                                        width: size.width * .44,
+                                        height: size.height * .193,
+                                        child: null ??
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              child: CarouselSlider(
+                                                items: snapshot.data.result
+                                                    .allProjects[index].allSlider
+                                                    .map((e) => Image.network(
+                                                          e.img,
+                                                          fit: BoxFit.cover,
+                                                        ))
+                                                    .toList(),
+                                                options: CarouselOptions(
+                                                  autoPlay: true,
+                                                  viewportFraction: .95,
+                                                  aspectRatio: 2,
+                                                  height: size.height * .35,
+                                                  enlargeCenterPage: true,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                    ),
-                                  ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 //   Image.network(snapshot.data.result.allProjects[index].articlesImage),
                                 Padding(

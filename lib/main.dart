@@ -14,7 +14,7 @@ import 'sliders.dart';
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
-    'This channel is used for important notifications.', // description
+  //  'This channel is used for important notifications.', // description
     importance: Importance.high,
     playSound: true);
 
@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-                channel.description,
+               // channel.description,
                 color: Colors.blue,
                 playSound: true,
                 icon: '@mipmap/ic_launcher',
@@ -109,7 +109,8 @@ class _MyAppState extends State<MyApp> {
         "How you doin ?",
         NotificationDetails(
             android: AndroidNotificationDetails(
-                channel.id, channel.name, channel.description,
+                channel.id, channel.name,
+                //channel.description,
                 importance: Importance.high,
                 color: Colors.blue,
                 playSound: true,

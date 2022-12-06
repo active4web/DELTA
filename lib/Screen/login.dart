@@ -200,6 +200,7 @@ class _LoginState extends State<Login> {
                                             value.message));
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(snackBar);
+
                                   } else {
                                     preferences.setBool('loginState', true);
                                     preferences.setBool('SliderState', true);

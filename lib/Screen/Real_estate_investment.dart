@@ -69,7 +69,6 @@ List _list10;
 int listId10;
 List _list22;
 int listId22;
-
 List _list11;
 int Id11;
 List _list12;
@@ -163,11 +162,11 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
       _list6 = data.result.lableList[18].listAnwser.toList();
       _list8 = data.result.lableList[19].listAnwser.toList();
       _list9 = data.result.lableList[20].listAnwser.toList();
-      _list10 = data.result.lableList[21].listAnwser.toList();
-      _list22 = data.result.lableList[22].listAnwser.toList();
-      _list11 = data.result.lableList[11].listAnwser.toList();
-      _list12 = data.result.lableList[12].listAnwser.toList();
-      _list13 = data.result.lableList[13].listAnwser.toList();
+      _list10 =data.result.lableList[21].listAnwser.toList();
+      _list22 =data.result.lableList[22].listAnwser.toList();
+      _list11 =data.result.lableList[11].listAnwser.toList();
+      _list12 =data.result.lableList[12].listAnwser.toList();
+      _list13 =data.result.lableList[13].listAnwser.toList();
     });
     return data;
   }
@@ -291,7 +290,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                           ),
                         ],
                       ),
-                    ),
+                      ),
                     //0
                     Card(
                       elevation: 15,
@@ -429,6 +428,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id1,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -518,6 +518,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id2,
                                             textDirection: TextDirection.rtl,
                                           ),
@@ -608,6 +609,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id3,
                                             textDirection: TextDirection.rtl,
                                           ),
@@ -698,6 +700,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id4,
                                             textDirection: TextDirection.rtl,
                                           ),
@@ -788,10 +791,12 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id5,
                                             textDirection: TextDirection.rtl,
                                           ),
-                                        ))
+                                        )
+                                )
                                     : Container()
                                 // Padding(
                                 //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
@@ -1178,6 +1183,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id9,
                                             textDirection: TextDirection.rtl,
                                           ),
@@ -2739,7 +2745,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (_) => SendDone()));
+                                                  builder: (_) => SendDone(message: value.message)));
                                         } else {
                                           var snackBar = SnackBar(
                                               content: Text(

@@ -368,7 +368,7 @@ class _GeneralFixState extends State<GeneralFix> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (_) =>
-                                                          SendDone()));
+                                                          SendDone(message: value.message)));
                                             } else {
                                               var snackBar = SnackBar(
                                                   content: Text(

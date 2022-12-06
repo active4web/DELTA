@@ -523,6 +523,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           ? Container(
                                               width: sWidth * .8,
                                               child: TextField(
+
                                                 // controller: workersController,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -731,6 +732,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
+                                                keyboardType: TextInputType.number,
                                                 controller: Id4,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -822,6 +824,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id5,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -913,6 +916,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id6,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1004,6 +1008,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id7,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1095,6 +1100,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id8,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1186,6 +1192,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id9,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1277,6 +1284,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id10,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1368,6 +1376,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id11,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1823,6 +1832,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
+                                              keyboardType: TextInputType.number,
                                               controller: Id16,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -2876,7 +2886,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (_) =>
-                                                        SendDone()));
+                                                        SendDone(message: value.message,)));
                                           } else {
                                             var snackBar = SnackBar(
                                                 content: Text(

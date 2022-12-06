@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:delta/DataModel/register_list.dart';
 import 'package:delta/Repository/Repository.dart';
+import 'package:delta/Screen/login.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,6 +28,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController controllerPassword2 = TextEditingController();
   bool obscureText1 = true;
   bool obscureText2 = true;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -165,11 +167,14 @@ class _SignUpState extends State<SignUp> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
+
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                         width: size.width * .8,
                         child: TextField(
+
+
                           controller: controllerPassword,
                           textAlign: TextAlign.right,
                           obscureText: obscureText1,
@@ -191,6 +196,7 @@ class _SignUpState extends State<SignUp> {
                                     child: Icon(Icons.remove_red_eye_outlined)),
                               ],
                             ),
+
                             hintText: "كلمة المرور ",
                             hintStyle: TextStyle(
                               fontFamily: 'GE SS Two',
@@ -445,59 +451,100 @@ class _SignUpState extends State<SignUp> {
                         ),
                         onPressed: () async {
                           String fb_id =
-                              await FirebaseMessaging.instance.getToken();
+                          await FirebaseMessaging.instance.getToken();
                           print(fb_id);
-                          if (controllerPassword.text ==
-                              controllerPassword2.text) {
-                            _repo
-                                .registerAccount(
-                                    phone: controllerPhone.text,
-                                    key: '1234567890',
-                                    lang: 'ar',
-                                    email: controllerEmail.text,
-                                    password: controllerPassword.text,
-                                    fullname: controllerName.text,
-                                    address: controllerAddress.text,
-                                    firebase_id: fb_id.toString(),
-                                    country: countryId.toString())
-                                .then((value) async {
-                              if (value.status) {
-                                SharedPreferences pref =
-                                    await SharedPreferences.getInstance();
-                                pref.setString(
-                                    'phone', value.result.clientData[0].phone);
-                                pref.setString(
-                                    'name', value.result.clientData[0].name);
-                                pref.setBool('loginState', true);
-                                pref.setBool('SliderState', true);
-                                pref.setString(
-                                    'token', value.result.clientData[0].token);
-                                await FirebaseFirestore.instance
-                                    .collection("Users")
-                                    .doc()
-                                    .set({
-                                  "phone": value.result.clientData[0].phone,
-                                  "fr_id": fb_id,
-                                  "name": value.result.clientData[0].name,
-                                  "token": value.result.clientData[0].token,
-                                  "email": controllerAddress.text,
-                                  "password": controllerPassword.text
-                                }).then((value) => Navigator.pushReplacement(
+                          if (controllerPassword.text != null && controllerPassword.text != '') {
+                            if (controllerPassword.text == controllerPassword2.text) {
+                              _repo
+                                  .registerAccount(
+                                  phone: controllerPhone.text,
+                                  key: '1234567890',
+                                  lang: 'ar',
+                                  email: controllerEmail.text,
+                                  password: controllerPassword.text,
+                                  fullname: controllerName.text,
+                                  address: controllerAddress.text,
+                                  firebase_id: fb_id.toString(),
+                                  country: countryId.toString())
+                                  .then((value) async {
+                                if (value.status) {
+
+                                  var snackBar =
+                                  SnackBar(content: Text('${value.message}',
+                                    style: TextStyle(
+                                        fontSize: 22
+                                    ),
+
+                                  )
+
+                                  );
+                                  print(' msg ${value.message}');
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => HomeBar())
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+
+                                  SharedPreferences pref =
+                                  await SharedPreferences.getInstance();
+                                  pref.setString(
+                                      'phone',
+                                      value.result.clientData[0].phone);
+                                  pref.setString(
+                                      'name', value.result.clientData[0].name);
+                                  pref.setBool('loginState', true);
+                                  pref.setBool('SliderState', true);
+                                  pref.setString(
+                                      'token',
+                                      value.result.clientData[0].token);
+                                  await FirebaseFirestore.instance
+                                      .collection("Users")
+                                      .doc()
+                                      .set({
+                                    "phone": value.result.clientData[0].phone,
+                                    "fr_id": fb_id,
+                                    "name": value.result.clientData[0].name,
+                                    "token": value.result.clientData[0].token,
+                                    "email": controllerAddress.text,
+                                    "password": controllerPassword.text,
+
+                                  }).then((value) {
+                                    Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => HomeBar())));
-                              } else {
-                                var snackBar =
-                                    SnackBar(content: Text('${value.message}'));
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              }
-                            });
-                          } else {
+                                            builder: (_) => Login()));
+
+                                  }
+
+                                  );
+                                }
+                                else {
+                                  var snackBar =
+                                  SnackBar(content: Text('${value.message}',
+                                  style: TextStyle(
+                                    fontSize: 22
+                                  ),
+                                  ));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                  print(' messsa ${value.message}');
+                                }
+                              });
+                            }
+                            else {
+                              var snackBar = SnackBar(
+                                  content: Text(' كلمة المرور غير متطابقه'));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
+                          }else{
                             var snackBar = SnackBar(
-                                content: Text('كلمة المرور غير متطابقة'));
+                                content: Text('ادخل كلمة المرور'));
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackBar);
+
                           }
                         }),
                   ),

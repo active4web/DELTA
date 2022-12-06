@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  platform: ^3.1.0
   flutter_counter:
   get: ^3.24.0
   dio:

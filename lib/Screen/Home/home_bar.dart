@@ -12,7 +12,7 @@ import 'home_page.dart';
 import 'order_track.dart';
 
 class HomeBar extends StatefulWidget {
-  const HomeBar({Key key}) : super(key: key);
+   HomeBar({Key key}) : super(key: key);
 
   @override
   _HomeBarState createState() => _HomeBarState();

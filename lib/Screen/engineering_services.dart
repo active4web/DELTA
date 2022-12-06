@@ -690,6 +690,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id5,
                                             textDirection: TextDirection.rtl,
                                           ),
@@ -780,6 +781,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id6,
                                             textDirection: TextDirection.rtl,
                                           ),
@@ -870,6 +872,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                         width: sWidth * .8,
                                         child: Container(
                                           child: TextField(
+                                            keyboardType: TextInputType.number,
                                             controller: Id7,
                                             textDirection: TextDirection.rtl,
                                           ),
@@ -1370,7 +1373,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (_) => SendDone()));
+                                                  builder: (_) => SendDone(message: value.message)));
                                         } else {
                                           var snackBar = SnackBar(
                                               content: Text(

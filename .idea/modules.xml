@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/delta.iml" filepath="$PROJECT_DIR$/.idea/delta.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/delta_android.iml" filepath="$PROJECT_DIR$/android/delta_android.iml" />
     </modules>
   </component>
 </project>
