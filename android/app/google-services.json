@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "445687070543",
-    "project_id": "delta-b5054",
-    "storage_bucket": "delta-b5054.appspot.com"
+    "project_number": "178919107447",
+    "project_id": "delta-5d362",
+    "storage_bucket": "delta-5d362.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:445687070543:android:c3c955ac26852eb41acf3a",
+        "mobilesdk_app_id": "1:178919107447:android:dff08fc4382be4e112cf72",
         "android_client_info": {
-          "package_name": "com.company.mdeccoco"
+          "package_name": "com.delta.triangle"
         }
       },
       "oauth_client": [
         {
-          "client_id": "445687070543-de0qfm66ed2pcj1smevqg069sbruo24i.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.company.mdeccoco",
-            "certificate_hash": "67693bab56723481686f9d8257e8ade43a1d7464"
-          }
-        },
-        {
-          "client_id": "445687070543-t4r9bi4b9ngunvl1le4k9t5heh65kqr5.apps.googleusercontent.com",
+          "client_id": "178919107447-pc6mgbbc8b9r2k9c0dibq3c21fs7jemg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDCCrYfF23vYLOGsMJX14Rt2u0sO_OAVCg"
+          "current_key": "AIzaSyAumMT8PP9H_kkKIDVsSUPDzLj2x31XPo4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "445687070543-t4r9bi4b9ngunvl1le4k9t5heh65kqr5.apps.googleusercontent.com",
+              "client_id": "178919107447-pc6mgbbc8b9r2k9c0dibq3c21fs7jemg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

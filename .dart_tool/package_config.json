@@ -62,6 +62,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "change_app_package_name",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/change_app_package_name-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/characters-1.2.1",
       "packageUri": "lib/",
@@ -680,7 +686,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2023-01-03T13:03:33.125971Z",
+  "generated": "2023-01-03T13:37:53.063534Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

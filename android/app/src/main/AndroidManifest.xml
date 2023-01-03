@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.company.mdeccoco">
+    package="com.delta.triangle">
 
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-       android:label="دلتا"
+       android:label="Mdecco"
        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 <!--       <service-->

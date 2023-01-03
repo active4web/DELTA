@@ -1,12 +1,9 @@
-import 'package:delta/Screen/Home/home_bar.dart';
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'Screen/login.dart';
 import 'package:flutter/foundation.dart';
-import 'dart:async';
-import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'sliders.dart';
@@ -14,7 +11,7 @@ import 'sliders.dart';
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
-  //  'This channel is used for important notifications.', // description
+    //  'This channel is used for important notifications.', // description
     importance: Importance.high,
     playSound: true);
 
@@ -68,7 +65,7 @@ class _MyAppState extends State<MyApp> {
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-               // channel.description,
+                // channel.description,
                 color: Colors.blue,
                 playSound: true,
                 icon: '@mipmap/ic_launcher',
@@ -108,8 +105,7 @@ class _MyAppState extends State<MyApp> {
         "Testing $_counter",
         "How you doin ?",
         NotificationDetails(
-            android: AndroidNotificationDetails(
-                channel.id, channel.name,
+            android: AndroidNotificationDetails(channel.id, channel.name,
                 //channel.description,
                 importance: Importance.high,
                 color: Colors.blue,
@@ -120,6 +116,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Mdecco',
       debugShowCheckedModeBanner: false,
       home: IntroScreen(),
     );
