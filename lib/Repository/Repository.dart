@@ -42,7 +42,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../DataModel/FormsModels/set_replayM.dart';
-import '../Screen/send_done.dart';
 
 //Intro
 
@@ -50,16 +49,14 @@ class Repository {
   var baseurl = 'https://mdecco.com/app/';
   Dio dio = new Dio();
 
-
-
-
   Future<SetReplay> done({
     @required String key,
     @required String token_id,
     @required String cat_id,
   }) async {
     SetReplay data;
-    FormData formData = new FormData.fromMap({"key": key, "token_id": token_id, "cat_id": cat_id});
+    FormData formData = new FormData.fromMap(
+        {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
         .post(
       baseurl + '/user_api/set_replay',
@@ -859,6 +856,9 @@ class Repository {
     @required String answer,
     @required String st1,
     @required String st2,
+    @required String elevators,
+    @required String floors,
+    @required String space,
     dynamic file,
     dynamic file2,
   }) async {
@@ -870,6 +870,9 @@ class Repository {
       "answer": answer,
       'st1': st1,
       'st2': st2,
+      'elevators': elevators,
+      'floors': floors,
+      'space': space,
       "pdffile": file,
       "pdffile2": file2,
     });
@@ -1096,6 +1099,4 @@ class Repository {
     });
     return data;
   }
-
-
 }

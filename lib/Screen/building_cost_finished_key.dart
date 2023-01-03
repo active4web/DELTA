@@ -1,12 +1,9 @@
-import 'dart:developer';
-
 import 'package:delta/DataModel/FormsModels/cost_buildM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../draw.dart';
@@ -227,7 +224,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -244,29 +241,31 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              width: sWidth * .8,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "${snapshot.data.result.categoryDate.description}",
-                                  textDirection: TextDirection.rtl,
-                                  style: TextStyle(
-                                    fontFamily: 'GE SS Two',
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w300,
+                      if (snapshot
+                          .data.result.categoryDate.description.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                width: sWidth * .8,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.categoryDate.description}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w300,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
                       //0
                       Card(
                         elevation: 15,
@@ -1118,7 +1117,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: areaController,
                                               textDirection: TextDirection.rtl,
                                             ))
@@ -1677,7 +1677,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller:
                                                     bedRoomNumberController,
                                                 textDirection:
@@ -1770,7 +1771,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: resipitionController,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1862,7 +1864,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: kitchenController,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1953,7 +1956,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller:
                                                   bathRoomNumberController,
                                               textDirection: TextDirection.rtl,
@@ -2046,7 +2050,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: phoneNumberController,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -3203,22 +3208,23 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
 //////////////////
                       //
 
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Container(
-                          width: sWidth * .8,
+                      if (snapshot.data.result.categoryDate.details.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Container(
+                            width: sWidth * .8,
 
-                          //  alignment: Alignment.center,
-                          child: Text(
-                              "${snapshot.data.result.categoryDate.details}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                fontFamily: 'GE SS Two',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w300,
-                              )),
+                            //  alignment: Alignment.center,
+                            child: Text(
+                                "${snapshot.data.result.categoryDate.details}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                )),
+                          ),
                         ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Row(
@@ -3362,26 +3368,25 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                         String answer =
                                             '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a13,$a14';
 
-                                     String   st1 =kitchenController.text;
-                                       String st2 = bathRoomNumberController.text;
+                                        String st1 = kitchenController.text;
+                                        String st2 =
+                                            bathRoomNumberController.text;
                                         _repo
                                             .sendCostBuildF(
                                                 key: '1234567890',
                                                 token_id: widget.jwt,
                                                 cat_id: widget.cat_id,
                                                 answer: "$answer",
-                                          st1: "$st1",
-                                          st2 : "$st2"
-                                        )
+                                                st1: "$st1",
+                                                st2: "$st2")
                                             .then((value) {
                                           if (value.status == true) {
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        SendDone(message: value.message))
-                                            );
-
+                                                    builder: (_) => SendDone(
+                                                        message:
+                                                            value.message)));
                                           } else {
                                             var snackBar = SnackBar(
                                                 content: Text(

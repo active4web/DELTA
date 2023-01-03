@@ -80,84 +80,85 @@ class _SendDoneState extends State<SendDone> {
 
 
     return Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Container(
-                    width: sWidth * .5,
-                    height: sWidth * .5,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                          Radius.elliptical(9999.0, 9999.0)),
-                      image: DecorationImage(
-                        image: const AssetImage(
-                            'assets/images/Icon-check.png'),
-                        fit: BoxFit.cover,
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      width: sWidth * .5,
+                      height: sWidth * .5,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                            Radius.elliptical(9999.0, 9999.0)),
+                        image: DecorationImage(
+                          image: const AssetImage(
+                              'assets/images/Icon-check.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                          width: size.width * .8,
-                          height: size.height * .1,
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
                           child: Text(
-                            "${widget.message}",
+                            '${widget.message}',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
                              // fontSize: 19,
                               fontWeight: FontWeight.w300,
                             ),
-                          )),
-                    ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Container(
-              height: size.height * .06,
-              width: size.width * .35,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-              child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(
-                    height: size.height * 1, width: size.width * 1),
-                child: ElevatedButton(
-                    child: Text(
-                      "انهاء",
-                      style: TextStyle(
-                        fontFamily: 'GE SS Two',
-                        fontSize: 17,
-                        color: const Color(0xff848484),
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      elevation: 20,
-                      primary: Color(0xfff3a005),
-                      onPrimary: Colors.orangeAccent,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(15))),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => HomeBar()));
-                    }),
+                ],
               ),
-            ),
-          ],
+              Container(
+                height: size.height * .06,
+                width: size.width * .35,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints.tightFor(
+                      height: size.height * 1, width: size.width * 1),
+                  child: ElevatedButton(
+                      child: Text(
+                        "انهاء",
+                        style: TextStyle(
+                          fontFamily: 'GE SS Two',
+                          fontSize: 17,
+                          color: const Color(0xff848484),
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 20,
+                        primary: Color(0xfff3a005),
+                        onPrimary: Colors.orangeAccent,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(15))),
+                      ),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => HomeBar()));
+                      }),
+                ),
+              ),
+            ],
+          ),
         ));
 
   }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:delta/DataModel/FormsModels/cost_buildM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
@@ -15,6 +13,7 @@ class ConcreteStructure extends StatefulWidget {
   ConcreteStructure({Key key, this.cat_id, this.jwt}) : super(key: key);
   String cat_id;
   String jwt;
+
   @override
   _ConcreteStructureState createState() => _ConcreteStructureState();
 }
@@ -29,6 +28,8 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
   TextEditingController stairsCountController = TextEditingController();
   TextEditingController neighborController = TextEditingController();
   TextEditingController workersController = TextEditingController();
+  TextEditingController elevatorsNumController = TextEditingController();
+  TextEditingController floorsNumController = TextEditingController();
 
   var dropdownValue1 = 'نوع البناء';
   var dropdownValue2 = 'العمالة';
@@ -140,6 +141,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
   SingingCharacter _character6 = SingingCharacter.yes;
 
   String token;
+
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
@@ -231,7 +233,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -248,29 +250,31 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              width: sWidth * .8,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "${snapshot.data.result.categoryDate.description}",
-                                  textDirection: TextDirection.rtl,
-                                  style: TextStyle(
-                                    fontFamily: 'GE SS Two',
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w300,
+                      if (snapshot
+                          .data.result.categoryDate.description.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                width: sWidth * .8,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "${snapshot.data.result.categoryDate.description}",
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      fontFamily: 'GE SS Two',
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w300,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
                       //0
                       Card(
                         elevation: 15,
@@ -372,107 +376,112 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                       ),
                       //1
                       Card(
-                          elevation: 15,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14)),
-                          child: Container(
-                            width: sWidth * .95,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "${snapshot.data.result.lableList[1].title}",
-                                    textDirection: TextDirection.rtl,
-                                    style: TextStyle(
-                                      color: Color(0xffaa6414),
-                                      fontFamily: 'GE SS Two',
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w300,
-                                    ),
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: Container(
+                          width: sWidth * .95,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "${snapshot.data.result.lableList[1].title}",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Color(0xffaa6414),
+                                    fontFamily: 'GE SS Two',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child:
-                                        snapshot.data.result.lableList[1]
-                                                    .type ==
-                                                2
-                                            ? Container(
-                                                width: sWidth * .8,
-                                                child: TextField())
-                                            : Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 5.0, bottom: 8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Container(
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child:
+                                      snapshot.data.result.lableList[1].type ==
+                                              2
+                                          ? Container(
+                                              width: sWidth * .8,
+                                              child: TextField(
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                controller: workersController,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                              ))
+                                          : Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0, bottom: 8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      border: Border(),
+                                                    ),
+                                                    height: 50,
+                                                    width: size.width * .8,
+                                                    child: Container(
                                                       decoration: BoxDecoration(
-                                                        border: Border(),
+                                                        color: Colors.white,
                                                       ),
-                                                      height: 50,
                                                       width: size.width * .8,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.white,
-                                                        ),
-                                                        width: size.width * .8,
-                                                        child: _list1 != null
-                                                            ? DropdownButton(
-                                                                isExpanded:
-                                                                    true,
-                                                                items: _list1
-                                                                    .map((e) {
-                                                                  return new DropdownMenuItem(
-                                                                    child: Container(
-                                                                        alignment: Alignment.centerRight,
-                                                                        child: new Text(
-                                                                          e.title,
-                                                                          style:
-                                                                              TextStyle(
-                                                                            fontFamily:
-                                                                                'GE SS Two',
-                                                                            fontSize:
-                                                                                17,
-                                                                            color:
-                                                                                const Color(-384871238),
-                                                                            fontWeight:
-                                                                                FontWeight.w300,
-                                                                          ),
-                                                                          textDirection:
-                                                                              TextDirection.rtl,
-                                                                        )),
-                                                                    value: e
-                                                                        .answerId,
-                                                                  );
-                                                                }).toList(),
-                                                                onChanged:
-                                                                    (val) {
-                                                                  setState(() {
-                                                                    Id1 = val;
-                                                                    print(Id1
-                                                                        .toString());
-                                                                  });
-                                                                },
-                                                                value: Id1,
-                                                              )
-                                                            : Container(),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
+                                                      child: _list1 != null
+                                                          ? DropdownButton(
+                                                              isExpanded: true,
+                                                              items: _list1
+                                                                  .map((e) {
+                                                                return new DropdownMenuItem(
+                                                                  child: Container(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: new Text(
+                                                                        e.title,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              'GE SS Two',
+                                                                          fontSize:
+                                                                              17,
+                                                                          color:
+                                                                              const Color(-384871238),
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                        textDirection:
+                                                                            TextDirection.rtl,
+                                                                      )),
+                                                                  value: e
+                                                                      .answerId,
+                                                                );
+                                                              }).toList(),
+                                                              onChanged: (val) {
+                                                                setState(() {
+                                                                  Id1 = val;
+                                                                  print(
+                                                                      'This Id1');
+                                                                  print(Id1
+                                                                      .toString());
+                                                                });
+                                                              },
+                                                              value: Id1,
+                                                            )
+                                                          : Container(),
+                                                    ),
+                                                  )
+                                                ],
                                               ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )),
-//                       //2
+                                            ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      //2
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -499,85 +508,84 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                  snapshot.data.result.lableList[2].type ==
-                                      2
-                                      ? Container(
-                                      width: sWidth * .8,
-                                      child: TextField(
-                                        keyboardType: TextInputType.number,
-                                        controller: workersController,
-                                        textDirection:
-                                        TextDirection.rtl,
-                                      ))
-                                      : Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 5.0, bottom: 8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            border: Border(),
-                                          ),
-                                          height: 50,
-                                          width: size.width * .8,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
+                                      snapshot.data.result.lableList[2].type ==
+                                              2
+                                          ? Container(
+                                              width: sWidth * .8,
+                                              child: TextField(
+                                                // controller: workersController,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                              ))
+                                          : Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0, bottom: 8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      border: Border(),
+                                                    ),
+                                                    height: 50,
+                                                    width: size.width * .8,
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                      ),
+                                                      width: size.width * .8,
+                                                      child: _list2 != null
+                                                          ? DropdownButton(
+                                                              isExpanded: true,
+                                                              items: _list2
+                                                                  .map((e) {
+                                                                return new DropdownMenuItem(
+                                                                  child: Container(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: new Text(
+                                                                        e.title,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              'GE SS Two',
+                                                                          fontSize:
+                                                                              17,
+                                                                          color:
+                                                                              const Color(-384871238),
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                        textDirection:
+                                                                            TextDirection.rtl,
+                                                                      )),
+                                                                  value: e
+                                                                      .answerId,
+                                                                );
+                                                              }).toList(),
+                                                              onChanged: (val) {
+                                                                setState(() {
+                                                                  Id2 = val;
+
+                                                                  print(Id2
+                                                                      .toString());
+                                                                });
+                                                              },
+                                                              value: Id2,
+                                                            )
+                                                          : Container(),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
-                                            width: size.width * .8,
-                                            child: _list2 != null
-                                                ? DropdownButton(
-                                              isExpanded: true,
-                                              items: _list2
-                                                  .map((e) {
-                                                return new DropdownMenuItem(
-                                                  child: Container(
-                                                      alignment: Alignment.centerRight,
-                                                      child: new Text(
-                                                        e.title,
-                                                        style:
-                                                        TextStyle(
-                                                          fontFamily:
-                                                          'GE SS Two',
-                                                          fontSize:
-                                                          17,
-                                                          color:
-                                                          const Color(-384871238),
-                                                          fontWeight:
-                                                          FontWeight.w300,
-                                                        ),
-                                                        textDirection:
-                                                        TextDirection.rtl,
-                                                      )),
-                                                  value: e
-                                                      .answerId,
-                                                );
-                                              }).toList(),
-                                              onChanged: (val) {
-                                                setState(() {
-                                                  Id2 = val;
-                                                  print('This Id2');
-                                                  print(Id2
-                                                      .toString());
-                                                });
-                                              },
-                                              value: Id2,
-                                            )
-                                                : Container(),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
                                 ),
                               )
                             ],
                           ),
                         ),
                       ),
-//                       //3
+                      //3
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -631,7 +639,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                         color: Colors.white,
                                                       ),
                                                       width: size.width * .8,
-                                                      child: _list2 != null
+                                                      child: _list3 != null
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list3
@@ -680,7 +688,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //4
+                      //4
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -783,7 +791,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //5
+                      //5
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -886,7 +894,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //6
+                      //6
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -989,7 +997,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //7
+                      //7
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -1092,7 +1100,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //8
+                      //8
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -1195,7 +1203,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //9
+                      //9
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -1298,7 +1306,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //10
+                      //10
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -1401,7 +1409,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //11
+                      //11
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -1433,7 +1441,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                           ? Container(
                                               width: sWidth * .8,
                                               child: TextField(
-                                                // controller: workersController,
+                                                controller: cityController,
                                                 textDirection:
                                                     TextDirection.rtl,
                                               ))
@@ -1504,7 +1512,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //12
+                      //12
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -1536,7 +1544,10 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                           ? Container(
                                               width: sWidth * .8,
                                               child: TextField(
-                                                // controller: workersController,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                controller:
+                                                    elevatorsNumController,
                                                 textDirection:
                                                     TextDirection.rtl,
                                               ))
@@ -1558,7 +1569,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                         color: Colors.white,
                                                       ),
                                                       width: size.width * .8,
-                                                      child: _list12 != null
+                                                      child: _list13 != null
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list12
@@ -1607,7 +1618,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-//                       //13
+                      //13
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -1639,8 +1650,9 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                           ? Container(
                                               width: sWidth * .8,
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
-                                                // controller: workersController,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                controller: floorsNumController,
                                                 textDirection:
                                                     TextDirection.rtl,
                                               ))
@@ -1711,1521 +1723,24 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
-// //text
-//                       //14
-                      Card(
-                        elevation: 15,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14)),
-                        child: Container(
-                          width: sWidth * .95,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Text(
 
-                                  "${snapshot.data.result.lableList[14].title}",
-                                  textDirection: TextDirection.rtl,
-                                  style: TextStyle(
-                                    color: Color(0xffaa6414),
-                                    fontFamily: 'GE SS Two',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Container(
-                                    child:
-                                    snapshot.data.result.lableList[14]
-                                                .type == 2 ?
-                                    Container(
-                                            width: sWidth * .8,
-                                            child: Container(
-                                              child: TextField(
-                                                keyboardType: TextInputType.number,
-                                                controller: cityController,
-                                                textDirection:
-                                                    TextDirection.rtl,
-                                              ),
-                                            ))
-                                        : Container()
-                                    // Padding(
-                                    //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                                    //   child: Row(
-                                    //     mainAxisAlignment: MainAxisAlignment.center,
-                                    //     children: [
-                                    //       Container(
-                                    //         decoration: BoxDecoration(
-                                    //           border: Border(),
-                                    //         ),
-                                    //         height: 50,
-                                    //         width: size.width * .8,
-                                    //         child: Container(
-                                    //           decoration: BoxDecoration(
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           width: size.width*.8,
-                                    //           child: _list3!=null?
-                                    //           DropdownButton(
-                                    //             isExpanded: true,
-                                    //             items: _list3.map((e) {
-                                    //               return new DropdownMenuItem(
-                                    //                 child: Container(
-                                    //                     alignment: Alignment.centerRight,
-                                    //                     child: new Text(
-                                    //                       e.title, style: TextStyle(
-                                    //                       fontFamily: 'GE SS Two',
-                                    //                       fontSize: 17,
-                                    //                       color: const Color(0xff848484),
-                                    //                       fontWeight: FontWeight.w300,
-                                    //                     ),textDirection: TextDirection.rtl,)
-                                    //
-                                    //                 ),
-                                    //                 value:  e.answerId,
-                                    //               );
-                                    //             }).toList(),
-                                    //             onChanged: (val){
-                                    //               setState(() {
-                                    //                 Id3=val;
-                                    //                 print(Id3.toString());
-                                    //               });
-                                    //             },value:Id3 ,
-                                    //           ):Container(),
-                                    //         ),)
-                                    //     ],
-                                    //   ),
-                                    // ),
-                                    ),
-                              )
-                            ],
+                      if (snapshot.data.result.categoryDate.details.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Container(
+                            width: sWidth * .8,
+
+                            //  alignment: Alignment.center,
+                            child: Text(
+                                "${snapshot.data.result.categoryDate.details}",
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  fontFamily: 'GE SS Two',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300,
+                                )),
                           ),
                         ),
-                      ),
-// //                       //15
-//                       Card(
-//                         elevation: 15,
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(14)),
-//                         child: Container(
-//                           width: sWidth * .95,
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.end,
-//                             children: [
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Text(
-//                                   "${snapshot.data.result.lableList[15].title}",
-//                                   textDirection: TextDirection.rtl,
-//                                   style: TextStyle(
-//                                     color: Color(0xffaa6414),
-//                                     fontFamily: 'GE SS Two',
-//                                     fontSize: 15,
-//                                     fontWeight: FontWeight.w300,
-//                                   ),
-//                                 ),
-//                               ),
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Container(
-//                                   child: snapshot
-//                                               .data.result.lableList[15].type ==
-//                                           2
-//                                       ? Container(
-//                                           width: sWidth * .8,
-//                                           child: Container(
-//                                             child: TextField(
-//                                               controller: stateController,
-//                                               textDirection: TextDirection.rtl,
-//                                             ),
-//                                           ))
-//                                       : Container()
-//                                   // Padding(
-//                                   //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-//                                   //   child: Row(
-//                                   //     mainAxisAlignment: MainAxisAlignment.center,
-//                                   //     children: [
-//                                   //       Container(
-//                                   //         decoration: BoxDecoration(
-//                                   //           border: Border(),
-//                                   //         ),
-//                                   //         height: 50,
-//                                   //         width: size.width * .8,
-//                                   //         child: Container(
-//                                   //           decoration: BoxDecoration(
-//                                   //             color: Colors.white,
-//                                   //           ),
-//                                   //           width: size.width*.8,
-//                                   //           child: _list15!=null?
-//                                   //           DropdownButton(
-//                                   //             isExpanded: true,
-//                                   //             items: _list15.map((e) {
-//                                   //               return new DropdownMenuItem(
-//                                   //                 child: Container(
-//                                   //                     alignment: Alignment.centerRight,
-//                                   //                     child: new Text(
-//                                   //                       e.title, style: TextStyle(
-//                                   //                       fontFamily: 'GE SS Two',
-//                                   //                       fontSize: 17,
-//                                   //                       color: const Color(0xff848484),
-//                                   //                       fontWeight: FontWeight.w300,
-//                                   //                     ),textDirection: TextDirection.rtl,)
-//                                   //
-//                                   //                 ),
-//                                   //                 value:  e.answerId,
-//                                   //               );
-//                                   //             }).toList(),
-//                                   //             onChanged: (val){
-//                                   //               setState(() {
-//                                   //                 Id15=val;
-//                                   //                 print(Id5.toString());
-//                                   //               });
-//                                   //             },value:Id5 ,
-//                                   //           ):Container(),
-//                                   //         ),)
-//                                   //     ],
-//                                   //   ),
-//                                   // )
-//                                   ,
-//                                 ),
-//                               )
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       //16
-//                       Card(
-//                         elevation: 15,
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(14)),
-//                         child: Container(
-//                           width: sWidth * .95,
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.end,
-//                             children: [
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Text(
-//                                   "${snapshot.data.result.lableList[16].title}",
-//                                   textDirection: TextDirection.rtl,
-//                                   style: TextStyle(
-//                                     color: Color(0xffaa6414),
-//                                     fontFamily: 'GE SS Two',
-//                                     fontSize: 15,
-//                                     fontWeight: FontWeight.w300,
-//                                   ),
-//                                 ),
-//                               ),
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Container(
-//                                   child: snapshot
-//                                               .data.result.lableList[16].type ==
-//                                           2
-//                                       ? Container(
-//                                           width: sWidth * .8,
-//                                           child: Container(
-//                                             child: TextField(
-//                                               controller: aboveAreaController,
-//                                               textDirection: TextDirection.rtl,
-//                                             ),
-//                                           ))
-//                                       : Container()
-//                                   // Padding(
-//                                   //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-//                                   //   child: Row(
-//                                   //     mainAxisAlignment: MainAxisAlignment.center,
-//                                   //     children: [
-//                                   //       Container(
-//                                   //         decoration: BoxDecoration(
-//                                   //           border: Border(),
-//                                   //         ),
-//                                   //         height: 50,
-//                                   //         width: size.width * .8,
-//                                   //         child: Container(
-//                                   //           decoration: BoxDecoration(
-//                                   //             color: Colors.white,
-//                                   //           ),
-//                                   //           width: size.width*.8,
-//                                   //           child: _list15!=null?
-//                                   //           DropdownButton(
-//                                   //             isExpanded: true,
-//                                   //             items: _list15.map((e) {
-//                                   //               return new DropdownMenuItem(
-//                                   //                 child: Container(
-//                                   //                     alignment: Alignment.centerRight,
-//                                   //                     child: new Text(
-//                                   //                       e.title, style: TextStyle(
-//                                   //                       fontFamily: 'GE SS Two',
-//                                   //                       fontSize: 17,
-//                                   //                       color: const Color(0xff848484),
-//                                   //                       fontWeight: FontWeight.w300,
-//                                   //                     ),textDirection: TextDirection.rtl,)
-//                                   //
-//                                   //                 ),
-//                                   //                 value:  e.answerId,
-//                                   //               );
-//                                   //             }).toList(),
-//                                   //             onChanged: (val){
-//                                   //               setState(() {
-//                                   //                 Id15=val;
-//                                   //                 print(Id5.toString());
-//                                   //               });
-//                                   //             },value:Id5 ,
-//                                   //           ):Container(),
-//                                   //         ),)
-//                                   //     ],
-//                                   //   ),
-//                                   // )
-//                                   ,
-//                                 ),
-//                               )
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       //17
-//                       Card(
-//                         elevation: 15,
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(14)),
-//                         child: Container(
-//                           width: sWidth * .95,
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.end,
-//                             children: [
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Text(
-//                                   "${snapshot.data.result.lableList[17].title}",
-//                                   textDirection: TextDirection.rtl,
-//                                   style: TextStyle(
-//                                     color: Color(0xffaa6414),
-//                                     fontFamily: 'GE SS Two',
-//                                     fontSize: 15,
-//                                     fontWeight: FontWeight.w300,
-//                                   ),
-//                                 ),
-//                               ),
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Container(
-//                                   child: snapshot
-//                                               .data.result.lableList[17].type ==
-//                                           2
-//                                       ? Container(
-//                                           width: sWidth * .8,
-//                                           child: Container(
-//                                             child: TextField(
-//                                               controller: upCountController,
-//                                               textDirection: TextDirection.rtl,
-//                                             ),
-//                                           ))
-//                                       : Container()
-//                                   // Padding(
-//                                   //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-//                                   //   child: Row(
-//                                   //     mainAxisAlignment: MainAxisAlignment.center,
-//                                   //     children: [
-//                                   //       Container(
-//                                   //         decoration: BoxDecoration(
-//                                   //           border: Border(),
-//                                   //         ),
-//                                   //         height: 50,
-//                                   //         width: size.width * .8,
-//                                   //         child: Container(
-//                                   //           decoration: BoxDecoration(
-//                                   //             color: Colors.white,
-//                                   //           ),
-//                                   //           width: size.width*.8,
-//                                   //           child: _list15!=null?
-//                                   //           DropdownButton(
-//                                   //             isExpanded: true,
-//                                   //             items: _list15.map((e) {
-//                                   //               return new DropdownMenuItem(
-//                                   //                 child: Container(
-//                                   //                     alignment: Alignment.centerRight,
-//                                   //                     child: new Text(
-//                                   //                       e.title, style: TextStyle(
-//                                   //                       fontFamily: 'GE SS Two',
-//                                   //                       fontSize: 17,
-//                                   //                       color: const Color(0xff848484),
-//                                   //                       fontWeight: FontWeight.w300,
-//                                   //                     ),textDirection: TextDirection.rtl,)
-//                                   //
-//                                   //                 ),
-//                                   //                 value:  e.answerId,
-//                                   //               );
-//                                   //             }).toList(),
-//                                   //             onChanged: (val){
-//                                   //               setState(() {
-//                                   //                 Id15=val;
-//                                   //                 print(Id5.toString());
-//                                   //               });
-//                                   //             },value:Id5 ,
-//                                   //           ):Container(),
-//                                   //         ),)
-//                                   //     ],
-//                                   //   ),
-//                                   // )
-//                                   ,
-//                                 ),
-//                               )
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//                       //18
-//                       Card(
-//                         elevation: 15,
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(14)),
-//                         child: Container(
-//                           width: sWidth * .95,
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.end,
-//                             children: [
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Text(
-//                                   "${snapshot.data.result.lableList[18].title}",
-//                                   textDirection: TextDirection.rtl,
-//                                   style: TextStyle(
-//                                     color: Color(0xffaa6414),
-//                                     fontFamily: 'GE SS Two',
-//                                     fontSize: 15,
-//                                     fontWeight: FontWeight.w300,
-//                                   ),
-//                                 ),
-//                               ),
-//                               Padding(
-//                                 padding: const EdgeInsets.all(5.0),
-//                                 child: Container(
-//                                   child: snapshot
-//                                               .data.result.lableList[18].type ==
-//                                           2
-//                                       ? Container(
-//                                           width: sWidth * .8,
-//                                           child: Container(
-//                                             child: TextField(
-//                                               controller: stairsCountController,
-//                                               textDirection: TextDirection.rtl,
-//                                             ),
-//                                           ))
-//                                       : Container()
-//                                   // Padding(
-//                                   //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-//                                   //   child: Row(
-//                                   //     mainAxisAlignment: MainAxisAlignment.center,
-//                                   //     children: [
-//                                   //       Container(
-//                                   //         decoration: BoxDecoration(
-//                                   //           border: Border(),
-//                                   //         ),
-//                                   //         height: 50,
-//                                   //         width: size.width * .8,
-//                                   //         child: Container(
-//                                   //           decoration: BoxDecoration(
-//                                   //             color: Colors.white,
-//                                   //           ),
-//                                   //           width: size.width*.8,
-//                                   //           child: _list15!=null?
-//                                   //           DropdownButton(
-//                                   //             isExpanded: true,
-//                                   //             items: _list15.map((e) {
-//                                   //               return new DropdownMenuItem(
-//                                   //                 child: Container(
-//                                   //                     alignment: Alignment.centerRight,
-//                                   //                     child: new Text(
-//                                   //                       e.title, style: TextStyle(
-//                                   //                       fontFamily: 'GE SS Two',
-//                                   //                       fontSize: 17,
-//                                   //                       color: const Color(0xff848484),
-//                                   //                       fontWeight: FontWeight.w300,
-//                                   //                     ),textDirection: TextDirection.rtl,)
-//                                   //
-//                                   //                 ),
-//                                   //                 value:  e.answerId,
-//                                   //               );
-//                                   //             }).toList(),
-//                                   //             onChanged: (val){
-//                                   //               setState(() {
-//                                   //                 Id15=val;
-//                                   //                 print(Id5.toString());
-//                                   //               });
-//                                   //             },value:Id5 ,
-//                                   //           ):Container(),
-//                                   //         ),)
-//                                   //     ],
-//                                   //   ),
-//                                   // )
-//                                   ,
-//                                 ),
-//                               )
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-                      //19
-                      // Card(
-                      //   elevation: 15,
-                      //   shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(14)),
-                      //   child: Container(
-                      //     width: sWidth * .95,
-                      //     child: Column(
-                      //       crossAxisAlignment: CrossAxisAlignment.end,
-                      //       children: [
-                      //         Padding(
-                      //           padding: const EdgeInsets.all(5.0),
-                      //           child: Text(
-                      //             "${snapshot.data.result.lableList[19].title}",
-                      //             textDirection: TextDirection.rtl,
-                      //             style: TextStyle(
-                      //               color: Color(0xffaa6414),
-                      //               fontFamily: 'GE SS Two',
-                      //               fontSize: 15,
-                      //               fontWeight: FontWeight.w300,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //         Padding(
-                      //           padding: const EdgeInsets.all(5.0),
-                      //           child: Container(
-                      //             child: snapshot
-                      //                         .data.result.lableList[19].type ==
-                      //                     2
-                      //                 ? Container(
-                      //                     width: sWidth * .8,
-                      //                     child: Container(
-                      //                       child: TextField(
-                      //                         controller: neighborController,
-                      //                         textDirection: TextDirection.rtl,
-                      //                       ),
-                      //                     ))
-                      //                 : Container()
-                      //             // Padding(
-                      //             //   padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                      //             //   child: Row(
-                      //             //     mainAxisAlignment: MainAxisAlignment.center,
-                      //             //     children: [
-                      //             //       Container(
-                      //             //         decoration: BoxDecoration(
-                      //             //           border: Border(),
-                      //             //         ),
-                      //             //         height: 50,
-                      //             //         width: size.width * .8,
-                      //             //         child: Container(
-                      //             //           decoration: BoxDecoration(
-                      //             //             color: Colors.white,
-                      //             //           ),
-                      //             //           width: size.width*.8,
-                      //             //           child: _list15!=null?
-                      //             //           DropdownButton(
-                      //             //             isExpanded: true,
-                      //             //             items: _list15.map((e) {
-                      //             //               return new DropdownMenuItem(
-                      //             //                 child: Container(
-                      //             //                     alignment: Alignment.centerRight,
-                      //             //                     child: new Text(
-                      //             //                       e.title, style: TextStyle(
-                      //             //                       fontFamily: 'GE SS Two',
-                      //             //                       fontSize: 17,
-                      //             //                       color: const Color(0xff848484),
-                      //             //                       fontWeight: FontWeight.w300,
-                      //             //                     ),textDirection: TextDirection.rtl,)
-                      //             //
-                      //             //                 ),
-                      //             //                 value:  e.answerId,
-                      //             //               );
-                      //             //             }).toList(),
-                      //             //             onChanged: (val){
-                      //             //               setState(() {
-                      //             //                 Id15=val;
-                      //             //                 print(Id5.toString());
-                      //             //               });
-                      //             //             },value:Id5 ,
-                      //             //           ):Container(),
-                      //             //         ),)
-                      //             //     ],
-                      //             //   ),
-                      //             // )
-                      //             ,
-                      //           ),
-                      //         )
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                      ///////////
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     children: [
-                      //       Expanded(
-                      //         child: Directionality(
-                      //           textDirection: TextDirection.rtl,
-                      //           child: Container(
-                      //             child: DropdownButton<String>(
-                      //               hint: Text(
-                      //                 'نوع البناء',
-                      //                 style: TextStyle(fontFamily: 'Cairo'),
-                      //               ),
-                      //               value: dropdownValue1,
-                      //               isExpanded: true,
-                      //               elevation: 30,
-                      //               style: TextStyle(
-                      //                 color: Colors.grey,
-                      //               ),
-                      //               onChanged: (String newValue) {
-                      //                 setState(() {
-                      //                   dropdownValue1 = newValue;
-                      //                 });
-                      //               },
-                      //               items: <String>[
-                      //                 'نوع البناء',
-                      //                 'item1',
-                      //                 'item2',
-                      //                 'item3',
-                      //               ].map<DropdownMenuItem<String>>((String value) {
-                      //                 return DropdownMenuItem<String>(
-                      //                   value: value,
-                      //                   child: Container(
-                      //                       width: size.width * .7,
-                      //                       alignment: Alignment.centerRight,
-                      //                       child: Text(
-                      //                         value,
-                      //                         textDirection: TextDirection.rtl,
-                      //                         style: TextStyle(
-                      //                           fontFamily: 'GE SS Two',
-                      //                           fontSize: 17,
-                      //                           color: const Color(0xff848484),
-                      //                           fontWeight: FontWeight.w300,
-                      //                         ),
-                      //                       )),
-                      //                 );
-                      //               }).toList(),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //     children: [
-                      //       Flexible(
-                      //         child: Directionality(
-                      //           textDirection: TextDirection.rtl,
-                      //           child: Container(
-                      //             width: sWidth * .4,
-                      //             child: DropdownButton<String>(
-                      //               hint: Text(
-                      //                 'العمالة',
-                      //                 style: TextStyle(fontFamily: 'Cairo'),
-                      //               ),
-                      //               value: dropdownValue2,
-                      //               isExpanded: true,
-                      //               elevation: 30,
-                      //               style: TextStyle(
-                      //                 color: Colors.grey,
-                      //               ),
-                      //               onChanged: (String newValue) {
-                      //                 setState(() {
-                      //                   dropdownValue2 = newValue;
-                      //                 });
-                      //               },
-                      //               items: <String>[
-                      //                 'العمالة',
-                      //                 'item1',
-                      //                 'item2',
-                      //                 'item3',
-                      //               ].map<DropdownMenuItem<String>>((String value) {
-                      //                 return DropdownMenuItem<String>(
-                      //                   value: value,
-                      //                   child: Container(
-                      //                       width: size.width * .7,
-                      //                       alignment: Alignment.centerRight,
-                      //                       child: Text(
-                      //                         value,
-                      //                         textDirection: TextDirection.rtl,
-                      //                         style: TextStyle(
-                      //                           fontFamily: 'GE SS Two',
-                      //                           fontSize: 17,
-                      //                           color: const Color(0xff848484),
-                      //                           fontWeight: FontWeight.w300,
-                      //                         ),
-                      //                       )),
-                      //                 );
-                      //               }).toList(),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Flexible(
-                      //         child: Directionality(
-                      //           textDirection: TextDirection.rtl,
-                      //           child: Container(
-                      //             width: sWidth * .4,
-                      //             child: DropdownButton<String>(
-                      //               hint: Text(
-                      //                 'جودة العمل',
-                      //                 style: TextStyle(fontFamily: 'Cairo'),
-                      //               ),
-                      //               value: dropdownValue3,
-                      //               isExpanded: true,
-                      //               elevation: 30,
-                      //               style: TextStyle(
-                      //                 color: Colors.grey,
-                      //               ),
-                      //               onChanged: (String newValue) {
-                      //                 setState(() {
-                      //                   dropdownValue3 = newValue;
-                      //                 });
-                      //               },
-                      //               items: <String>[
-                      //                 'جودة العمل',
-                      //                 'item1',
-                      //                 'item2',
-                      //                 'item3',
-                      //               ].map<DropdownMenuItem<String>>((String value) {
-                      //                 return DropdownMenuItem<String>(
-                      //                   value: value,
-                      //                   child: Container(
-                      //                       width: size.width * .7,
-                      //                       alignment: Alignment.centerRight,
-                      //                       child: Text(
-                      //                         value,
-                      //                         textDirection: TextDirection.rtl,
-                      //                         style: TextStyle(
-                      //                           fontFamily: 'GE SS Two',
-                      //                           fontSize: 17,
-                      //                           color: const Color(0xff848484),
-                      //                           fontWeight: FontWeight.w300,
-                      //                         ),
-                      //                       )),
-                      //                 );
-                      //               }).toList(),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //     children: [
-                      //       Flexible(
-                      //         child: Directionality(
-                      //           textDirection: TextDirection.rtl,
-                      //           child: Container(
-                      //             width: sWidth * .4,
-                      //             child: DropdownButton<String>(
-                      //               hint: Text(
-                      //                 'نوع الخشب',
-                      //                 style: TextStyle(fontFamily: 'Cairo'),
-                      //               ),
-                      //               value: dropdownValue4,
-                      //               isExpanded: true,
-                      //               elevation: 30,
-                      //               style: TextStyle(
-                      //                 color: Colors.grey,
-                      //               ),
-                      //               onChanged: (String newValue) {
-                      //                 setState(() {
-                      //                   dropdownValue4 = newValue;
-                      //                 });
-                      //               },
-                      //               items: <String>[
-                      //                 'نوع الخشب',
-                      //                 'item1',
-                      //                 'item2',
-                      //                 'item3',
-                      //               ].map<DropdownMenuItem<String>>((String value) {
-                      //                 return DropdownMenuItem<String>(
-                      //                   value: value,
-                      //                   child: Container(
-                      //                       width: size.width * .7,
-                      //                       alignment: Alignment.centerRight,
-                      //                       child: Text(
-                      //                         value,
-                      //                         textDirection: TextDirection.rtl,
-                      //                         style: TextStyle(
-                      //                           fontFamily: 'GE SS Two',
-                      //                           fontSize: 17,
-                      //                           color: const Color(0xff848484),
-                      //                           fontWeight: FontWeight.w300,
-                      //                         ),
-                      //                       )),
-                      //                 );
-                      //               }).toList(),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Flexible(
-                      //         child: Directionality(
-                      //           textDirection: TextDirection.rtl,
-                      //           child: Container(
-                      //             width: sWidth * .4,
-                      //             child: DropdownButton<String>(
-                      //               hint: Text(
-                      //                 'حالة الخشب',
-                      //                 style: TextStyle(fontFamily: 'Cairo'),
-                      //               ),
-                      //               value: dropdownValue5,
-                      //               isExpanded: true,
-                      //               elevation: 30,
-                      //               style: TextStyle(
-                      //                 color: Colors.grey,
-                      //               ),
-                      //               onChanged: (String newValue) {
-                      //                 setState(() {
-                      //                   dropdownValue5 = newValue;
-                      //                 });
-                      //               },
-                      //               items: <String>[
-                      //                 'حالة الخشب',
-                      //                 'item1',
-                      //                 'item2',
-                      //                 'item3',
-                      //               ].map<DropdownMenuItem<String>>((String value) {
-                      //                 return DropdownMenuItem<String>(
-                      //                   value: value,
-                      //                   child: Container(
-                      //                       width: size.width * .7,
-                      //                       alignment: Alignment.centerRight,
-                      //                       child: Text(
-                      //                         value,
-                      //                         textDirection: TextDirection.rtl,
-                      //                         style: TextStyle(
-                      //                           fontFamily: 'GE SS Two',
-                      //                           fontSize: 17,
-                      //                           color: const Color(0xff848484),
-                      //                           fontWeight: FontWeight.w300,
-                      //                         ),
-                      //                       )),
-                      //                 );
-                      //               }).toList(),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //     children: [
-                      //       Flexible(
-                      //         child: Directionality(
-                      //           textDirection: TextDirection.rtl,
-                      //           child: Container(
-                      //             width: sWidth * .4,
-                      //             child: DropdownButton<String>(
-                      //               hint: Text(
-                      //                 'نوع القواعد',
-                      //                 style: TextStyle(fontFamily: 'Cairo'),
-                      //               ),
-                      //               value: dropdownValue6,
-                      //               isExpanded: true,
-                      //               elevation: 30,
-                      //               style: TextStyle(
-                      //                 color: Colors.grey,
-                      //               ),
-                      //               onChanged: (String newValue) {
-                      //                 setState(() {
-                      //                   dropdownValue6 = newValue;
-                      //                 });
-                      //               },
-                      //               items: <String>[
-                      //                 'نوع القواعد',
-                      //                 'item1',
-                      //                 'item2',
-                      //                 'item3',
-                      //               ].map<DropdownMenuItem<String>>((String value) {
-                      //                 return DropdownMenuItem<String>(
-                      //                   value: value,
-                      //                   child: Container(
-                      //                       width: size.width * .7,
-                      //                       alignment: Alignment.centerRight,
-                      //                       child: Text(
-                      //                         value,
-                      //                         textDirection: TextDirection.rtl,
-                      //                         style: TextStyle(
-                      //                           fontFamily: 'GE SS Two',
-                      //                           fontSize: 17,
-                      //                           color: const Color(0xff848484),
-                      //                           fontWeight: FontWeight.w300,
-                      //                         ),
-                      //                       )),
-                      //                 );
-                      //               }).toList(),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Flexible(
-                      //         child: Directionality(
-                      //           textDirection: TextDirection.rtl,
-                      //           child: Container(
-                      //             width: sWidth * .4,
-                      //             child: DropdownButton<String>(
-                      //               hint: Text(
-                      //                 'نوع الحوائط',
-                      //                 style: TextStyle(fontFamily: 'Cairo'),
-                      //               ),
-                      //               value: dropdownValue7,
-                      //               isExpanded: true,
-                      //               elevation: 30,
-                      //               style: TextStyle(
-                      //                 color: Colors.grey,
-                      //               ),
-                      //               onChanged: (String newValue) {
-                      //                 setState(() {
-                      //                   dropdownValue7 = newValue;
-                      //                 });
-                      //               },
-                      //               items: <String>[
-                      //                 'نوع الحوائط',
-                      //                 'item1',
-                      //                 'item2',
-                      //                 'item3',
-                      //               ].map<DropdownMenuItem<String>>((String value) {
-                      //                 return DropdownMenuItem<String>(
-                      //                   value: value,
-                      //                   child: Container(
-                      //                       width: size.width * .7,
-                      //                       alignment: Alignment.centerRight,
-                      //                       child: Text(
-                      //                         value,
-                      //                         textDirection: TextDirection.rtl,
-                      //                         style: TextStyle(
-                      //                           fontFamily: 'GE SS Two',
-                      //                           fontSize: 17,
-                      //                           color: const Color(0xff848484),
-                      //                           fontWeight: FontWeight.w300,
-                      //                         ),
-                      //                       )),
-                      //                 );
-                      //               }).toList(),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //     children: [
-                      //       Container(
-                      //         width: sWidth * .4,
-                      //         child: Row(
-                      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Container(
-                      //                 width: sWidth * .05,
-                      //                 child: Column(
-                      //                   mainAxisAlignment: MainAxisAlignment.center,
-                      //                   children: [
-                      //                     IconButton(
-                      //                       icon: Icon(Icons.keyboard_arrow_up_outlined),
-                      //                       onPressed: () {
-                      //                         _increment();
-                      //                         print(_counter1);
-                      //                       },
-                      //                     ),
-                      //                     IconButton(
-                      //                       icon:
-                      //                       Icon(Icons.keyboard_arrow_down_outlined),
-                      //                       onPressed: () {
-                      //                         _dicrement();
-                      //                         print(_counter1);
-                      //                       },
-                      //                     )
-                      //                   ],
-                      //                 )),
-                      //             Container(
-                      //                 decoration: BoxDecoration(
-                      //                     color: Colors.grey,
-                      //                     borderRadius: BorderRadius.circular(10)),
-                      //                 width: sWidth * .1,
-                      //                 height: sWidth * .1,
-                      //                 child: Center(child: Text("$_counter1"))),
-                      //             Container(
-                      //                 width: sWidth * .2,
-                      //                 child: Text(
-                      //                   "عدد الطوابق",
-                      //                   style: TextStyle(
-                      //                     fontFamily: 'GE SS Two',
-                      //                     fontSize: 17,
-                      //                     fontWeight: FontWeight.w300,
-                      //                   ),
-                      //                 )),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         width: sWidth * .4,
-                      //         child: Row(
-                      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Container(
-                      //                 width: sWidth * .05,
-                      //                 child: Column(
-                      //                   mainAxisAlignment: MainAxisAlignment.center,
-                      //                   children: [
-                      //                     IconButton(
-                      //                       icon: Icon(Icons.keyboard_arrow_up_outlined),
-                      //                       onPressed: () {
-                      //                         _increment2();
-                      //                         print(_counter1);
-                      //                       },
-                      //                     ),
-                      //                     IconButton(
-                      //                       icon:
-                      //                       Icon(Icons.keyboard_arrow_down_outlined),
-                      //                       onPressed: () {
-                      //                         _dicrement2();
-                      //                         print(_counter1);
-                      //                       },
-                      //                     )
-                      //                   ],
-                      //                 )),
-                      //             Container(
-                      //                 decoration: BoxDecoration(
-                      //                     color: Colors.grey,
-                      //                     borderRadius: BorderRadius.circular(10)),
-                      //                 width: sWidth * .1,
-                      //                 height: sWidth * .1,
-                      //                 child: Center(child: Text("$_counter2"))),
-                      //             Container(
-                      //                 width: sWidth * .2,
-                      //                 child: Text(
-                      //                   "عدد المصاعد",
-                      //                   style: TextStyle(
-                      //                     fontFamily: 'GE SS Two',
-                      //                     fontSize: 17,
-                      //                     fontWeight: FontWeight.w300,
-                      //                   ),
-                      //                 )),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //     children: [
-                      //       Container(
-                      //         width: sWidth * .4,
-                      //         child: Row(
-                      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Container(
-                      //                 decoration: BoxDecoration(
-                      //                     color: Colors.grey,
-                      //                     borderRadius: BorderRadius.circular(10)),
-                      //                 width: sWidth * .2,
-                      //                 height: sWidth * .1,
-                      //                 child: Center(child: TextField())),
-                      //             Container(
-                      //                 width: sWidth * .2,
-                      //                 child: Text(
-                      //                   "المنطقة",
-                      //                   style: TextStyle(
-                      //                     fontFamily: 'GE SS Two',
-                      //                     fontSize: 17,
-                      //                     fontWeight: FontWeight.w300,
-                      //                   ),
-                      //                 )),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         width: sWidth * .4,
-                      //         child: Row(
-                      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Container(
-                      //                 decoration: BoxDecoration(
-                      //                     color: Colors.grey,
-                      //                     borderRadius: BorderRadius.circular(10)),
-                      //                 width: sWidth * .2,
-                      //                 height: sWidth * .1,
-                      //                 child: Center(child: TextField())),
-                      //             Container(
-                      //                 width: sWidth * .2,
-                      //                 child: Text(
-                      //                   "المدينة",
-                      //                   style: TextStyle(
-                      //                     fontFamily: 'GE SS Two',
-                      //                     fontSize: 17,
-                      //                     fontWeight: FontWeight.w300,
-                      //                   ),
-                      //                 )),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: [
-                      //       Container(
-                      //         width: sWidth * .9,
-                      //         child: Row(
-                      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Container(
-                      //                 child: Text(
-                      //                   "مترمربع",
-                      //                   style: TextStyle(
-                      //                     fontFamily: 'GE SS Two',
-                      //                     fontSize: 13,
-                      //                     fontWeight: FontWeight.w300,
-                      //                   ),
-                      //                 )),
-                      //             Container(
-                      //                 decoration: BoxDecoration(
-                      //                     color: Colors.grey,
-                      //                     borderRadius: BorderRadius.circular(10)),
-                      //                 width: sWidth * .37,
-                      //                 child: Center(child: TextField())),
-                      //             Container(
-                      //                 width: sWidth * .4,
-                      //                 child: Text(
-                      //                   "مساحة المسقوف الاجمالية",
-                      //                   style: TextStyle(
-                      //                     fontFamily: 'GE SS Two',
-                      //                     fontSize: 13,
-                      //                     fontWeight: FontWeight.w300,
-                      //                   ),
-                      //                 )),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // //radio_btn
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: <Widget>[
-                      //       Expanded(
-                      //         child: Row(
-                      //           children: [
-                      //             Container(
-                      //               width: sWidth * .27,
-                      //               child: ListTile(
-                      //                 title: const Text('لا'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.no,
-                      //                   groupValue: _character1,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character1 = value;
-                      //                       print(_character1);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             Container(
-                      //               width: sWidth * .3,
-                      //               child: ListTile(
-                      //                 title: const Text('نعم'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.yes,
-                      //                   groupValue: _character1,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character1 = value;
-                      //                       print(_character1);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //           width: sWidth * .3,
-                      //           child: Text(
-                      //             "مهندس مقيم",
-                      //             textDirection: TextDirection.rtl,
-                      //             style: TextStyle(
-                      //               fontFamily: 'GE SS Two',
-                      //               fontSize: 17,
-                      //               fontWeight: FontWeight.w300,
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: <Widget>[
-                      //       Expanded(
-                      //         child: Row(
-                      //           children: [
-                      //             Container(
-                      //               width: sWidth * .27,
-                      //               child: ListTile(
-                      //                 title: const Text('لا'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.no,
-                      //                   groupValue: _character2,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character2 = value;
-                      //                       print(_character2);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             Container(
-                      //               width: sWidth * .3,
-                      //               child: ListTile(
-                      //                 title: const Text('نعم'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.yes,
-                      //                   groupValue: _character2,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character2 = value;
-                      //                       print(_character2);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //           width: sWidth * .3,
-                      //           child: Text(
-                      //             "مهندس زيارات مراحل",
-                      //             textDirection: TextDirection.rtl,
-                      //             style: TextStyle(
-                      //               fontFamily: 'GE SS Two',
-                      //               fontSize: 14,
-                      //               fontWeight: FontWeight.w300,
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: <Widget>[
-                      //       Expanded(
-                      //         child: Row(
-                      //           children: [
-                      //             Container(
-                      //               width: sWidth * .27,
-                      //               child: ListTile(
-                      //                 title: const Text('لا'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.no,
-                      //                   groupValue: _character3,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character3 = value;
-                      //                       print(_character3);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             Container(
-                      //               width: sWidth * .3,
-                      //               child: ListTile(
-                      //                 title: const Text('نعم'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.yes,
-                      //                   groupValue: _character3,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character3 = value;
-                      //                       print(_character3);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //           width: sWidth * .3,
-                      //           child: Text(
-                      //             "مطلوب تعديل خرائط",
-                      //             textDirection: TextDirection.rtl,
-                      //             style: TextStyle(
-                      //               fontFamily: 'GE SS Two',
-                      //               fontSize: 14,
-                      //               fontWeight: FontWeight.w300,
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: <Widget>[
-                      //       Expanded(
-                      //         child: Row(
-                      //           children: [
-                      //             Container(
-                      //               width: sWidth * .27,
-                      //               child: ListTile(
-                      //                 title: const Text('لا'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.no,
-                      //                   groupValue: _character4,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character4 = value;
-                      //                       print(_character4);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             Container(
-                      //               width: sWidth * .3,
-                      //               child: ListTile(
-                      //                 title: const Text('نعم'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.yes,
-                      //                   groupValue: _character4,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character4 = value;
-                      //                       print(_character4);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //           width: sWidth * .3,
-                      //           child: Text(
-                      //             " يوجد خرائط معمارية",
-                      //             textDirection: TextDirection.rtl,
-                      //             style: TextStyle(
-                      //               fontFamily: 'GE SS Two',
-                      //               fontSize: 14,
-                      //               fontWeight: FontWeight.w300,
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: <Widget>[
-                      //       Expanded(
-                      //         child: Row(
-                      //           children: [
-                      //             Container(
-                      //               width: sWidth * .27,
-                      //               child: ListTile(
-                      //                 title: const Text('لا'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.no,
-                      //                   groupValue: _character5,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character5 = value;
-                      //                       print(_character5);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             Container(
-                      //               width: sWidth * .3,
-                      //               child: ListTile(
-                      //                 title: const Text('نعم'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.yes,
-                      //                   groupValue: _character5,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character5 = value;
-                      //                       print(_character5);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //           width: sWidth * .3,
-                      //           child: Text(
-                      //             " يوجد خرائط انشائية",
-                      //             textDirection: TextDirection.rtl,
-                      //             style: TextStyle(
-                      //               fontFamily: 'GE SS Two',
-                      //               fontSize: 14,
-                      //               fontWeight: FontWeight.w300,
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: <Widget>[
-                      //       Expanded(
-                      //         child: Row(
-                      //           children: [
-                      //             Container(
-                      //               width: sWidth * .27,
-                      //               child: ListTile(
-                      //                 title: const Text('لا'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.no,
-                      //                   groupValue: _character6,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character6 = value;
-                      //                       print(_character6);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             Container(
-                      //               width: sWidth * .3,
-                      //               child: ListTile(
-                      //                 title: const Text('نعم'),
-                      //                 leading: Radio<SingingCharacter>(
-                      //                   value: SingingCharacter.yes,
-                      //                   groupValue: _character6,
-                      //                   onChanged: (SingingCharacter value) {
-                      //                     setState(() {
-                      //                       _character6 = value;
-                      //                       print(_character6);
-                      //                     });
-                      //                   },
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //           width: sWidth * .3,
-                      //           child: Text(
-                      //             "يوجد خرائط كهربائية",
-                      //             textDirection: TextDirection.rtl,
-                      //             style: TextStyle(
-                      //               fontFamily: 'GE SS Two',
-                      //               fontSize: 14,
-                      //               fontWeight: FontWeight.w300,
-                      //             ),
-                      //           ))
-                      //     ],
-                      //   ),
-                      // ),
-//////////////////
-                      //
-
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Container(
-                          width: sWidth * .8,
-
-                          //  alignment: Alignment.center,
-                          child: Text(
-                              "${snapshot.data.result.categoryDate.details}",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(
-                                fontFamily: 'GE SS Two',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w300,
-                              )),
-                        ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Row(
@@ -3263,7 +1778,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                     onPressed: () {
                                       setState(() {
                                         Id0 = null;
-                                        Id1 = null;
+                                        // Id1 = null;
                                         Id2 = null;
                                         Id3 = null;
                                         Id4 = null;
@@ -3274,9 +1789,13 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                         Id9 = null;
                                         Id10 = null;
                                         Id11 = null;
-                                        Id12 = null;
+                                        // Id12 = null;
+
                                         Id13 = null;
                                         cityController.text = '';
+                                        floorsNumController.text = '';
+                                        elevatorsNumController.text = '';
+                                        workersController.text = '';
                                         // stateController.text = '';
                                         // aboveAreaController.text = '';
                                         // upCountController.text = '';
@@ -3317,38 +1836,35 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                     ),
                                     onPressed: () {
                                       if (Id0 != null &&
-                                          Id1 != null &&
-                                          ((snapshot.data.result.lableList[2].type ==
-                                              2 && workersController.text !='' && workersController.text!=null) ||(snapshot.data.result.lableList[2].type !=
-                                              2 && Id2 !=null))&&
-                                           // Id2 != null&&
+                                          (workersController.text != '' &&
+                                              workersController.text != null) &&
+                                          (snapshot.data.result.lableList[2]
+                                                      .type !=
+                                                  2 &&
+                                              Id2 != null) &&
+                                          // Id2 != null&&
                                           Id3 != null &&
                                           Id4 != null &&
                                           Id5 != null &&
                                           Id6 != null &&
                                           Id7 != null &&
                                           Id10 != null &&
-                                          Id11 != null &&
+                                          // Id11 != null &&
                                           cityController.text != null &&
-                                          // stateController.text != null &&
-                                          // aboveAreaController.text != null &&
-                                          // upCountController.text != null &&
-                                          // stairsCountController.text != null &&
-                                          // neighborController.text != null &&
-                                          cityController.text != ""
-                                          // stateController.text != "" &&
-                                          // aboveAreaController.text != "" &&
-                                          // upCountController.text != "" &&
-                                          // stairsCountController.text != "" &&
-                                          // neighborController.text != ""
-                                      ) {
-
+                                          cityController.text != "" &&
+                                          elevatorsNumController.text != null &&
+                                          elevatorsNumController.text != '' &&
+                                          floorsNumController.text != null &&
+                                          floorsNumController.text != '') {
                                         String a0 =
                                             "${snapshot.data.result.lableList[0].lebalId}.$Id0";
-                                        String a1 =
-                                            "${snapshot.data.result.lableList[1].lebalId}.$Id1";
-                                        String a2 = snapshot.data.result.lableList[2].type !=2?
-                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2":"${snapshot.data.result.lableList[2].lebalId}.${workersController.text}";
+                                        String a1 = snapshot.data.result
+                                                    .lableList[1].type !=
+                                                2
+                                            ? "${snapshot.data.result.lableList[1].lebalId}.$Id1"
+                                            : '${snapshot.data.result.lableList[1].lebalId}."${workersController.text}"';
+                                        String a2 =
+                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2";
                                         String a3 =
                                             "${snapshot.data.result.lableList[3].lebalId}.$Id3";
                                         String a4 =
@@ -3365,43 +1881,64 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                             "${snapshot.data.result.lableList[9].lebalId}.$Id9";
                                         String a10 =
                                             "${snapshot.data.result.lableList[10].lebalId}.$Id10";
-                                        String a11 =
-                                            "${snapshot.data.result.lableList[11].lebalId}.$Id11";
-                                        String a12 =
-                                            "${snapshot.data.result.lableList[12].lebalId}.$Id12";
+                                        String a11 = snapshot.data.result
+                                                    .lableList[11].type !=
+                                                2
+                                            ? "${snapshot.data.result.lableList[11].lebalId}.$Id11"
+                                            : '${snapshot.data.result.lableList[11].lebalId}.\"${cityController.text}\"';
+                                        String a12 = snapshot.data.result
+                                                    .lableList[12].type !=
+                                                2
+                                            ? "${snapshot.data.result.lableList[12].lebalId}.$Id12"
+                                            : '${snapshot.data.result.lableList[12].lebalId}."${elevatorsNumController.text}"';
                                         String a13 =
-                                            "${snapshot.data.result.lableList[13].lebalId}.$Id13";
-                                        String a14 =
-                                            '${snapshot.data.result.lableList[14].lebalId}."${cityController.text}"';
-                                        // String a15 =
-                                        //     '${snapshot.data.result.lableList[15].lebalId}."${stateController.text}"';
-                                        // String a16 =
-                                        //     '${snapshot.data.result.lableList[16].lebalId}."${aboveAreaController.text}"';
-                                        // String a17 =
-                                        //     '${snapshot.data.result.lableList[17].lebalId}."${upCountController.text}"';
-                                        // String a18 =
-                                        //     '${snapshot.data.result.lableList[18].lebalId}."${stairsCountController.text}"';
-                                        // String a19 =
-                                        //     '${snapshot.data.result.lableList[19].lebalId}."${neighborController.text}"';
+                                            '${snapshot.data.result.lableList[13].lebalId}."${floorsNumController.text}"';
 
+                                        print('a0==>$a0');
+                                        print('a1==>$a1');
+                                        print('a2==>$a2');
+                                        print('a3==>$a3');
+                                        print('a4==>$a4');
+                                        print('a5==>$a5');
+                                        print('a6==>$a6');
+                                        print('a7==>$a7');
+                                        print('a8==>$a8');
+                                        print('a9==>$a9');
+                                        print('a10==>$a10');
+                                        print('a11==>$a11');
+                                        print('a12==>$a12');
+                                        print('a13==>$a13');
+                                        print(
+                                            'floorsNumController==>${floorsNumController.text}');
+                                        print(
+                                            'elevatorsNumController==>${elevatorsNumController.text}');
+                                        // print('a14==>$a14');
                                         String answer =
-                                            '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,''$a13,''$a14'
+                                            '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12'
                                             // '$a15,$a16,$a17,$a18,$a19'
 
-                                        ;
+                                            ;
+                                        print('answer $answer');
                                         _repo
                                             .sendCostBuildF(
-                                                key: '1234567890',
-                                                token_id: widget.jwt,
-                                                cat_id: widget.cat_id,
-                                                answer: "$answer")
+                                          key: '1234567890',
+                                          token_id: widget.jwt,
+                                          cat_id: widget.cat_id,
+                                          answer: "$answer",
+                                          space: workersController.text,
+                                          elevators:
+                                              elevatorsNumController.text,
+                                          floors: floorsNumController.text,
+                                        )
                                             .then((value) {
                                           if (value.status == true) {
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        SendDone(message: value.message,)));
+                                                    builder: (_) => SendDone(
+                                                          message:
+                                                              value.message,
+                                                        )));
                                           } else {
                                             print(value.message);
                                             var snackBar = SnackBar(
@@ -3411,8 +1948,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                 .showSnackBar(snackBar);
                                           }
                                         });
-                                      }
-                                      else {
+                                      } else {
                                         print('Id0 ${Id0}');
                                         print('Id1 ${Id1}');
                                         print('Id2 ${Id2}');
@@ -3425,7 +1961,8 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                         print('Id9 ${Id9}');
                                         print('Id10 ${Id10}');
                                         print('Id11 ${Id11}');
-                                        print('cityController.text ${cityController.text}');
+                                        print(
+                                            'cityController.text ${cityController.text}');
                                         // print('stateController.text ${stateController.text}');
                                         // print('aboveAreaController.text ${aboveAreaController.text}');
                                         // print('upCountController.text ${upCountController.text}');
