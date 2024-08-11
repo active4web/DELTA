@@ -1,75 +1,76 @@
 import 'dart:io';
 
 import 'package:delta/DataModel/FormsModels/arch_residentialM.dart';
-import 'package:delta/DataModel/FormsModels/cost_buildM.dart';
 import 'package:delta/Repository/Repository.dart';
+import 'package:delta/Screen/Home/home_bar.dart';
+import 'package:delta/Screen/Real_estate_investment.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../draw.dart';
-
-import 'package:delta/Screen/Home/home_bar.dart';
-
 import '../send_done.dart';
 
 class ArchResidentialDesign extends StatefulWidget {
-  ArchResidentialDesign({Key key,this.message, this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
-  String message;
+  String? jwt;
+  String? cat_id;
+  String? message;
+
   @override
   _ArchResidentialDesignState createState() => _ArchResidentialDesignState();
+
+  ArchResidentialDesign({this.jwt, this.cat_id, this.message});
 }
 
 class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
-  List _list2;
-  int Id2;
-  List _list3;
-  int Id3;
-  List _list4;
-  int Id4;
-  List _list5;
-  int Id5;
-  List _list6;
-  int Id6;
-  List _list7;
-  int Id7;
-  List _list11;
-  int Id11;
-  List _list12;
-  int answer12;
-  List _list13;
-  int answer13;
-  List _list14;
-  int answer14;
-  List _list17;
-  int answer17;
-  List _list18;
-  int answer18;
-  List _list19;
-  int answer19;
-  List _list20;
-  int answer20;
-  List _list21;
-  int answer21;
-  List _list22;
-  int answer22;
-  List _list23;
-  int answer23;
-  List _list24;
-  int answer24;
-  List _list25;
-  int answer25;
-  List _list26;
-  int answer26;
+  List? _list2;
+  int? id2;
+  List? _list3;
+  int? id3;
+  List? _list4;
+  int? id4;
+  List? _list5;
+  int? id5;
+  List? _list6;
+  int? id6;
+  List? _list7;
+  int? id7;
+  List? _list11;
+  int? id11;
+  List? _list12;
+  int? answer12;
+  List? _list13;
+  int? answer13;
+  List? _list14;
+  int? answer14;
+  List? _list17;
+  int? answer17;
+  List? _list18;
+  int? answer18;
+  List? _list19;
+  int? answer19;
+  List? _list20;
+  int? answer20;
+  List? _list21;
+  int? answer21;
+  List? _list22;
+  int? answer22;
+  List? _list23;
+  int? answer23;
+  List? _list24;
+  int? answer24;
+  List? _list25;
+  int? answer25;
+  List? _list26;
+  int? answer26;
 
   TextEditingController Id0 = TextEditingController();
   TextEditingController Id1 = TextEditingController();
   TextEditingController Id8 = TextEditingController();
   TextEditingController Id9 = TextEditingController();
   TextEditingController Id10 = TextEditingController();
+
   //TextEditingController Id11= TextEditingController();
   TextEditingController Id12 = TextEditingController();
   TextEditingController Id13 = TextEditingController();
@@ -80,25 +81,29 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
   TextEditingController Id18 = TextEditingController();
   TextEditingController Id19 = TextEditingController();
   TextEditingController Id20 = TextEditingController();
+  TextEditingController Id21 = TextEditingController();
+  TextEditingController Id22 = TextEditingController();
+  TextEditingController Id24 = TextEditingController();
+  TextEditingController Id26 = TextEditingController();
   TextEditingController Id30 = TextEditingController();
-  List<File> proFile;
-  List<File> proFile2;
+  List<File>? proFile;
+  List<File>? proFile2;
 
   Future<void> openG() async {
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowMultiple: true);
     if (result != null) {
-      proFile = result.paths.map((path) => File(path)).toList();
+      proFile = result.paths.map((path) => File(path!)).toList();
     } else {
       // User canceled the picker
     }
   }
 
   Future<void> openG2() async {
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowMultiple: true);
     if (result != null) {
-      proFile2 = result.paths.map((path) => File(path)).toList();
+      proFile2 = result.paths.map((path) => File(path!)).toList();
     } else {
       // User canceled the picker
     }
@@ -106,13 +111,14 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
 
   Dio dio = Dio();
   var baseurl = 'https://mdecco.com/app/';
+
   //getArchResidentiallists
-  Future<ArchResidentialM> getArchResidentialF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<ArchResidentialM?>? getArchResidentialF({
+    required String? key,
+    required String? token_id,
+    required String? cat_id,
   }) async {
-    ArchResidentialM data;
+    ArchResidentialM? data;
     FormData formData = new FormData.fromMap(
         {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -126,32 +132,33 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
       data = ArchResidentialM.fromMap(value.data);
     });
     setState(() {
-      _list2 = data.result.lableList[2].listAnwser.toList();
-      _list3 = data.result.lableList[3].listAnwser.toList();
-      _list4 = data.result.lableList[4].listAnwser.toList();
-      _list5 = data.result.lableList[5].listAnwser.toList();
-      _list6 = data.result.lableList[6].listAnwser.toList();
-      _list7 = data.result.lableList[7].listAnwser.toList();
-      _list11 = data.result.lableList[11].listAnwser.toList();
-      _list12 = data.result.lableList[20].listAnwser.toList();
-      _list13 = data.result.lableList[21].listAnwser.toList();
-      _list14 = data.result.lableList[22].listAnwser.toList();
-      _list17 = data.result.lableList[23].listAnwser.toList();
-      _list18 = data.result.lableList[25].listAnwser.toList();
-      _list19 = data.result.lableList[26].listAnwser.toList();
-      _list20 = data.result.lableList[27].listAnwser.toList();
-      _list21 = data.result.lableList[28].listAnwser.toList();
-      _list22 = data.result.lableList[29].listAnwser.toList();
-      _list23 = data.result.lableList[31].listAnwser.toList();
-      _list24 = data.result.lableList[32].listAnwser.toList();
-      _list25 = data.result.lableList[33].listAnwser.toList();
-      _list26 = data.result.lableList[34].listAnwser.toList();
+      _list2 = data?.result?.lableList?[2].listAnwser?.toList();
+      _list3 = data?.result?.lableList?[3].listAnwser?.toList();
+      _list4 = data?.result?.lableList?[4].listAnwser?.toList();
+      _list5 = data?.result?.lableList?[5].listAnwser?.toList();
+      _list6 = data?.result?.lableList?[6].listAnwser?.toList();
+      _list7 = data?.result?.lableList?[7].listAnwser?.toList();
+      _list11 = data?.result?.lableList?[11].listAnwser?.toList();
+      _list12 = data?.result?.lableList?[20].listAnwser?.toList();
+      _list13 = data?.result?.lableList?[21].listAnwser?.toList();
+      _list14 = data?.result?.lableList?[22].listAnwser?.toList();
+      _list17 = data?.result?.lableList?[23].listAnwser?.toList();
+      _list18 = data?.result?.lableList?[25].listAnwser?.toList();
+      _list19 = data?.result?.lableList?[26].listAnwser?.toList();
+      _list20 = data?.result?.lableList?[27].listAnwser?.toList();
+      _list21 = data?.result?.lableList?[28].listAnwser?.toList();
+      _list22 = data?.result?.lableList?[29].listAnwser?.toList();
+      _list23 = data?.result?.lableList?[31].listAnwser?.toList();
+      _list24 = data?.result?.lableList?[32].listAnwser?.toList();
+      _list25 = data?.result?.lableList?[33].listAnwser?.toList();
+      _list26 = data?.result?.lableList?[34].listAnwser?.toList();
     });
     return data;
   }
 
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -177,7 +184,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
       child: StreamBuilder<ArchResidentialM>(
           stream: _repo
               .getArchResidentialF(
-                  key: '1234567890', token_id: token, cat_id: widget.cat_id)
+                  key: '1234567890', token_id: token!, cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
@@ -212,7 +219,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${snapshot.data.result.categoryDate.title}",
+                        "${snapshot.data?.result?.categoryDate?.title}",
                         style: TextStyle(
                           fontFamily: 'GE SS Two',
                           fontSize: 17,
@@ -233,7 +240,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "${snapshot.data.result.categoryDate.title}",
+                              "${snapshot.data?.result?.categoryDate?.title}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',
@@ -255,7 +262,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.categoryDate.description}",
+                                  "${snapshot.data?.result?.categoryDate?.description}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
@@ -281,7 +288,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[0].title}",
+                                  "${snapshot.data?.result?.lableList?[0].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -294,8 +301,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[0].type ==
+                                  child: snapshot.data?.result?.lableList?[0]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -372,7 +379,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[1].title}",
+                                  "${snapshot.data?.result?.lableList?[1].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -385,8 +392,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[1].type ==
+                                  child: snapshot.data?.result?.lableList?[1]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -463,7 +470,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[2].title}",
+                                  "${snapshot.data?.result?.lableList?[2].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -477,7 +484,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[2].type ==
+                                      snapshot.data?.result?.lableList?[2]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -507,7 +515,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                       child: _list2 != null
                                                           ? DropdownButton(
                                                               isExpanded: true,
-                                                              items: _list2
+                                                              items: _list2!
                                                                   .map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
@@ -534,7 +542,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id2 = val;
+                                                                  Id2.text = val
+                                                                      .toString();
                                                                   print(Id2
                                                                       .toString());
                                                                 });
@@ -566,7 +575,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[3].title}",
+                                  "${snapshot.data?.result?.lableList?[3].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -580,7 +589,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[3].type ==
+                                      snapshot.data?.result?.lableList?[3]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -611,7 +621,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list3
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -637,7 +647,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id3 = val;
+                                                                  Id3.text = val
+                                                                      .toString();
                                                                   print(Id3
                                                                       .toString());
                                                                 });
@@ -669,7 +680,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[4].title}",
+                                  "${snapshot.data?.result?.lableList?[4].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -683,7 +694,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[4].type ==
+                                      snapshot.data?.result?.lableList?[4]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -714,7 +726,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list4
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -740,7 +752,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id4 = val;
+                                                                  Id4.text = val
+                                                                      .toString();
                                                                   print(Id4
                                                                       .toString());
                                                                 });
@@ -772,7 +785,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[5].title}",
+                                  "${snapshot.data?.result?.lableList?[5].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -786,7 +799,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[5].type ==
+                                      snapshot.data?.result?.lableList?[5]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -817,7 +831,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list5
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -843,7 +857,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id5 = val;
+                                                                  Id5.text = val
+                                                                      .toString();
                                                                   print(Id5
                                                                       .toString());
                                                                 });
@@ -875,7 +890,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[6].title}",
+                                  "${snapshot.data?.result?.lableList?[6].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -889,7 +904,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[6].type ==
+                                      snapshot.data?.result?.lableList?[6]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -919,7 +935,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                       child: _list6 != null
                                                           ? DropdownButton(
                                                               isExpanded: true,
-                                                              items: _list6
+                                                              items: _list6!
                                                                   .map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
@@ -946,7 +962,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id6 = val;
+                                                                  Id6.text = val
+                                                                      .toString();
                                                                   print(Id6
                                                                       .toString());
                                                                 });
@@ -978,7 +995,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[7].title}",
+                                  "${snapshot.data?.result?.lableList?[7].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -992,7 +1009,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[7].type ==
+                                      snapshot.data?.result?.lableList?[7]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1023,7 +1041,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list7
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1049,7 +1067,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id7 = val;
+                                                                  Id7.text = val
+                                                                      .toString();
                                                                   print(Id7
                                                                       .toString());
                                                                 });
@@ -1081,7 +1100,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[8].title}",
+                                  "${snapshot.data?.result?.lableList?[8].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1094,14 +1113,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[8].type ==
+                                  child: snapshot.data?.result?.lableList?[8]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id8,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1173,7 +1193,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[9].title}",
+                                  "${snapshot.data?.result?.lableList?[9].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1186,14 +1206,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[9].type ==
+                                  child: snapshot.data?.result?.lableList?[9]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id9,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1265,7 +1286,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[10].title}",
+                                  "${snapshot.data?.result?.lableList?[10].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1278,14 +1299,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[10].type ==
+                                  child: snapshot.data?.result?.lableList?[10]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id10,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1358,7 +1380,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[11].title}",
+                                  "${snapshot.data?.result?.lableList?[11].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1368,82 +1390,83 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  child:
-                                      snapshot.data.result.lableList[11].type ==
-                                              2
-                                          ? Container(
-                                              width: sWidth * .8,
-                                              child: TextField(
-                                                // controller: workersController,
-                                                textDirection:
-                                                    TextDirection.rtl,
-                                              ))
-                                          : Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 5.0, bottom: 8.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      border: Border(),
-                                                    ),
-                                                    height: 50,
-                                                    width: size.width * .8,
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                      ),
-                                                      width: size.width * .8,
-                                                      child: _list11 != null
-                                                          ? DropdownButton(
-                                                              isExpanded: true,
-                                                              items: _list11
-                                                                  .map((e) {
-                                                                return new DropdownMenuItem(
-                                                                  child: Container(
-                                                                      alignment: Alignment.centerRight,
-                                                                      child: new Text(
-                                                                        e.title,
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontFamily:
-                                                                              'GE SS Two',
-                                                                          fontSize:
-                                                                              17,
-                                                                          color:
-                                                                              const Color(-384871238),
-                                                                          fontWeight:
-                                                                              FontWeight.w300,
-                                                                        ),
-                                                                        textDirection:
-                                                                            TextDirection.rtl,
-                                                                      )),
-                                                                  value: e
-                                                                      .answerId,
-                                                                );
-                                                              }).toList(),
-                                                              onChanged: (val) {
-                                                                setState(() {
-                                                                  Id11 = val;
-                                                                  print(Id11
-                                                                      .toString());
-                                                                });
-                                                              },
-                                                              value: Id11,
-                                                            )
-                                                          : Container(),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                ),
-                              )
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: Container(
+                              //     child:
+                              //         snapshot.data?.result?.lableList?[11]
+                              //                     .type ==
+                              //                 2
+                              //             ? Container(
+                              //                 width: sWidth * .8,
+                              //                 child: TextField(
+                              //                   // controller: workersController,
+                              //                   textDirection:
+                              //                       TextDirection.rtl,
+                              //                 ))
+                              //             : Padding(
+                              //                 padding: const EdgeInsets.only(
+                              //                     top: 5.0, bottom: 8.0),
+                              //                 child: Row(
+                              //                   mainAxisAlignment:
+                              //                       MainAxisAlignment.center,
+                              //                   children: [
+                              //                     Container(
+                              //                       decoration: BoxDecoration(
+                              //                         border: Border(),
+                              //                       ),
+                              //                       height: 50,
+                              //                       width: size.width * .8,
+                              //                       child: Container(
+                              //                         decoration: BoxDecoration(
+                              //                           color: Colors.white,
+                              //                         ),
+                              //                         width: size.width * .8,
+                              //                         child: _list11 != null
+                              //                             ? DropdownButton(
+                              //                                 isExpanded: true,
+                              //                                 items: _list11
+                              //                                     ?.map((e) {
+                              //                                   return new DropdownMenuItem(
+                              //                                     child: Container(
+                              //                                         alignment: Alignment.centerRight,
+                              //                                         child: new Text(
+                              //                                           e.title,
+                              //                                           style:
+                              //                                               TextStyle(
+                              //                                             fontFamily:
+                              //                                                 'GE SS Two',
+                              //                                             fontSize:
+                              //                                                 17,
+                              //                                             color:
+                              //                                                 const Color(-384871238),
+                              //                                             fontWeight:
+                              //                                                 FontWeight.w300,
+                              //                                           ),
+                              //                                           textDirection:
+                              //                                               TextDirection.rtl,
+                              //                                         )),
+                              //                                     value: e
+                              //                                         .answerId,
+                              //                                   );
+                              //                                 }).toList(),
+                              //                                 onChanged: (val) {
+                              //                                   setState(() {
+                              //                                     Id11=val;
+                              //                                     print(Id11
+                              //                                         .toString());
+                              //                                   });
+                              //                                 },
+                              //                                 value: Id11,
+                              //                               )
+                              //                             : Container(),
+                              //                       ),
+                              //                     )
+                              //                   ],
+                              //                 ),
+                              //               ),
+                              //   ),
+                              // )
                             ],
                           ),
                         ),
@@ -1461,7 +1484,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[12].title}",
+                                  "${snapshot.data?.result?.lableList?[12].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1474,14 +1497,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[12].type ==
+                                  child: snapshot.data?.result?.lableList?[12]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id12,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1553,7 +1577,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[13].title}",
+                                  "${snapshot.data?.result?.lableList?[13].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1566,8 +1590,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[13].type ==
+                                  child: snapshot.data?.result?.lableList?[13]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1655,7 +1679,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[14].title}",
+                                  "${snapshot.data?.result?.lableList?[14].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1668,8 +1692,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[14].type ==
+                                  child: snapshot.data?.result?.lableList?[14]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1746,7 +1770,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[15].title}",
+                                  "${snapshot.data?.result?.lableList?[15].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1759,14 +1783,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[15].type ==
+                                  child: snapshot.data?.result?.lableList?[15]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id15,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1838,7 +1863,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[16].title}",
+                                  "${snapshot.data?.result?.lableList?[16].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1851,14 +1876,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[16].type ==
+                                  child: snapshot.data?.result?.lableList?[16]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id16,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1894,7 +1920,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[17].title}",
+                                  "${snapshot.data?.result?.lableList?[17].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1907,14 +1933,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[17].type ==
+                                  child: snapshot.data?.result?.lableList?[17]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                            keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id17,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -1986,7 +2013,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[18].title}",
+                                  "${snapshot.data?.result?.lableList?[18].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1999,14 +2026,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[18].type ==
+                                  child: snapshot.data?.result?.lableList?[18]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id18,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -2065,6 +2093,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                           ),
                         ),
                       ),
+
                       Card(
                         elevation: 15,
                         shape: RoundedRectangleBorder(
@@ -2077,7 +2106,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[20].title}",
+                                  "${snapshot.data?.result?.lableList?[20].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2091,7 +2120,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[20].type ==
+                                      snapshot.data?.result?.lableList?[20]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -2122,7 +2152,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list12
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -2147,9 +2177,12 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
+                                                                debugPrint(
+                                                                    "this is muath val $val");
                                                                 setState(() {
-                                                                  answer12 =
-                                                                      val;
+                                                                  answer12 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer12
                                                                       .toString());
                                                                 });
@@ -2180,7 +2213,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[21].title}",
+                                  "${snapshot.data?.result?.lableList?[21].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2194,7 +2227,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[21].type ==
+                                      snapshot.data?.result?.lableList?[21]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -2225,7 +2259,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list13
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -2251,8 +2285,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer13 =
-                                                                      val;
+                                                                  answer13 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer13
                                                                       .toString());
                                                                 });
@@ -2283,7 +2318,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[22].title}",
+                                  "${snapshot.data?.result?.lableList?[22].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2297,7 +2332,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[22].type ==
+                                      snapshot.data?.result?.lableList?[22]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -2328,7 +2364,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list14
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -2354,8 +2390,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer14 =
-                                                                      val;
+                                                                  answer14 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer14
                                                                       .toString());
                                                                 });
@@ -2386,7 +2423,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[23].title}",
+                                  "${snapshot.data?.result?.lableList?[23].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2399,8 +2436,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[23].type ==
+                                  child: snapshot.data?.result?.lableList?[23]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -2487,7 +2524,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[31].title}",
+                                  "${snapshot.data?.result?.lableList?[31].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2500,14 +2537,15 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[31].type ==
+                                  child: snapshot.data?.result?.lableList?[31]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
                                           child: Container(
                                             child: TextField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: Id30,
                                               textDirection: TextDirection.rtl,
                                             ),
@@ -2578,7 +2616,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[25].title}",
+                                  "${snapshot.data?.result?.lableList?[25].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2592,7 +2630,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[25].type ==
+                                      snapshot.data?.result?.lableList?[25]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -2623,7 +2662,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list18
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -2649,8 +2688,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer18 =
-                                                                      val;
+                                                                  answer18 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer18
                                                                       .toString());
                                                                 });
@@ -2681,7 +2721,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[26].title}",
+                                  "${snapshot.data?.result?.lableList?[26].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2695,7 +2735,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[26].type ==
+                                      snapshot.data?.result?.lableList?[26]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -2726,7 +2767,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list19
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -2752,8 +2793,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer19 =
-                                                                      val;
+                                                                  answer19 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer19
                                                                       .toString());
                                                                 });
@@ -2784,7 +2826,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[27].title}",
+                                  "${snapshot.data?.result?.lableList?[27].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2798,7 +2840,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[27].type ==
+                                      snapshot.data?.result?.lableList?[27]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -2829,7 +2872,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list20
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -2855,8 +2898,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer20 =
-                                                                      val;
+                                                                  answer20 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer20
                                                                       .toString());
                                                                 });
@@ -2887,7 +2931,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[28].title}",
+                                  "${snapshot.data?.result?.lableList?[28].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2901,7 +2945,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[28].type ==
+                                      snapshot.data?.result?.lableList?[28]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -2932,7 +2977,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list21
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -2958,8 +3003,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer21 =
-                                                                      val;
+                                                                  answer21 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer21
                                                                       .toString());
                                                                 });
@@ -2990,7 +3036,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[29].title}",
+                                  "${snapshot.data?.result?.lableList?[29].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -3004,7 +3050,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[29].type ==
+                                      snapshot.data?.result?.lableList?[29]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -3035,7 +3082,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list22
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -3061,8 +3108,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer22 =
-                                                                      val;
+                                                                  answer22 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer22
                                                                       .toString());
                                                                 });
@@ -3093,7 +3141,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[32].title}",
+                                  "${snapshot.data?.result?.lableList?[32].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -3107,7 +3155,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[32].type ==
+                                      snapshot.data?.result?.lableList?[32]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -3138,7 +3187,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list24
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -3164,8 +3213,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer24 =
-                                                                      val;
+                                                                  answer24 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer24
                                                                       .toString());
                                                                 });
@@ -3196,7 +3246,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[33].title}",
+                                  "${snapshot.data?.result?.lableList?[33].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -3210,7 +3260,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[33].type ==
+                                      snapshot.data?.result?.lableList?[33]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -3241,7 +3292,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list25
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -3267,8 +3318,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer25 =
-                                                                      val;
+                                                                  answer25 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer25
                                                                       .toString());
                                                                 });
@@ -3299,7 +3351,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[34].title}",
+                                  "${snapshot.data?.result?.lableList?[34].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -3313,7 +3365,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[34].type ==
+                                      snapshot.data?.result?.lableList?[34]
+                                                  .type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -3344,7 +3397,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list26
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -3370,8 +3423,9 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  answer26 =
-                                                                      val;
+                                                                  answer26 = int
+                                                                      .parse(val
+                                                                          .toString());
                                                                   print(answer26
                                                                       .toString());
                                                                 });
@@ -3402,7 +3456,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[30].title}",
+                                  "${snapshot.data?.result?.lableList?[30].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -3415,8 +3469,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[30].type ==
+                                  child: snapshot.data?.result?.lableList?[30]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -3457,7 +3511,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[19].title}",
+                                  "${snapshot.data?.result?.lableList?[19].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -3470,8 +3524,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[19].type ==
+                                  child: snapshot.data?.result?.lableList?[19]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -3510,7 +3564,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
 
                               //  alignment: Alignment.center,
                               child: Text(
-                                  "${snapshot.data.result.categoryDate.details}",
+                                  "${snapshot.data?.result?.categoryDate?.details}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
@@ -3549,8 +3603,10 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005),
+                                      // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // Button text color
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -3558,16 +3614,16 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                     onPressed: () {
                                       setState(() {
                                         proFile = null;
-                                        Id2 = null;
-                                        Id3 = null;
-                                        Id4 = null;
-                                        Id5 = null;
-                                        Id6 = null;
-                                        Id7 = null;
-                                        Id11 = null;
+                                        Id2.text = '';
+                                        Id3.text = '';
+                                        Id4.text = '';
+                                        Id5.text = '';
+                                        Id6.text = '';
+                                        Id7.text = '';
+                                        // Id11 = null;
                                         Id0.text = '';
                                         Id1.text = '';
-                                        Id2 = null;
+                                        Id2.text = '';
                                         Id14.text = '';
                                         Id15.text = '';
                                         Id16.text = '';
@@ -3607,8 +3663,10 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005),
+                                      // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // Button text color
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -3631,7 +3689,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           Id8.text != null &&
                                           Id9.text != null &&
                                           Id10.text != null &&
-                                          Id11 != null &&
+                                          // Id11.text != null &&
                                           Id12.text != null &&
                                           Id14.text != null &&
                                           Id15.text != null &&
@@ -3647,76 +3705,75 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                           Id15.text != '' &&
                                           Id19.text != '') {
                                         String a0 =
-                                            '${snapshot.data.result.lableList[0].lebalId}."${Id0.text}"';
+                                            '${snapshot.data?.result?.lableList?[0].lebalId}."${Id0.text}"';
                                         String a1 =
-                                            '${snapshot.data.result.lableList[1].lebalId}."${Id1.text}"';
+                                            '${snapshot.data?.result?.lableList?[1].lebalId}."${Id1.text}"';
                                         String a2 =
-                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2";
+                                            "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
                                         String a3 =
-                                            "${snapshot.data.result.lableList[3].lebalId}.$Id3";
+                                            "${snapshot.data?.result?.lableList?[3].lebalId}.$Id3";
                                         String a4 =
-                                            "${snapshot.data.result.lableList[4].lebalId}.$Id4";
+                                            "${snapshot.data?.result?.lableList?[4].lebalId}.$Id4";
                                         String a5 =
-                                            "${snapshot.data.result.lableList[5].lebalId}.$Id5";
+                                            "${snapshot.data?.result?.lableList?[5].lebalId}.$Id5";
                                         String a6 =
-                                            "${snapshot.data.result.lableList[6].lebalId}.$Id6";
+                                            "${snapshot.data?.result?.lableList?[6].lebalId}.$Id6";
                                         String a7 =
-                                            "${snapshot.data.result.lableList[7].lebalId}.$Id7";
+                                            "${snapshot.data?.result?.lableList?[7].lebalId}.$Id7";
                                         String a8 =
-                                            '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
+                                            '${snapshot.data?.result?.lableList?[8].lebalId}."${Id8.text}"';
                                         String a9 =
-                                            '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
+                                            '${snapshot.data?.result?.lableList?[9].lebalId}."${Id9.text}"';
                                         String a10 =
-                                            '${snapshot.data.result.lableList[10].lebalId}."${Id10.text}"';
-                                        String a11 =
-                                            "${snapshot.data.result.lableList[11].lebalId}.$Id11";
+                                            '${snapshot.data?.result?.lableList?[10].lebalId}."${Id10.text}"';
+                                        // String a11 = "${snapshot.data?.result?.lableList?[11].lebalId}.$Id11";
                                         String a12 =
-                                            '${snapshot.data.result.lableList[12].lebalId}."${Id12.text}"';
-                                        //  String a13='${snapshot.data.result.lableList[13].lebalId}."${Id13.text}"';
+                                            '${snapshot.data?.result?.lableList?[12].lebalId}."${Id12.text}"';
+                                        //  String a13='${snapshot.data?.result?.lableList?[13].lebalId}."${Id13.text}"';
                                         String a14 =
-                                            '${snapshot.data.result.lableList[14].lebalId}."${Id14.text}"';
+                                            '${snapshot.data?.result?.lableList?[14].lebalId}."${Id14.text}"';
                                         String a15 =
-                                            '${snapshot.data.result.lableList[15].lebalId}."${Id15.text}"';
+                                            '${snapshot.data?.result?.lableList?[15].lebalId}."${Id15.text}"';
                                         String a16 =
-                                            '${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
+                                            '${snapshot.data?.result?.lableList?[16].lebalId}."${Id16.text}"';
                                         String a17 =
-                                            '${snapshot.data.result.lableList[17].lebalId}."${Id17.text}"';
+                                            '${snapshot.data?.result?.lableList?[17].lebalId}."${Id17.text}"';
                                         String a18 =
-                                            '${snapshot.data.result.lableList[18].lebalId}."${Id18.text}"';
+                                            '${snapshot.data?.result?.lableList?[18].lebalId}."${Id18.text}"';
                                         String a19 =
-                                            '${snapshot.data.result.lableList[19].lebalId}."${Id19.text}"';
+                                            '${snapshot.data?.result?.lableList?[19].lebalId}."${Id19.text}"';
                                         String a20 =
-                                            "${snapshot.data.result.lableList[20].lebalId}.${0}";
+                                            "${snapshot.data?.result?.lableList?[20].lebalId}.${0}";
                                         String a21 =
-                                            "${snapshot.data.result.lableList[21].lebalId}.$answer12";
+                                            "${snapshot.data?.result?.lableList?[21].lebalId}.$answer12";
                                         String a22 =
-                                            "${snapshot.data.result.lableList[22].lebalId}.$answer13";
+                                            "${snapshot.data?.result?.lableList?[22].lebalId}.$answer13";
                                         String a23 =
-                                            "${snapshot.data.result.lableList[23].lebalId}.$answer14";
+                                            "${snapshot.data?.result?.lableList?[23].lebalId}.$answer14";
                                         String a24 =
-                                            "${snapshot.data.result.lableList[24].lebalId}.$answer17";
+                                            "${snapshot.data?.result?.lableList?[24].lebalId}.$answer17";
                                         String a25 =
-                                            "${snapshot.data.result.lableList[25].lebalId}.$answer18";
+                                            "${snapshot.data?.result?.lableList?[25].lebalId}.$answer18";
                                         String a26 =
-                                            "${snapshot.data.result.lableList[26].lebalId}.$answer19";
+                                            "${snapshot.data?.result?.lableList?[26].lebalId}.$answer19";
                                         String a27 =
-                                            "${snapshot.data.result.lableList[27].lebalId}.$answer20";
+                                            "${snapshot.data?.result?.lableList?[27].lebalId}.$answer20";
                                         String a28 =
-                                            "${snapshot.data.result.lableList[28].lebalId}.$answer21";
+                                            "${snapshot.data?.result?.lableList?[28].lebalId}.$answer21";
                                         String a29 =
-                                            "${snapshot.data.result.lableList[29].lebalId}.$answer22";
+                                            "${snapshot.data?.result?.lableList?[29].lebalId}.$answer22";
                                         String a30 =
-                                            "${snapshot.data.result.lableList[30].lebalId}.${Id20.text}";
+                                            "${snapshot.data?.result?.lableList?[30].lebalId}.${Id20.text}";
                                         String a31 =
-                                            "${snapshot.data.result.lableList[31].lebalId}.${Id30.text}";
+                                            "${snapshot.data?.result?.lableList?[31].lebalId}.${Id30.text}";
                                         String a32 =
-                                            "${snapshot.data.result.lableList[32].lebalId}.$answer24";
+                                            "${snapshot.data?.result?.lableList?[32].lebalId}.$answer24";
                                         String a33 =
-                                            "${snapshot.data.result.lableList[33].lebalId}.$answer25";
+                                            "${snapshot.data?.result?.lableList?[33].lebalId}.$answer25";
                                         String a34 =
-                                            "${snapshot.data.result.lableList[34].lebalId}.$answer26";
+                                            "${snapshot.data?.result?.lableList?[34].lebalId}.$answer26";
                                         String answer =
-                                            '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a14,$a15,$a16,$a17,$a18,$a19,$a20,$a21,$a22,$a23,$a24,$a25,$a26,$a27,$a28,$a29,$a30,$a31,$a32,$a33,$a34,';
+                                            '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a12,$a14,$a15,$a16,$a17,$a18,$a19,$a20,$a21,$a22,$a23,$a24,$a25,$a26,$a27,$a28,$a29,$a30,$a31,$a32,$a33,$a34,';
                                         _repo
                                             .sendCostBuildF(
                                           key: '1234567890',
@@ -3731,8 +3788,10 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        SendDone(message: value.message,)));
+                                                    builder: (_) => SendDone(
+                                                          message:
+                                                              value.message,
+                                                        )));
                                           } else {
                                             var snackBar = SnackBar(
                                                 content: Text(
@@ -3782,8 +3841,10 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005),
+                                      // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // Button text color
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),

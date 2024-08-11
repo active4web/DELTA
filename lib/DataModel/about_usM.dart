@@ -1,7 +1,7 @@
 
 // To parse this JSON data, do
 //
-//     final aboutUsM = aboutUsMFromMap(jsonString);
+//     final aboutUsM = aboutUsMFromMap(jsonString?);
 
 import 'dart:convert';
 
@@ -13,14 +13,14 @@ class AboutUsM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
-  factory AboutUsM.fromJson(String str) => AboutUsM.fromMap(json.decode(str));
+  factory AboutUsM.fromJson(String? str) => AboutUsM.fromMap(json.decode(str!));
 
-  String toJson() => json.encode(toMap());
+  String? toJson() => json.encode(toMap());
 
   factory AboutUsM.fromMap(Map<String, dynamic> json) => AboutUsM(
     message: json["message"],
@@ -29,11 +29,11 @@ class AboutUsM {
     result: Result.fromMap(json["result"]),
   );
 
-  Map<String, dynamic> toMap() => {
+  Map<String?, dynamic> toMap() => {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -47,18 +47,18 @@ class Result {
     this.messageTxt,
   });
 
-  String visionTitle;
-  String visionTxt;
-  String aboutTitle;
-  String aboutTxt;
-  String messageTitle;
-  String messageTxt;
+  String? visionTitle;
+  String? visionTxt;
+  String? aboutTitle;
+  String? aboutTxt;
+  String? messageTitle;
+  String? messageTxt;
 
-  factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
+  factory Result.fromJson(String? str) => Result.fromMap(json.decode(str!));
 
-  String toJson() => json.encode(toMap());
+  String? toJson() => json.encode(toMap());
 
-  factory Result.fromMap(Map<String, dynamic> json) => Result(
+  factory Result.fromMap(Map<String?, dynamic> json) => Result(
     visionTitle: json["vision_title"],
     visionTxt: json["vision_txt"],
     aboutTitle: json["about_title"],
@@ -67,7 +67,7 @@ class Result {
     messageTxt: json["message_txt"],
   );
 
-  Map<String, dynamic> toMap() => {
+  Map<String?, dynamic> toMap() => {
     "vision_title": visionTitle,
     "vision_txt": visionTxt,
     "about_title": aboutTitle,

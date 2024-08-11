@@ -12,9 +12,9 @@ class MakeTicketM {
     this.status,
   });
 
-  String message;
-  int codenum;
-  bool status;
+  String? message;
+  int? codenum;
+  bool? status;
 
   factory MakeTicketM.fromJson(String str) => MakeTicketM.fromMap(json.decode(str));
 

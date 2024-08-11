@@ -14,9 +14,9 @@ class MessageSentM {
     this.status,
   });
 
-  String message;
-  int codenum;
-  bool status;
+  String? message;
+  int? codenum;
+  bool? status;
 
   factory MessageSentM.fromJson(String str) => MessageSentM.fromMap(json.decode(str));
 

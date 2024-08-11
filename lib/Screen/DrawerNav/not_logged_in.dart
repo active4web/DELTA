@@ -18,11 +18,13 @@ import 'technical_support.dart';
 
 
 class NotLogged extends StatefulWidget {
-   NotLogged({Key key,this.title}) : super(key: key);
-String title;
+
+String? title;
 
   @override
   _NotLoggedState createState() => _NotLoggedState();
+
+NotLogged({this.title});
 }
 
 class _NotLoggedState extends State<NotLogged> {
@@ -106,8 +108,11 @@ class _NotLoggedState extends State<NotLogged> {
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 20,
-                        primary:  Color(0xfff3a005),
-                        onPrimary: Colors.orangeAccent,
+                        foregroundColor: Colors.orangeAccent,
+                        backgroundColor: Color(0xfff3a005),
+
+                        // primary:  Color(0xfff3a005),
+                        // onPrimary: Colors.orangeAccent,
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                             BorderRadius.all(Radius.circular(30))),

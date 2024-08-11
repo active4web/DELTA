@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 
-
-
-
 class CustomTabView extends StatefulWidget {
   final int itemCount;
   final IndexedWidgetBuilder tabBuilder;
   final IndexedWidgetBuilder pageBuilder;
-  final Widget stub;
-  final ValueChanged<int> onPositionChange;
-  final ValueChanged<double> onScroll;
-  final int initPosition;
+  final Widget? stub;
+  final ValueChanged<int>? onPositionChange;
+  final ValueChanged<double>? onScroll;
+  final int? initPosition;
 
   CustomTabView({
-    @required this.itemCount,
-    @required this.tabBuilder,
-    @required this.pageBuilder,
+    required this.itemCount,
+    required this.tabBuilder,
+    required this.pageBuilder,
     this.stub,
     this.onPositionChange,
     this.onScroll,
@@ -23,74 +20,62 @@ class CustomTabView extends StatefulWidget {
   });
 
   @override
-  _CustomTabsState createState() => _CustomTabsState();
+  _CustomTabViewState createState() => _CustomTabViewState();
 }
 
-class _CustomTabsState extends State<CustomTabView> with TickerProviderStateMixin {
-  TabController controller;
-  int _currentCount;
-  int _currentPosition;
+class _CustomTabViewState extends State<CustomTabView> with TickerProviderStateMixin {
+  TabController? controller;
+  int _currentPosition = 0;
 
   @override
   void initState() {
+    super.initState();
     _currentPosition = widget.initPosition ?? 0;
     controller = TabController(
       length: widget.itemCount,
       vsync: this,
       initialIndex: _currentPosition,
     );
-    controller.addListener(onPositionChange);
-    controller.animation.addListener(onScroll);
-    _currentCount = widget.itemCount;
-    super.initState();
+    controller!.addListener(onPositionChange);
+    controller!.animation!.addListener(onScroll);
   }
 
   @override
   void didUpdateWidget(CustomTabView oldWidget) {
-    if (_currentCount != widget.itemCount) {
-      controller.animation.removeListener(onScroll);
-      controller.removeListener(onPositionChange);
-      controller.dispose();
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.itemCount != oldWidget.itemCount) {
+      controller!.animation!.removeListener(onScroll);
+      controller!.removeListener(onPositionChange);
+      controller!.dispose();
 
       if (widget.initPosition != null) {
-        _currentPosition = widget.initPosition;
+        _currentPosition = widget.initPosition!;
       }
 
-      if (_currentPosition > widget.itemCount - 1) {
+      if (_currentPosition >= widget.itemCount) {
         _currentPosition = widget.itemCount - 1;
-        _currentPosition = _currentPosition < 0 ? 0 :
-        _currentPosition;
-        if (widget.onPositionChange is ValueChanged<int>) {
-          WidgetsBinding.instance.addPostFrameCallback((_){
-            if(mounted) {
-              widget.onPositionChange(_currentPosition);
-            }
-          });
-        }
       }
 
-      _currentCount = widget.itemCount;
       setState(() {
         controller = TabController(
           length: widget.itemCount,
           vsync: this,
           initialIndex: _currentPosition,
         );
-        controller.addListener(onPositionChange);
-        controller.animation.addListener(onScroll);
+        controller!.addListener(onPositionChange);
+        controller!.animation!.addListener(onScroll);
       });
     } else if (widget.initPosition != null) {
-      controller.animateTo(widget.initPosition);
+      controller!.animateTo(widget.initPosition!);
     }
-
-    super.didUpdateWidget(oldWidget);
   }
 
   @override
   void dispose() {
-    controller.animation.removeListener(onScroll);
-    controller.removeListener(onPositionChange);
-    controller.dispose();
+    controller!.animation!.removeListener(onScroll);
+    controller!.removeListener(onPositionChange);
+    controller!.dispose();
     super.dispose();
   }
 
@@ -135,18 +120,14 @@ class _CustomTabsState extends State<CustomTabView> with TickerProviderStateMixi
     );
   }
 
-  onPositionChange() {
-    if (!controller.indexIsChanging) {
-      _currentPosition = controller.index;
-      if (widget.onPositionChange is ValueChanged<int>) {
-        widget.onPositionChange(_currentPosition);
-      }
+  void onPositionChange() {
+    if (!controller!.indexIsChanging) {
+      _currentPosition = controller!.index;
+      widget.onPositionChange?.call(_currentPosition);
     }
   }
 
-  onScroll() {
-    if (widget.onScroll is ValueChanged<double>) {
-      widget.onScroll(controller.animation.value);
-    }
+  void onScroll() {
+    widget.onScroll?.call(controller!.animation!.value);
   }
 }

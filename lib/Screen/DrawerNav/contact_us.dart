@@ -6,14 +6,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';
 
 class ContactUs extends StatefulWidget {
-  const ContactUs({Key key}) : super(key: key);
 
   @override
   _ContactUsState createState() => _ContactUsState();
 }
 
 class _ContactUsState extends State<ContactUs> {
-  String token;
+  String? token;
   TextEditingController controllerPhone = TextEditingController();
   TextEditingController controllerName = TextEditingController();
   TextEditingController controllerContent = TextEditingController();
@@ -77,7 +76,7 @@ class _ContactUsState extends State<ContactUs> {
         ),
         endDrawer: NewWidget(size: size, token: token),
         body: StreamBuilder<ContactInfoM>(
-          stream: _repo.getContact(token_id: token, key: "1234567890").asStream(),
+          stream: _repo.getContact(token_id: token!, key: "1234567890").asStream(),
           builder: (context, snapshot) {
             if(snapshot.data!=null){ return SingleChildScrollView(
               child: Column(children: [
@@ -137,7 +136,7 @@ class _ContactUsState extends State<ContactUs> {
                           width: size.width * .8,
                           height: size.height * .05,
                           child: Text(
-                            "${snapshot.data.result.address}",
+                            "${snapshot.data?.result?.address}",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
@@ -157,13 +156,13 @@ class _ContactUsState extends State<ContactUs> {
                     children: [
                       InkWell(
                         onTap: (){
-                          Utils.openPhoneCall(phoneNumber: snapshot.data.result.hotline);
+                          Utils.openPhoneCall(phoneNumber: snapshot.data?.result?.hotline);
                         },
                         child: Container(
                             width: size.width * .8,
                             height: size.height * .05,
                             child: Text(
-                              "${snapshot.data.result.hotline}",
+                              "${snapshot.data?.result?.hotline}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',
@@ -183,13 +182,13 @@ class _ContactUsState extends State<ContactUs> {
                     children: [
                       InkWell(
                         onTap: (){
-                          Utils.openEmail(toEmail: snapshot.data.result.supportEmail,);
+                          Utils.openEmail(toEmail: snapshot.data?.result?.supportEmail??"",);
                         },
                         child: Container(
                             width: size.width * .8,
                             height: size.height * .05,
                             child: Text(
-                              "${snapshot.data.result.supportEmail}",
+                              "${snapshot.data?.result?.supportEmail}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',
@@ -211,7 +210,7 @@ class _ContactUsState extends State<ContactUs> {
                           width: size.width * .8,
                           height: size.height * .05,
                           child: Text(
-                            "${snapshot.data.result.websiteLink}",
+                            "${snapshot.data?.result?.websiteLink}",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
@@ -232,7 +231,7 @@ class _ContactUsState extends State<ContactUs> {
                           width: size.width * .8,
                           height: size.height * .05,
                           child: Text(
-                            "${snapshot.data.result.supportPhone}",
+                            "${snapshot.data?.result?.supportPhone}",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
@@ -250,10 +249,10 @@ class _ContactUsState extends State<ContactUs> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      if(snapshot.data.result.whatsapp != "")
+                      if(snapshot.data?.result?.whatsapp != "")
                       GestureDetector(
                         onTap:(){
-                          Utils.openLink(url: 'https://web.whatsapp.com/send?phone=${snapshot.data.result.whatsapp}');
+                          Utils.openLink(url: 'https://web.whatsapp.com/send?phone=${snapshot.data?.result?.whatsapp}');
                         },
                         child: Container(
                           width: size.height * .05,
@@ -264,11 +263,11 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                         ),
                       ),
-                      if(snapshot.data.result.twitter != "")
+                      if(snapshot.data?.result?.twitter != "")
                       GestureDetector(
                         onTap:(){
-                          print(snapshot.data.result.twitter);
-                          Utils.openLink(url: '${snapshot.data.result.twitter}');
+                          print(snapshot.data?.result?.twitter);
+                          Utils.openLink(url: '${snapshot.data?.result?.twitter}');
                         },
                         child: Container(
                           width: size.height * .05,
@@ -279,11 +278,11 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                         ),
                       ),
-                      if(snapshot.data.result.linkedin != "")
+                      if(snapshot.data?.result?.linkedin != "")
                       GestureDetector(
                         onTap:(){
                           print("hello");
-                          Utils.openLink(url: '${snapshot.data.result.linkedin}');
+                          Utils.openLink(url: '${snapshot.data?.result?.linkedin}');
                         },
                         child: Container(
                           width: size.height * .05,
@@ -294,10 +293,10 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                         ),
                       ),
-                      if(snapshot.data.result.facebook != "")
+                      if(snapshot.data?.result?.facebook != "")
                       GestureDetector(
                         onTap:(){
-                          Utils.openLink(url: '${snapshot.data.result.facebook}');
+                          Utils.openLink(url: '${snapshot.data?.result?.facebook}');
                         },
                         child: Container(
                           width: size.height * .05,
@@ -424,8 +423,8 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                           style: ElevatedButton.styleFrom(
                             elevation: 20,
-                            primary:  Color(0xfff3a005),
-                            onPrimary: Colors.orangeAccent,
+                            backgroundColor: Color(0xfff3a005), // Button background color
+                            foregroundColor: Colors.orangeAccent,
                             shape: const RoundedRectangleBorder(
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(30))),
@@ -436,7 +435,7 @@ class _ContactUsState extends State<ContactUs> {
                             &&controllerPhone.text!=""&&controllerPhone.text!=null
                             &&controllerName.text!=""&&controllerName.text!=null)
                             {
-                             _repo.messageSentReply(key: '1234567890', token_id: token, name: controllerName.text, phone: controllerPhone.text, message: controllerContent.text)
+                             _repo.messageSentReply(key: '1234567890', token_id: token!, name: controllerName.text, phone: controllerPhone.text, message: controllerContent.text)
                                  .then((value) {
                              if  (value.status!=false){
                                var snackBar = SnackBar(content: Text('${value.message}'));

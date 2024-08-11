@@ -4,12 +4,10 @@ import 'package:delta/Repository/Repository.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'Home/home_bar.dart';
 import 'signup.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key key}) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -24,19 +22,19 @@ class _LoginState extends State<Login> {
   bool obscureText1 = true;
   @override
   void initState() {
+    super.initState();
     Timer(Duration(seconds: 0), () async {
-      SharedPreferences preferences;
-      preferences = await SharedPreferences.getInstance();
-      print(preferences.getBool("loginState"));
-      if (preferences.getBool("loginState") != null) {
-        if (preferences.getBool("loginState")) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeBar()));
-        }
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      bool? loginState = preferences.getBool("loginState"); // Nullable bool
+      if (loginState != null && loginState) { // Check for null and true
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomeBar()),
+        );
       }
     });
-    super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -175,15 +173,15 @@ class _LoginState extends State<Login> {
                         ),
                         style: ElevatedButton.styleFrom(
                           elevation: 20,
-                          primary: Color(0xfff3a005),
-                          onPrimary: Colors.orangeAccent,
+                          backgroundColor: Color(0xfff3a005), // Button background color
+                          foregroundColor: Colors.orangeAccent, // Button text color
                           shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
                         ),
                         onPressed: () async {
                           SharedPreferences preferences = await SharedPreferences.getInstance();
-                          String fbToken = await FirebaseMessaging.instance.getToken();
+                          String? fbToken = await FirebaseMessaging.instance.getToken();
                           if (controllerPassword.text != null || controllerPassword.text != '') {
                             if (controllerPhone.text != null || controllerPhone.text != '') {
                               if (controllerPhone.text != null && controllerPassword.text != null && controllerPhone.text != '' && controllerPassword.text != '') {
@@ -191,13 +189,13 @@ class _LoginState extends State<Login> {
                                     .loginAccount(
                                         phone: controllerPhone.text,
                                         password: controllerPassword.text,
-                                        firebase_id: fbToken,
+                                        firebase_id: fbToken!,
                                         key: "1234567890")
                                     .then((value) {
-                                  if (!value.status) {
+                                  if (!value.status!) {
                                     var snackBar = SnackBar(
                                         content: Text(
-                                            value.message));
+                                            '${value.message}'));
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(snackBar);
 
@@ -205,21 +203,20 @@ class _LoginState extends State<Login> {
                                     preferences.setBool('loginState', true);
                                     preferences.setBool('SliderState', true);
                                     preferences.setString("phone",
-                                        value.result.clientData[0].phone);
+                                        value.result?.clientData?[0].phone??"");
                                     preferences.setString("token",
-                                        value.result.clientData[0].token);
+                                        value.result?.clientData?[0].token??"");
                                     preferences.setString("name",
-                                        value.result.clientData[0].fullname);
+                                        value.result?.clientData?[0].fullname??"");
                                     preferences.setString("email",
-                                        value.result.clientData[0].email);
+                                        value.result?.clientData?[0].email??"");
                                     preferences.setString(
                                         "cityName",
-                                        value.result.clientData[0].cityName ??
+                                        value.result?.clientData?[0].cityName ??
                                             "");
                                     preferences.setString(
                                         "id",
-                                        value.result.clientData[0].id
-                                            .toString());
+                                        '${value.result?.clientData?[0].id}');
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
@@ -272,8 +269,8 @@ class _LoginState extends State<Login> {
                         ),
                         style: ElevatedButton.styleFrom(
                           elevation: 20,
-                          primary: Color(0xff61a1e2),
-                          onPrimary: Colors.orangeAccent,
+                          backgroundColor: Color(0xff61a1e2), // Button background color
+                          foregroundColor: Colors.orangeAccent, // Button text color
                           shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30))),

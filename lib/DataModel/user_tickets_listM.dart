@@ -13,10 +13,10 @@ class UserTicketsListM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory UserTicketsListM.fromJson(String str) => UserTicketsListM.fromMap(json.decode(str));
 
@@ -33,7 +33,7 @@ class UserTicketsListM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -42,7 +42,7 @@ class Result {
     this.ticketsTypes,
   });
 
-  List<TicketsType> ticketsTypes;
+  List<TicketsType>? ticketsTypes;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -53,7 +53,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "tickets_types": List<dynamic>.from(ticketsTypes.map((x) => x.toMap())),
+    "tickets_types": List<dynamic>.from(ticketsTypes!.map((x) => x.toMap())),
   };
 }
 
@@ -64,9 +64,9 @@ class TicketsType {
     this.color,
   });
 
-  int id;
-  String name;
-  String color;
+  int? id;
+  String? name;
+  String? color;
 
   factory TicketsType.fromJson(String str) => TicketsType.fromMap(json.decode(str));
 

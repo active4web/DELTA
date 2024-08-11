@@ -12,7 +12,6 @@ import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:flutter/material.dart';
 
 class ResidentalDesign extends StatefulWidget {
-  const ResidentalDesign({Key key}) : super(key: key);
 
   @override
   _ResidentalDesignState createState() => _ResidentalDesignState();
@@ -606,9 +605,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacter>(
                                 value: SingingCharacter.no_bathroom,
                                 groupValue: _character_bath,
-                                onChanged: (SingingCharacter value) {
+                                onChanged: (SingingCharacter? value) {
                                   setState(() {
-                                    _character_bath = value;
+                                    _character_bath = value!;
                                     print(_character_bath);
                                   });
                                 },
@@ -622,9 +621,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacter>(
                                 value: SingingCharacter.bathroom,
                                 groupValue: _character_bath,
-                                onChanged: (SingingCharacter value) {
+                                onChanged: (SingingCharacter? value) {
                                   setState(() {
-                                    _character_bath = value;
+                                    _character_bath = value!;
                                     print(_character_bath);
                                   });
                                 },
@@ -781,9 +780,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                         value: SingingCharacterKitchen.close,
                                         groupValue: _character_kitchen,
                                         onChanged:
-                                            (SingingCharacterKitchen value) {
+                                            (SingingCharacterKitchen? value) {
                                           setState(() {
-                                            _character_kitchen = value;
+                                            _character_kitchen = value!;
                                             print(_character_kitchen);
                                           });
                                         },
@@ -798,9 +797,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                         value: SingingCharacterKitchen.open,
                                         groupValue: _character_kitchen,
                                         onChanged:
-                                            (SingingCharacterKitchen value) {
+                                            (SingingCharacterKitchen? value) {
                                           setState(() {
-                                            _character_kitchen = value;
+                                            _character_kitchen = value!;
                                             print(_character_kitchen);
                                           });
                                         },
@@ -936,9 +935,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacter3>(
                                 value: SingingCharacter3.no,
                                 groupValue: _character_living,
-                                onChanged: (SingingCharacter3 value) {
+                                onChanged: (SingingCharacter3? value) {
                                   setState(() {
-                                    _character_living = value;
+                                    _character_living = value!;
                                     print(_character_living);
                                   });
                                 },
@@ -952,9 +951,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacter3>(
                                 value: SingingCharacter3.yes,
                                 groupValue: _character_living,
-                                onChanged: (SingingCharacter3 value) {
+                                onChanged: (SingingCharacter3? value) {
                                   setState(() {
-                                    _character_living = value;
+                                    _character_living = value!;
                                     print(_character_living);
                                   });
                                 },
@@ -996,9 +995,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacter4>(
                                 value: SingingCharacter4.classic,
                                 groupValue: _character_design,
-                                onChanged: (SingingCharacter4 value) {
+                                onChanged: (SingingCharacter4? value) {
                                   setState(() {
-                                    _character_design = value;
+                                    _character_design = value!;
                                     print(_character_design);
                                   });
                                 },
@@ -1012,9 +1011,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacter4>(
                                 value: SingingCharacter4.modern,
                                 groupValue: _character_design,
-                                onChanged: (SingingCharacter4 value) {
+                                onChanged: (SingingCharacter4? value) {
                                   setState(() {
-                                    _character_design = value;
+                                    _character_design = value!;
                                     print(_character_design);
                                   });
                                 },
@@ -1056,9 +1055,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterneighbor>(
                                 value: SingingCharacterneighbor.no,
                                 groupValue: _character_neighbor,
-                                onChanged: (SingingCharacterneighbor value) {
+                                onChanged: (SingingCharacterneighbor? value) {
                                   setState(() {
-                                    _character_neighbor = value;
+                                    _character_neighbor = value!;
                                     print(_character_neighbor);
                                   });
                                 },
@@ -1072,9 +1071,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterneighbor>(
                                 value: SingingCharacterneighbor.yes,
                                 groupValue: _character_neighbor,
-                                onChanged: (SingingCharacterneighbor value) {
+                                onChanged: (SingingCharacterneighbor? value) {
                                   setState(() {
-                                    _character_neighbor = value;
+                                    _character_neighbor = value!;
                                     print(_character_neighbor);
                                   });
                                 },
@@ -1172,9 +1171,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterpool>(
                                 value: SingingCharacterpool.no,
                                 groupValue: _character_pool,
-                                onChanged: (SingingCharacterpool value) {
+                                onChanged: (SingingCharacterpool? value) {
                                   setState(() {
-                                    _character_pool = value;
+                                    _character_pool = value!;
                                     print(_character_pool);
                                   });
                                 },
@@ -1188,9 +1187,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterpool>(
                                 value: SingingCharacterpool.yes,
                                 groupValue: _character_pool,
-                                onChanged: (SingingCharacterpool value) {
+                                onChanged: (SingingCharacterpool? value) {
                                   setState(() {
-                                    _character_pool = value;
+                                    _character_pool = value!;
                                     print(_character_pool);
                                   });
                                 },
@@ -1232,9 +1231,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterPoolSide>(
                                 value: SingingCharacterPoolSide.outside,
                                 groupValue: _character_PoolSide,
-                                onChanged: (SingingCharacterPoolSide value) {
+                                onChanged: (SingingCharacterPoolSide? value) {
                                   setState(() {
-                                    _character_PoolSide = value;
+                                    _character_PoolSide = value!;
                                     print(_character_PoolSide);
                                   });
                                 },
@@ -1248,9 +1247,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterPoolSide>(
                                 value: SingingCharacterPoolSide.inside,
                                 groupValue: _character_PoolSide,
-                                onChanged: (SingingCharacterPoolSide value) {
+                                onChanged: (SingingCharacterPoolSide? value) {
                                   setState(() {
-                                    _character_PoolSide = value;
+                                    _character_PoolSide = value!;
                                     print(_character_PoolSide);
                                   });
                                 },
@@ -1334,9 +1333,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterGarden>(
                                 value: SingingCharacterGarden.no,
                                 groupValue: _character_Garden,
-                                onChanged: (SingingCharacterGarden value) {
+                                onChanged: (SingingCharacterGarden? value) {
                                   setState(() {
-                                    _character_Garden = value;
+                                    _character_Garden = value!;
                                     print(_character_Garden);
                                   });
                                 },
@@ -1350,9 +1349,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterGarden>(
                                 value: SingingCharacterGarden.yes,
                                 groupValue: _character_Garden,
-                                onChanged: (SingingCharacterGarden value) {
+                                onChanged: (SingingCharacterGarden? value) {
                                   setState(() {
-                                    _character_Garden = value;
+                                    _character_Garden = value!;
                                     print(_character_Garden);
                                   });
                                 },
@@ -1409,9 +1408,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterDirection>(
                                   value: SingingCharacterDirection.West,
                                   groupValue: _character_Direction,
-                                  onChanged: (SingingCharacterDirection value) {
+                                  onChanged: (SingingCharacterDirection? value) {
                                     setState(() {
-                                      _character_Direction = value;
+                                      _character_Direction = value!;
                                       print(_character_Direction);
                                     });
                                   },
@@ -1427,9 +1426,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterDirection>(
                                   value: SingingCharacterDirection.east,
                                   groupValue: _character_Direction,
-                                  onChanged: (SingingCharacterDirection value) {
+                                  onChanged: (SingingCharacterDirection? value) {
                                     setState(() {
-                                      _character_Direction = value;
+                                      _character_Direction = value!;
                                       print(_character_Direction);
                                     });
                                   },
@@ -1459,9 +1458,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterDirection>(
                                   value: SingingCharacterDirection.South,
                                   groupValue: _character_Direction,
-                                  onChanged: (SingingCharacterDirection value) {
+                                  onChanged: (SingingCharacterDirection? value) {
                                     setState(() {
-                                      _character_Direction = value;
+                                      _character_Direction = value!;
                                       print(_character_Direction);
                                     });
                                   },
@@ -1477,9 +1476,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterDirection>(
                                   value: SingingCharacterDirection.north,
                                   groupValue: _character_Direction,
-                                  onChanged: (SingingCharacterDirection value) {
+                                  onChanged: (SingingCharacterDirection? value) {
                                     setState(() {
-                                      _character_Direction = value;
+                                      _character_Direction = value!;
                                       print(_character_Direction);
                                     });
                                   },
@@ -1579,9 +1578,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterSystem>(
                                   value: SingingCharacterSystem.fungal_slab,
                                   groupValue: _character_System,
-                                  onChanged: (SingingCharacterSystem value) {
+                                  onChanged: (SingingCharacterSystem? value) {
                                     setState(() {
-                                      _character_System = value;
+                                      _character_System = value!;
                                       print(_character_System);
                                     });
                                   },
@@ -1597,9 +1596,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterSystem>(
                                   value: SingingCharacterSystem.hurudi,
                                   groupValue: _character_System,
-                                  onChanged: (SingingCharacterSystem value) {
+                                  onChanged: (SingingCharacterSystem? value) {
                                     setState(() {
-                                      _character_System = value;
+                                      _character_System = value!;
                                       print(_character_System);
                                     });
                                   },
@@ -1629,9 +1628,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterSystem>(
                                   value: SingingCharacterSystem.Solid_slab,
                                   groupValue: _character_System,
-                                  onChanged: (SingingCharacterSystem value) {
+                                  onChanged: (SingingCharacterSystem? value) {
                                     setState(() {
-                                      _character_System = value;
+                                      _character_System = value!;
                                       print(_character_System);
                                     });
                                   },
@@ -1648,9 +1647,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                   value: SingingCharacterSystem
                                       .Flat_slabs_for_large_spaces,
                                   groupValue: _character_System,
-                                  onChanged: (SingingCharacterSystem value) {
+                                  onChanged: (SingingCharacterSystem? value) {
                                     setState(() {
-                                      _character_System = value;
+                                      _character_System = value!;
                                       print(_character_System);
                                     });
                                   },
@@ -1695,9 +1694,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterHurudi>(
                                   value: SingingCharacterHurudi.pumice,
                                   groupValue: _character_hurudi,
-                                  onChanged: (SingingCharacterHurudi value) {
+                                  onChanged: (SingingCharacterHurudi? value) {
                                     setState(() {
-                                      _character_hurudi = value;
+                                      _character_hurudi = value!;
                                       print(_character_hurudi);
                                     });
                                   },
@@ -1714,9 +1713,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterHurudi>(
                                   value: SingingCharacterHurudi.Bumchi,
                                   groupValue: _character_hurudi,
-                                  onChanged: (SingingCharacterHurudi value) {
+                                  onChanged: (SingingCharacterHurudi? value) {
                                     setState(() {
-                                      _character_hurudi = value;
+                                      _character_hurudi = value!;
                                       print(_character_hurudi);
                                     });
                                   },
@@ -1735,9 +1734,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterHurudi>(
                                   value: SingingCharacterHurudi.Bajaur,
                                   groupValue: _character_hurudi,
-                                  onChanged: (SingingCharacterHurudi value) {
+                                  onChanged: (SingingCharacterHurudi? value) {
                                     setState(() {
-                                      _character_hurudi = value;
+                                      _character_hurudi = value!;
                                       print(_character_hurudi);
                                     });
                                   },
@@ -1782,9 +1781,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterWall>(
                                   value: SingingCharacterWall.Bumchi,
                                   groupValue: _character_wall,
-                                  onChanged: (SingingCharacterWall value) {
+                                  onChanged: (SingingCharacterWall? value) {
                                     setState(() {
-                                      _character_wall = value;
+                                      _character_wall = value!;
                                       print(_character_wall);
                                     });
                                   },
@@ -1800,9 +1799,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterWall>(
                                   value: SingingCharacterWall.Separators,
                                   groupValue: _character_wall,
-                                  onChanged: (SingingCharacterWall value) {
+                                  onChanged: (SingingCharacterWall? value) {
                                     setState(() {
-                                      _character_wall = value;
+                                      _character_wall = value!;
                                       print(_character_wall);
                                     });
                                   },
@@ -1832,9 +1831,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterWall>(
                                   value: SingingCharacterWall.Block,
                                   groupValue: _character_wall,
-                                  onChanged: (SingingCharacterWall value) {
+                                  onChanged: (SingingCharacterWall? value) {
                                     setState(() {
-                                      _character_wall = value;
+                                      _character_wall = value!;
                                       print(_character_wall);
                                     });
                                   },
@@ -1850,9 +1849,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                                 leading: Radio<SingingCharacterWall>(
                                   value: SingingCharacterWall.Concrete,
                                   groupValue: _character_wall,
-                                  onChanged: (SingingCharacterWall value) {
+                                  onChanged: (SingingCharacterWall? value) {
                                     setState(() {
-                                      _character_wall = value;
+                                      _character_wall = value!;
                                       print(_character_wall);
                                     });
                                   },
@@ -1882,9 +1881,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterArchDesign>(
                                 value: SingingCharacterArchDesign.no,
                                 groupValue: _character_ArchDesign,
-                                onChanged: (SingingCharacterArchDesign value) {
+                                onChanged: (SingingCharacterArchDesign? value) {
                                   setState(() {
-                                    _character_ArchDesign = value;
+                                    _character_ArchDesign = value!;
                                     print(_character_ArchDesign);
                                   });
                                 },
@@ -1898,15 +1897,33 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterArchDesign>(
                                 value: SingingCharacterArchDesign.yes,
                                 groupValue: _character_ArchDesign,
-                                onChanged: (SingingCharacterArchDesign value) {
+                                onChanged: (SingingCharacterArchDesign? value) {
                                   setState(() {
-                                    _character_ArchDesign = value;
+                                    _character_ArchDesign = value ?? SingingCharacterArchDesign.yes;
                                     print(_character_ArchDesign);
                                   });
                                 },
                               ),
                             ),
                           ),
+// _character_ArchDesign
+                          // Container(
+                          //   width: sWidth * .33,
+                          //   child: ListTile(
+                          //     title: const Text('نعم'),
+                          //     leading: Radio<SingingCharacterArchDesign>(
+                          //       value: SingingCharacterArchDesign.yes,
+                          //       groupValue: _character_ArchDesign,
+                          //        onChanged: (SingingCharacterWall value) {
+                          //   setState(() {
+                          //   _character_wall = value ?? SingingCharacterWall.Separators;
+                          //   print(_character_wall);
+                          //   });
+                          //   },
+                          //
+                          //   ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -1943,9 +1960,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterLoc>(
                                 value: SingingCharacterLoc.no,
                                 groupValue: _character_Loc,
-                                onChanged: (SingingCharacterLoc value) {
+                                onChanged: (SingingCharacterLoc? value) {
                                   setState(() {
-                                    _character_Loc = value;
+                                    _character_Loc = value!;
                                     print(_character_Loc);
                                   });
                                 },
@@ -1959,9 +1976,9 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                               leading: Radio<SingingCharacterLoc>(
                                 value: SingingCharacterLoc.yes,
                                 groupValue: _character_Loc,
-                                onChanged: (SingingCharacterLoc value) {
+                                onChanged: (SingingCharacterLoc? value) {
                                   setState(() {
-                                    _character_Loc = value;
+                                    _character_Loc = value!;
                                     print(_character_Loc);
                                   });
                                 },
@@ -2015,8 +2032,11 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                             ),
                             style: ElevatedButton.styleFrom(
                               elevation: 20,
-                              primary: Color(0xfff3a005),
-                              onPrimary: Colors.orangeAccent,
+                              backgroundColor: Color(0xfff3a005), // Button background color
+                              foregroundColor: Colors.orangeAccent, // Button text color
+
+                              // primary: Color(0xfff3a005),
+                              // onPrimary: Colors.orangeAccent,
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(15))),
@@ -2047,8 +2067,11 @@ class _ResidentalDesignState extends State<ResidentalDesign> {
                             ),
                             style: ElevatedButton.styleFrom(
                               elevation: 20,
-                              primary: Color(0xfff3a005),
-                              onPrimary: Colors.orangeAccent,
+                              backgroundColor: Color(0xfff3a005), // Button background color
+                              foregroundColor: Colors.orangeAccent, // Button text color
+
+                              // primary: Color(0xfff3a005),
+                              // onPrimary: Colors.orangeAccent,
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(15))),

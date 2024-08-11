@@ -4,25 +4,25 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Utils {
   static void openLink({
-    @required String url,
+    required String? url,
   }) => _launchURL(url);
 
   static Future openEmail({
-    @required String toEmail,
-     String subject,
-     String body,
+    required String toEmail,
+     String? subject,
+     String? body,
   }) async {
     final url =
         'mailto:$toEmail';
     _launchURL(url);
   }
 
-  static Future openPhoneCall({@required String phoneNumber}) async {
+  static Future openPhoneCall({required String? phoneNumber}) async {
     final url = 'tel:$phoneNumber';
     _launchURL(url);
   }
 
-  static Future openSMS({@required String phoneNumber}) async {
+  static Future openSMS({required String? phoneNumber}) async {
     final url = 'sms:$phoneNumber';
     _launchURL(url);
   }

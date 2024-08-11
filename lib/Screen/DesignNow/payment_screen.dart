@@ -4,36 +4,36 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaymentScreen extends StatefulWidget {
-  int orderId;
-  String image;
-  String description;
-  String price;
+  int? orderId;
+  String? image;
+  String? description;
+  String? price;
   PaymentScreen({this.orderId, this.price, this.image, this.description});
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
 }
 
 final nameController =
-    TextEditingController(text: info.result.customerInfo.name);
+    TextEditingController(text: info?.result?.customerInfo?.name);
 final phoneController =
-    TextEditingController(text: info.result.customerInfo.phone);
+    TextEditingController(text: info?.result?.customerInfo?.phone);
 final addressController =
-    TextEditingController(text: info.result.customerInfo.address);
+    TextEditingController(text: info?.result?.customerInfo?.address);
 final emailController =
-    TextEditingController(text: info.result.customerInfo.email);
+    TextEditingController(text: info?.result?.customerInfo?.email);
 final messageController = TextEditingController();
 GlobalKey<FormState> formKey = GlobalKey<FormState>();
 int paymentType = 1;
-String token;
+String? token;
 
 Repository _repo = Repository();
-ProfileInfoM info;
+ProfileInfoM? info;
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  Future<String> gettoken() async {
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
-    info = await _repo.proInfo(key: '1234567890', token_id: token);
+    info = await _repo.proInfo(key: '1234567890', token_id: token!);
     setState(() {});
     return token;
   }
@@ -79,13 +79,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   Container(
                       height: 80,
                       width: 100,
-                      child: Image.network(widget.image)),
+                      child: Image.network(widget.image??"")),
                   Text(
-                    widget.description,
+                    widget.description??"",
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    widget.price,
+                    widget.price??"",
                     textAlign: TextAlign.center,
                   ),
                   Row(
@@ -96,9 +96,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             activeColor: Color(0xff3b6745),
                             value: 1,
                             groupValue: paymentType,
-                            onChanged: (value) {
+                            onChanged: (int? value) {
                               setState(() {
-                                paymentType = value;
+                                paymentType = value!;
                               });
                             }),
                       ),
@@ -145,13 +145,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               child: TextFormField(
                                 controller: nameController,
                                 keyboardType: TextInputType.name,
-                                validator: (String value) {
-                                  if (value.isEmpty)
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
                                     return "يجب ادخال الاسم";
-                                  else {
-                                    return null;
                                   }
+                                  return null;
                                 },
+
                                 textDirection: TextDirection.rtl,
                               ),
                             ),
@@ -188,12 +188,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               width: sWidth * .8,
                               child: TextFormField(
                                 controller: phoneController,
-                                validator: (String value) {
-                                  if (value.isEmpty)
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
                                     return "يجب ادخال رقم الجوال";
-                                  else {
-                                    return null;
                                   }
+                                  return null; // Return null if the field is valid
                                 },
                                 keyboardType: TextInputType.phone,
                                 textDirection: TextDirection.rtl,
@@ -233,12 +232,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               child: TextFormField(
                                 controller: addressController,
                                 keyboardType: TextInputType.streetAddress,
-                                validator: (String value) {
-                                  if (value.isEmpty)
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
                                     return "يجب ادخال العنوان";
-                                  else {
-                                    return null;
                                   }
+                                  return null; // Return null if the field is valid
                                 },
                                 textDirection: TextDirection.rtl,
                               ),
@@ -308,14 +306,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                             style: ElevatedButton.styleFrom(
                               elevation: 20,
-                              primary: Color(0xff3b6745),
-                              onPrimary: Colors.orangeAccent,
+                              backgroundColor: Color(0xff3b6745), // Button background color
+                              foregroundColor: Colors.orangeAccent,
+                              // primary: Color(0xff3b6745),
+                              // onPrimary: Colors.orangeAccent,
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(15))),
                             ),
                             onPressed: () async {
-                              if (formKey.currentState.validate())
+                              if (formKey.currentState!.validate())
                                 dialog(sWidth, size);
                             }),
                       ),
@@ -398,8 +398,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xff3b6745),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // primary: Color(0xff3b6745),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -407,12 +409,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     onPressed: () async {
                                       await Repository()
                                           .sendPaymentDetails(
-                                              token_id: token,
+                                              token_id: token!,
                                               address: addressController.text,
                                               name: nameController.text,
                                               phone: phoneController.text,
                                               email: emailController.text,
-                                              designId: widget.orderId,
+                                              designId: widget.orderId!,
                                               message: messageController.text,
                                               paymentType: paymentType)
                                           .then((value) {

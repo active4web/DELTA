@@ -1,32 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:delta/DataModel/ArticleM.dart';
-import 'package:delta/DataModel/atricle_cat.dart';
 import 'package:delta/Repository/Repository.dart';
-import 'package:delta/Screen/Home/designs.dart';
-import 'package:delta/Screen/Home/order_track.dart';
-import 'package:flutter/material.dart';
-import 'package:delta/DataModel/atricle_cat.dart';
-import 'package:delta/Repository/Repository.dart';
-import 'package:delta/Screen/Home/home_bar.dart';
-import 'package:delta/custom_bar.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';
-import '../login.dart';
-import 'about_app.dart';
-import 'blogs.dart';
-import 'contact_us.dart';
-import 'not_logged_in.dart';
-import 'notifications.dart';
-import '../Home/projectDetails.dart';
-import 'profile.dart';
-import 'technical_support.dart';
+
 
 class Articles extends StatefulWidget {
-  String articleId;
-  Articles({Key key,this.articleId}) : super(key: key);
+  String? articleId;
+
+  Articles({this.articleId});
 
   @override
   _ArticlesState createState() => _ArticlesState();
@@ -34,9 +18,9 @@ class Articles extends StatefulWidget {
 
 class _ArticlesState extends State<Articles> {
   Repository _repo = Repository();
-  String token;
+  String? token;
   List <Widget> itemSliders =[];
-  Future <String> gettoken() async{
+  Future <String?> gettoken() async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -44,7 +28,7 @@ class _ArticlesState extends State<Articles> {
   @override
   void initState()  {
     gettoken();
-    print("idxxxx " + widget.articleId);
+    print("idxxxx " + widget.articleId!);
     super.initState();
   }
 
@@ -98,11 +82,13 @@ class _ArticlesState extends State<Articles> {
         ),
         endDrawer: NewWidget(size: size, token: token),
         body:      StreamBuilder<ArticleM>(
-          stream: _repo.getArticle(token_id: token, key: '1234567890', article_id: widget.articleId).asStream(),
+          stream: _repo.getArticle(token_id: token!, key: '1234567890', article_id: widget.articleId!).asStream(),
           builder: (context, snapshot) {
              if(snapshot.data!=null)
        {
-         for (int i = 0; i < snapshot.data.result.allSlider.length; i++) {
+         int sliderLength = snapshot.data?.result?.allSlider?.length ?? 0; // Use 0 if null
+
+         for (int i = 0; i <sliderLength; i++) {
            itemSliders.add(Padding(
                padding: const EdgeInsets.all(2.0),
                child: Container(
@@ -117,7 +103,7 @@ class _ArticlesState extends State<Articles> {
                      child: ClipRRect(
                        borderRadius: BorderRadius.circular(10),
                        child: Image.network(
-                         snapshot.data.result.allSlider[i].img,
+                         snapshot.data?.result?.allSlider?[i].img??"",
                          fit: BoxFit.fill,
                        ),
                      ),
@@ -161,7 +147,7 @@ class _ArticlesState extends State<Articles> {
                  Container(
                      width: size.width * .35,
                      height: size.height * .03,
-                     child: Text("${snapshot.data.result.articlesDetails.articleName}",textDirection: TextDirection.rtl,style:TextStyle(color: Color(
+                     child: Text("${snapshot.data?.result?.articlesDetails?.articleName}",textDirection: TextDirection.rtl,style:TextStyle(color: Color(
                          0xff0b4079),fontSize: 15),)
                  )
                ],
@@ -175,7 +161,7 @@ class _ArticlesState extends State<Articles> {
                  Container(
                      width: size.width * .2,
                      height: size.height * .02,
-                     child: Text("${snapshot.data.result.articlesDetails.creationDate}",textDirection: TextDirection.rtl,style:TextStyle(color: Color(
+                     child: Text("${snapshot.data?.result?.articlesDetails?.creationDate}",textDirection: TextDirection.rtl,style:TextStyle(color: Color(
                          0xff0f0f10),fontSize: 13),)
                  )
                ],
@@ -189,7 +175,7 @@ class _ArticlesState extends State<Articles> {
                  Container(
                      width: size.width * .8,
                      height: size.height * .22,
-                     child:Text("${snapshot.data.result.articlesDetails.details}",textDirection: TextDirection.rtl,style:TextStyle(color: Color(
+                     child:Text("${snapshot.data?.result?.articlesDetails?.details}",textDirection: TextDirection.rtl,style:TextStyle(color: Color(
                          0xff0b4079),fontSize: 18),)
                  )
                ],

@@ -12,10 +12,10 @@ class TicketInfoM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory TicketInfoM.fromJson(String str) => TicketInfoM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class TicketInfoM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -41,7 +41,7 @@ class Result {
     this.ticketInfo,
   });
 
-  TicketInfo ticketInfo;
+  TicketInfo? ticketInfo;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -52,7 +52,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "ticket_info": ticketInfo.toMap(),
+    "ticket_info": ticketInfo!.toMap(),
   };
 }
 
@@ -63,9 +63,9 @@ class TicketInfo {
     this.ticketReplies,
   });
 
-  Ticket ticket;
-  int repliesNumber;
-  List<TicketReply> ticketReplies;
+  Ticket? ticket;
+  int? repliesNumber;
+  List<TicketReply>? ticketReplies;
 
   factory TicketInfo.fromJson(String str) => TicketInfo.fromMap(json.decode(str));
 
@@ -78,9 +78,9 @@ class TicketInfo {
   );
 
   Map<String, dynamic> toMap() => {
-    "ticket": ticket.toMap(),
+    "ticket": ticket!.toMap(),
     "replies_number": repliesNumber,
-    "ticket_replies": List<dynamic>.from(ticketReplies.map((x) => x.toMap())),
+    "ticket_replies": List<dynamic>.from(ticketReplies!.map((x) => x.toMap())),
   };
 }
 
@@ -94,12 +94,12 @@ class Ticket {
     this.createdAt,
   });
 
-  int ticketId;
-  String title;
-  String type;
-  String color;
-  String content;
-  DateTime createdAt;
+  int? ticketId;
+  String? title;
+  String? type;
+  String? color;
+  String? content;
+  DateTime? createdAt;
 
   factory Ticket.fromJson(String str) => Ticket.fromMap(json.decode(str));
 
@@ -120,7 +120,7 @@ class Ticket {
     "type": type,
     "color": color,
     "content": content,
-    "created_at": "${createdAt.year.toString().padLeft(4, '0')}-${createdAt.month.toString().padLeft(2, '0')}-${createdAt.day.toString().padLeft(2, '0')}",
+    "created_at": "${createdAt!.year.toString().padLeft(4, '0')}-${createdAt!.month.toString().padLeft(2, '0')}-${createdAt!.day.toString().padLeft(2, '0')}",
   };
 }
 
@@ -134,12 +134,12 @@ class TicketReply {
     this.senderType,
   });
 
-  int id;
-  DateTime createdAt;
-  String time;
-  String content;
-  String sender;
-  int senderType;
+  int? id;
+  DateTime? createdAt;
+  String? time;
+  String? content;
+  String? sender;
+  int? senderType;
 
   factory TicketReply.fromJson(String str) => TicketReply.fromMap(json.decode(str));
 
@@ -156,7 +156,7 @@ class TicketReply {
 
   Map<String, dynamic> toMap() => {
     "id": id,
-    "created_at": "${createdAt.year.toString().padLeft(4, '0')}-${createdAt.month.toString().padLeft(2, '0')}-${createdAt.day.toString().padLeft(2, '0')}",
+    "created_at": "${createdAt!.year.toString().padLeft(4, '0')}-${createdAt!.month.toString().padLeft(2, '0')}-${createdAt!.day.toString().padLeft(2, '0')}",
     "time": time,
     "content": content,
     "sender": sender,

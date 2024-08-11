@@ -18,13 +18,12 @@ import 'Screen/login.dart';
 
 class NewWidget extends StatelessWidget {
   const NewWidget({
-    Key key,
-    @required this.size,
-    @required this.token,
-  }) : super(key: key);
+    required this.size,
+    required this.token,
+  }) ;
 
   final Size size;
-  final String token;
+  final String?  token;
 
   @override
   Widget build(BuildContext context) {

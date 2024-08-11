@@ -14,10 +14,10 @@ class TicketReplyM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory TicketReplyM.fromJson(String str) => TicketReplyM.fromMap(json.decode(str));
 
@@ -34,7 +34,7 @@ class TicketReplyM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -43,7 +43,7 @@ class Result {
     this.replies,
   });
 
-  Replies replies;
+  Replies? replies;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -54,7 +54,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "replies": replies.toMap(),
+    "replies": replies!.toMap(),
   };
 }
 
@@ -67,11 +67,11 @@ class Replies {
     this.sender,
   });
 
-  String id;
-  DateTime createdAt;
-  String time;
-  String content;
-  String sender;
+  String? id;
+  DateTime? createdAt;
+  String? time;
+  String? content;
+  String? sender;
 
   factory Replies.fromJson(String str) => Replies.fromMap(json.decode(str));
 
@@ -87,7 +87,7 @@ class Replies {
 
   Map<String, dynamic> toMap() => {
     "id": id,
-    "created_at": "${createdAt.year.toString().padLeft(4, '0')}-${createdAt.month.toString().padLeft(2, '0')}-${createdAt.day.toString().padLeft(2, '0')}",
+    "created_at": "${createdAt!.year.toString().padLeft(4, '0')}-${createdAt!.month.toString().padLeft(2, '0')}-${createdAt!.day.toString().padLeft(2, '0')}",
     "time": time,
     "content": content,
     "sender": sender,

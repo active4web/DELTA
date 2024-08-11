@@ -2,7 +2,6 @@ import 'package:delta/DataModel/FormsModels/cost_buildM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,12 +9,13 @@ import '../draw.dart';
 import 'send_done.dart';
 
 class BuildingCostFinishKey extends StatefulWidget {
-  BuildingCostFinishKey({Key key, this.cat_id, this.jwt}) : super(key: key);
-  String cat_id;
-  String jwt;
+  String? cat_id;
+  String? jwt;
 
   @override
   _BuildingCostFinishKeyState createState() => _BuildingCostFinishKeyState();
+
+  BuildingCostFinishKey({this.cat_id, this.jwt});
 }
 
 enum SingingCharacter { yes, no }
@@ -28,6 +28,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
   TextEditingController bathRoomNumberController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController EmailAddressController = TextEditingController();
+
   // TextEditingController neighborController = TextEditingController();
 
   var dropdownValue1 = 'نوع البناء';
@@ -40,24 +41,25 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
   num _counter2 = 0;
 
   var baseurl = 'https://mdecco.com/app/';
-  List _list0;
-  int Id0;
-  List _list1;
-  int Id1;
-  List _list2;
-  int Id2;
-  List _list3;
-  int Id3;
-  List _list4;
-  int Id4;
-  List _list5;
-  int Id5;
-  List _list6;
-  int Id6;
-  List _list7;
-  int Id7;
+  List? _list0;
+  int? Id0;
+  List? _list1;
+  int? Id1;
+  List? _list2;
+  int? Id2;
+  List? _list3;
+  int? Id3;
+  List? _list4;
+  int? Id4;
+  List? _list5;
+  int? Id5;
+  List? _list6;
+  int? Id6;
+  List? _list7;
+  int? Id7;
+
   // List _list8;
-  // int Id8;
+  // int? id8;
   // List _list9;
   // int Id9;
   // List _list10;
@@ -70,12 +72,12 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
   // int Id13;
   Dio dio = Dio();
 
-  Future<BuildCostM> getCostBuildF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<BuildCostM?>? getCostBuildF({
+    required String? key,
+    required String? token_id,
+    required String? cat_id,
   }) async {
-    BuildCostM data;
+    BuildCostM? data;
     FormData formData = new FormData.fromMap(
         {"key": "1234567890", "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -89,14 +91,14 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
       data = BuildCostM.fromMap(value.data);
     });
     setState(() {
-      _list0 = data.result.lableList[0].listAnwser.toList();
-      _list1 = data.result.lableList[1].listAnwser.toList();
-      _list2 = data.result.lableList[2].listAnwser.toList();
-      _list3 = data.result.lableList[3].listAnwser.toList();
-      _list4 = data.result.lableList[4].listAnwser.toList();
-      _list5 = data.result.lableList[5].listAnwser.toList();
-      _list6 = data.result.lableList[6].listAnwser.toList();
-      _list7 = data.result.lableList[7].listAnwser.toList();
+      _list0 = data?.result?.lableList?[0].listAnwser?.toList();
+      _list1 = data?.result?.lableList?[1].listAnwser?.toList();
+      _list2 = data?.result?.lableList?[2].listAnwser?.toList();
+      _list3 = data?.result?.lableList?[3].listAnwser?.toList();
+      _list4 = data?.result?.lableList?[4].listAnwser?.toList();
+      _list5 = data?.result?.lableList?[5].listAnwser?.toList();
+      _list6 = data?.result?.lableList?[6].listAnwser?.toList();
+      _list7 = data?.result?.lableList?[7].listAnwser?.toList();
     });
     return data;
   }
@@ -132,7 +134,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
   SingingCharacter _character5 = SingingCharacter.yes;
   SingingCharacter _character6 = SingingCharacter.yes;
 
-  String token;
+  String? token;
+
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
@@ -151,7 +154,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
     super.initState();
   }
 
-  Color _getColorFromHex(String hexColor) {
+  Color? _getColorFromHex(String hexColor) {
     hexColor = hexColor.replaceAll("#", "");
     if (hexColor.length == 6) {
       hexColor = "FF" + hexColor;
@@ -173,7 +176,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
       child: StreamBuilder<BuildCostM>(
           stream: _repo
               .getBuildingCostFinishedKey(
-                  key: '1234567890', token_id: token, cat_id: widget.cat_id)
+                  key: '1234567890', token_id: token!, cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
@@ -208,7 +211,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${snapshot.data.result.categoryDate.title}",
+                        "${snapshot.data?.result?.categoryDate?.title}",
                         style: TextStyle(
                           fontFamily: 'GE SS Two',
                           fontSize: 17,
@@ -229,7 +232,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "${snapshot.data.result.categoryDate.title}",
+                              "${snapshot.data?.result?.categoryDate?.title}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',
@@ -241,8 +244,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                           ],
                         ),
                       ),
-                      if (snapshot
-                          .data.result.categoryDate.description.isNotEmpty)
+                      // if (snapshot.data?.result?.categoryDate?.description!.isNotEmpty)
+                        if (snapshot.data?.result?.categoryDate?.description != null)
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: Row(
@@ -253,7 +256,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.categoryDate.description}",
+                                    "${snapshot.data?.result?.categoryDate?.description}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
@@ -279,7 +282,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[0].title}",
+                                  "${snapshot.data?.result?.lableList?[0].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -293,7 +296,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[0].type ==
+                                      snapshot.data?.result?.lableList?[0].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -320,7 +323,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list0
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -346,7 +349,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id0 = val;
+                                                                  Id0 = int.parse(val.toString());
                                                                   print(Id0
                                                                       .toString());
                                                                 });
@@ -378,7 +381,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[1].title}",
+                                    "${snapshot.data?.result?.lableList?[1].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -392,7 +395,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child:
-                                        snapshot.data.result.lableList[1]
+                                        snapshot.data?.result?.lableList?[1]
                                                     .type ==
                                                 2
                                             ? Container(
@@ -422,7 +425,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                                 isExpanded:
                                                                     true,
                                                                 items: _list1
-                                                                    .map((e) {
+                                                                    ?.map((e) {
                                                                   return new DropdownMenuItem(
                                                                     child: Container(
                                                                         alignment: Alignment.centerRight,
@@ -449,7 +452,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                                 onChanged:
                                                                     (val) {
                                                                   setState(() {
-                                                                    Id1 = val;
+                                                                    Id1 = int.parse(val.toString());
                                                                     print(Id1
                                                                         .toString());
                                                                   });
@@ -480,7 +483,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[2].title}",
+                                  "${snapshot.data?.result?.lableList?[2].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -494,7 +497,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[2].type ==
+                                      snapshot.data?.result?.lableList?[2].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -525,7 +528,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list2
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -551,7 +554,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id2 = val;
+                                                                  Id2 = int.parse(val.toString());
                                                                   print(Id2
                                                                       .toString());
                                                                 });
@@ -583,7 +586,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[3].title}",
+                                  "${snapshot.data?.result?.lableList?[3].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -597,7 +600,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[3].type ==
+                                      snapshot.data?.result?.lableList?[3].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -628,7 +631,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list3
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -654,7 +657,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id3 = val;
+                                                                  Id3 = int.parse(val.toString());
                                                                   print(Id3
                                                                       .toString());
                                                                 });
@@ -686,7 +689,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[4].title}",
+                                  "${snapshot.data?.result?.lableList?[4].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -700,7 +703,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[4].type ==
+                                      snapshot.data?.result?.lableList?[4].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -731,7 +734,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list4
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -757,7 +760,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id4 = val;
+                                                                  Id4 = int.parse(val.toString());
                                                                   print(Id4
                                                                       .toString());
                                                                 });
@@ -789,7 +792,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[5].title}",
+                                  "${snapshot.data?.result?.lableList?[5].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -803,7 +806,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[5].type ==
+                                      snapshot.data?.result?.lableList?[5].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -834,7 +837,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list5
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -860,7 +863,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id5 = val;
+                                                                  Id5 = int.parse(val.toString());
                                                                   print(Id5
                                                                       .toString());
                                                                 });
@@ -892,7 +895,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[6].title}",
+                                  "${snapshot.data?.result?.lableList?[6].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -906,7 +909,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[6].type ==
+                                      snapshot.data?.result?.lableList?[6].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -937,7 +940,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list6
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -963,7 +966,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id6 = val;
+                                                                  Id6 = int.parse(val.toString());
                                                                   print(Id6
                                                                       .toString());
                                                                 });
@@ -995,7 +998,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[7].title}",
+                                  "${snapshot.data?.result?.lableList?[7].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1009,7 +1012,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[7].type ==
+                                      snapshot.data?.result?.lableList?[7].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1040,7 +1043,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list7
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1066,7 +1069,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id7 = val;
+                                                                  Id7 = int.parse(val.toString());
                                                                   print(Id7
                                                                       .toString());
                                                                 });
@@ -1098,7 +1101,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[8].title}",
+                                  "${snapshot.data?.result?.lableList?[8].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1111,7 +1114,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                    child: snapshot.data.result.lableList[8]
+                                    child: snapshot.data?.result?.lableList?[8]
                                                 .type ==
                                             2
                                         ? Container(
@@ -1141,7 +1144,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //         Padding(
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Text(
-                      //             "${snapshot.data.result.lableList[9].title}",
+                      //             "${snapshot.data?.result?.lableList?[9].title}",
                       //             textDirection: TextDirection.rtl,
                       //             style: TextStyle(
                       //               color: Color(0xffaa6414),
@@ -1155,7 +1158,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Container(
                       //             child:
-                      //                 snapshot.data.result.lableList[9].type ==
+                      //                 snapshot.data?.result?.lableList?[9].type ==
                       //                         2
                       //                     ? Container(
                       //                         width: sWidth * .8,
@@ -1186,7 +1189,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //                                     ? DropdownButton(
                       //                                         isExpanded: true,
                       //                                         items: _list9
-                      //                                             .map((e) {
+                      //                                             ?.map((e) {
                       //                                           return new DropdownMenuItem(
                       //                                             child: Container(
                       //                                                 alignment: Alignment.centerRight,
@@ -1244,7 +1247,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //         Padding(
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Text(
-                      //             "${snapshot.data.result.lableList[10].title}",
+                      //             "${snapshot.data?.result?.lableList?[10].title}",
                       //             textDirection: TextDirection.rtl,
                       //             style: TextStyle(
                       //               color: Color(0xffaa6414),
@@ -1258,7 +1261,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Container(
                       //             child:
-                      //                 snapshot.data.result.lableList[10].type ==
+                      //                 snapshot.data?.result?.lableList?[10].type ==
                       //                         2
                       //                     ? Container(
                       //                         width: sWidth * .8,
@@ -1347,7 +1350,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //         Padding(
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Text(
-                      //             "${snapshot.data.result.lableList[11].title}",
+                      //             "${snapshot.data?.result?.lableList?[11].title}",
                       //             textDirection: TextDirection.rtl,
                       //             style: TextStyle(
                       //               color: Color(0xffaa6414),
@@ -1361,7 +1364,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Container(
                       //             child:
-                      //                 snapshot.data.result.lableList[11].type ==
+                      //                 snapshot.data?.result?.lableList?[11].type ==
                       //                         2
                       //                     ? Container(
                       //                         width: sWidth * .8,
@@ -1450,7 +1453,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //         Padding(
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Text(
-                      //             "${snapshot.data.result.lableList[12].title}",
+                      //             "${snapshot.data?.result?.lableList?[12].title}",
                       //             textDirection: TextDirection.rtl,
                       //             style: TextStyle(
                       //               color: Color(0xffaa6414),
@@ -1464,7 +1467,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Container(
                       //             child:
-                      //                 snapshot.data.result.lableList[12].type ==
+                      //                 snapshot.data?.result?.lableList?[12].type ==
                       //                         2
                       //                     ? Container(
                       //                         width: sWidth * .8,
@@ -1553,7 +1556,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //         Padding(
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Text(
-                      //             "${snapshot.data.result.lableList[13].title}",
+                      //             "${snapshot.data?.result?.lableList?[13].title}",
                       //             textDirection: TextDirection.rtl,
                       //             style: TextStyle(
                       //               color: Color(0xffaa6414),
@@ -1567,7 +1570,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //           padding: const EdgeInsets.all(8.0),
                       //           child: Container(
                       //             child:
-                      //                 snapshot.data.result.lableList[13].type ==
+                      //                 snapshot.data?.result?.lableList?[13].type ==
                       //                         2
                       //                     ? Container(
                       //                         width: sWidth * .8,
@@ -1657,7 +1660,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[9].title}",
+                                  "${snapshot.data?.result?.lableList?[9].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1670,7 +1673,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                    child: snapshot.data.result.lableList[9]
+                                    child: snapshot.data?.result?.lableList?[9]
                                                 .type ==
                                             2
                                         ? Container(
@@ -1751,7 +1754,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[10].title}",
+                                  "${snapshot.data?.result?.lableList?[10].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1764,8 +1767,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[10].type ==
+                                  child: snapshot.data?.result?.lableList?[10]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1844,7 +1847,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[11].title}",
+                                  "${snapshot.data?.result?.lableList?[11].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1857,8 +1860,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[11].type ==
+                                  child: snapshot.data?.result?.lableList?[11]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1936,7 +1939,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[14].title}",
+                                  "${snapshot.data?.result?.lableList?[14].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1949,8 +1952,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[14].type ==
+                                  child: snapshot.data?.result?.lableList?[14]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -2030,7 +2033,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[12].title}",
+                                  "${snapshot.data?.result?.lableList?[12].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2043,8 +2046,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[12].type ==
+                                  child: snapshot.data?.result?.lableList?[12]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -2122,7 +2125,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[13].title}",
+                                  "${snapshot.data?.result?.lableList?[13].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -2135,8 +2138,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                  child: snapshot
-                                              .data.result.lableList[13].type ==
+                                  child: snapshot.data?.result?.lableList?[13]
+                                              .type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -2215,7 +2218,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //         Padding(
                       //           padding: const EdgeInsets.all(5.0),
                       //           child: Text(
-                      //             "${snapshot.data.result.lableList[19].title}",
+                      //             "${snapshot.data?.result?.lableList?[19].title}",
                       //             textDirection: TextDirection.rtl,
                       //             style: TextStyle(
                       //               color: Color(0xffaa6414),
@@ -2229,7 +2232,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       //           padding: const EdgeInsets.all(5.0),
                       //           child: Container(
                       //             child: snapshot
-                      //                         .data.result.lableList[19].type ==
+                      //                         .data?.result?.lableList?[19].type ==
                       //                     2
                       //                 ? Container(
                       //                     width: sWidth * .8,
@@ -3207,8 +3210,9 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                       // ),
 //////////////////
                       //
+                      // if (snapshot.data?.result?.categoryDate?.details.isNotEmpty)
 
-                      if (snapshot.data.result.categoryDate.details.isNotEmpty)
+                      if (snapshot.data?.result?.categoryDate?.details!=null)
                         Padding(
                           padding: const EdgeInsets.all(20),
                           child: Container(
@@ -3216,7 +3220,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
 
                             //  alignment: Alignment.center,
                             child: Text(
-                                "${snapshot.data.result.categoryDate.details}",
+                                "${snapshot.data?.result?.categoryDate?.details}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -3253,8 +3257,10 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // primary: Color(0xfff3a005),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -3303,8 +3309,10 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // primary: Color(0xfff3a005),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -3318,10 +3326,8 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           Id5 != null &&
                                           Id6 != null &&
                                           Id7 != null &&
-                                          bedRoomNumberController.text !=
-                                              null &&
-                                          bathRoomNumberController.text !=
-                                              null &&
+                                          bedRoomNumberController.text != null &&
+                                          bathRoomNumberController.text != null &&
                                           kitchenController.text != null &&
                                           resipitionController.text != null &&
                                           areaController.text != null &&
@@ -3335,35 +3341,35 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           phoneNumberController.text != "" &&
                                           bedRoomNumberController.text != "") {
                                         String a0 =
-                                            "${snapshot.data.result.lableList[0].lebalId}.$Id0";
+                                            "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
                                         String a1 =
-                                            "${snapshot.data.result.lableList[1].lebalId}.$Id1";
+                                            "${snapshot.data?.result?.lableList?[1].lebalId}.$Id1";
                                         String a2 =
-                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2";
+                                            "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
                                         String a3 =
-                                            "${snapshot.data.result.lableList[3].lebalId}.$Id3";
+                                            "${snapshot.data?.result?.lableList?[3].lebalId}.$Id3";
                                         String a4 =
-                                            "${snapshot.data.result.lableList[4].lebalId}.$Id4";
+                                            "${snapshot.data?.result?.lableList?[4].lebalId}.$Id4";
                                         String a5 =
-                                            "${snapshot.data.result.lableList[5].lebalId}.$Id5";
+                                            "${snapshot.data?.result?.lableList?[5].lebalId}.$Id5";
                                         String a6 =
-                                            "${snapshot.data.result.lableList[6].lebalId}.$Id6";
+                                            "${snapshot.data?.result?.lableList?[6].lebalId}.$Id6";
                                         String a7 =
-                                            "${snapshot.data.result.lableList[7].lebalId}.$Id7";
+                                            "${snapshot.data?.result?.lableList?[7].lebalId}.$Id7";
                                         String a8 =
-                                            '${snapshot.data.result.lableList[8].lebalId}."${areaController.text}"';
+                                            '${snapshot.data?.result?.lableList?[8].lebalId}."${areaController.text}"';
                                         String a9 =
-                                            '${snapshot.data.result.lableList[9].lebalId}."${bedRoomNumberController.text}"';
+                                            '${snapshot.data?.result?.lableList?[9].lebalId}."${bedRoomNumberController.text}"';
                                         String a10 =
-                                            '${snapshot.data.result.lableList[10].lebalId}."${resipitionController.text}"';
+                                            '${snapshot.data?.result?.lableList?[10].lebalId}."${resipitionController.text}"';
                                         // String a11 =
                                         //     kitchenController.text;
                                         // String a12 =
                                         //     bathRoomNumberController.text;
                                         String a13 =
-                                            '${snapshot.data.result.lableList[13].lebalId}."${phoneNumberController.text}"';
+                                            '${snapshot.data?.result?.lableList?[13].lebalId}."${phoneNumberController.text}"';
                                         String a14 =
-                                            '${snapshot.data.result.lableList[12].lebalId}."${EmailAddressController.text}"';
+                                            '${snapshot.data?.result?.lableList?[12].lebalId}."${EmailAddressController.text}"';
 
                                         String answer =
                                             '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a13,$a14';
@@ -3435,9 +3441,9 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                       ),
                                     ),
                                     style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005),
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),

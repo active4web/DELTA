@@ -1,9 +1,6 @@
-import 'package:delta/DataModel/FormsModels/design_nowM.dart';
 import 'package:delta/DataModel/offers_and_dsigns_model.dart';
 import 'package:delta/Repository/Repository.dart';
-import 'package:delta/Screen/DesignNow/offers_and_designs%20_types.dart';
 import 'package:delta/Screen/concrete_structure.dart';
-import 'package:delta/Screen/other_services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,16 +9,18 @@ import '../../draw.dart';
 import '../building_cost_finished_key.dart';
 
 class BuildingCost extends StatefulWidget {
-  BuildingCost({Key key, this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
+
+  String? jwt;
+  String? cat_id;
   @override
   _BuildingCostState createState() => _BuildingCostState();
+
+  BuildingCost({this.jwt, this.cat_id});
 }
 
 class _BuildingCostState extends State<BuildingCost> {
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -80,7 +79,7 @@ class _BuildingCostState extends State<BuildingCost> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        snapshot.data.result.categoryDate.title,
+                        snapshot.data?.result?.categoryDate?.title??"",
                         style: TextStyle(
                           fontFamily: 'GE SS Two',
                           fontSize: 17,
@@ -122,7 +121,7 @@ class _BuildingCostState extends State<BuildingCost> {
                                 height: size.height * 1, width: size.width * 1),
                             child: ElevatedButton(
                                 child: Text(
-                                  snapshot.data.result.lableList[0].title,
+                                  snapshot.data?.result?.lableList?[0].title??"",
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
                                     fontSize: 17,
@@ -132,8 +131,8 @@ class _BuildingCostState extends State<BuildingCost> {
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   elevation: 20,
-                                  primary: Color(0xff3b6745),
-                                  onPrimary: Colors.orangeAccent,
+                                  backgroundColor: Color(0xff3b6745), // Button background color
+                                  foregroundColor: Colors.orangeAccent, // Button text color
                                   shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(15))),
@@ -143,8 +142,7 @@ class _BuildingCostState extends State<BuildingCost> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => ConcreteStructure(
-                                                cat_id: snapshot.data.result
-                                                    .lableList[0].lebalId
+                                                cat_id: snapshot.data?.result?.lableList?[0].lebalId
                                                     .toString(),
                                                 jwt: token,
                                               )));
@@ -166,7 +164,7 @@ class _BuildingCostState extends State<BuildingCost> {
                                 height: size.height * 1, width: size.width * 1),
                             child: ElevatedButton(
                                 child: Text(
-                                  snapshot.data.result.lableList[1].title,
+                                  snapshot.data?.result?.lableList?[1].title??"",
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
                                     fontSize: 17,
@@ -176,8 +174,8 @@ class _BuildingCostState extends State<BuildingCost> {
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   elevation: 20,
-                                  primary: Color(0xff3b6745),
-                                  onPrimary: Colors.orangeAccent,
+                                  backgroundColor: Color(0xff3b6745), // Button background color
+                                  foregroundColor: Colors.orangeAccent, // Button text color
                                   shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(15))),
@@ -187,9 +185,7 @@ class _BuildingCostState extends State<BuildingCost> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => BuildingCostFinishKey(
-                                                cat_id: snapshot.data.result
-                                                    .lableList[1].lebalId
-                                                    .toString(),
+                                                cat_id: snapshot.data?.result?.lableList?[1].lebalId.toString(),
                                                 jwt: token,
                                               )));
                                 }),

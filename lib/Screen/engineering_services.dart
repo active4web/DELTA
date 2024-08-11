@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:delta/DataModel/FormsModels/engineering_services_offersM.dart';
 import 'package:delta/Repository/Repository.dart';
+import 'package:delta/Screen/Real_estate_investment.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
@@ -11,19 +12,21 @@ import '../draw.dart';
 import 'send_done.dart';
 
 class EngineeringServices extends StatefulWidget {
-  EngineeringServices({Key key, this.jwt, this.cat_id}) : super(key: key);
-  String cat_id;
-  String jwt;
+
+  String? cat_id;
+  String? jwt;
 
   @override
   _EngineeringServicesState createState() => _EngineeringServicesState();
+
+  EngineeringServices({this.cat_id, this.jwt});
 }
 
 enum SingingCharacter { yes, no }
 SingingCharacter _character1 = SingingCharacter.yes;
 
 class _EngineeringServicesState extends State<EngineeringServices> {
-  List<File> proFile;
+  List<File>? proFile;
 
   var dropdownValue1 = 'نوع الخدمة المطلوبة';
   num _counter1 = 0;
@@ -53,7 +56,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
     });
   }
 
-  String token;
+  String? token;
 
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -67,7 +70,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
     token = "";
     gettoken();
     this.getEngineeringServicesF(
-        key: '1234567890', token_id: widget.jwt, cat_id: widget.cat_id);
+        key: '1234567890', token_id: widget.jwt??"", cat_id: widget.cat_id);
     print(token);
     super.initState();
   }
@@ -81,17 +84,17 @@ class _EngineeringServicesState extends State<EngineeringServices> {
   TextEditingController Id7 = TextEditingController();
   TextEditingController Id8 = TextEditingController();
   //TextEditingController Id9 = TextEditingController();
-  List _list0;
-  List _list10;
-  int Id0;
-  int id10;
+  List?_list0;
+  List?_list10;
+  int? id0;
+  int? id10;
 
   Future<void> openG() async {
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowMultiple: true);
 
     if (result != null) {
-      proFile = result.paths.map((path) => File(path)).toList();
+      proFile = result.paths.map((path) => File(path!)).toList();
     } else {
       // User canceled the picker
     }
@@ -102,7 +105,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
     var size = MediaQuery.of(context).size;
     var sHeight = MediaQuery.of(context).size.height;
     var sWidth = MediaQuery.of(context).size.width;
-    String token;
+    String? token;
 
     Repository _repo = Repository();
     return Material(
@@ -110,7 +113,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
           stream: _repo
               .getEngineeringServicesF(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
@@ -146,7 +149,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "${snapshot.data.result.categoryDate.title}",
+                          "${snapshot.data?.result?.categoryDate?.title}",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
                             fontSize: 17,
@@ -166,7 +169,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "${snapshot.data.result.categoryDate.title}",
+                            "${snapshot.data?.result?.categoryDate?.title}",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
@@ -188,7 +191,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.categoryDate.description}",
+                                "${snapshot.data?.result?.categoryDate?.description}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -214,7 +217,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[0].title}",
+                                "${snapshot.data?.result?.lableList?[0].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -227,7 +230,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[0].type ==
+                                child: snapshot.data?.result?.lableList?[0].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8, child: TextField())
@@ -252,7 +255,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                                 child: _list0 != null
                                                     ? DropdownButton(
                                                         isExpanded: true,
-                                                        items: _list0.map((e) {
+                                                        items: _list0?.map((e) {
                                                           return new DropdownMenuItem(
                                                             child: Container(
                                                                 alignment: Alignment
@@ -280,7 +283,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                                         }).toList(),
                                                         onChanged: (val) {
                                                           setState(() {
-                                                            Id0 = val;
+                                                            Id0.text = val.toString();
                                                             print(val);
                                                           });
                                                         },
@@ -311,7 +314,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[1].title}",
+                                "${snapshot.data?.result?.lableList?[1].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -325,7 +328,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
                                   child: snapshot
-                                              .data.result.lableList[1].type ==
+                                              .data?.result?.lableList?[1].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -401,7 +404,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[2].title}",
+                                "${snapshot.data?.result?.lableList?[2].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -414,7 +417,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[2].type ==
+                                child: snapshot.data?.result?.lableList?[2].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -491,7 +494,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[3].title}",
+                                "${snapshot.data?.result?.lableList?[3].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -504,7 +507,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[3].type ==
+                                child: snapshot.data?.result?.lableList?[3].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -581,7 +584,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[4].title}",
+                                "${snapshot.data?.result?.lableList?[4].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -594,7 +597,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[4].type ==
+                                child: snapshot.data?.result?.lableList?[4].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -671,7 +674,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[5].title}",
+                                "${snapshot.data?.result?.lableList?[5].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -684,7 +687,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[5].type ==
+                                child: snapshot.data?.result?.lableList?[5].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -762,7 +765,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[6].title}",
+                                "${snapshot.data?.result?.lableList?[6].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -775,7 +778,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[6].type ==
+                                child: snapshot.data?.result?.lableList?[6].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -853,7 +856,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[7].title}",
+                                "${snapshot.data?.result?.lableList?[7].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -866,7 +869,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[7].type ==
+                                child: snapshot.data?.result?.lableList?[7].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -944,7 +947,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[8].title}",
+                                "${snapshot.data?.result?.lableList?[8].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -957,7 +960,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[8].type ==
+                                child: snapshot.data?.result?.lableList?[8].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -1034,7 +1037,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[9].title}",
+                                "${snapshot.data?.result?.lableList?[9].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1047,7 +1050,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[9].type ==
+                                child: snapshot.data?.result?.lableList?[9].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -1134,7 +1137,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[10].title}",
+                                "${snapshot.data?.result?.lableList?[10].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1148,7 +1151,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[10].type == 2
+                                    snapshot.data?.result?.lableList?[10].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1174,7 +1177,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list10
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1204,7 +1207,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                id10 = val;
+                                                                id10 = int.parse(val.toString());
                                                                 print(id10);
                                                                 print(val);
                                                               });
@@ -1233,7 +1236,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
 
                             //  alignment: Alignment.center,
                             child: Text(
-                                "${snapshot.data.result.categoryDate.details}",
+                                "${snapshot.data?.result?.categoryDate?.details}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -1272,15 +1275,15 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xfff3a005),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xfff3a005), // Button background color
+                                    foregroundColor: Colors.orangeAccent, // Button text color
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      Id0 = null;
+                                      Id0.text = '';
                                       Id1.text = '';
                                       Id2.text = '';
                                       Id3.text = '';
@@ -1317,8 +1320,8 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xfff3a005),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xfff3a005), // Button background color
+                                    foregroundColor: Colors.orangeAccent, // Button text color
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -1336,28 +1339,28 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                         id10 != null &&
                                         Id8.text != '') {
                                       String a0 =
-                                          "${snapshot.data.result.lableList[0].lebalId}.$Id0";
+                                          "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
                                       String a1 =
-                                          '${snapshot.data.result.lableList[1].lebalId}."${Id1.text}"';
+                                          '${snapshot.data?.result?.lableList?[1].lebalId}."${Id1.text}"';
                                       String a2 =
-                                          '${snapshot.data.result.lableList[2].lebalId}."${Id2.text}"';
+                                          '${snapshot.data?.result?.lableList?[2].lebalId}."${Id2.text}"';
                                       String a3 =
-                                          '${snapshot.data.result.lableList[3].lebalId}."${Id3.text}"';
+                                          '${snapshot.data?.result?.lableList?[3].lebalId}."${Id3.text}"';
                                       String a4 =
-                                          '${snapshot.data.result.lableList[4].lebalId}."${Id4.text}"';
+                                          '${snapshot.data?.result?.lableList?[4].lebalId}."${Id4.text}"';
                                       String a5 =
-                                          '${snapshot.data.result.lableList[5].lebalId}."${Id5.text}"';
+                                          '${snapshot.data?.result?.lableList?[5].lebalId}."${Id5.text}"';
                                       String a6 =
-                                          '${snapshot.data.result.lableList[6].lebalId}."${Id6.text}"';
+                                          '${snapshot.data?.result?.lableList?[6].lebalId}."${Id6.text}"';
                                       String a7 =
-                                          '${snapshot.data.result.lableList[7].lebalId}."${Id7.text}"';
+                                          '${snapshot.data?.result?.lableList?[7].lebalId}."${Id7.text}"';
                                       String a8 =
-                                          '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
+                                          '${snapshot.data?.result?.lableList?[8].lebalId}."${Id8.text}"';
                                       String a10 =
-                                          "${snapshot.data.result.lableList[10].lebalId}.$id10";
-                                      //        String a9= '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
+                                          "${snapshot.data?.result?.lableList?[10].lebalId}.$id10";
+                                      //        String a9= '${snapshot.data?.result?.lableList?[9].lebalId}."${Id9.text}"';
 
-                                      //  String a16='${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
+                                      //  String a16='${snapshot.data?.result?.lableList?[16].lebalId}."${Id16.text}"';
                                       String answer =
                                           '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a10';
                                       _repo
@@ -1423,8 +1426,10 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xfff3a005),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xfff3a005), // Button background color
+                                    foregroundColor: Colors.orangeAccent,
+                                    // primary: Color(0xfff3a005),
+                                    // onPrimary: Colors.orangeAccent,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -1910,12 +1915,12 @@ class _EngineeringServicesState extends State<EngineeringServices> {
 
   Dio dio = Dio();
   //getengineering_services
-  Future<EngineeringServicesOffersM> getEngineeringServicesF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<EngineeringServicesOffersM?> getEngineeringServicesF({
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    EngineeringServicesOffersM data;
+    EngineeringServicesOffersM? data;
     FormData formData = new FormData.fromMap(
         {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -1929,8 +1934,8 @@ class _EngineeringServicesState extends State<EngineeringServices> {
       data = EngineeringServicesOffersM.fromMap(value.data);
     });
     setState(() {
-      _list0 = data.result.lableList[0].listAnwser.toList();
-      _list10 = data.result.lableList[10].listAnwser.toList();
+      _list0 = data?.result?.lableList?[0].listAnwser?.toList();
+      _list10 = data?.result?.lableList?[10].listAnwser?.toList();
     });
     return data;
   }

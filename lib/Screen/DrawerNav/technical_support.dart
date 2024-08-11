@@ -10,14 +10,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';
 
 class TechSupport extends StatefulWidget {
-  const TechSupport({Key key}) : super(key: key);
 
   @override
   _TechSupportState createState() => _TechSupportState();
 }
 
 class _TechSupportState extends State<TechSupport> {
-  String token;
+  String? token;
 
   Future <Null> gettoken() async{
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -105,8 +104,9 @@ class _TechSupportState extends State<TechSupport> {
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 20,
-                        primary:  Color(0xfff3a005),
-                        onPrimary: Colors.orangeAccent,
+                        backgroundColor: Color(0xfff3a005), // Button background color
+                        foregroundColor: Colors.orangeAccent,
+
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                             BorderRadius.all(Radius.circular(30))),
@@ -125,17 +125,17 @@ class _TechSupportState extends State<TechSupport> {
                   Container(
                     width: size.width*.9,
                     child: StreamBuilder<UserTicketsM>(
-                      stream: _repo.getTickets(token_id: token, key: '1234567890', limit: '20', page_number: '0').asStream(),
+                      stream: _repo.getTickets(token_id: token!, key: '1234567890', limit: '20', page_number: '0').asStream(),
                       builder: (context, snapshot) {
                       if(snapshot.data!=null){
                         return ListView.builder(
-                          itemCount: snapshot.data.result.myTickets.length,
+                          itemCount: snapshot.data?.result?.myTickets?.length,
                          shrinkWrap: true,
                           physics: ScrollPhysics(),
                           itemBuilder: (context,index){
                             return GestureDetector(
                               onTap: (){
-                               Navigator.push(context, MaterialPageRoute(builder: (_)=> TicketDetails(ticketId: snapshot.data.result.myTickets[index].id.toString(),)));
+                               Navigator.push(context, MaterialPageRoute(builder: (_)=> TicketDetails(ticketId: snapshot.data?.result?.myTickets?[index].id.toString(),)));
                               },
                               child: Card(
                                 color:Colors.grey,
@@ -149,7 +149,7 @@ class _TechSupportState extends State<TechSupport> {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.all(10.0),
-                                            child: Text("${snapshot.data.result.myTickets[index].createdAt}",  style: TextStyle(
+                                            child: Text("${snapshot.data?.result?.myTickets?[index].createdAt}",  style: TextStyle(
                                               fontFamily: 'GE SS Two',
                                               fontSize: 17,
                                               // fontWeight: FontWeight.w400,
@@ -157,7 +157,7 @@ class _TechSupportState extends State<TechSupport> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(10.0),
-                                            child: Text("${snapshot.data.result.myTickets[index].title}",style: TextStyle(
+                                            child: Text("${snapshot.data?.result?.myTickets?[index].title}",style: TextStyle(
                                               fontFamily: 'GE SS Two',
                                               fontSize: 17,
                                               // fontWeight: FontWeight.w400,
@@ -173,7 +173,7 @@ class _TechSupportState extends State<TechSupport> {
                                             child: Container(
                                               height : size.height*.078,
                                               width: size.width*0.8,
-                                              child: Text("${snapshot.data.result.myTickets[index].content}",textDirection: TextDirection.rtl,  style: TextStyle(
+                                              child: Text("${snapshot.data?.result?.myTickets?[index].content}",textDirection: TextDirection.rtl,  style: TextStyle(
                                                 fontFamily: 'GE SS Two',
                                                 fontSize: 13,
                                                 // fontWeight: FontWeight.w400,

@@ -7,15 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../draw.dart';
+import 'Real_estate_investment.dart';
 import 'send_done.dart';
 
 class ConcreteStructure extends StatefulWidget {
-  ConcreteStructure({Key key, this.cat_id, this.jwt}) : super(key: key);
-  String cat_id;
-  String jwt;
+  String? cat_id;
+  String? jwt;
 
   @override
   _ConcreteStructureState createState() => _ConcreteStructureState();
+
+  ConcreteStructure({this.cat_id, this.jwt});
 }
 
 enum SingingCharacter { yes, no }
@@ -42,42 +44,42 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
   num _counter2 = 0;
 
   var baseurl = 'https://mdecco.com/app/';
-  List _list0;
-  int Id0;
-  List _list1;
-  int Id1;
-  List _list2;
-  int Id2;
-  List _list3;
-  int Id3;
-  List _list4;
-  int Id4;
-  List _list5;
-  int Id5;
-  List _list6;
-  int Id6;
-  List _list7;
-  int Id7;
-  List _list8;
-  int Id8;
-  List _list9;
-  int Id9;
-  List _list10;
-  int Id10;
-  List _list11;
-  int Id11;
-  List _list12;
-  int Id12;
-  List _list13;
-  int Id13;
+  List?_list0;
+  int? id0;
+  List?_list1;
+  int? id1;
+  List?_list2;
+  int? id2;
+  List?_list3;
+  int? id3;
+  List?_list4;
+  int? id4;
+  List?_list5;
+  int? id5;
+  List?_list6;
+  int? id6;
+  List?_list7;
+  int? id7;
+  List?_list8;
+  int? id8;
+  List?_list9;
+  int? id9;
+  List?_list10;
+  int? id10;
+  List?_list11;
+  int? id11;
+  List?_list12;
+  int? id12;
+  List?_list13;
+  int? id13;
   Dio dio = Dio();
 
-  Future<BuildCostM> getCostBuildF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<BuildCostM?> getCostBuildF({
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    BuildCostM data;
+    BuildCostM? data;
     FormData formData = new FormData.fromMap(
         {"key": "1234567890", "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -91,20 +93,20 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
       data = BuildCostM.fromMap(value.data);
     });
     setState(() {
-      _list0 = data.result.lableList[0].listAnwser.toList();
-      _list1 = data.result.lableList[1].listAnwser.toList();
-      _list2 = data.result.lableList[2].listAnwser.toList();
-      _list3 = data.result.lableList[3].listAnwser.toList();
-      _list4 = data.result.lableList[4].listAnwser.toList();
-      _list5 = data.result.lableList[5].listAnwser.toList();
-      _list6 = data.result.lableList[6].listAnwser.toList();
-      _list7 = data.result.lableList[7].listAnwser.toList();
-      _list8 = data.result.lableList[8].listAnwser.toList();
-      _list9 = data.result.lableList[9].listAnwser.toList();
-      _list10 = data.result.lableList[10].listAnwser.toList();
-      _list11 = data.result.lableList[11].listAnwser.toList();
-      _list12 = data.result.lableList[12].listAnwser.toList();
-      _list13 = data.result.lableList[13].listAnwser.toList();
+      _list0 = data?.result?.lableList?[0].listAnwser?.toList();
+      _list1 = data?.result?.lableList?[1].listAnwser?.toList();
+      _list2 = data?.result?.lableList?[2].listAnwser?.toList();
+      _list3 = data?.result?.lableList?[3].listAnwser?.toList();
+      _list4 = data?.result?.lableList?[4].listAnwser?.toList();
+      _list5 = data?.result?.lableList?[5].listAnwser?.toList();
+      _list6 = data?.result?.lableList?[6].listAnwser?.toList();
+      _list7 = data?.result?.lableList?[7].listAnwser?.toList();
+      _list8 = data?.result?.lableList?[8].listAnwser?.toList();
+      _list9 = data?.result?.lableList?[9].listAnwser?.toList();
+      _list10 = data?.result?.lableList?[10].listAnwser?.toList();
+      _list11 = data?.result?.lableList?[11].listAnwser?.toList();
+      _list12 = data?.result?.lableList?[12].listAnwser?.toList();
+      _list13 = data?.result?.lableList?[13].listAnwser?.toList();
     });
     return data;
   }
@@ -140,7 +142,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
   SingingCharacter _character5 = SingingCharacter.yes;
   SingingCharacter _character6 = SingingCharacter.yes;
 
-  String token;
+  String? token;
 
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -154,13 +156,13 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
     token = "";
     this.gettoken();
     this.getCostBuildF(
-        key: '1234567890', token_id: widget.jwt, cat_id: widget.cat_id);
+        key: '1234567890', token_id: widget.jwt??"", cat_id: widget.cat_id);
     print(widget.jwt);
     print(widget.cat_id);
     super.initState();
   }
 
-  Color _getColorFromHex(String hexColor) {
+  Color? _getColorFromHex(String hexColor) {
     hexColor = hexColor.replaceAll("#", "");
     if (hexColor.length == 6) {
       hexColor = "FF" + hexColor;
@@ -168,6 +170,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
     if (hexColor.length == 8) {
       return Color(int.parse("0x$hexColor"));
     }
+    return null;
   }
 
   Repository _repo = Repository();
@@ -217,7 +220,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${snapshot.data.result.categoryDate.title}",
+                        "${snapshot.data?.result?.categoryDate?.title}",
                         style: TextStyle(
                           fontFamily: 'GE SS Two',
                           fontSize: 17,
@@ -238,7 +241,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "${snapshot.data.result.categoryDate.title}",
+                              "${snapshot.data?.result?.categoryDate?.title}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',
@@ -250,8 +253,9 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ],
                         ),
                       ),
-                      if (snapshot
-                          .data.result.categoryDate.description.isNotEmpty)
+                      // if (snapshot.data?.result?.categoryDate?.description?.isNotEmpty)
+                      if (snapshot.data?.result?.categoryDate?.description!=null)
+
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: Row(
@@ -262,7 +266,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.categoryDate.description}",
+                                    "${snapshot.data?.result?.categoryDate?.description}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
@@ -288,7 +292,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[0].title}",
+                                  "${snapshot.data?.result?.lableList?[0].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -302,7 +306,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[0].type ==
+                                      snapshot.data?.result?.lableList?[0].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -329,7 +333,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list0
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -355,7 +359,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id0 = val;
+                                                                  Id0.text = val.toString();
                                                                   print(Id0
                                                                       .toString());
                                                                 });
@@ -387,7 +391,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[1].title}",
+                                  "${snapshot.data?.result?.lableList?[1].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -401,7 +405,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[1].type ==
+                                      snapshot.data?.result?.lableList?[1].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -434,7 +438,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list1
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -454,13 +458,12 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                         textDirection:
                                                                             TextDirection.rtl,
                                                                       )),
-                                                                  value: e
-                                                                      .answerId,
+                                                                  value: e.answerId,
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id1 = val;
+                                                                  Id1 .text = val.toString();
                                                                   print(
                                                                       'This Id1');
                                                                   print(Id1
@@ -494,7 +497,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[2].title}",
+                                  "${snapshot.data?.result?.lableList?[2].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -508,7 +511,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[2].type ==
+                                      snapshot.data?.result?.lableList?[2].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -539,7 +542,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list2
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -565,7 +568,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id2 = val;
+                                                                  Id2 .text = val.toString();
 
                                                                   print(Id2
                                                                       .toString());
@@ -598,7 +601,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[3].title}",
+                                  "${snapshot.data?.result?.lableList?[3].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -612,7 +615,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[3].type ==
+                                      snapshot.data?.result?.lableList?[3].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -643,7 +646,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list3
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -669,7 +672,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id3 = val;
+                                                                  Id3 .text = val.toString();
                                                                   print(Id3
                                                                       .toString());
                                                                 });
@@ -701,7 +704,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[4].title}",
+                                  "${snapshot.data?.result?.lableList?[4].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -715,7 +718,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[4].type ==
+                                      snapshot.data?.result?.lableList?[4].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -746,7 +749,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list4
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -772,7 +775,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id4 = val;
+                                                                  Id4.text = val.toString();
                                                                   print(Id4
                                                                       .toString());
                                                                 });
@@ -804,7 +807,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[5].title}",
+                                  "${snapshot.data?.result?.lableList?[5].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -818,7 +821,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[5].type ==
+                                      snapshot.data?.result?.lableList?[5].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -849,7 +852,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list5
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -875,7 +878,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id5 = val;
+                                                                  Id5.text = val.toString();
                                                                   print(Id5
                                                                       .toString());
                                                                 });
@@ -907,7 +910,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[6].title}",
+                                  "${snapshot.data?.result?.lableList?[6].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -921,7 +924,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[6].type ==
+                                      snapshot.data?.result?.lableList?[6].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -952,7 +955,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list6
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -978,7 +981,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id6 = val;
+                                                                  Id6 .text = val.toString();
                                                                   print(Id6
                                                                       .toString());
                                                                 });
@@ -1010,7 +1013,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[7].title}",
+                                  "${snapshot.data?.result?.lableList?[7].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1024,7 +1027,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[7].type ==
+                                      snapshot.data?.result?.lableList?[7].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1055,7 +1058,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list7
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1081,7 +1084,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id7 = val;
+                                                                  Id7.text = val.toString();
                                                                   print(Id7
                                                                       .toString());
                                                                 });
@@ -1113,7 +1116,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[8].title}",
+                                  "${snapshot.data?.result?.lableList?[8].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1127,7 +1130,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[8].type ==
+                                      snapshot.data?.result?.lableList?[8].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1158,7 +1161,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list8
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1184,7 +1187,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id8 = val;
+                                                                  Id8 .text = val.toString();
                                                                   print(Id8
                                                                       .toString());
                                                                 });
@@ -1216,7 +1219,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[9].title}",
+                                  "${snapshot.data?.result?.lableList?[9].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1230,7 +1233,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[9].type ==
+                                      snapshot.data?.result?.lableList?[9].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1261,7 +1264,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list9
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1287,7 +1290,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id9 = val;
+                                                                  Id9 .text = val.toString();
                                                                   print(Id9
                                                                       .toString());
                                                                 });
@@ -1319,7 +1322,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[10].title}",
+                                  "${snapshot.data?.result?.lableList?[10].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1333,7 +1336,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[10].type ==
+                                      snapshot.data?.result?.lableList?[10].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1364,7 +1367,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list10
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1390,7 +1393,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id10 = val;
+                                                                  Id10.text = val.toString();
                                                                   print(Id10
                                                                       .toString());
                                                                 });
@@ -1422,7 +1425,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[11].title}",
+                                  "${snapshot.data?.result?.lableList?[11].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1436,7 +1439,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[11].type ==
+                                      snapshot.data?.result?.lableList?[11].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1467,7 +1470,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list11
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1493,7 +1496,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id11 = val;
+                                                                  Id11.text = val.toString();
                                                                   print(Id11
                                                                       .toString());
                                                                 });
@@ -1525,7 +1528,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[12].title}",
+                                  "${snapshot.data?.result?.lableList?[12].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1539,7 +1542,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[12].type ==
+                                      snapshot.data?.result?.lableList?[12].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1573,7 +1576,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list12
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1599,7 +1602,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id12 = val;
+                                                                  Id12.text = val.toString();
                                                                   print(Id12
                                                                       .toString());
                                                                 });
@@ -1631,7 +1634,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[13].title}",
+                                  "${snapshot.data?.result?.lableList?[13].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1645,7 +1648,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[13].type ==
+                                      snapshot.data?.result?.lableList?[13].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -1678,7 +1681,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list13
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -1704,7 +1707,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id13 = val;
+                                                                  Id13.text = val.toString();
                                                                   print(Id13
                                                                       .toString());
                                                                 });
@@ -1723,8 +1726,10 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                           ),
                         ),
                       ),
+                      // if (snapshot.data?.result?.categoryDate?.details.isNotEmpty)
 
-                      if (snapshot.data.result.categoryDate.details.isNotEmpty)
+                        if (snapshot.data?.result?.categoryDate?.details!=null)
+
                         Padding(
                           padding: const EdgeInsets.all(20),
                           child: Container(
@@ -1732,7 +1737,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
 
                             //  alignment: Alignment.center,
                             child: Text(
-                                "${snapshot.data.result.categoryDate.details}",
+                                "${snapshot.data?.result?.categoryDate?.details}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -1769,29 +1774,31 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent, // Button text color
+                                      // primary: Color(0xfff3a005),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                        Id0 = null;
+                                        Id0.text = '';
                                         // Id1 = null;
-                                        Id2 = null;
-                                        Id3 = null;
-                                        Id4 = null;
-                                        Id5 = null;
-                                        Id6 = null;
-                                        Id7 = null;
-                                        Id8 = null;
-                                        Id9 = null;
-                                        Id10 = null;
-                                        Id11 = null;
+                                        Id2.text = '';
+                                        Id3.text = '';
+                                        Id4.text = '';
+                                        Id5.text = '';
+                                        Id6.text = '';
+                                        Id7.text = '';
+                                        Id8.text = '';
+                                        Id9.text = '';
+                                        Id10.text = '';
+                                        Id11.text= '';
                                         // Id12 = null;
 
-                                        Id13 = null;
+                                        Id13.text= '';
                                         cityController.text = '';
                                         floorsNumController.text = '';
                                         elevatorsNumController.text = '';
@@ -1828,8 +1835,11 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent, // Button text color
+                                      //
+                                      // primary: Color(0xfff3a005),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -1838,7 +1848,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                       if (Id0 != null &&
                                           (workersController.text != '' &&
                                               workersController.text != null) &&
-                                          (snapshot.data.result.lableList[2]
+                                          (snapshot.data?.result?.lableList?[2]
                                                       .type !=
                                                   2 &&
                                               Id2 != null) &&
@@ -1857,42 +1867,41 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                           floorsNumController.text != null &&
                                           floorsNumController.text != '') {
                                         String a0 =
-                                            "${snapshot.data.result.lableList[0].lebalId}.$Id0";
-                                        String a1 = snapshot.data.result
-                                                    .lableList[1].type !=
+                                            "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
+                                        String a1 = snapshot.data?.result?.lableList?[1].type !=
                                                 2
-                                            ? "${snapshot.data.result.lableList[1].lebalId}.$Id1"
-                                            : '${snapshot.data.result.lableList[1].lebalId}."${workersController.text}"';
+                                            ? "${snapshot.data?.result?.lableList?[1].lebalId}.$Id1"
+                                            : '${snapshot.data?.result?.lableList?[1].lebalId}."${workersController.text}"';
                                         String a2 =
-                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2";
+                                            "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
                                         String a3 =
-                                            "${snapshot.data.result.lableList[3].lebalId}.$Id3";
+                                            "${snapshot.data?.result?.lableList?[3].lebalId}.$Id3";
                                         String a4 =
-                                            "${snapshot.data.result.lableList[4].lebalId}.$Id4";
+                                            "${snapshot.data?.result?.lableList?[4].lebalId}.$Id4";
                                         String a5 =
-                                            "${snapshot.data.result.lableList[5].lebalId}.$Id5";
+                                            "${snapshot.data?.result?.lableList?[5].lebalId}.$Id5";
                                         String a6 =
-                                            "${snapshot.data.result.lableList[6].lebalId}.$Id6";
+                                            "${snapshot.data?.result?.lableList?[6].lebalId}.$Id6";
                                         String a7 =
-                                            "${snapshot.data.result.lableList[7].lebalId}.$Id7";
+                                            "${snapshot.data?.result?.lableList?[7].lebalId}.$Id7";
                                         String a8 =
-                                            "${snapshot.data.result.lableList[8].lebalId}.$Id8";
+                                            "${snapshot.data?.result?.lableList?[8].lebalId}.$Id8";
                                         String a9 =
-                                            "${snapshot.data.result.lableList[9].lebalId}.$Id9";
+                                            "${snapshot.data?.result?.lableList?[9].lebalId}.$Id9";
                                         String a10 =
-                                            "${snapshot.data.result.lableList[10].lebalId}.$Id10";
-                                        String a11 = snapshot.data.result
-                                                    .lableList[11].type !=
+                                            "${snapshot.data?.result?.lableList?[10].lebalId}.$Id10";
+                                        String a11 = snapshot.data?.result
+                                                    ?.lableList?[11].type !=
                                                 2
-                                            ? "${snapshot.data.result.lableList[11].lebalId}.$Id11"
-                                            : '${snapshot.data.result.lableList[11].lebalId}.\"${cityController.text}\"';
-                                        String a12 = snapshot.data.result
-                                                    .lableList[12].type !=
+                                            ? "${snapshot.data?.result?.lableList?[11].lebalId}.$Id11"
+                                            : '${snapshot.data?.result?.lableList?[11].lebalId}.\"${cityController.text}\"';
+                                        String a12 = snapshot.data?.result
+                                                    ?.lableList?[12].type !=
                                                 2
-                                            ? "${snapshot.data.result.lableList[12].lebalId}.$Id12"
-                                            : '${snapshot.data.result.lableList[12].lebalId}."${elevatorsNumController.text}"';
+                                            ? "${snapshot.data?.result?.lableList?[12].lebalId}.$Id12"
+                                            : '${snapshot.data?.result?.lableList?[12].lebalId}."${elevatorsNumController.text}"';
                                         String a13 =
-                                            '${snapshot.data.result.lableList[13].lebalId}."${floorsNumController.text}"';
+                                            '${snapshot.data?.result?.lableList?[13].lebalId}."${floorsNumController.text}"';
 
                                         print('a0==>$a0');
                                         print('a1==>$a1');
@@ -2008,8 +2017,11 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent, // Button text color
+
+                                      // primary: Color(0xfff3a005),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),

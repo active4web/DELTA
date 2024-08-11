@@ -11,20 +11,21 @@ import '../../utils.dart';
 import 'offer.dart';
 
 class OrderDetails extends StatefulWidget {
-  String name;
-  String orderId;
-  String jwt;
+  String? name;
+  String? orderId;
+  String? jwt;
 
-  OrderDetails({Key key, this.name, this.orderId, this.jwt}) : super(key: key);
+
+  OrderDetails({this.name, this.orderId, this.jwt});
 
   @override
   _OrderDetailsState createState() => _OrderDetailsState();
 }
 
 class _OrderDetailsState extends State<OrderDetails> {
-  String token;
+  String? token;
 
-  Future<String> gettoken() async {
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -46,7 +47,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           stream: _repo
               .getOrderDetails(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   lang: 'ar',
                   id_order: widget.orderId)
               .asStream(),
@@ -233,7 +234,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                   Container(
                                       width: size.width * .8,
                                       child: Text(
-                                        "${snapshot.data.result.orderDetails[0].formName}",
+                                        "${snapshot.data?.result?.orderDetails?[0].formName}",
                                         textDirection: TextDirection.rtl,
                                         style: TextStyle(
                                           fontFamily: 'GE SS Two',
@@ -255,7 +256,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                       width: size.width * .8,
                                       height: size.height * .52,
                                       child: Text(
-                                        "${snapshot.data.result.orderDetails[0].details}",
+                                        "${snapshot.data?.result?.orderDetails?[0].details}",
                                         textDirection: TextDirection.rtl,
                                         style: TextStyle(
                                           fontFamily: 'GE SS Two',
@@ -300,7 +301,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                         Container(
                                             width: size.width * .7,
                                             child: Text(
-                                              "${snapshot.data.result.orderDetails[0].finalDetails}",
+                                              "${snapshot.data?.result?.orderDetails?[0].finalDetails}",
                                               style: TextStyle(
                                                 fontFamily: 'GE SS Two',
                                                 fontSize: 17,
@@ -343,11 +344,11 @@ class _OrderDetailsState extends State<OrderDetails> {
                                           ),
                                           style: ElevatedButton.styleFrom(
                                             elevation: 20,
-                                            primary: Color(0xfff3a005),
-                                            onPrimary: Colors.orangeAccent,
+                                            backgroundColor: Color(0xfff3a005), // Button background color
+                                            foregroundColor: Colors.orangeAccent,
                                             shape: const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.all(
-                                                    Radius.circular(15))),
+                                                    Radius.circular(15),),),
                                           ),
                                           onPressed: () {
                                             Navigator.push(
@@ -380,14 +381,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                                           ),
                                           style: ElevatedButton.styleFrom(
                                             elevation: 20,
-                                            primary: Color(0xfff3a005),
-                                            onPrimary: Colors.orangeAccent,
+                                            backgroundColor: Color(0xfff3a005), // Button background color
+                                            foregroundColor: Colors.orangeAccent,
                                             shape: const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.all(
-                                                    Radius.circular(15))),
+                                                    Radius.circular(15),),),
                                           ),
                                           onPressed: () {
-                                           Utils.openLink(url: 'https://wa.me/send?phone=${snapshot.data.result.orderDetails[0].whatsapp}');
+                                           Utils.openLink(url: 'https://wa.me/send?phone=${snapshot.data?.result?.orderDetails?[0].whatsapp}');
                                           }),
                                     ),
                                   ),

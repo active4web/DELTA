@@ -13,10 +13,10 @@ class LoginM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory LoginM.fromJson(String str) => LoginM.fromMap(json.decode(str));
 
@@ -33,7 +33,7 @@ class LoginM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -42,7 +42,7 @@ class Result {
     this.clientData,
   });
 
-  List<ClientDatum> clientData;
+  List<ClientDatum>? clientData;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -53,7 +53,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "client_data": List<dynamic>.from(clientData.map((x) => x.toMap())),
+    "client_data": List<dynamic>.from(clientData!.map((x) => x.toMap())),
   };
 }
 
@@ -68,13 +68,13 @@ class ClientDatum {
     this.token,
   });
 
-  String phone;
-  int id;
-  String fullname;
-  String email;
-  String cityId;
-  String cityName;
-  String token;
+  String? phone;
+  int? id;
+  String? fullname;
+  String? email;
+  String? cityId;
+  String? cityName;
+  String? token;
 
   factory ClientDatum.fromJson(String str) => ClientDatum.fromMap(json.decode(str));
 

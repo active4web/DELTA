@@ -12,10 +12,10 @@ class OrderDetailsM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory OrderDetailsM.fromJson(String str) => OrderDetailsM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class OrderDetailsM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -41,7 +41,7 @@ class Result {
     this.orderDetails,
   });
 
-  List<OrderDetail> orderDetails;
+  List<OrderDetail>? orderDetails;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -52,7 +52,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "order_details": List<dynamic>.from(orderDetails.map((x) => x.toMap())),
+    "order_details": List<dynamic>.from(orderDetails!.map((x) => x.toMap())),
   };
 }
 
@@ -69,15 +69,15 @@ class OrderDetail {
     this.viewStore,
   });
 
-  int codeName;
-  int idOrder;
-  String formName;
-  String details;
-  String finalDetails;
-  String whatsapp;
-  String phone;
-  DateTime date;
-  bool viewStore;
+  int? codeName;
+  int? idOrder;
+  String? formName;
+  String?details;
+  String? finalDetails;
+  String? whatsapp;
+  String? phone;
+  DateTime? date;
+  bool? viewStore;
 
   factory OrderDetail.fromJson(String str) => OrderDetail.fromMap(json.decode(str));
 
@@ -103,7 +103,7 @@ class OrderDetail {
     "final_details": finalDetails,
     "whatsapp": whatsapp,
     "phone": phone,
-    "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+    "date": "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
     "view_store": viewStore,
   };
 }

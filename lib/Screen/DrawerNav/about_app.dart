@@ -17,16 +17,15 @@ import 'profile.dart';
 import 'technical_support.dart';
 
 class AboutApp extends StatefulWidget {
-  const AboutApp({Key key}) : super(key: key);
 
   @override
   _AboutAppState createState() => _AboutAppState();
 }
 
 class _AboutAppState extends State<AboutApp> {
-  String token;
+  String? token;
 
-  Future<String> gettoken() async {
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -87,7 +86,7 @@ class _AboutAppState extends State<AboutApp> {
         endDrawer:  NewWidget(size: size, token: token),
         body: StreamBuilder<AboutUsM>(
             stream: _repo
-                .getAboutApp(token_id: token, key: "1234567890")
+                .getAboutApp(token_id: token!, key: "1234567890")
                 .asStream(),
             builder: (context, snapshot) {
               if (snapshot.data != null) {
@@ -127,7 +126,7 @@ class _AboutAppState extends State<AboutApp> {
                           Container(
                               width: size.width * .8,
                               height: size.height * .05,
-                              child: snapshot.data.result.aboutTitle == ""
+                              child: snapshot.data?.result?.aboutTitle == ""
                                   ? Text(
                                       "للمقاولات العامة والاستشارات الهندسية والإستثمار العقاري",
                                       textDirection: TextDirection.rtl,
@@ -138,7 +137,7 @@ class _AboutAppState extends State<AboutApp> {
                                       ),
                                     )
                                   : Text(
-                                      "${snapshot.data.result.aboutTitle}",
+                                      "${snapshot.data?.result?.aboutTitle}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -158,10 +157,10 @@ class _AboutAppState extends State<AboutApp> {
                         children: [
                           Container(
                               width: size.width * .8,
-                              child: snapshot.data.result.aboutTxt != ""
+                              child: snapshot.data?.result?.aboutTxt != ""
                                   ? SingleChildScrollView(
                                     child: Text(
-                                        "${snapshot.data.result.aboutTxt}",
+                                        "${snapshot.data?.result?.aboutTxt}",
                                       textDirection: TextDirection.rtl,
                                       style: TextStyle(
                                         fontFamily: 'GE SS Two',
@@ -197,9 +196,9 @@ class _AboutAppState extends State<AboutApp> {
                           Container(
                               width: size.width * .8,
                               height: size.height * .05,
-                              child: snapshot.data.result.messageTitle != ""
+                              child: snapshot.data?.result?.messageTitle != ""
                                   ? Text(
-                                      "${snapshot.data.result.messageTitle}",
+                                      "${snapshot.data?.result?.messageTitle}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -228,9 +227,9 @@ class _AboutAppState extends State<AboutApp> {
                         children: [
                           Container(
                               width: size.width * .8,
-                              child: snapshot.data.result.messageTxt != ""
+                              child: snapshot.data?.result?.messageTxt != ""
                                   ? Text(
-                                      "${snapshot.data.result.messageTxt}",
+                                      "${snapshot.data?.result?.messageTxt}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -263,9 +262,9 @@ class _AboutAppState extends State<AboutApp> {
                           Container(
                               width: size.width * .8,
                               height: size.height * .05,
-                              child: snapshot.data.result.visionTitle != ""
+                              child: snapshot.data?.result?.visionTitle != ""
                                   ? Text(
-                                      "${snapshot.data.result.visionTitle}",
+                                      "${snapshot.data?.result?.visionTitle}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -294,9 +293,9 @@ class _AboutAppState extends State<AboutApp> {
                         children: [
                           Container(
                             width: size.width * .8,
-                            child: snapshot.data.result.visionTxt != ""
+                            child: snapshot.data?.result?.visionTxt != ""
                                 ? Text(
-                                    "${snapshot.data.result.visionTxt}",
+                                    "${snapshot.data?.result?.visionTxt}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',

@@ -1,7 +1,7 @@
 class SetReplay {
-  String message;
-  int codenum;
-  bool status;
+  String? message;
+  int? codenum;
+  bool? status;
 
   SetReplay({this.message, this.codenum, this.status});
 

@@ -11,16 +11,16 @@ import 'residental_types.dart';
 import 'architectural_residential_design.dart';
 
 class DesignNowHome extends StatefulWidget {
-  DesignNowHome({Key key, this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
+  DesignNowHome({this.jwt, this.cat_id});
+  String? jwt;
+  String? cat_id;
   @override
   _DesignNowHomeState createState() => _DesignNowHomeState();
 }
 
 class _DesignNowHomeState extends State<DesignNowHome> {
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -44,7 +44,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
           stream: _repo
               .getDesignNowF(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
@@ -80,7 +80,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "${snapshot.data.result.categoryDate.title} ",
+                          "${snapshot.data?.result?.categoryDate?.title} ",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
                             fontSize: 17,
@@ -107,7 +107,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                             ],
                           ),
                         ),
-                        snapshot.data.result.categoryDate.description != null
+                        snapshot.data?.result?.categoryDate?.description != null
                             ? Padding(
                                 padding: const EdgeInsets.all(15.0),
                                 child: Row(
@@ -118,7 +118,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
-                                          "${snapshot.data.result.categoryDate.description}",
+                                          "${snapshot.data?.result?.categoryDate?.description}",
                                           textDirection: TextDirection.rtl,
                                           style: TextStyle(
                                             fontFamily: 'GE SS Two',
@@ -147,7 +147,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                   width: size.width * 1),
                               child: ElevatedButton(
                                   child: Text(
-                                    "${snapshot.data.result.lableList[0].title}",
+                                    "${snapshot.data?.result?.lableList?[0].title}",
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
                                       fontSize: 17,
@@ -157,8 +157,10 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xff3b6745),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xff3b6745), // Button background color
+                                    foregroundColor: Colors.orangeAccent,
+                                    // primary: Color(0xff3b6745),
+                                    // onPrimary: Colors.orangeAccent,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -168,9 +170,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (_) => OffersAndDesigns(
-                                                  cat_id: snapshot.data.result
-                                                      .lableList[0].lebalId
-                                                      .toString(),
+                                                  cat_id: snapshot.data?.result?.lableList?[0].lebalId.toString(),
                                                   jwt: token,
                                                 )));
                                   }),
@@ -192,7 +192,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                   width: size.width * 1),
                               child: ElevatedButton(
                                   child: Text(
-                                    '${snapshot.data.result.lableList[1].title}',
+                                    '${snapshot.data?.result?.lableList?[1].title}',
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
                                       fontSize: 17,
@@ -202,8 +202,10 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xff3b6745),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xff3b6745), // Button background color
+                                    foregroundColor: Colors.orangeAccent,
+                                    // primary: Color(0xff3b6745),
+                                    // onPrimary: Colors.orangeAccent,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -214,8 +216,8 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                         MaterialPageRoute(
                                             builder: (_) => CommercialDesign(
                                                   jwt: token,
-                                                  cat_id: snapshot.data.result
-                                                      .lableList[1].lebalId
+                                                  cat_id: snapshot.data?.result
+                                                      ?.lableList?[1].lebalId
                                                       .toString(),
                                                 )));
                                   }),
@@ -231,7 +233,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                 height: sHeight * .05,
                                 width: sWidth * .9,
                                 child: Text(
-                                  "${snapshot.data.result.categoryDate.details}",
+                                  "${snapshot.data?.result?.categoryDate?.details}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',

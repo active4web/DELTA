@@ -12,10 +12,10 @@ class ArticleCatM {
     this.result,
   });
 
-  String message;
-  int messageid;
-  bool status;
-  Result result;
+  String? message;
+  int? messageid;
+  bool? status;
+  Result? result;
 
   factory ArticleCatM.fromJson(String str) => ArticleCatM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class ArticleCatM {
     "Message": message,
     "Messageid": messageid,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -41,7 +41,7 @@ class Result {
     this.allCategories,
   });
 
-  List<AllCategory> allCategories;
+  List<AllCategory>? allCategories;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -52,7 +52,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "all_categories": List<dynamic>.from(allCategories.map((x) => x.toMap())),
+    "all_categories": List<dynamic>.from(allCategories!.map((x) => x.toMap())),
   };
 }
 
@@ -63,9 +63,9 @@ class AllCategory {
     this.allArticles,
   });
 
-  String categoryId;
-  String categoryName;
-  List<AllArticle> allArticles;
+  String? categoryId;
+  String? categoryName;
+  List<AllArticle>? allArticles;
 
   factory AllCategory.fromJson(String str) => AllCategory.fromMap(json.decode(str));
 
@@ -80,7 +80,7 @@ class AllCategory {
   Map<String, dynamic> toMap() => {
     "category_id": categoryId,
     "category_name": categoryName,
-    "all_articles": List<dynamic>.from(allArticles.map((x) => x.toMap())),
+    "all_articles": List<dynamic>.from(allArticles!.map((x) => x.toMap())),
   };
 }
 
@@ -92,10 +92,10 @@ class AllArticle {
     this.prodId,
   });
 
-  String articlesImage;
-  String productName;
-  String smallDescription;
-  int prodId;
+  String? articlesImage;
+  String? productName;
+  String? smallDescription;
+  int? prodId;
 
   factory AllArticle.fromJson(String str) => AllArticle.fromMap(json.decode(str));
 

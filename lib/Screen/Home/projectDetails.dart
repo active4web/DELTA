@@ -8,17 +8,19 @@ import 'package:delta/Repository/Repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProjectDetails extends StatefulWidget {
-  ProjectDetails({Key key, this.project}) : super(key: key);
-  AllProject project;
+
+  AllProject? project;
   @override
   _ProjectDetailsState createState() => _ProjectDetailsState();
+
+  ProjectDetails({this.project});
 }
 
 class _ProjectDetailsState extends State<ProjectDetails> {
   Repository _repo = Repository();
-  String token;
+  String? token;
   List<Widget> itemSliders = [];
-  Future<String> gettoken() async {
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -27,7 +29,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
   @override
   void initState() {
     gettoken();
-    print("idxxxx " + widget.project.projectId.toString());
+    print("idxxxx " + widget.project!.projectId.toString());
     super.initState();
   }
 
@@ -80,13 +82,15 @@ class _ProjectDetailsState extends State<ProjectDetails> {
             stream: _repo
                 .getProDetails(
                     key: "1234567890",
-                    token_id: token,
-                    project_id: widget.project.projectId.toString())
+                    token_id: token!,
+                    project_id: widget.project!.projectId.toString())
                 .asStream(),
             builder: (context, snapshot) {
+              int? sliderLength = snapshot.data?.result?.allSlider?.length??0;
+
               if (snapshot.data != null) {
                 for (int i = 0;
-                    i < snapshot.data.result.allSlider.length;
+                    i < sliderLength;
                     i++) {
                   itemSliders.add(Padding(
                       padding: const EdgeInsets.all(2.0),
@@ -101,7 +105,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
-                                snapshot.data.result.allSlider[i].img,
+                                snapshot.data?.result?.allSlider?[i].img??"",
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -148,7 +152,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                               width: size.width * .8,
                               height: size.height * .04,
                               child: Text(
-                                "${snapshot.data.result.projectDetails.projectName}",
+                                "${snapshot.data?.result?.projectDetails?.projectName}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -170,7 +174,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                               width: size.width * .2,
                               height: size.height * .02,
                               child: Text(
-                                "${snapshot.data.result.projectDetails.creationDate.toString().substring(0, 10)}",
+                                "${snapshot.data?.result?.projectDetails?.creationDate.toString().substring(0, 10)}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                     color: Color(0xff0f0f10), fontSize: 14),
@@ -189,7 +193,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                               height: size.height * .28,
                               color: Colors.white,
                               child: Text(
-                                "${snapshot.data.result.projectDetails.details}",
+                                "${snapshot.data?.result?.projectDetails?.details}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',

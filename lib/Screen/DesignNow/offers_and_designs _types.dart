@@ -12,16 +12,18 @@ import 'residental_types.dart';
 import 'architectural_residential_design.dart';
 
 class OffersAndDesigns extends StatefulWidget {
-  OffersAndDesigns({Key key, this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
+
+  String? jwt;
+  String? cat_id;
   @override
   _OffersAndDesignsState createState() => _OffersAndDesignsState();
+
+  OffersAndDesigns({this.jwt, this.cat_id});
 }
 
 class _OffersAndDesignsState extends State<OffersAndDesigns> {
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -31,7 +33,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
   void initState() {
     gettoken();
     _repo.getOffersAndDesigns(
-        key: "1234567890", token: token, catId: widget.cat_id);
+        key: "1234567890", token: token!, catId: widget.cat_id!);
     super.initState();
   }
 
@@ -46,7 +48,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
         child: StreamBuilder<OffersAndDesignsModel>(
       stream: _repo
           .getOffersAndDesigns(
-              key: "1234567890", token: token.toString(), catId: widget.cat_id)
+              key: "1234567890", token: token.toString(), catId: widget.cat_id!)
           .asStream(),
       builder: (context, snapshot) {
         return snapshot.data != null
@@ -81,7 +83,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        snapshot.data.result.categoryDate.title,
+                        snapshot.data?.result?.categoryDate?.title??"",
                         style: TextStyle(
                           fontFamily: 'GE SS Two',
                           fontSize: 17,
@@ -123,7 +125,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                 height: size.height * 1, width: size.width * 1),
                             child: ElevatedButton(
                                 child: Text(
-                                  snapshot.data.result.lableList[0].title,
+                                  snapshot.data?.result?.lableList?[0].title??"",
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
                                     fontSize: 17,
@@ -133,8 +135,9 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   elevation: 20,
-                                  primary: Color(0xff3b6745),
-                                  onPrimary: Colors.orangeAccent,
+                                  backgroundColor: Color(0xff3b6745),
+                                  foregroundColor: Colors.orangeAccent,
+
                                   shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(15))),
@@ -144,9 +147,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => ResidentialTypes(
-                                                cat_id: snapshot.data.result
-                                                    .lableList[0].lebalId
-                                                    .toString(),
+                                                cat_id: snapshot.data?.result?.lableList?[0].lebalId.toString(),
                                                 jwt: token,
                                               )));
                                 }),
@@ -167,7 +168,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                 height: size.height * 1, width: size.width * 1),
                             child: ElevatedButton(
                                 child: Text(
-                                  snapshot.data.result.lableList[1].title,
+                                  snapshot.data?.result?.lableList?[1].title??"",
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
                                     fontSize: 17,
@@ -177,8 +178,9 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   elevation: 20,
-                                  primary: Color(0xff3b6745),
-                                  onPrimary: Colors.orangeAccent,
+
+                                  backgroundColor: Color(0xff3b6745), // Button background color
+                                  foregroundColor: Colors.orangeAccent, // Button text color
                                   shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(15))),
@@ -189,9 +191,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                                       MaterialPageRoute(
                                           builder: (_) =>
                                               SpecialDesignNowOffers(
-                                                cat_id: snapshot.data.result
-                                                    .lableList[1].lebalId
-                                                    .toString(),
+                                                cat_id: snapshot.data?.result?.lableList?[1].lebalId.toString(),
                                                 jwt: token,
                                               )));
                                 }),
@@ -207,7 +207,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
                       //         height: sHeight * .05,
                       //         width: sWidth * .9,
                       //         child: Text(
-                      //           "${snapshot.data.result.categoryDate.details}",
+                      //           "${snapshot.data?.result?.categoryDate.details}",
                       //           textDirection: TextDirection.rtl,
                       //           style: TextStyle(
                       //             fontFamily: 'GE SS Two',

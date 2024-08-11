@@ -6,19 +6,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../draw.dart';
 import 'architectural_residential_design.dart';
-import 'construction_residenial_design.dart';
+// import 'construction_residenial_design.dart';
 
 class SpecialDesignNowOffers extends StatefulWidget {
-  SpecialDesignNowOffers({Key key, this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
+  SpecialDesignNowOffers({ this.jwt, this.cat_id}) ;
+  String? jwt;
+  String? cat_id;
   @override
   _SpecialDesignNowOffersState createState() => _SpecialDesignNowOffersState();
 }
 
 class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -42,7 +42,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
           stream: _repo
               .getResidentialTypesF(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
@@ -78,7 +78,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "${snapshot.data.result.categoryDate.title} ",
+                          "${snapshot.data?.result?.categoryDate?.title} ",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
                             fontSize: 17,
@@ -120,7 +120,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                                   width: size.width * 1),
                               child: ElevatedButton(
                                   child: Text(
-                                    "${snapshot.data.result.lableList[1].title + snapshot.data.result.lableList[0].title}",
+                                    "${(snapshot.data?.result?.lableList?[1].title ?? '') + (snapshot.data?.result?.lableList?[0].title ?? '')}",
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
                                       fontSize: 17,
@@ -130,8 +130,10 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xff3b6745),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xff3b6745), // Button background color
+                                    foregroundColor: Colors.orangeAccent,
+                                    // primary: Color(0xff3b6745),
+                                    // onPrimary: Colors.orangeAccent,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -143,9 +145,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                                             builder: (_) =>
                                                 ArchResidentialDesign(
                                                   jwt: token,
-                                                  cat_id: snapshot.data.result
-                                                      .lableList[0].lebalId
-                                                      .toString(),
+                                                  cat_id: snapshot.data?.result?.lableList?[0].lebalId.toString(),
                                                 )));
                                   }),
                             ),
@@ -166,7 +166,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                         //           width: size.width * 1),
                         //       child: ElevatedButton(
                         //           child: Text(
-                        //             '${snapshot.data.result.lableList[1].title}',
+                        //             '${snapshot.data?.result?.lableList?[1].title}',
                         //             style: TextStyle(
                         //               fontFamily: 'GE SS Two',
                         //               fontSize: 17,
@@ -205,7 +205,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                                 height: sHeight * .05,
                                 width: sWidth * .9,
                                 child: Text(
-                                  "${snapshot.data.result.categoryDate.details}",
+                                  "${snapshot.data?.result?.categoryDate?.details}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',

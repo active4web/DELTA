@@ -13,10 +13,10 @@ class ArchResidentialM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory ArchResidentialM.fromJson(String str) => ArchResidentialM.fromMap(json.decode(str));
 
@@ -33,7 +33,7 @@ class ArchResidentialM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result?.toMap(),
   };
 }
 
@@ -43,8 +43,8 @@ class Result {
     this.lableList,
   });
 
-  CategoryDate categoryDate;
-  List<LableList> lableList;
+  CategoryDate? categoryDate;
+  List<LableList>? lableList;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -56,8 +56,8 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "category_date": categoryDate.toMap(),
-    "lable_list": List<dynamic>.from(lableList.map((x) => x.toMap())),
+    "category_date": categoryDate!.toMap(),
+    "lable_list": List<dynamic>.from(lableList!.map((x) => x.toMap())),
   };
 }
 
@@ -70,10 +70,10 @@ class CategoryDate {
     this.color,
   });
 
-  String title;
-  String description;
-  int id;
-  String details;
+  String? title;
+  String? description;
+  int? id;
+  String? details;
   dynamic color;
 
   factory CategoryDate.fromJson(String str) => CategoryDate.fromMap(json.decode(str));
@@ -105,10 +105,10 @@ class LableList {
     this.listAnwser,
   });
 
-  String title;
-  int lebalId;
-  int type;
-  List<ListAnwser> listAnwser;
+  String? title;
+  int? lebalId;
+  int? type;
+  List<ListAnwser>? listAnwser;
 
   factory LableList.fromJson(String str) => LableList.fromMap(json.decode(str));
 
@@ -125,7 +125,7 @@ class LableList {
     "title": title,
     "lebal_id": lebalId,
     "type": type,
-    "list_anwser": List<dynamic>.from(listAnwser.map((x) => x.toMap())),
+    "list_anwser": List<dynamic>.from(listAnwser!.map((x) => x.toMap())),
   };
 }
 
@@ -136,9 +136,9 @@ class ListAnwser {
     this.textCategory,
   });
 
-  String title;
-  int answerId;
-  String textCategory;
+  String? title;
+  int? answerId;
+  String? textCategory;
 
   factory ListAnwser.fromJson(String str) => ListAnwser.fromMap(json.decode(str));
 

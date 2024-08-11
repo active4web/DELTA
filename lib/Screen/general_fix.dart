@@ -9,20 +9,20 @@ import 'Home/home_bar.dart';
 import 'send_done.dart';
 
 class GeneralFix extends StatefulWidget {
-  String cat_id;
-  String jwt;
-  GeneralFix({Key key, this.jwt, this.cat_id}) : super(key: key);
+  String? cat_id;
+  String ?jwt;
+  GeneralFix({ this.jwt, this.cat_id});
 
   @override
   _GeneralFixState createState() => _GeneralFixState();
 }
 
 class _GeneralFixState extends State<GeneralFix> {
-  int Id0;
-  List _list0;
+  int? id0;
+  List? _list0;
 
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -38,12 +38,12 @@ class _GeneralFixState extends State<GeneralFix> {
 
   Dio dio = Dio();
   var baseurl = 'https://mdecco.com/app/';
-  Future<GeneralFixM> getGeneralFixF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<GeneralFixM?> getGeneralFixF({
+    required String? key,
+    required String? token_id,
+    required String? cat_id,
   }) async {
-    GeneralFixM data;
+    GeneralFixM? data;
     FormData formData = new FormData.fromMap(
         {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -57,7 +57,7 @@ class _GeneralFixState extends State<GeneralFix> {
       data = GeneralFixM.fromMap(value.data);
     });
     setState(() {
-      _list0 = data.result.lableList[0].listAnwser.toList();
+      _list0 = data?.result?.lableList?[0].listAnwser?.toList();
     });
     return data;
   }
@@ -67,7 +67,7 @@ class _GeneralFixState extends State<GeneralFix> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var sHeight = MediaQuery.of(context).size.height;
+    // var sHeight = MediaQuery.of(context).size.height;
     var sWidth = MediaQuery.of(context).size.width;
 
     return Material(
@@ -75,7 +75,7 @@ class _GeneralFixState extends State<GeneralFix> {
           stream: _repo
               .getGeneralFixF(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
@@ -111,7 +111,7 @@ class _GeneralFixState extends State<GeneralFix> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "${snapshot.data.result.categoryDate.title}",
+                          "${snapshot.data?.result?.categoryDate?.title}",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
                             fontSize: 17,
@@ -122,7 +122,7 @@ class _GeneralFixState extends State<GeneralFix> {
                     ),
                     backgroundColor: Color(0xff3b6745),
                   ),
-                  endDrawer: NewWidget(size: size, token: token),
+                  endDrawer: NewWidget(size: size, token: token,),
                   body: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -137,7 +137,7 @@ class _GeneralFixState extends State<GeneralFix> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.categoryDate.description}",
+                                    "${snapshot.data?.result?.categoryDate?.description}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
@@ -165,7 +165,7 @@ class _GeneralFixState extends State<GeneralFix> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     "نوع الصيانة",
-                                    // "${snapshot.data.result.lableList[11].title}",textDirection: TextDirection.rtl,
+                                    // "${snapshot.data?.result?.lableList?[11].title}",textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
                                       fontFamily: 'GE SS Two',
@@ -178,7 +178,7 @@ class _GeneralFixState extends State<GeneralFix> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child:
-                                        // snapshot.data.result.lableList[11].type==2
+                                        // snapshot.data?.result?.lableList?[11].type==2
                                         false
                                             ? Container(
                                                 width: sWidth * .8,
@@ -207,7 +207,7 @@ class _GeneralFixState extends State<GeneralFix> {
                                                                 isExpanded:
                                                                     true,
                                                                 items: _list0
-                                                                    .map((e) {
+                                                                    ?.map((e) {
                                                                   return new DropdownMenuItem(
                                                                     child: Container(
                                                                         alignment: Alignment.centerRight,
@@ -234,12 +234,12 @@ class _GeneralFixState extends State<GeneralFix> {
                                                                 onChanged:
                                                                     (val) {
                                                                   setState(() {
-                                                                    Id0 = val;
-                                                                    print(Id0
+                                                                    id0 = val as int?;
+                                                                    print(id0
                                                                         .toString());
-                                                                  });
+                                                                  },);
                                                                 },
-                                                                value: Id0,
+                                                                value: id0,
                                                               )
                                                             : Container(),
                                                       ),
@@ -263,7 +263,7 @@ class _GeneralFixState extends State<GeneralFix> {
 
                                 //  alignment: Alignment.center,
                                 child: Text(
-                                    "${snapshot.data.result.categoryDate.details}",
+                                    "${snapshot.data?.result?.categoryDate?.details}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
@@ -302,15 +302,15 @@ class _GeneralFixState extends State<GeneralFix> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         elevation: 20,
-                                        primary: Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005), // Button background color
+                                        foregroundColor: Colors.orangeAccent, // Button text color
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(15))),
                                       ),
                                       onPressed: () {
                                         setState(() {
-                                          Id0 = null;
+                                          id0 = null;
                                         });
                                       }),
                                 ),
@@ -338,19 +338,19 @@ class _GeneralFixState extends State<GeneralFix> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         elevation: 20,
-                                        primary: Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005), // Button background color
+                                        foregroundColor: Colors.orangeAccent, // Button text color
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(15))),
                                       ),
                                       onPressed: () {
-                                        if (Id0 != null) {
+                                        if (id0 != null) {
                                           print(widget.cat_id);
-                                          print(snapshot.data.result.lableList[0].lebalId);
-                                          print(Id0);
+                                          print(snapshot.data?.result?.lableList?[0].lebalId);
+                                          print(id0);
                                           String a0 =
-                                              "${snapshot.data.result.lableList[0].lebalId}.$Id0";
+                                              "${snapshot.data?.result?.lableList?[0].lebalId}.$id0";
                                           String answer = '$a0';
                                           print(a0);
                                           print(answer);
@@ -418,8 +418,8 @@ class _GeneralFixState extends State<GeneralFix> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         elevation: 20,
-                                        primary: Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005), // Button background color
+                                        foregroundColor: Colors.orangeAccent, // Button text color
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(15))),

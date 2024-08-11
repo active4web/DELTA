@@ -10,15 +10,15 @@ import '../draw.dart';
 import 'Home/home_bar.dart';
 
 class otherServices extends StatefulWidget {
-  otherServices({Key key, this.cat_id, this.jwt}) : super(key: key);
+  otherServices({ this.cat_id, this.jwt});
 
-  String cat_id;
-  String jwt;
+  String? cat_id;
+  String? jwt;
   @override
   _otherServicesState createState() => _otherServicesState();
 }
 
-String token;
+String? token;
 
 class _otherServicesState extends State<otherServices> {
   Future<Null> gettoken() async {
@@ -48,7 +48,7 @@ class _otherServicesState extends State<otherServices> {
           stream: _repo
               .getOtherServicesF(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
@@ -84,7 +84,7 @@ class _otherServicesState extends State<otherServices> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "${snapshot.data.result.categoryDate.title}",
+                          "${snapshot.data?.result?.categoryDate?.title}",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
                             fontSize: 17,
@@ -104,7 +104,7 @@ class _otherServicesState extends State<otherServices> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "${snapshot.data.result.categoryDate.title}",
+                            "${snapshot.data?.result?.categoryDate?.title}",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
@@ -131,7 +131,7 @@ class _otherServicesState extends State<otherServices> {
                                   BorderRadius.all(Radius.circular(15))),
                           child: ElevatedButton(
                               child: Text(
-                                '${snapshot.data.result.categoryDate.description}',
+                                '${snapshot.data?.result?.categoryDate?.description}',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -142,8 +142,8 @@ class _otherServicesState extends State<otherServices> {
                               ),
                               style: ElevatedButton.styleFrom(
                                 elevation: 20,
-                                primary: Color(0xfff3a005),
-                                onPrimary: Colors.orangeAccent,
+                                backgroundColor: Color(0xfff3a005), // Button background color
+                                foregroundColor: Colors.orangeAccent, // Button text color
                                 shape: const RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15))),
@@ -175,7 +175,7 @@ class _otherServicesState extends State<otherServices> {
                                   width: size.width * 1),
                               child: ElevatedButton(
                                   child: Text(
-                                    '${snapshot.data.result.categoryDate.details}',
+                                    '${snapshot.data?.result?.categoryDate?.details}',
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
                                       fontSize: 17,
@@ -185,8 +185,8 @@ class _otherServicesState extends State<otherServices> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xfff3a005),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xfff3a005), // Button background color
+                                    foregroundColor: Colors.orangeAccent, // Button text color
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -209,9 +209,9 @@ class _otherServicesState extends State<otherServices> {
                       child: InkWell(
                         onTap: (){
                           if(Platform.isAndroid){
-                            Utils.openLink(url: snapshot.data.result.categoryDate.playStoreLink);
+                            Utils.openLink(url: snapshot.data?.result?.categoryDate?.playStoreLink);
                           }else{
-                            Utils.openLink(url: snapshot.data.result.categoryDate.appStoreLink);
+                            Utils.openLink(url: snapshot.data?.result?.categoryDate?.appStoreLink);
                           }
                         },
                         child: Row(

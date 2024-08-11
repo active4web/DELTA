@@ -2,34 +2,24 @@ import 'dart:io';
 
 import 'package:delta/DataModel/FormsModels/commerial_designM.dart';
 import 'package:delta/Repository/Repository.dart';
-import 'package:delta/Screen/DrawerNav/not_logged_in.dart';
-import 'package:delta/Screen/Home/designs.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
-import 'package:delta/Screen/Home/order_track.dart';
+import 'package:delta/Screen/Real_estate_investment.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../draw.dart';
-import '../login.dart';
 import '../send_done.dart';
-import 'package:delta/Screen/DrawerNav/about_app.dart';
-import 'package:delta/Screen/DrawerNav/blogs.dart';
-import 'package:delta/Screen/DrawerNav/contact_us.dart';
-import 'package:delta/Screen/DrawerNav/notifications.dart';
-import 'package:delta/Screen/Home/projectDetails.dart';
-import 'package:delta/Screen/DrawerNav/profile.dart';
-import 'package:delta/Screen/DrawerNav/technical_support.dart';
 
 class CommercialDesign extends StatefulWidget {
-  CommercialDesign({Key key, this.message,this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
-  String message;
+  String? jwt;
+  String? cat_id;
+  String? message;
 
   @override
   _CommercialDesignState createState() => _CommercialDesignState();
+
+  CommercialDesign({this.jwt, this.cat_id, this.message});
 }
 
 enum SingingCharacterTrade { no, yes }
@@ -189,21 +179,21 @@ class _CommercialDesignState extends State<CommercialDesign> {
     tmpArray.clear();
   }
 
-  String token;
+  String? token;
 
-  Future<String> gettoken() async {
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
   }
 
-  List<File> proFile;
+  List<File>? proFile;
 
   Future<void> openG() async {
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowMultiple: true);
     if (result != null) {
-      proFile = result.paths.map((path) => File(path)).toList();
+      proFile = result.paths.map((path) => File(path!)).toList();
     } else {
       // User canceled the picker
     }
@@ -214,47 +204,47 @@ class _CommercialDesignState extends State<CommercialDesign> {
     gettoken();
     super.initState();
     this.getCommercialServiceF(
-        key: '1234567890', token_id: widget.jwt, cat_id: widget.cat_id);
+        key: '1234567890', token_id: widget.jwt!, cat_id: widget.cat_id);
   }
 
-  List _list0;
-  int Id0;
-  List _list1;
-  int Id1;
-  List _list2;
-  int Id2;
-  List _list3;
-  int Id3;
-  List _list4;
-  int Id4;
-  List _list10;
-  int Id10;
-  List _list11;
-  int Id11;
-  List _list12;
-  int Id12;
-  List _list13;
-  int Id13;
-  List _list19;
-  int Id19;
-  List _list21;
-  int Id21;
-  List _list20;
-  int answer20;
-  List _list31;
-  int answer31;
-  List _list22;
-  int Id22;
-  List _list23;
-  int Id23;
-  List _list24;
-  int Id24;
-  List _list26;
-  int Id26;
-  List _list27;
-  int Id27;
-  List _list28;
-  int Id28;
+  List? _list0;
+  int? id0;
+  List? _list1;
+  int? id1;
+  List? _list2;
+  int? id2;
+  List? _list3;
+  int? id3;
+  List? _list4;
+  int? id4;
+  List? _list10;
+  int? id10;
+  List? _list11;
+  int? id11;
+  List? _list12;
+  int? id12;
+  List? _list13;
+  int? id13;
+  List? _list19;
+  int? id19;
+  List? _list21;
+  int? id21;
+  List? _list20;
+  int? answer20;
+  List? _list31;
+  int? answer31;
+  List? _list22;
+  int? id22;
+  List? _list23;
+  int? id23;
+  List? _list24;
+  int? id24;
+  List? _list26;
+  int? id26;
+  List? _list27;
+  int? id27;
+  List? _list28;
+  int? id28;
   TextEditingController Id5 = TextEditingController();
   TextEditingController Id6 = TextEditingController();
   TextEditingController Id7 = TextEditingController();
@@ -264,18 +254,24 @@ class _CommercialDesignState extends State<CommercialDesign> {
   TextEditingController Id15 = TextEditingController();
   TextEditingController Id16 = TextEditingController();
   TextEditingController Id17 = TextEditingController();
+  TextEditingController Id19 = TextEditingController();
   TextEditingController Id20 = TextEditingController();
+  TextEditingController Id21 = TextEditingController();
+  TextEditingController Id22 = TextEditingController();
+  TextEditingController Id24 = TextEditingController();
+  TextEditingController Id26 = TextEditingController();
+  TextEditingController Id28 = TextEditingController();
   Dio dio = Dio();
   Repository _repo = Repository();
   var baseurl = 'https://mdecco.com/app/';
 
   //getCommercialServiceF
-  Future<CommercialDesignM> getCommercialServiceF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<CommercialDesignM?>? getCommercialServiceF({
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    CommercialDesignM data;
+    CommercialDesignM? data;
     FormData formData = new FormData.fromMap(
         {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -289,25 +285,25 @@ class _CommercialDesignState extends State<CommercialDesign> {
       data = CommercialDesignM.fromMap(value.data);
     });
     setState(() {
-      _list3 = data.result.lableList[2].listAnwser.toList();
-      _list4 = data.result.lableList[1].listAnwser.toList();
-      _list2 = data.result.lableList[2].listAnwser.toList();
-      _list1 = data.result.lableList[1].listAnwser.toList();
-      _list0 = data.result.lableList[0].listAnwser.toList();
-      _list10 = data.result.lableList[10].listAnwser.toList();
-      _list11 = data.result.lableList[11].listAnwser.toList();
-      _list12 = data.result.lableList[12].listAnwser.toList();
-      _list13 = data.result.lableList[13].listAnwser.toList();
-      _list19 = data.result.lableList[19].listAnwser.toList();
-      _list20 = data.result.lableList[20].listAnwser.toList();
-      _list21 = data.result.lableList[21].listAnwser.toList();
-      _list22 = data.result.lableList[22].listAnwser.toList();
-      _list23 = data.result.lableList[23].listAnwser.toList();
-      _list24 = data.result.lableList[24].listAnwser.toList();
-      _list26 = data.result.lableList[26].listAnwser.toList();
-      _list27 = data.result.lableList[27].listAnwser.toList();
-      _list28 = data.result.lableList[28].listAnwser.toList();
-      _list31 = data.result.lableList[13].listAnwser.toList();
+      _list3 = data?.result?.lableList?[2].listAnwser?.toList();
+      _list4 = data?.result?.lableList?[1].listAnwser?.toList();
+      _list2 = data?.result?.lableList?[2].listAnwser?.toList();
+      _list1 = data?.result?.lableList?[1].listAnwser?.toList();
+      _list0 = data?.result?.lableList?[0].listAnwser?.toList();
+      _list10 = data?.result?.lableList?[10].listAnwser?.toList();
+      _list11 = data?.result?.lableList?[11].listAnwser?.toList();
+      _list12 = data?.result?.lableList?[12].listAnwser?.toList();
+      _list13 = data?.result?.lableList?[13].listAnwser?.toList();
+      _list19 = data?.result?.lableList?[19].listAnwser?.toList();
+      _list20 = data?.result?.lableList?[20].listAnwser?.toList();
+      _list21 = data?.result?.lableList?[21].listAnwser?.toList();
+      _list22 = data?.result?.lableList?[22].listAnwser?.toList();
+      _list23 = data?.result?.lableList?[23].listAnwser?.toList();
+      _list24 = data?.result?.lableList?[24].listAnwser?.toList();
+      _list26 = data?.result?.lableList?[26].listAnwser?.toList();
+      _list27 = data?.result?.lableList?[27].listAnwser?.toList();
+      _list28 = data?.result?.lableList?[28].listAnwser?.toList();
+      _list31 = data?.result?.lableList?[13].listAnwser?.toList();
     });
     return data;
   }
@@ -323,7 +319,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
           stream: _repo
               .getCommercialServiceF(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
@@ -359,7 +355,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "${snapshot.data.result.categoryDate.title}",
+                          "${snapshot.data?.result?.categoryDate?.title}",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
                             fontSize: 17,
@@ -380,7 +376,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "${snapshot.data.result.categoryDate.title}",
+                                "${snapshot.data?.result?.categoryDate?.title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -402,7 +398,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.categoryDate.description}",
+                                    "${snapshot.data?.result?.categoryDate?.description}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
@@ -512,7 +508,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[0].title}",
+                                    "${snapshot.data?.result?.lableList?[0].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -525,7 +521,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[0]
+                                    child: snapshot.data?.result?.lableList?[0]
                                                 .type ==
                                             2
                                         ? Container(
@@ -555,10 +551,9 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                     child: _list0 != null
                                                         ? DropdownButton(
                                                             isExpanded: true,
-                                                            items:
-                                                                _list0.map((e) {
+                                                            items: _list0?.map((e) {
                                                               return new DropdownMenuItem(
-                                                                 child:
+                                                                child:
                                                                     Container(
                                                                         alignment:
                                                                             Alignment
@@ -586,7 +581,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id0 = val;
+                                                                Id0.text = val.toString();
                                                                 print(Id0
                                                                     .toString());
                                                               });
@@ -618,7 +613,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[1].title}",
+                                    "${snapshot.data?.result?.lableList?[1].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -631,7 +626,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[1]
+                                    child: snapshot.data?.result?.lableList?[1]
                                                 .type ==
                                             2
                                         ? Container(
@@ -661,8 +656,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                     child: _list1 != null
                                                         ? DropdownButton(
                                                             isExpanded: true,
-                                                            items:
-                                                                _list1.map((e) {
+                                                            items: _list1
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -692,7 +687,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id1 = val;
+                                                                Id1.text = val.toString();
                                                                 print(Id1
                                                                     .toString());
                                                               });
@@ -724,7 +719,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[2].title}",
+                                    "${snapshot.data?.result?.lableList?[2].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -737,7 +732,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[2]
+                                    child: snapshot.data?.result?.lableList?[2]
                                                 .type ==
                                             2
                                         ? Container(
@@ -767,8 +762,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                     child: _list2 != null
                                                         ? DropdownButton(
                                                             isExpanded: true,
-                                                            items:
-                                                                _list2.map((e) {
+                                                            items: _list2
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -798,7 +793,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id2 = val;
+                                                                Id2.text = val.toString();
                                                                 print(Id2
                                                                     .toString());
                                                               });
@@ -830,7 +825,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[3].title}",
+                                    "${snapshot.data?.result?.lableList?[3].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -843,7 +838,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[3]
+                                    child: snapshot.data?.result?.lableList?[3]
                                                 .type ==
                                             2
                                         ? Container(
@@ -872,8 +867,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                     child: _list3 != null
                                                         ? DropdownButton(
                                                             isExpanded: true,
-                                                            items:
-                                                                _list3.map((e) {
+                                                            items: _list3
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -903,7 +898,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id3 = val;
+                                                                Id3.text = val.toString();
                                                                 print(Id3
                                                                     .toString());
                                                               });
@@ -935,7 +930,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[4].title}",
+                                    "${snapshot.data?.result?.lableList?[4].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -948,7 +943,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[4]
+                                    child: snapshot.data?.result?.lableList?[4]
                                                 .type ==
                                             2
                                         ? Container(
@@ -978,8 +973,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                     child: _list4 != null
                                                         ? DropdownButton(
                                                             isExpanded: true,
-                                                            items:
-                                                                _list4.map((e) {
+                                                            items: _list4
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1009,7 +1004,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id4 = val;
+                                                                Id4.text = val.toString();
                                                                 print(Id4
                                                                     .toString());
                                                               });
@@ -1041,7 +1036,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[5].title}",
+                                    "${snapshot.data?.result?.lableList?[5].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1054,14 +1049,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[5]
+                                    child: snapshot.data?.result?.lableList?[5]
                                                 .type ==
                                             2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller: Id5,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1134,7 +1130,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[6].title}",
+                                    "${snapshot.data?.result?.lableList?[6].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1147,14 +1143,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[6]
+                                    child: snapshot.data?.result?.lableList?[6]
                                                 .type ==
                                             2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller: Id6,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1227,7 +1224,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[7].title}",
+                                    "${snapshot.data?.result?.lableList?[7].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1240,14 +1237,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[7]
+                                    child: snapshot.data?.result?.lableList?[7]
                                                 .type ==
                                             2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller: Id7,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1320,7 +1318,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[8].title}",
+                                    "${snapshot.data?.result?.lableList?[8].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1333,14 +1331,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[8]
+                                    child: snapshot.data?.result?.lableList?[8]
                                                 .type ==
                                             2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller: Id8,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1413,7 +1412,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[9].title}",
+                                    "${snapshot.data?.result?.lableList?[9].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1426,14 +1425,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[9]
+                                    child: snapshot.data?.result?.lableList?[9]
                                                 .type ==
                                             2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller: Id9,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -1506,7 +1506,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[10].title}",
+                                    "${snapshot.data?.result?.lableList?[10].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1519,7 +1519,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[10]
+                                    child: snapshot.data?.result?.lableList?[10]
                                                 .type ==
                                             2
                                         ? Container(
@@ -1550,7 +1550,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list10
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1580,7 +1580,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id10 = val;
+                                                                Id10.text = val.toString();
                                                                 print(Id10
                                                                     .toString());
                                                               });
@@ -1612,7 +1612,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[11].title}",
+                                    "${snapshot.data?.result?.lableList?[11].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1625,7 +1625,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[11]
+                                    child: snapshot.data?.result?.lableList?[11]
                                                 .type ==
                                             2
                                         ? Container(
@@ -1656,7 +1656,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list11
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1686,7 +1686,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id11 = val;
+                                                                Id11.text = val.toString();
                                                                 print(Id11
                                                                     .toString());
                                                               });
@@ -1718,7 +1718,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[12].title}",
+                                    "${snapshot.data?.result?.lableList?[12].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1731,7 +1731,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[12]
+                                    child: snapshot.data?.result?.lableList?[12]
                                                 .type ==
                                             2
                                         ? Container(
@@ -1762,7 +1762,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list12
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1792,7 +1792,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id12 = val;
+                                                                Id12.text = val.toString();
                                                                 print(Id12
                                                                     .toString());
                                                               });
@@ -1824,7 +1824,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[13].title}",
+                                    "${snapshot.data?.result?.lableList?[13].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1837,7 +1837,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[13]
+                                    child: snapshot.data?.result?.lableList?[13]
                                                 .type ==
                                             2
                                         ? Container(
@@ -1867,7 +1867,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list13
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1897,7 +1897,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id13 = val;
+                                                                Id13.text = val.toString();
                                                                 print(Id13
                                                                     .toString());
                                                               });
@@ -1928,7 +1928,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[19].title}",
+                                    "${snapshot.data?.result?.lableList?[19].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -1941,7 +1941,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[19]
+                                    child: snapshot.data?.result?.lableList?[19]
                                                 .type ==
                                             2
                                         ? Container(
@@ -1971,7 +1971,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list19
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1995,15 +1995,13 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                           textDirection:
                                                                               TextDirection.rtl,
                                                                         )),
-                                                                value:
-                                                                    e.answerId,
+                                                                value: e.answerId,
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id19 = val;
-                                                                print(Id19
-                                                                    .toString());
+                                                                Id19.text = val.toString();
+                                                                print(Id19.toString());
                                                               });
                                                             },
                                                             value: Id19,
@@ -2032,7 +2030,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[20].title}",
+                                    "${snapshot.data?.result?.lableList?[20].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2045,7 +2043,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[20]
+                                    child: snapshot.data?.result?.lableList?[20]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2075,7 +2073,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list20
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2105,7 +2103,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                answer20 = val;
+                                                                answer20 = int.parse(val.toString());
                                                                 print(answer20
                                                                     .toString());
                                                               });
@@ -2136,7 +2134,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[21].title}",
+                                    "${snapshot.data?.result?.lableList?[21].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2149,7 +2147,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[21]
+                                    child: snapshot.data?.result?.lableList?[21]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2179,7 +2177,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list21
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2209,7 +2207,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id21 = val;
+                                                                Id21.text = val.toString();
                                                                 print(Id21
                                                                     .toString());
                                                               });
@@ -2240,7 +2238,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[22].title}",
+                                    "${snapshot.data?.result?.lableList?[22].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2253,7 +2251,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[22]
+                                    child: snapshot.data?.result?.lableList?[22]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2283,7 +2281,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list22
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2313,9 +2311,9 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id22 = val;
-                                                                print(Id22
-                                                                    .toString());
+                                                                Id22.text= val.toString();
+                                                                // print(Id22
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: Id22,
@@ -2344,7 +2342,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[23].title}",
+                                    "${snapshot.data?.result?.lableList?[23].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2357,7 +2355,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[23]
+                                    child: snapshot.data?.result?.lableList?[23]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2387,7 +2385,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list23
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2417,7 +2415,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id23 = val;
+                                                                Id23.text = val.toString();
                                                                 print(Id23
                                                                     .toString());
                                                               });
@@ -2448,7 +2446,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[24].title}",
+                                    "${snapshot.data?.result?.lableList?[24].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2461,7 +2459,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[24]
+                                    child: snapshot.data?.result?.lableList?[24]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2491,7 +2489,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list24
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2521,7 +2519,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id24 = val;
+                                                                Id24.text = val.toString();
                                                                 print(Id24
                                                                     .toString());
                                                               });
@@ -2552,7 +2550,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[26].title}",
+                                    "${snapshot.data?.result?.lableList?[26].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2565,7 +2563,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[26]
+                                    child: snapshot.data?.result?.lableList?[26]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2595,7 +2593,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list26
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2625,7 +2623,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id26 = val;
+                                                                Id26.text = val.toString();
                                                                 print(Id26
                                                                     .toString());
                                                               });
@@ -2656,7 +2654,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[27].title}",
+                                    "${snapshot.data?.result?.lableList?[27].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2669,7 +2667,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[27]
+                                    child: snapshot.data?.result?.lableList?[27]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2699,7 +2697,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list27
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2729,7 +2727,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id27 = val;
+                                                                Id27.text = val.toString();
                                                                 print(Id27
                                                                     .toString());
                                                               });
@@ -2760,7 +2758,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[28].title}",
+                                    "${snapshot.data?.result?.lableList?[28].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2773,7 +2771,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[28]
+                                    child: snapshot.data?.result?.lableList?[28]
                                                 .type ==
                                             2
                                         ? Container(
@@ -2803,7 +2801,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list28
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2833,7 +2831,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id28 = val;
+                                                                Id28.text = val.toString();
                                                                 print(Id28
                                                                     .toString());
                                                               });
@@ -2865,7 +2863,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[14].title}",
+                                    "${snapshot.data?.result?.lableList?[14].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2878,14 +2876,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[14]
+                                    child: snapshot.data?.result?.lableList?[14]
                                                 .type ==
                                             2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller: Id14,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -2958,7 +2957,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[15].title}",
+                                    "${snapshot.data?.result?.lableList?[15].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -2971,14 +2970,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[15]
+                                    child: snapshot.data?.result?.lableList?[15]
                                                 .type ==
                                             2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
                                               child: TextField(
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 controller: Id15,
                                                 textDirection:
                                                     TextDirection.rtl,
@@ -3051,7 +3051,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[16].title}",
+                                    "${snapshot.data?.result?.lableList?[16].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -3064,7 +3064,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[16]
+                                    child: snapshot.data?.result?.lableList?[16]
                                                 .type ==
                                             2
                                         ? Container(
@@ -3142,7 +3142,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[25].title}",
+                                    "${snapshot.data?.result?.lableList?[25].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -3155,7 +3155,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[25]
+                                    child: snapshot.data?.result?.lableList?[25]
                                                 .type ==
                                             2
                                         ? Container(
@@ -3197,7 +3197,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[13].title}",
+                                    "${snapshot.data?.result?.lableList?[13].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -3210,7 +3210,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: snapshot.data.result.lableList[13]
+                                    child: snapshot.data?.result?.lableList?[13]
                                                 .type ==
                                             2
                                         ? Container(
@@ -3240,7 +3240,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list31
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -3270,7 +3270,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                answer31 = val;
+                                                                answer31 = int.parse(val.toString());
                                                                 print(answer31
                                                                     .toString());
                                                               });
@@ -3317,8 +3317,10 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         elevation: 20,
-                                        primary: Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005), // Button background color
+                                        foregroundColor: Colors.orangeAccent,
+                                        // primary: Color(0xfff3a005),
+                                        // onPrimary: Colors.orangeAccent,
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(15))),
@@ -3335,15 +3337,15 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                           Id16.text = '';
                                           Id17.text = '';
                                           proFile = null;
-                                          Id0 = null;
-                                          Id1 = null;
-                                          Id2 = null;
-                                          Id3 = null;
-                                          Id4 = null;
-                                          Id10 = null;
-                                          Id11 = null;
-                                          Id12 = null;
-                                          Id13 = null;
+                                          Id0.text = '';
+                                          Id1.text = '';
+                                          Id2.text = '';
+                                          Id3.text = '';
+                                          Id4.text = '';
+                                          Id10.text = '';
+                                          Id11.text = '';
+                                          Id12.text = '';
+                                          Id13.text = '';
                                         });
                                       }),
                                 ),
@@ -3371,8 +3373,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         elevation: 20,
-                                        primary: Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005), // Button background color
+                                        foregroundColor: Colors.orangeAccent, // Button text color
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(15))),
@@ -3396,59 +3398,59 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             Id12 != null &&
                                             Id13 != null) {
                                           String a0 =
-                                              "${snapshot.data.result.lableList[0].lebalId}.$Id0";
+                                              "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
                                           String a1 =
-                                              "${snapshot.data.result.lableList[1].lebalId}.$Id1";
+                                              "${snapshot.data?.result?.lableList?[1].lebalId}.$Id1";
                                           String a2 =
-                                              "${snapshot.data.result.lableList[2].lebalId}.$Id2";
+                                              "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
                                           String a3 =
-                                              "${snapshot.data.result.lableList[3].lebalId}.$Id3";
+                                              "${snapshot.data?.result?.lableList?[3].lebalId}.$Id3";
                                           String a4 =
-                                              "${snapshot.data.result.lableList[4].lebalId}.$Id4";
+                                              "${snapshot.data?.result?.lableList?[4].lebalId}.$Id4";
                                           String a5 =
-                                              '${snapshot.data.result.lableList[5].lebalId}."${Id5.text}"';
+                                              '${snapshot.data?.result?.lableList?[5].lebalId}."${Id5.text}"';
                                           String a6 =
-                                              '${snapshot.data.result.lableList[6].lebalId}."${Id6.text}"';
+                                              '${snapshot.data?.result?.lableList?[6].lebalId}."${Id6.text}"';
                                           String a7 =
-                                              '${snapshot.data.result.lableList[7].lebalId}."${Id7.text}"';
+                                              '${snapshot.data?.result?.lableList?[7].lebalId}."${Id7.text}"';
                                           String a8 =
-                                              '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
+                                              '${snapshot.data?.result?.lableList?[8].lebalId}."${Id8.text}"';
                                           String a9 =
-                                              '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
+                                              '${snapshot.data?.result?.lableList?[9].lebalId}."${Id9.text}"';
                                           String a10 =
-                                              "${snapshot.data.result.lableList[10].lebalId}.$Id10";
+                                              "${snapshot.data?.result?.lableList?[10].lebalId}.$Id10";
                                           String a11 =
-                                              "${snapshot.data.result.lableList[11].lebalId}.$Id11";
+                                              "${snapshot.data?.result?.lableList?[11].lebalId}.$Id11";
                                           String a12 =
-                                              "${snapshot.data.result.lableList[12].lebalId}.$Id12";
+                                              "${snapshot.data?.result?.lableList?[12].lebalId}.$Id12";
                                           String a13 =
-                                              "${snapshot.data.result.lableList[13].lebalId}.$Id13";
+                                              "${snapshot.data?.result?.lableList?[13].lebalId}.$Id13";
                                           String a14 =
-                                              '${snapshot.data.result.lableList[9].lebalId}."${Id14.text}"';
+                                              '${snapshot.data?.result?.lableList?[9].lebalId}."${Id14.text}"';
                                           String a15 =
-                                              '${snapshot.data.result.lableList[15].lebalId}."${Id15.text}"';
+                                              '${snapshot.data?.result?.lableList?[15].lebalId}."${Id15.text}"';
                                           String a16 =
-                                              '${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
+                                              '${snapshot.data?.result?.lableList?[16].lebalId}."${Id16.text}"';
                                           String a19 =
-                                              '${snapshot.data.result.lableList[19].lebalId}."$Id19"';
+                                              '${snapshot.data?.result?.lableList?[19].lebalId}."$Id19"';
                                           String a20 =
-                                              '${snapshot.data.result.lableList[20].lebalId}.$answer20';
+                                              '${snapshot.data?.result?.lableList?[20].lebalId}.$answer20';
                                           String a21 =
-                                              '${snapshot.data.result.lableList[21].lebalId}."$Id21"';
+                                              '${snapshot.data?.result?.lableList?[21].lebalId}."$Id21"';
                                           String a22 =
-                                              '${snapshot.data.result.lableList[22].lebalId}."$Id22"';
+                                              '${snapshot.data?.result?.lableList?[22].lebalId}."$Id22"';
                                           String a23 =
-                                              '${snapshot.data.result.lableList[23].lebalId}."$Id23"';
+                                              '${snapshot.data?.result?.lableList?[23].lebalId}."$Id23"';
                                           String a24 =
-                                              '${snapshot.data.result.lableList[24].lebalId}."$Id24"';
+                                              '${snapshot.data?.result?.lableList?[24].lebalId}."$Id24"';
                                           String a26 =
-                                              '${snapshot.data.result.lableList[26].lebalId}."$Id26"';
+                                              '${snapshot.data?.result?.lableList?[26].lebalId}."$Id26"';
                                           String a27 =
-                                              '${snapshot.data.result.lableList[27].lebalId}."$Id27"';
+                                              '${snapshot.data?.result?.lableList?[27].lebalId}."$Id27"';
                                           String a28 =
-                                              '${snapshot.data.result.lableList[28].lebalId}."$Id28"';
+                                              '${snapshot.data?.result?.lableList?[28].lebalId}."$Id28"';
                                           String a29 =
-                                              '${snapshot.data.result.lableList[13].lebalId}."$answer31"';
+                                              '${snapshot.data?.result?.lableList?[13].lebalId}."$answer31"';
                                           String answer =
                                               '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15,$a16,$a19,$a20,$a21,$a22,$a23,$a24,$a26,$a27,$a28,$a29,';
                                           _repo
@@ -3464,8 +3466,10 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          SendDone(message: value.message,)));
+                                                      builder: (_) => SendDone(
+                                                            message:
+                                                                value.message,
+                                                          )));
                                             } else {
                                               var snackBar = SnackBar(
                                                   content: Text(
@@ -3514,9 +3518,9 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                         ),
                                       ),
                                       style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005),
                                         elevation: 20,
-                                        primary: Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(15))),

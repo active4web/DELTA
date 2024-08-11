@@ -8,9 +8,9 @@ import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Offer extends StatefulWidget {
-  String orderId;
-  String jwt;
-   Offer({Key key,this.orderId,this.jwt}) : super(key: key);
+  String? orderId;
+  String? jwt;
+   Offer({this.orderId,this.jwt}) ;
 
   @override
   _OfferState createState() => _OfferState();
@@ -20,8 +20,8 @@ class _OfferState extends State<Offer> {
 
 
   Repository _repo=Repository();
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+  Future<String?> gettoken() async {
   SharedPreferences pref = await SharedPreferences.getInstance();
   token = pref.getString("token");
   return token;
@@ -38,10 +38,10 @@ class _OfferState extends State<Offer> {
     var size = MediaQuery.of(context).size;
     return Material(
       child: StreamBuilder<OrderDetailsMoneyM>(
-        stream: _repo.getOrderDetailsMoney(key: '1234567890', token_id: widget.jwt, id_order: widget.orderId).asStream(),
+        stream: _repo.getOrderDetailsMoney(key: '1234567890', token_id: widget.jwt??"", id_order: widget.orderId).asStream(),
         builder: (context, snapshot) {
           if(snapshot.data!=null){
-            if(snapshot.data.result.orderDetails!=[]){
+            if(snapshot.data?.result?.orderDetails!=[]){
               return Scaffold(
                   appBar: AppBar(
                     leading: new IconButton(
@@ -93,7 +93,7 @@ class _OfferState extends State<Offer> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("${snapshot.data.result.orderDetails[0].totalMoney} ",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
+                              Text("${snapshot.data?.result?.orderDetails?[0].totalMoney} ",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
                               Text("اجمالي المطلوب ",style: TextStyle(fontSize: 25), textDirection: TextDirection.rtl,
                               ),
                             ],
@@ -116,13 +116,13 @@ class _OfferState extends State<Offer> {
                         ),
                         //1
                         Container(
-                          color: snapshot.data.result.orderDetails[0].type!='1' ?Colors.grey:Colors.white,
+                          color: snapshot.data?.result?.orderDetails?[0].type!='1' ?Colors.grey:Colors.white,
                           child: Column(children: [ Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("${snapshot.data.result.orderDetails[0].paidValue}",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
+                                Text("${snapshot.data?.result?.orderDetails?[0].paidValue}",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
                                 Text("الدفعة الاولي ",style: TextStyle(fontSize: 25), textDirection: TextDirection.rtl,
                                 ),
                               ],
@@ -135,7 +135,7 @@ class _OfferState extends State<Offer> {
                                 children: [
                                   Container(
                                     width: size.width*.65,
-                                    child: Text("${snapshot.data.result.orderDetails[0].details}",textAlign: TextAlign.center,style: TextStyle(fontSize: 18), textDirection: TextDirection.rtl,
+                                    child: Text("${snapshot.data?.result?.orderDetails?[0].details}",textAlign: TextAlign.center,style: TextStyle(fontSize: 18), textDirection: TextDirection.rtl,
                                     ),
                                   ),
 
@@ -146,7 +146,7 @@ class _OfferState extends State<Offer> {
                        ,
                         //2
                         Container(
-                          color: snapshot.data.result.orderDetails[1].type!='1' ?Colors.grey:Colors.white,
+                          color: snapshot.data?.result?.orderDetails?[1].type!='1' ?Colors.grey:Colors.white,
                           child: Column(
                             children: [
                               Padding(
@@ -154,7 +154,7 @@ class _OfferState extends State<Offer> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("${snapshot.data.result.orderDetails[1].paidValue} ",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
+                                    Text("${snapshot.data?.result?.orderDetails?[1].paidValue} ",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
                                     Text("الدفعة الثانية ",style: TextStyle(fontSize: 25), textDirection: TextDirection.rtl,
                                     ),
                                   ],
@@ -168,7 +168,7 @@ class _OfferState extends State<Offer> {
                                     Container(
                                       width: size.width*.65,
 
-                                      child: Text("${snapshot.data.result.orderDetails[1].details}",textAlign: TextAlign.center,style: TextStyle(fontSize: 18), textDirection: TextDirection.rtl,
+                                      child: Text("${snapshot.data?.result?.orderDetails?[1].details}",textAlign: TextAlign.center,style: TextStyle(fontSize: 18), textDirection: TextDirection.rtl,
                                       ),
                                     ),
                                   ],
@@ -179,7 +179,7 @@ class _OfferState extends State<Offer> {
                         ),
                         //3
                         Container(
-                          color: snapshot.data.result.orderDetails[2].type!='1' ?Colors.grey:Colors.white,
+                          color: snapshot.data?.result?.orderDetails?[2].type!='1' ?Colors.grey:Colors.white,
                           child: Column(
                             children: [
                               Padding(
@@ -187,7 +187,7 @@ class _OfferState extends State<Offer> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("${snapshot.data.result.orderDetails[2].paidValue} ",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
+                                    Text("${snapshot.data?.result?.orderDetails?[2].paidValue} ",style: TextStyle(fontSize: 35,color: Color(0xff3b6745))),
                                     Text("الدفعة الثالثة ",style: TextStyle(fontSize: 25), textDirection: TextDirection.rtl,
                                     ),
                                   ],
@@ -200,7 +200,7 @@ class _OfferState extends State<Offer> {
                                   children: [
                                     Container(
                                       width: size.width*.65,
-                                      child: Text("${snapshot.data.result.orderDetails[2].details}",textAlign: TextAlign.center,style: TextStyle(fontSize: 18), textDirection: TextDirection.rtl,
+                                      child: Text("${snapshot.data?.result?.orderDetails?[2].details}",textAlign: TextAlign.center,style: TextStyle(fontSize: 18), textDirection: TextDirection.rtl,
                                       ),
                                     ),
                                   ],
@@ -238,8 +238,11 @@ class _OfferState extends State<Offer> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         elevation: 20,
-                                        primary:  Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005), // Button background color
+                                        foregroundColor: Colors.orangeAccent, // Button text color
+                                        //
+                                        // primary:  Color(0xfff3a005),
+                                        // onPrimary: Colors.orangeAccent,
                                         shape: const RoundedRectangleBorder(
                                             borderRadius:
                                             BorderRadius.all(Radius.circular(15))),
@@ -273,8 +276,11 @@ class _OfferState extends State<Offer> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         elevation: 20,
-                                        primary:  Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005), // Button background color
+                                        foregroundColor: Colors.orangeAccent, // Button text color
+
+                                        // primary:  Color(0xfff3a005),
+                                        // onPrimary: Colors.orangeAccent,
                                         shape: const RoundedRectangleBorder(
                                             borderRadius:
                                             BorderRadius.all(Radius.circular(15))),

@@ -9,15 +9,16 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'sliders.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title
-    //  'This channel is used for important notifications.', // description
-    importance: Importance.high,
-    playSound: true);
+  'high_importance_channel', // id
+  'High Importance Notifications', // title
+  //  'This channel is used for important notifications.', // description
+  importance: Importance.high,
+  playSound: true,);
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-String checker;
+FlutterLocalNotificationsPlugin();
+String? checker;
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('A bg message just showed up :  ${message.messageId}');
@@ -30,7 +31,7 @@ Future<void> main() async {
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+      AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
@@ -42,20 +43,20 @@ Future<void> main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int _counter;
+  int _counter = 0;
+
   @override
   void initState() {
     super.initState();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification notification = message.notification;
-      AndroidNotification android = message.notification?.android;
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
@@ -76,18 +77,18 @@ class _MyAppState extends State<MyApp> {
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print('A new onMessageOpenedApp event was published!');
-      RemoteNotification notification = message.notification;
-      AndroidNotification android = message.notification?.android;
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
         showDialog(
             context: context,
             builder: (_) {
               return AlertDialog(
-                title: Text(notification.title),
+                title: Text(notification.title ?? ""),
                 content: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text(notification.body)],
+                    children: [Text(notification.body ?? "")],
                   ),
                 ),
               );

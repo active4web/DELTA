@@ -12,10 +12,10 @@ class RegistrationListM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory RegistrationListM.fromJson(String str) => RegistrationListM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class RegistrationListM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -41,7 +41,7 @@ class Result {
     this.listCountries,
   });
 
-  List<ListCountry> listCountries;
+  List<ListCountry>? listCountries;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -52,7 +52,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "list_countries": List<dynamic>.from(listCountries.map((x) => x.toMap())),
+    "list_countries": List<dynamic>.from(listCountries!.map((x) => x.toMap())),
   };
 }
 
@@ -62,8 +62,8 @@ class ListCountry {
     this.idCity,
   });
 
-  String nameCity;
-  String idCity;
+  String? nameCity;
+  String? idCity;
 
   factory ListCountry.fromJson(String str) => ListCountry.fromMap(json.decode(str));
 

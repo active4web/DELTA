@@ -1,30 +1,29 @@
 import 'dart:async';
-import 'dart:convert';
-import 'package:delta/DataModel/user_ticketM.dart';
 import 'package:delta/DataModel/user_tickets_listM.dart';
 import 'package:delta/Repository/Repository.dart';
+import 'package:delta/Screen/Real_estate_investment.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';
-
 import 'technical_support.dart';
 
 class SendTicket extends StatefulWidget {
-  SendTicket({Key key, this.jwt}) : super(key: key);
-  String jwt;
+
+  String? jwt;
   @override
   _SendTicketState createState() => _SendTicketState();
+
+  SendTicket({this.jwt});
 }
 
 class _SendTicketState extends State<SendTicket> {
-  String token;
+  String? token;
   Dio dio = Dio();
   //TicketList
-  Future<UserTicketsListM> TicketList(
-      {@required String key, @required String token}) async {
-    UserTicketsListM data;
+  Future<UserTicketsListM?> TicketList(
+      {required String key, required String? token}) async {
+    UserTicketsListM? data;
     FormData formData = new FormData.fromMap({"key": key, "token_id": token});
     await dio
         .post(
@@ -37,13 +36,13 @@ class _SendTicketState extends State<SendTicket> {
       data = UserTicketsListM.fromMap(value.data);
     });
     setState(() {
-      _list0 = data.result.ticketsTypes.toList();
+      _list0 = data?.result?.ticketsTypes?.toList();
     });
     return data;
   }
 
-  List _list0;
-  int Id0;
+  List?_list0;
+  int? id0;
   var baseurl = 'https://mdecco.com/app/';
 
   TextEditingController controllerTitle = TextEditingController();
@@ -136,7 +135,7 @@ class _SendTicketState extends State<SendTicket> {
                         child: _list0 != null
                             ? DropdownButton(
                                 isExpanded: true,
-                                items: _list0.map((e) {
+                                items: _list0?.map((e) {
                                   return new DropdownMenuItem(
                                     child: Container(
                                         alignment: Alignment.centerRight,
@@ -155,7 +154,7 @@ class _SendTicketState extends State<SendTicket> {
                                 }).toList(),
                                 onChanged: (val) {
                                   setState(() {
-                                    Id0 = val;
+                                    Id0.text = val.toString();
                                     print(Id0.toString());
                                   });
                                 },
@@ -251,18 +250,17 @@ class _SendTicketState extends State<SendTicket> {
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 20,
-                        primary: Color(0xfff3a005),
-                        onPrimary: Colors.orangeAccent,
+                        backgroundColor: Color(0xfff3a005), // Button background color
+                        foregroundColor: Colors.orangeAccent,
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30))),
                       ),
                       onPressed: () async {
-                        _repo
-                            .makeTicket(
+                        _repo.makeTicket(
                                 key: '1234567890',
-                                token: token,
-                                ticket_type_id: Id0.toString(),
+                                token: token!,
+                                ticket_type_id: Id0.text,
                                 title: controllerTitle.text,
                                 content: controllerContent.text)
                             .then((value) {

@@ -4,18 +4,17 @@ import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/login.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Home/home_bar.dart';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key key}) : super(key: key);
 
   @override
   _SignUpState createState() => _SignUpState();
+
+  SignUp();
 }
 
 class _SignUpState extends State<SignUp> {
@@ -269,7 +268,7 @@ class _SignUpState extends State<SignUp> {
                         child: _country != null
                             ? DropdownButton(
                                 isExpanded: true,
-                                items: _country.map((e) {
+                                items: _country?.map((e) {
                                   return new DropdownMenuItem(
                                     child: Container(
                                         alignment: Alignment.centerRight,
@@ -288,7 +287,7 @@ class _SignUpState extends State<SignUp> {
                                 }).toList(),
                                 onChanged: (val) {
                                   setState(() {
-                                    countryId = val;
+                                    countryId = '${val}';
                                     print(countryId.toString());
                                   });
                                 },
@@ -443,14 +442,14 @@ class _SignUpState extends State<SignUp> {
                         ),
                         style: ElevatedButton.styleFrom(
                           elevation: 20,
-                          primary: Color(0xfff3a005),
-                          onPrimary: Colors.orangeAccent,
+                          backgroundColor: Color(0xfff3a005), // Button background color
+                          foregroundColor: Colors.orangeAccent, // Button text color
                           shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
                         ),
                         onPressed: () async {
-                          String fb_id =
+                          String? fb_id =
                           await FirebaseMessaging.instance.getToken();
                           print(fb_id);
                           if (controllerPassword.text != null && controllerPassword.text != '') {
@@ -467,7 +466,7 @@ class _SignUpState extends State<SignUp> {
                                   firebase_id: fb_id.toString(),
                                   country: countryId.toString())
                                   .then((value) async {
-                                if (value.status) {
+                                if (value.status!) {
 
                                   var snackBar =
                                   SnackBar(content: Text('${value.message}',
@@ -491,22 +490,22 @@ class _SignUpState extends State<SignUp> {
                                   await SharedPreferences.getInstance();
                                   pref.setString(
                                       'phone',
-                                      value.result.clientData[0].phone);
+                                      value.result?.clientData?[0].phone??"");
                                   pref.setString(
-                                      'name', value.result.clientData[0].name);
+                                      'name', value.result?.clientData?[0].name??"");
                                   pref.setBool('loginState', true);
                                   pref.setBool('SliderState', true);
                                   pref.setString(
                                       'token',
-                                      value.result.clientData[0].token);
+                                      value.result?.clientData?[0].token??"");
                                   await FirebaseFirestore.instance
                                       .collection("Users")
                                       .doc()
                                       .set({
-                                    "phone": value.result.clientData[0].phone,
+                                    "phone": value.result?.clientData?[0].phone,
                                     "fr_id": fb_id,
-                                    "name": value.result.clientData[0].name,
-                                    "token": value.result.clientData[0].token,
+                                    "name": value.result?.clientData?[0].name,
+                                    "token": value.result?.clientData?[0].token,
                                     "email": controllerAddress.text,
                                     "password": controllerPassword.text,
 
@@ -558,12 +557,12 @@ class _SignUpState extends State<SignUp> {
   }
 
   var baseurl = 'https://wasselni.ps/delta/';
-  List _country;
-  String countryId;
+  List? _country;
+  String? countryId;
   Dio dio = Dio();
-  Future<RegistrationListM> country(
-      {@required String key, @required String lang}) async {
-    RegistrationListM data;
+  Future<RegistrationListM?> country(
+      { String? key,  String? lang}) async {
+    RegistrationListM? data;
     FormData formData = new FormData.fromMap({
       "key": '1234567890',
       //"lang": 'ar'
@@ -580,9 +579,9 @@ class _SignUpState extends State<SignUp> {
     });
     setState(() {
       super.setState(() {
-        _country = data.result.listCountries;
+        _country = data?.result?.listCountries;
       });
-      _country = data.result.listCountries;
+      _country = data?.result?.listCountries;
     });
     return data;
   }

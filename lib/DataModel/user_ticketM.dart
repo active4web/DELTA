@@ -15,11 +15,11 @@ class UserTicketsM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  int total;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  int? total;
+  Result? result;
 
   factory UserTicketsM.fromJson(String str) => UserTicketsM.fromMap(json.decode(str));
 
@@ -38,7 +38,7 @@ class UserTicketsM {
     "codenum": codenum,
     "status": status,
     "total": total,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -47,7 +47,7 @@ class Result {
     this.myTickets,
   });
 
-  List<MyTicket> myTickets;
+  List<MyTicket>? myTickets;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -58,7 +58,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "my_tickets": List<dynamic>.from(myTickets.map((x) => x.toMap())),
+    "my_tickets": List<dynamic>.from(myTickets!.map((x) => x.toMap())),
   };
 }
 
@@ -73,13 +73,13 @@ class MyTicket {
     this.createdAt,
   });
 
-  int id;
-  String title;
-  String type;
-  String senderType;
-  String color;
-  String content;
-  DateTime createdAt;
+  int? id;
+  String? title;
+  String? type;
+  String? senderType;
+  String? color;
+  String? content;
+  DateTime? createdAt;
 
   factory MyTicket.fromJson(String str) => MyTicket.fromMap(json.decode(str));
 
@@ -102,6 +102,6 @@ class MyTicket {
     "sender_type": senderType,
     "color": color,
     "content": content,
-    "created_at": "${createdAt.year.toString().padLeft(4, '0')}-${createdAt.month.toString().padLeft(2, '0')}-${createdAt.day.toString().padLeft(2, '0')}",
+    "created_at": "${createdAt!.year.toString().padLeft(4, '0')}-${createdAt!.month.toString().padLeft(2, '0')}-${createdAt!.day.toString().padLeft(2, '0')}",
   };
 }

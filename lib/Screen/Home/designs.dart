@@ -1,32 +1,19 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:delta/DataModel/projectsM.dart';
 import 'package:delta/Repository/Repository.dart';
-import 'package:delta/Screen/DrawerNav/about_app.dart';
-import 'package:delta/Screen/DrawerNav/blogs.dart';
-import 'package:delta/Screen/DrawerNav/contact_us.dart';
-import 'package:delta/Screen/DrawerNav/not_logged_in.dart';
-import 'package:delta/Screen/DrawerNav/notifications.dart';
 import 'package:delta/Screen/Home/projectDetails.dart';
-import 'package:delta/Screen/DrawerNav/profile.dart';
-import 'package:delta/Screen/DrawerNav/technical_support.dart';
-import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:delta/draw.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../login.dart';
-import 'order_track.dart';
-
 class Designs extends StatefulWidget {
-  const Designs({Key key}) : super(key: key);
 
   @override
   _DesignsState createState() => _DesignsState();
 }
 
 class _DesignsState extends State<Designs> {
-  String token;
+  String? token;
 
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -98,7 +85,7 @@ class _DesignsState extends State<Designs> {
               stream: _repo
                   .getProjects(
                       key: "1234567890",
-                      token_id: token,
+                      token_id: token!,
                       limit: '20',
                       page_number: '0')
                   .asStream(),
@@ -107,18 +94,15 @@ class _DesignsState extends State<Designs> {
                   return Directionality(
                     textDirection: TextDirection.rtl,
                     child: GridView.builder(
-                      itemCount: snapshot.data.result.allProjects.length,
+                      itemCount: snapshot.data?.result?.allProjects?.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 2.0,
                           mainAxisSpacing: 2.0,
                           mainAxisExtent: 320),
                       itemBuilder: (BuildContext context, int index) {
-                        for (int i = 0;
-                            i <
-                                snapshot.data.result.allProjects[index]
-                                    .allSlider.length;
-                            i++) {
+                       int? sliderLength = snapshot.data?.result?.allProjects?[index].allSlider?.length??0;
+                        for (int i = 0; i < sliderLength; i++) {
                           itemSliders.add(Padding(
                               padding: const EdgeInsets.all(5),
                               child: Container(
@@ -132,8 +116,7 @@ class _DesignsState extends State<Designs> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.network(
-                                        snapshot.data.result.allProjects[index]
-                                            .allSlider[i].img,
+                                        snapshot.data?.result?.allProjects?[index].allSlider?[i].img??"",
                                         fit: BoxFit.fill,
                                       ),
                                     ),
@@ -157,10 +140,13 @@ class _DesignsState extends State<Designs> {
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               child: CarouselSlider(
-                                                items: snapshot.data.result
-                                                    .allProjects[index].allSlider
-                                                    .map((e) => Image.network(
-                                                          e.img,
+                                                items: snapshot
+                                                    .data
+                                                    ?.result
+                                                    ?.allProjects?[index]
+                                                    .allSlider
+                                                    ?.map((e) => Image.network(
+                                                          e.img ?? "",
                                                           fit: BoxFit.cover,
                                                         ))
                                                     .toList(),
@@ -182,8 +168,9 @@ class _DesignsState extends State<Designs> {
                                   padding: const EdgeInsets.all(5.0),
                                   child: Container(
                                     child: Text(
-                                      snapshot.data.result.allProjects[index]
-                                          .projectName,
+                                      snapshot.data?.result?.allProjects?[index]
+                                              .projectName ??
+                                          "",
                                       textDirection: TextDirection.rtl,
                                       style: TextStyle(
                                         fontFamily: 'GE SS Two',
@@ -226,9 +213,9 @@ class _DesignsState extends State<Designs> {
                                         ),
                                       ),
                                       style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.orangeAccent,
+                                        backgroundColor: Color(0xfff3a005),
                                         elevation: 20,
-                                        primary: Color(0xfff3a005),
-                                        onPrimary: Colors.orangeAccent,
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(2))),
@@ -238,10 +225,7 @@ class _DesignsState extends State<Designs> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (_) => ProjectDetails(
-                                                    project: snapshot
-                                                        .data
-                                                        .result
-                                                        .allProjects[index])));
+                                                    project: snapshot.data?.result?.allProjects?[index]),),);
                                       }),
                                 ),
                               ],

@@ -12,10 +12,10 @@ class ContactInfoM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory ContactInfoM.fromJson(String str) => ContactInfoM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class ContactInfoM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -51,17 +51,17 @@ class Result {
     this.websiteLink,
   });
 
-  String hotline;
-  String nameSite;
-  String address;
-  String supportEmail;
-  String supportPhone;
-  String whatsapp;
-  String facebook;
-  String twitter;
-  String instagram;
-  String linkedin;
-  String websiteLink;
+  String? hotline;
+  String? nameSite;
+  String? address;
+  String? supportEmail;
+  String? supportPhone;
+  String? whatsapp;
+  String? facebook;
+  String? twitter;
+  String? instagram;
+  String? linkedin;
+  String? websiteLink;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 

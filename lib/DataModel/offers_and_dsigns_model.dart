@@ -1,8 +1,8 @@
 class OffersAndDesignsModel {
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   OffersAndDesignsModel({this.message, this.codenum, this.status, this.result});
 
@@ -20,47 +20,46 @@ class OffersAndDesignsModel {
     data['codenum'] = this.codenum;
     data['status'] = this.status;
     if (this.result != null) {
-      data['result'] = this.result.toJson();
+      data['result'] = this.result!.toJson();
     }
     return data;
   }
 }
 
 class Result {
-  CategoryDate categoryDate;
-  List<LableList> lableList;
+  CategoryDate? categoryDate;
+  List<LableList>? lableList;
 
   Result({this.categoryDate, this.lableList});
 
   Result.fromJson(Map<String, dynamic> json) {
     categoryDate = json['category_date'] != null
-        ? new CategoryDate.fromJson(json['category_date'])
+        ? CategoryDate.fromJson(json['category_date'])
         : null;
     if (json['lable_list'] != null) {
-      lableList = new List<LableList>();
+      lableList = <LableList>[];
       json['lable_list'].forEach((v) {
-        lableList.add(new LableList.fromJson(v));
+        lableList!.add(LableList.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.categoryDate != null) {
-      data['category_date'] = this.categoryDate.toJson();
+      data['category_date'] = this.categoryDate!.toJson();
     }
     if (this.lableList != null) {
-      data['lable_list'] = this.lableList.map((v) => v.toJson()).toList();
+      data['lable_list'] = this.lableList!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
-
 class CategoryDate {
-  String title;
-  String description;
-  int id;
-  String details;
+  String? title;
+  String? description;
+  int? id;
+  String?details;
   Null color;
 
   CategoryDate(
@@ -86,8 +85,8 @@ class CategoryDate {
 }
 
 class LableList {
-  String title;
-  int lebalId;
+  String? title;
+  int? lebalId;
 
   LableList({this.title, this.lebalId});
 

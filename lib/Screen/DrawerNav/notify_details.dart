@@ -7,14 +7,16 @@ import '../../draw.dart';
 import 'notifications.dart';
 
 class NotifyDetails extends StatefulWidget {
-   NotifyDetails({Key key,this.notifyId}) : super(key: key);
-    String notifyId;
+
+    String? notifyId;
   @override
   _NotifyDetailsState createState() => _NotifyDetailsState();
+
+    NotifyDetails({this.notifyId});
 }
 
 class _NotifyDetailsState extends State<NotifyDetails> {
-  String token;
+  String? token;
 
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -97,7 +99,7 @@ class _NotifyDetailsState extends State<NotifyDetails> {
                             decoration: BoxDecoration(
                                 image:DecorationImage(
                                     image: NetworkImage(
-                                      snapshot.data.result.notificationDetails.img,
+                                      snapshot.data?.result?.notificationDetails?.img??"",
                                     )),
                                 border: Border.all(
                                     color: Colors.green),
@@ -108,7 +110,7 @@ class _NotifyDetailsState extends State<NotifyDetails> {
                             height: size.width*.4,
                             child:
                             Image.network(
-                              snapshot.data.result.notificationDetails.img,
+                              snapshot.data?.result?.notificationDetails?.img??"",
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -124,7 +126,7 @@ class _NotifyDetailsState extends State<NotifyDetails> {
                                       width: size.width * .2,
                                       height: size.height * .1,
                                       child: Text(
-                                        "${snapshot.data.result.notificationDetails.createdAt.toString().substring(0,10)}",
+                                        "${snapshot.data?.result?.notificationDetails?.createdAt.toString().substring(0,10)}",
                                         textDirection: TextDirection.rtl,
                                         style: TextStyle(
                                             color: Color(0xff0f0f10), fontSize: 13),
@@ -137,7 +139,7 @@ class _NotifyDetailsState extends State<NotifyDetails> {
                                       width: size.width * .57,
                                       height: size.height * .1,
                                       child: Text(
-                                        "${snapshot.data.result.notificationDetails.title}",
+                                        "${snapshot.data?.result?.notificationDetails?.title}",
                                         textDirection: TextDirection.rtl,
                                         style: TextStyle(
                                             color: Color(0xff0b4079), fontSize: 18),
@@ -159,7 +161,7 @@ class _NotifyDetailsState extends State<NotifyDetails> {
 
 
                                     child: Text(
-                                      "${snapshot.data.result.notificationDetails.body}",
+                                      "${snapshot.data?.result?.notificationDetails?.body}",
                                       textDirection: TextDirection.rtl,
                                       style: TextStyle(
                                           color: Color(0xff0f0f10), fontSize: 13),

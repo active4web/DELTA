@@ -1,8 +1,7 @@
 import 'dart:io';
-
-import 'package:delta/DataModel/FormsModels/arch_residentialM.dart';
 import 'package:delta/DataModel/FormsModels/construction_residenialM.dart';
 import 'package:delta/Repository/Repository.dart';
+import 'package:delta/Screen/Real_estate_investment.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -15,37 +14,37 @@ import 'package:delta/Screen/Home/home_bar.dart';
 import '../send_done.dart';
 
 class ConstResidenial extends StatefulWidget {
-  ConstResidenial({Key key, this.message,this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
-  String message;
+  ConstResidenial({this.message,this.jwt, this.cat_id});
+  String? jwt;
+  String? cat_id;
+  String? message;
   @override
   _ConstResidenialState createState() => _ConstResidenialState();
 }
 
 class _ConstResidenialState extends State<ConstResidenial> {
-  List _list0;
-  int Id0;
-  List _list1;
-  int Id1;
-  List _list2;
-  int Id2;
+  List?_list0;
+  int? id0;
+  List?_list1;
+  int? id1;
+  List?_list2;
+  int? id2;
   Dio dio = Dio();
   var baseurl = 'https://mdecco.com/app/';
 
-  String token;
-  Future<String> gettoken() async {
+  String? token;
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
   }
 
-  Future<ConstResidentialM> getConstResidentialF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<ConstResidentialM?> getConstResidentialF({
+    required String? key,
+    required String? token_id,
+    required String? cat_id,
   }) async {
-    ConstResidentialM data;
+    ConstResidentialM? data;
     FormData formData = new FormData.fromMap(
         {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -59,9 +58,9 @@ class _ConstResidenialState extends State<ConstResidenial> {
       data = ConstResidentialM.fromMap(value.data);
     });
     setState(() {
-      _list2 = data.result.lableList[2].listAnwser.toList();
-      _list1 = data.result.lableList[1].listAnwser.toList();
-      _list0 = data.result.lableList[0].listAnwser.toList();
+      _list2 = data?.result?.lableList?[2].listAnwser?.toList();
+      _list1 = data?.result?.lableList?[1].listAnwser?.toList();
+      _list0 = data?.result?.lableList?[0].listAnwser?.toList();
     });
     return data;
   }
@@ -70,28 +69,28 @@ class _ConstResidenialState extends State<ConstResidenial> {
   void initState() {
     gettoken();
     this.getConstResidentialF(
-        key: '1234567890', token_id: widget.jwt, cat_id: widget.cat_id);
+        key: '1234567890', token_id: widget.jwt??"", cat_id: widget.cat_id);
     super.initState();
   }
 
-  Repository _repo = Repository();
-  List<File> proFile1;
-  List<File> proFile2;
+  Repository? _repo = Repository();
+  List<File>? proFile1;
+  List<File>? proFile2;
   Future<void> openG1() async {
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowMultiple: true);
     if (result != null) {
-      proFile1 = result.paths.map((path) => File(path)).toList();
+      proFile1 = result.paths.map((path) => File(path!)).toList();
     } else {
       // User canceled the picker
     }
   }
 
   Future<void> openG2() async {
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowMultiple: true);
     if (result != null) {
-      proFile2 = result.paths.map((path) => File(path)).toList();
+      proFile2 = result.paths.map((path) => File(path!)).toList();
     } else {
       // User canceled the picker
     }
@@ -105,9 +104,8 @@ class _ConstResidenialState extends State<ConstResidenial> {
 
     return Material(
       child: StreamBuilder<ConstResidentialM>(
-          stream: _repo
-              .getConstResidentialF(
-                  key: '1234567890', token_id: token, cat_id: widget.cat_id)
+          stream: _repo?.getConstResidentialF(
+                  key: '1234567890', token_id: token!, cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
@@ -142,7 +140,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${snapshot.data.result.categoryDate.title}",
+                        "${snapshot.data?.result?.categoryDate?.title}",
                         style: TextStyle(
                           fontFamily: 'GE SS Two',
                           fontSize: 17,
@@ -163,7 +161,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "${snapshot.data.result.categoryDate.title}",
+                              "${snapshot.data?.result?.categoryDate?.title}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',
@@ -185,7 +183,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.categoryDate.description}",
+                                  "${snapshot.data?.result?.categoryDate?.description}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
@@ -212,7 +210,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[0].title}",
+                                  "${snapshot.data?.result?.lableList?[0].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -226,7 +224,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[0].type ==
+                                      snapshot.data?.result?.lableList?[0].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -257,7 +255,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list0
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -265,8 +263,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                                         e.title,
                                                                         style:
                                                                             TextStyle(
-                                                                          fontFamily:
-                                                                              'GE SS Two',
+                                                                          fontFamily: 'GE SS Two',
                                                                           fontSize:
                                                                               17,
                                                                           color:
@@ -283,9 +280,9 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id0 = val;
-                                                                  print(Id0
-                                                                      .toString());
+                                                                  Id0.text = val.toString();
+                                                                  // print(Id0
+                                                                  //     .toString());
                                                                 });
                                                               },
                                                               value: Id0,
@@ -315,7 +312,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[1].title}",
+                                  "${snapshot.data?.result?.lableList?[1].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -329,7 +326,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[1].type ==
+                                      snapshot.data?.result?.lableList?[1].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -360,7 +357,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list1
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -386,7 +383,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id1 = val;
+                                                                  Id1.text = val.toString();
                                                                   print(Id1
                                                                       .toString());
                                                                 });
@@ -418,7 +415,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[2].title}",
+                                  "${snapshot.data?.result?.lableList?[2].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -432,7 +429,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[2].type ==
+                                      snapshot.data?.result?.lableList?[2].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -463,7 +460,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list2
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -489,7 +486,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id2 = val;
+                                                                  Id2.text = val.toString();
                                                                   print(Id2
                                                                       .toString());
                                                                 });
@@ -521,7 +518,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[3].title}",
+                                  "${snapshot.data?.result?.lableList?[3].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -535,7 +532,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[3].type ==
+                                              .data?.result?.lableList?[3].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -623,7 +620,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[4].title}",
+                                  "${snapshot.data?.result?.lableList?[4].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -637,7 +634,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[4].type ==
+                                              .data?.result?.lableList?[4].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -722,7 +719,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
 
                               //  alignment: Alignment.center,
                               child: Text(
-                                  "${snapshot.data.result.categoryDate.details}",
+                                  "${snapshot.data?.result?.categoryDate?.details}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
@@ -761,8 +758,10 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // primary: Color(0xfff3a005),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -771,9 +770,9 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                       setState(() {
                                         proFile1 = null;
                                         proFile2 = null;
-                                        Id0 = null;
-                                        Id1 = null;
-                                        Id2 = null;
+                                        Id0.text = '';
+                                        Id1.text = '';
+                                        Id2.text = '';
                                       });
                                     }),
                               ),
@@ -801,8 +800,8 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent, // Button text color
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -812,21 +811,20 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                           Id1 != null &&
                                           Id0 != null) {
                                         String a0 =
-                                            "${snapshot.data.result.lableList[0].lebalId}.$Id0";
+                                            "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
                                         String a1 =
-                                            "${snapshot.data.result.lableList[1].lebalId}.$Id1";
+                                            "${snapshot.data?.result?.lableList?[1].lebalId}.$Id1";
                                         String a2 =
-                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2";
+                                            "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
                                         String a3 =
-                                            "${snapshot.data.result.lableList[4].lebalId}.${1}";
+                                            "${snapshot.data?.result?.lableList?[4].lebalId}.${1}";
 
                                         String answer = '$a0,$a1,$a2,$a3';
-                                        _repo
-                                            .sendCostBuildF(
+                                        _repo?.sendCostBuildF(
                                           key: '1234567890',
                                           token_id: widget.jwt,
                                           cat_id: widget.cat_id,
-                                          file: proFile1 + proFile2,
+                                          file: proFile1! + proFile2!,
                                           answer: "$answer",
                                         )
                                             .then((value) {
@@ -885,8 +883,8 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent, // Button text color
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),

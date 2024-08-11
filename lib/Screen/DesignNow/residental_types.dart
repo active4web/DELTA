@@ -3,21 +3,25 @@ import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/DesignNow/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../draw.dart';
 
 class ResidentialTypes extends StatefulWidget {
-  ResidentialTypes({Key key, this.jwt, this.cat_id}) : super(key: key);
-  String jwt;
-  String cat_id;
+  String? jwt;
+  String? cat_id;
+
   @override
   _ResidentialTypesState createState() => _ResidentialTypesState();
+
+  ResidentialTypes({this.jwt, this.cat_id});
 }
 
 class _ResidentialTypesState extends State<ResidentialTypes> {
-  String token;
+  String? token;
   TransformationController transformationController =
       TransformationController();
-  Future<String> gettoken() async {
+
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -30,6 +34,7 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
   }
 
   Repository _repo = Repository();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -41,7 +46,7 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
           stream: _repo
               .getAllDesigns(
                 key: '1234567890',
-                token_id: widget.jwt,
+                token_id: widget.jwt!,
                 limit: "20",
                 pageNumber: "0",
               )
@@ -98,13 +103,14 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                     childAspectRatio: 0.55,
                     mainAxisSpacing: 10,
                     children: List.generate(
-                        snapshot.data.result.allDesigns.length,
+                        snapshot.data?.result?.allDesigns?.length ?? 0,
                         (index) => Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(snapshot
-                                    .data.result.allDesigns[index].name),
+                                Text(snapshot.data?.result?.allDesigns?[index]
+                                        .name ??
+                                    ""),
                                 InkWell(
                                   onTap: () {
                                     showDialog(
@@ -134,11 +140,12 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                                             child:
                                                                 Image.network(
                                                               snapshot
-                                                                  .data
-                                                                  .result
-                                                                  .allDesigns[
-                                                                      index]
-                                                                  .secondImage,
+                                                                      .data
+                                                                      ?.result
+                                                                      ?.allDesigns?[
+                                                                          index]
+                                                                      .secondImage ??
+                                                                  "",
                                                             ),
                                                           );
                                                         },
@@ -148,12 +155,13 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                                       height: 200,
                                                       width: double.infinity,
                                                       child: Image.network(
-                                                        snapshot
-                                                            .data
-                                                            .result
-                                                            .allDesigns[index]
-                                                            .secondImage,
-                                                      ),
+                                                          snapshot
+                                                                  .data
+                                                                  ?.result
+                                                                  ?.allDesigns?[
+                                                                      index]
+                                                                  .secondImage ??
+                                                              ""),
                                                     ),
                                                   ),
                                                 ),
@@ -165,11 +173,7 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                                 alignment: Alignment.center,
                                                 child: Text(
                                                   "الاسم :" +
-                                                      snapshot
-                                                          .data
-                                                          .result
-                                                          .allDesigns[index]
-                                                          .name,
+                                                      '${snapshot.data?.result?.allDesigns?[index].name}',
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -180,12 +184,7 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                                 height: 5,
                                               ),
                                               Text(
-                                                "الوصف :" +
-                                                    snapshot
-                                                        .data
-                                                        .result
-                                                        .allDesigns[index]
-                                                        .description,
+                                                "الوصف :" + '${snapshot.data?.result?.allDesigns?[index].description??""}',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
@@ -197,11 +196,7 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                               ),
                                               Text(
                                                   "السعر :" +
-                                                      snapshot
-                                                          .data
-                                                          .result
-                                                          .allDesigns[index]
-                                                          .price,
+                                                      '${snapshot.data?.result?.allDesigns?[index].price}',
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -216,30 +211,32 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                     height: 150,
                                     width: double.infinity,
                                     child: Image.network(
-                                      snapshot.data.result.allDesigns[index]
-                                          .designImg,
+                                      snapshot.data?.result?.allDesigns?[index]
+                                              .designImg ??
+                                          "",
                                       fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
                                 Text(
-                                  snapshot.data.result.allDesigns[index]
-                                      .description,
+                                  snapshot.data?.result?.allDesigns?[index]
+                                          .description ??
+                                      "",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       overflow: TextOverflow.ellipsis),
                                   maxLines: 2,
                                 ),
-                                Text(snapshot
-                                    .data.result.allDesigns[index].price),
+                                Text(snapshot.data?.result?.allDesigns?[index]
+                                        .price ??
+                                    ""),
                                 InkWell(
                                   onTap: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => PaymentScreen(
-                                            orderId: snapshot.data.result
-                                                .allDesigns[index].offerId,
+                                            orderId: snapshot.data?.result?.allDesigns?[index].offerId??0,
                                           ),
                                         ));
                                   },
@@ -266,11 +263,15 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                           ),
                                           style: ElevatedButton.styleFrom(
                                             elevation: 20,
-                                            primary: Color(0xff3b6745),
-                                            onPrimary: Colors.orangeAccent,
+                                            backgroundColor: Color(0xff3b6745),
+                                            // Button background color
+                                            foregroundColor:
+                                                Colors.orangeAccent,
                                             shape: const RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(15))),
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(15),
+                                              ),
+                                            ),
                                           ),
                                           onPressed: () {
                                             Navigator.push(
@@ -278,26 +279,10 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       PaymentScreen(
-                                                    orderId: snapshot
-                                                        .data
-                                                        .result
-                                                        .allDesigns[index]
-                                                        .offerId,
-                                                    image: snapshot
-                                                        .data
-                                                        .result
-                                                        .allDesigns[index]
-                                                        .designImg,
-                                                    description: snapshot
-                                                        .data
-                                                        .result
-                                                        .allDesigns[index]
-                                                        .description,
-                                                    price: snapshot
-                                                        .data
-                                                        .result
-                                                        .allDesigns[index]
-                                                        .price,
+                                                  orderId: snapshot.data?.result?.allDesigns?[index].offerId??0,
+                                                    image: snapshot.data?.result?.allDesigns?[index].designImg??"",
+                                                    description: snapshot.data?.result?.allDesigns?[index].description??"",
+                                                    price: snapshot.data?.result?.allDesigns?[index].price??"",
                                                   ),
                                                 ));
                                           }),

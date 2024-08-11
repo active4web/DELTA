@@ -12,10 +12,10 @@ class EditProM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory EditProM.fromJson(String str) => EditProM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class EditProM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -41,7 +41,7 @@ class Result {
     this.clientData,
   });
 
-  ClientData clientData;
+  ClientData? clientData;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -52,7 +52,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "client_data": clientData.toMap(),
+    "client_data": clientData!.toMap(),
   };
 }
 
@@ -66,12 +66,12 @@ class ClientData {
     this.cityName,
   });
 
-  int id;
-  String name;
-  String phone;
-  String tokenId;
-  String countryId;
-  String cityName;
+  int? id;
+  String? name;
+  String? phone;
+  String? tokenId;
+  String? countryId;
+  String? cityName;
 
   factory ClientData.fromJson(String str) => ClientData.fromMap(json.decode(str));
 

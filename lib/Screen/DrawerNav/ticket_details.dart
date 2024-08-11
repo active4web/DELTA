@@ -28,14 +28,16 @@ import 'technical_support.dart';
 
 
 class TicketDetails extends StatefulWidget {
-   TicketDetails({this.ticketId,Key key}) : super(key: key);
-   String ticketId;
+
+   String? ticketId;
   @override
   _TicketDetailsState createState() => _TicketDetailsState();
+
+   TicketDetails({this.ticketId});
 }
 
 class _TicketDetailsState extends State<TicketDetails> {
-  String token;
+  String? token;
   TextEditingController controllerContent = TextEditingController();
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -44,7 +46,7 @@ class _TicketDetailsState extends State<TicketDetails> {
     });
   }
 
-  String _mySelection;
+  String? _mySelection;
 
   @override
   void initState() {
@@ -109,7 +111,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                   Container(
                     width: size.width*.9,
                     child: StreamBuilder<TicketInfoM>(
-                        stream: _repo.getTicketInfo(token_id: token, key: '1234567890', ticket_id:widget.ticketId ).asStream(),
+                        stream: _repo.getTicketInfo(token_id: token!, key: '1234567890', ticket_id:widget.ticketId??"" ).asStream(),
                         builder: (context, snapshot) {
                           if(snapshot.data!=null){
                             return ListView.builder(
@@ -130,7 +132,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.all(10.0),
-                                                child: Text("${snapshot.data.result.ticketInfo.ticket.createdAt}",  style: TextStyle(
+                                                child: Text("${snapshot.data?.result?.ticketInfo?.ticket?.createdAt}",  style: TextStyle(
                                                   fontFamily: 'GE SS Two',
                                                   fontSize: 17,
                                                   // fontWeight: FontWeight.w400,
@@ -138,7 +140,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.all(10.0),
-                                                child: Text("${snapshot.data.result.ticketInfo.ticket.title}",style: TextStyle(
+                                                child: Text("${snapshot.data?.result?.ticketInfo?.ticket?.title}",style: TextStyle(
                                                   fontFamily: 'GE SS Two',
                                                   fontSize: 17,
                                                   // fontWeight: FontWeight.w400,
@@ -154,7 +156,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                                 child: Container(
                                                   height : size.height*.078,
                                                   width: size.width*0.8,
-                                                  child: Text("${snapshot.data.result.ticketInfo.ticket.content}",textDirection: TextDirection.rtl,  style: TextStyle(
+                                                  child: Text("${snapshot.data?.result?.ticketInfo?.ticket?.content}",textDirection: TextDirection.rtl,  style: TextStyle(
                                                     fontFamily: 'GE SS Two',
                                                     fontSize: 13,
                                                     // fontWeight: FontWeight.w400,
@@ -182,7 +184,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.all(10.0),
-                                                child: Text("${snapshot.data.result.ticketInfo.repliesNumber}",  style: TextStyle(
+                                                child: Text("${snapshot.data?.result?.ticketInfo?.repliesNumber}",  style: TextStyle(
                                                   fontFamily: 'GE SS Two',
                                                   fontSize: 17,
                                                   // fontWeight: FontWeight.w400,
@@ -199,7 +201,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                             ],
                                           ),
                                           ListView.builder(
-                                              itemCount: snapshot.data.result.ticketInfo.ticketReplies.length,
+                                              itemCount: snapshot.data?.result?.ticketInfo?.ticketReplies?.length??0,
                                               shrinkWrap: true,
                                                   physics: ScrollPhysics(),
                                          itemBuilder: (context,index){
@@ -212,7 +214,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                                               width: size.width*.9,
                                                               height: size.height*.15,
                                                               color: Colors.black12,
-                                                              child: Text("${snapshot.data.result.ticketInfo.ticketReplies[index].content}",textDirection: TextDirection.rtl,  style: TextStyle(
+                                                              child: Text("${snapshot.data?.result?.ticketInfo?.ticketReplies?[index].content}",textDirection: TextDirection.rtl,  style: TextStyle(
                                                                 fontFamily: 'GE SS Two',
                                                                 fontSize: 13,
                                                                 // fontWeight: FontWeight.w400,
@@ -225,12 +227,12 @@ class _TicketDetailsState extends State<TicketDetails> {
                                                                 children: [
                                                                   Row(
                                                                     children: [
-                                                                      Text("${snapshot.data.result.ticketInfo.ticketReplies[index].createdAt.toString().substring(0,10)}",textDirection: TextDirection.rtl,  style: TextStyle(
+                                                                      Text("${snapshot.data?.result?.ticketInfo?.ticketReplies?[index].createdAt.toString().substring(0,10)}",textDirection: TextDirection.rtl,  style: TextStyle(
                                                                         fontFamily: 'GE SS Two',
                                                                         fontSize: 13,
                                                                         // fontWeight: FontWeight.w400,
                                                                       )),
-                                                                      Text("  ${snapshot.data.result.ticketInfo.ticketReplies[index].time}الساعة ",textDirection: TextDirection.rtl,  style: TextStyle(
+                                                                      Text("  ${snapshot.data?.result?.ticketInfo?.ticketReplies?[index].time}الساعة ",textDirection: TextDirection.rtl,  style: TextStyle(
                                                                         fontFamily: 'GE SS Two',
                                                                         fontSize: 13,
                                                                         // fontWeight: FontWeight.w400,
@@ -239,7 +241,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                                                   ),
                                                                   Row(
                                                                     children: [
-                                                                      Text("${snapshot.data.result.ticketInfo.ticketReplies[index].sender}",textDirection: TextDirection.rtl,  style: TextStyle(
+                                                                      Text("${snapshot.data?.result?.ticketInfo?.ticketReplies?[index].sender}",textDirection: TextDirection.rtl,  style: TextStyle(
                                                                         fontFamily: 'GE SS Two',
                                                                         fontSize: 13,
                                                                         // fontWeight: FontWeight.w400,
@@ -281,7 +283,7 @@ class _TicketDetailsState extends State<TicketDetails> {
 
                         if(controllerContent.text!=null||controllerContent.text!="")
                           {
-                            _repo.ticketReply(key: '1234567890', token_id: token, ticket_id: widget.ticketId, content: controllerContent.text)
+                            _repo.ticketReply(key: '1234567890', token_id: token??"", ticket_id: widget.ticketId??"", content: controllerContent.text)
                                 .then((value) {
                               if(value.status!=false){
                                 var snackBar = SnackBar(content: Text('${value.message}'));

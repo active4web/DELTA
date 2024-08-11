@@ -11,9 +11,9 @@ class ResAnsM {
     this.status,
   });
 
-  String message;
-  int codenum;
-  bool status;
+  String? message;
+  int? codenum;
+  bool? status;
 
   factory ResAnsM.fromJson(String str) => ResAnsM.fromMap(json.decode(str));
 

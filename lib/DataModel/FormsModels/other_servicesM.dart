@@ -12,10 +12,10 @@ class OtherServicesM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory OtherServicesM.fromJson(String str) => OtherServicesM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class OtherServicesM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -41,7 +41,7 @@ class Result {
     this.categoryDate,
   });
 
-  CategoryDate categoryDate;
+  CategoryDate? categoryDate;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -52,7 +52,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "category_date": categoryDate.toMap(),
+    "category_date": categoryDate!.toMap(),
   };
 }
 
@@ -67,12 +67,12 @@ class CategoryDate {
     this.color,
   });
 
-  String title;
-  String description;
-  int id;
-  String details;
-  String playStoreLink;
-  String appStoreLink;
+  String? title;
+  String? description;
+  int? id;
+  String?details;
+  String? playStoreLink;
+  String? appStoreLink;
   dynamic color;
 
   factory CategoryDate.fromJson(String str) => CategoryDate.fromMap(json.decode(str));

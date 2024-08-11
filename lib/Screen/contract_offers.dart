@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:delta/DataModel/FormsModels/contracting_offersM.dart';
 import 'package:delta/Repository/Repository.dart';
+import 'package:delta/Screen/Real_estate_investment.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,13 @@ import 'Home/home_bar.dart';
 import 'send_done.dart';
 
 class ContractOffers extends StatefulWidget {
-  ContractOffers({Key key, this.cat_id, this.jwt}) : super(key: key);
 
-  String cat_id;
-  String jwt;
+  String? cat_id;
+  String? jwt;
   @override
   _ContractOffersState createState() => _ContractOffersState();
+
+  ContractOffers({this.cat_id, this.jwt});
 }
 
 enum SingingCharacter { commercial, residential, serve }
@@ -107,7 +109,7 @@ class _ContractOffersState extends State<ContractOffers> {
   SingingCharacter2 _character2 = SingingCharacter2.central;
   SingingCharacter2 _character3 = SingingCharacter2.central;
 
-  String token;
+  String? token;
 
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -130,32 +132,32 @@ class _ContractOffersState extends State<ContractOffers> {
   TextEditingController Id15 = TextEditingController();
   TextEditingController Id16 = TextEditingController();
   var baseurl = 'https://mdecco.com/app/';
-  List _list0;
-  int Id0;
-  List _list1;
-  int Id1;
-  List _list2;
-  int Id2;
-  List _list3;
-  int Id3;
-  List<File> proFile;
+  List?_list0;
+  int? id0;
+  List?_list1;
+  int? id1;
+  List?_list2;
+  int? id2;
+  List?_list3;
+  int? id3;
+  List<File>? proFile;
   @override
   void initState() {
     token = "";
     gettoken();
     print(token);
     this.getContractingOffersF(
-        key: '1234567890', token_id: widget.jwt, cat_id: widget.cat_id);
+        key: '1234567890', token_id: widget.jwt!, cat_id: widget.cat_id);
     super.initState();
   }
 
   Dio dio = Dio();
-  Future<ContractingOffersM> getContractingOffersF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<ContractingOffersM?> getContractingOffersF({
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    ContractingOffersM data;
+    ContractingOffersM? data;
     FormData formData = new FormData.fromMap(
         {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -169,20 +171,20 @@ class _ContractOffersState extends State<ContractOffers> {
       data = ContractingOffersM.fromMap(value.data);
     });
     setState(() {
-      _list0 = data.result.lableList[0].listAnwser.toList();
-      _list1 = data.result.lableList[1].listAnwser.toList();
-      _list2 = data.result.lableList[2].listAnwser.toList();
-      _list3 = data.result.lableList[3].listAnwser.toList();
+      _list0 = data?.result?.lableList?[0].listAnwser?.toList();
+      _list1 = data?.result?.lableList?[1].listAnwser?.toList();
+      _list2 = data?.result?.lableList?[2].listAnwser?.toList();
+      _list3 = data?.result?.lableList?[3].listAnwser?.toList();
     });
     return data;
   }
 
   Future<void> openG() async {
-    FilePickerResult result =
+    FilePickerResult? result =
         await FilePicker.platform.pickFiles(allowMultiple: true);
 
     if (result != null) {
-      proFile = result.paths.map((path) => File(path)).toList();
+      proFile = result.paths.map((path) => File(path!)).toList();
     } else {
       // User canceled the picker
     }
@@ -198,7 +200,7 @@ class _ContractOffersState extends State<ContractOffers> {
     return StreamBuilder<ContractingOffersM>(
         stream: _repo
             .getContractingOffersF(
-                key: '1234567890', token_id: token, cat_id: widget.cat_id)
+                key: '1234567890', token_id: token!, cat_id: widget.cat_id)
             .asStream(),
         builder: (context, snapshot) {
           return Scaffold(
@@ -233,7 +235,7 @@ class _ContractOffersState extends State<ContractOffers> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "${snapshot.data.result.categoryDate.title}",
+                            "${snapshot.data?.result?.categoryDate?.title}",
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
                               fontSize: 17,
@@ -255,7 +257,7 @@ class _ContractOffersState extends State<ContractOffers> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "${snapshot.data.result.categoryDate.title}",
+                              "${snapshot.data?.result?.categoryDate?.title}",
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontFamily: 'GE SS Two',
@@ -277,7 +279,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.categoryDate.description}",
+                                  "${snapshot.data?.result?.categoryDate?.description}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
@@ -303,7 +305,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[0].title}",
+                                  "${snapshot.data?.result?.lableList?[0].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -317,7 +319,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[0].type ==
+                                      snapshot.data?.result?.lableList?[0].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -344,7 +346,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list0
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -370,9 +372,9 @@ class _ContractOffersState extends State<ContractOffers> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id0 = val;
-                                                                  print(Id0
-                                                                      .toString());
+                                                                  Id0.text = val.toString();
+                                                                  // print(Id0
+                                                                  //     .toString());
                                                                 });
                                                               },
                                                               value: Id0,
@@ -402,7 +404,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "${snapshot.data.result.lableList[1].title}",
+                                    "${snapshot.data?.result?.lableList?[1].title}",
                                     textDirection: TextDirection.rtl,
                                     style: TextStyle(
                                       color: Color(0xffaa6414),
@@ -416,7 +418,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child:
-                                        snapshot.data.result.lableList[1]
+                                        snapshot.data?.result?.lableList?[1]
                                                     .type ==
                                                 2
                                             ? Container(
@@ -446,7 +448,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                 isExpanded:
                                                                     true,
                                                                 items: _list1
-                                                                    .map((e) {
+                                                                    ?.map((e) {
                                                                   return new DropdownMenuItem(
                                                                     child: Container(
                                                                         alignment: Alignment.centerRight,
@@ -473,7 +475,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                 onChanged:
                                                                     (val) {
                                                                   setState(() {
-                                                                    Id1 = val;
+                                                                    Id1.text = val.toString();
                                                                     print(Id1
                                                                         .toString());
                                                                   });
@@ -504,7 +506,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[2].title}",
+                                  "${snapshot.data?.result?.lableList?[2].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -518,7 +520,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[2].type ==
+                                      snapshot.data?.result?.lableList?[2].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -550,7 +552,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list2
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -576,7 +578,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id2 = val;
+                                                                  Id2.text = val.toString();
                                                                   print(Id2
                                                                       .toString());
                                                                 });
@@ -608,7 +610,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[3].title}",
+                                  "${snapshot.data?.result?.lableList?[3].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -622,7 +624,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   child:
-                                      snapshot.data.result.lableList[3].type ==
+                                      snapshot.data?.result?.lableList?[3].type ==
                                               2
                                           ? Container(
                                               width: sWidth * .8,
@@ -653,7 +655,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                           ? DropdownButton(
                                                               isExpanded: true,
                                                               items: _list3
-                                                                  .map((e) {
+                                                                  ?.map((e) {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
@@ -679,7 +681,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id3 = val;
+                                                                  Id3.text = val.toString();
                                                                   print(Id3
                                                                       .toString());
                                                                 });
@@ -712,7 +714,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[4].title}",
+                                  "${snapshot.data?.result?.lableList?[4].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -725,7 +727,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
-                                    child: snapshot.data.result.lableList[4]
+                                    child: snapshot.data?.result?.lableList?[4]
                                                 .type ==
                                             2
                                         ? Container(
@@ -804,7 +806,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[5].title}",
+                                  "${snapshot.data?.result?.lableList?[5].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -818,7 +820,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[5].type ==
+                                              .data?.result?.lableList?[5].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -896,7 +898,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[6].title}",
+                                  "${snapshot.data?.result?.lableList?[6].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -910,7 +912,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[6].type ==
+                                              .data?.result?.lableList?[6].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -988,7 +990,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[7].title}",
+                                  "${snapshot.data?.result?.lableList?[7].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1002,7 +1004,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[7].type ==
+                                              .data?.result?.lableList?[7].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1080,7 +1082,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[8].title}",
+                                  "${snapshot.data?.result?.lableList?[8].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1094,7 +1096,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[8].type ==
+                                              .data?.result?.lableList?[8].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1172,7 +1174,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[9].title}",
+                                  "${snapshot.data?.result?.lableList?[9].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1186,7 +1188,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[9].type ==
+                                              .data?.result?.lableList?[9].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1264,7 +1266,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[10].title}",
+                                  "${snapshot.data?.result?.lableList?[10].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1278,7 +1280,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[10].type ==
+                                              .data?.result?.lableList?[10].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1356,7 +1358,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[11].title}",
+                                  "${snapshot.data?.result?.lableList?[11].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1370,7 +1372,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[11].type ==
+                                              .data?.result?.lableList?[11].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1448,7 +1450,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[12].title}",
+                                  "${snapshot.data?.result?.lableList?[12].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1462,7 +1464,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[12].type ==
+                                              .data?.result?.lableList?[12].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1539,7 +1541,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[13].title}",
+                                  "${snapshot.data?.result?.lableList?[13].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1553,7 +1555,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[13].type ==
+                                              .data?.result?.lableList?[13].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1630,7 +1632,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[14].title}",
+                                  "${snapshot.data?.result?.lableList?[14].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1644,7 +1646,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[14].type ==
+                                              .data?.result?.lableList?[14].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1721,7 +1723,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[15].title}",
+                                  "${snapshot.data?.result?.lableList?[15].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1735,7 +1737,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[15].type ==
+                                              .data?.result?.lableList?[15].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1812,7 +1814,7 @@ class _ContractOffersState extends State<ContractOffers> {
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text(
-                                  "${snapshot.data.result.lableList[16].title}",
+                                  "${snapshot.data?.result?.lableList?[16].title}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: Color(0xffaa6414),
@@ -1826,7 +1828,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Container(
                                   child: snapshot
-                                              .data.result.lableList[16].type ==
+                                              .data?.result?.lableList?[16].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -2712,7 +2714,7 @@ class _ContractOffersState extends State<ContractOffers> {
 
                               //  alignment: Alignment.center,
                               child: Text(
-                                  "${snapshot.data.result.categoryDate.details}",
+                                  "${snapshot.data?.result?.categoryDate?.details}",
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     fontFamily: 'GE SS Two',
@@ -2751,18 +2753,20 @@ class _ContractOffersState extends State<ContractOffers> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent,
+                                      // primary: Color(0xfff3a005),
+                                      // onPrimary: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                        Id0 = null;
-                                        Id1 = null;
-                                        Id2 = null;
-                                        Id3 = null;
+                                        Id0.text = '';
+                                        Id1.text = '';
+                                        Id2.text = '';
+                                        Id3.text = '';
                                         Id4.text = '';
                                         Id5.text = '';
                                         Id6.text = '';
@@ -2802,8 +2806,8 @@ class _ContractOffersState extends State<ContractOffers> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -2838,38 +2842,38 @@ class _ContractOffersState extends State<ContractOffers> {
                                           Id14.text != '' &&
                                           Id15.text != '') {
                                         String a0 =
-                                            "${snapshot.data.result.lableList[0].lebalId}.$Id0";
+                                            "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
                                         String a1 =
-                                            "${snapshot.data.result.lableList[1].lebalId}.$Id1";
+                                            "${snapshot.data?.result?.lableList?[1].lebalId}.$Id1";
                                         String a2 =
-                                            "${snapshot.data.result.lableList[2].lebalId}.$Id2";
+                                            "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
                                         String a3 =
-                                            "${snapshot.data.result.lableList[3].lebalId}.$Id3";
+                                            "${snapshot.data?.result?.lableList?[3].lebalId}.$Id3";
                                         String a4 =
-                                            '${snapshot.data.result.lableList[4].lebalId}."${Id4.text}"';
+                                            '${snapshot.data?.result?.lableList?[4].lebalId}."${Id4.text}"';
                                         String a5 =
-                                            '${snapshot.data.result.lableList[5].lebalId}."${Id5.text}"';
+                                            '${snapshot.data?.result?.lableList?[5].lebalId}."${Id5.text}"';
                                         String a6 =
-                                            '${snapshot.data.result.lableList[6].lebalId}."${Id6.text}"';
+                                            '${snapshot.data?.result?.lableList?[6].lebalId}."${Id6.text}"';
                                         String a7 =
-                                            '${snapshot.data.result.lableList[7].lebalId}."${Id7.text}"';
+                                            '${snapshot.data?.result?.lableList?[7].lebalId}."${Id7.text}"';
                                         String a8 =
-                                            '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
+                                            '${snapshot.data?.result?.lableList?[8].lebalId}."${Id8.text}"';
                                         String a9 =
-                                            '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
+                                            '${snapshot.data?.result?.lableList?[9].lebalId}."${Id9.text}"';
                                         String a10 =
-                                            '${snapshot.data.result.lableList[10].lebalId}."${Id10.text}"';
+                                            '${snapshot.data?.result?.lableList?[10].lebalId}."${Id10.text}"';
                                         String a11 =
-                                            '${snapshot.data.result.lableList[11].lebalId}."${Id11.text}"';
+                                            '${snapshot.data?.result?.lableList?[11].lebalId}."${Id11.text}"';
                                         String a12 =
-                                            '${snapshot.data.result.lableList[12].lebalId}."${Id12.text}"';
+                                            '${snapshot.data?.result?.lableList?[12].lebalId}."${Id12.text}"';
                                         String a13 =
-                                            '${snapshot.data.result.lableList[13].lebalId}."${Id13.text}"';
+                                            '${snapshot.data?.result?.lableList?[13].lebalId}."${Id13.text}"';
                                         String a14 =
-                                            '${snapshot.data.result.lableList[14].lebalId}."${Id14.text}"';
+                                            '${snapshot.data?.result?.lableList?[14].lebalId}."${Id14.text}"';
                                         String a15 =
-                                            '${snapshot.data.result.lableList[15].lebalId}."${Id15.text}"';
-                                        //  String a16='${snapshot.data.result.lableList[16].lebalId}."${Id16.text}"';
+                                            '${snapshot.data?.result?.lableList?[15].lebalId}."${Id15.text}"';
+                                        //  String a16='${snapshot.data?.result?.lableList?[16].lebalId}."${Id16.text}"';
                                         String answer =
                                             '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15';
                                         _repo
@@ -2936,8 +2940,8 @@ class _ContractOffersState extends State<ContractOffers> {
                                     ),
                                     style: ElevatedButton.styleFrom(
                                       elevation: 20,
-                                      primary: Color(0xfff3a005),
-                                      onPrimary: Colors.orangeAccent,
+                                      backgroundColor: Color(0xfff3a005), // Button background color
+                                      foregroundColor: Colors.orangeAccent,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),

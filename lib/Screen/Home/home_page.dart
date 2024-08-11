@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:delta/DataModel/home_model.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/DesignNow/design_now_home.dart';
@@ -8,29 +8,25 @@ import 'package:delta/Screen/Home/designs.dart';
 import 'package:delta/draw.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../utils.dart';
 import '../Real_estate_investment.dart';
-import '../concrete_structure.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-
 import '../contract_offers.dart';
 import '../engineering_services.dart';
 import '../general_fix.dart';
 import '../other_services.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  String token;
+  String? token;
   List<Widget> itemSliders = [];
   List<Widget> itemCat = [];
 
-  Future<String> gettoken() async {
+  Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
     return token;
@@ -91,11 +87,12 @@ class _HomePageState extends State<HomePage> {
       ),
       endDrawer: NewWidget(size: size, token: token),
       body: StreamBuilder<HomeM>(
-          stream: _repo.getHome(token_id: token, key: "1234567890").asStream(),
+          stream: _repo.getHome(token_id: token!, key: "1234567890").asStream(),
           builder: (context, snapshot) {
+            int? mainOffers = snapshot.data?.result?.mainOffers?.length ?? 0;
             if (snapshot.data != null) {
               itemCat = [];
-              for (int i = 0; i < snapshot.data.result.mainOffers.length; i++) {
+              for (int i = 0; i < mainOffers; i++) {
                 itemSliders.add(Padding(
                     padding: const EdgeInsets.all(2.0),
                     child: Container(
@@ -108,12 +105,12 @@ class _HomePageState extends State<HomePage> {
                           onTap: () async {
                             Utils.openLink(
                                 url:
-                                    "https://${snapshot.data.result.mainOffers[i].link}");
+                                    "https://${snapshot.data?.result?.mainOffers?[i].link}");
                           },
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.network(
-                              snapshot.data.result.mainOffers[i].image,
+                              snapshot.data?.result?.mainOffers?[i].image ?? "",
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -189,8 +186,8 @@ class _HomePageState extends State<HomePage> {
                                                                   BuildingCost(
                                                                     cat_id: snapshot
                                                                         .data
-                                                                        .result
-                                                                        .allCategories[
+                                                                        ?.result
+                                                                        ?.allCategories?[
                                                                             0]
                                                                         .catId
                                                                         .toString(),
@@ -202,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                                                               builder: (_) =>
                                                                   NotLogged(
                                                                       title:
-                                                                          "${snapshot.data.result.allCategories[0].categoryName}")));
+                                                                          "${snapshot.data?.result?.allCategories?[0].categoryName}")));
                                                 },
                                                 child: Column(
                                                   mainAxisAlignment:
@@ -213,11 +210,12 @@ class _HomePageState extends State<HomePage> {
                                                       decoration: BoxDecoration(
                                                           image: DecorationImage(
                                                               image: NetworkImage(snapshot
-                                                                  .data
-                                                                  .result
-                                                                  .allCategories[
-                                                                      0]
-                                                                  .categoryImg),
+                                                                      .data
+                                                                      ?.result
+                                                                      ?.allCategories?[
+                                                                          0]
+                                                                      .categoryImg ??
+                                                                  ""),
                                                               fit:
                                                                   BoxFit.cover),
                                                           border: Border.all(),
@@ -235,7 +233,7 @@ class _HomePageState extends State<HomePage> {
                                                               5.0),
                                                       child: Container(
                                                         child: Text(
-                                                          "${snapshot.data.result.allCategories[0].categoryName}",
+                                                          "${snapshot.data?.result?.allCategories?[0].categoryName}",
                                                           textAlign:
                                                               TextAlign.center,
                                                           textDirection:
@@ -282,8 +280,8 @@ class _HomePageState extends State<HomePage> {
                                                                   ContractOffers(
                                                                     cat_id: snapshot
                                                                         .data
-                                                                        .result
-                                                                        .allCategories[
+                                                                        ?.result
+                                                                        ?.allCategories?[
                                                                             1]
                                                                         .catId
                                                                         .toString(),
@@ -295,7 +293,7 @@ class _HomePageState extends State<HomePage> {
                                                               builder: (_) =>
                                                                   NotLogged(
                                                                       title:
-                                                                          "${snapshot.data.result.allCategories[1].categoryName}")));
+                                                                          "${snapshot.data?.result?.allCategories?[1].categoryName}")));
                                                 },
                                                 child: Column(
                                                   mainAxisAlignment:
@@ -306,11 +304,12 @@ class _HomePageState extends State<HomePage> {
                                                       decoration: BoxDecoration(
                                                           image: DecorationImage(
                                                               image: NetworkImage(snapshot
-                                                                  .data
-                                                                  .result
-                                                                  .allCategories[
-                                                                      1]
-                                                                  .categoryImg),
+                                                                      .data
+                                                                      ?.result
+                                                                      ?.allCategories?[
+                                                                          1]
+                                                                      .categoryImg ??
+                                                                  ""),
                                                               fit:
                                                                   BoxFit.cover),
                                                           border: Border.all(),
@@ -328,7 +327,7 @@ class _HomePageState extends State<HomePage> {
                                                               5.0),
                                                       child: Container(
                                                         child: Text(
-                                                          "${snapshot.data.result.allCategories[1].categoryName}",
+                                                          "${snapshot.data?.result?.allCategories?[1].categoryName}",
                                                           textAlign:
                                                               TextAlign.center,
                                                           textDirection:
@@ -374,8 +373,8 @@ class _HomePageState extends State<HomePage> {
                                                                   EngineeringServices(
                                                                     cat_id: snapshot
                                                                         .data
-                                                                        .result
-                                                                        .allCategories[
+                                                                        ?.result
+                                                                        ?.allCategories?[
                                                                             2]
                                                                         .catId
                                                                         .toString(),
@@ -387,7 +386,7 @@ class _HomePageState extends State<HomePage> {
                                                               builder: (_) =>
                                                                   NotLogged(
                                                                       title:
-                                                                          "${snapshot.data.result.allCategories[2].categoryName}")));
+                                                                          "${snapshot.data?.result?.allCategories?[2].categoryName}")));
                                                 },
                                                 child: Column(
                                                   mainAxisAlignment:
@@ -398,11 +397,12 @@ class _HomePageState extends State<HomePage> {
                                                       decoration: BoxDecoration(
                                                           image: DecorationImage(
                                                               image: NetworkImage(snapshot
-                                                                  .data
-                                                                  .result
-                                                                  .allCategories[
-                                                                      2]
-                                                                  .categoryImg),
+                                                                      .data
+                                                                      ?.result
+                                                                      ?.allCategories?[
+                                                                          2]
+                                                                      .categoryImg ??
+                                                                  ""),
                                                               fit:
                                                                   BoxFit.cover),
                                                           border: Border.all(),
@@ -416,7 +416,7 @@ class _HomePageState extends State<HomePage> {
                                                     ),
                                                     Container(
                                                       child: Text(
-                                                        "${snapshot.data.result.allCategories[2].categoryName}",
+                                                        "${snapshot.data?.result?.allCategories?[2].categoryName}",
                                                         textAlign:
                                                             TextAlign.center,
                                                         textDirection:
@@ -460,8 +460,8 @@ class _HomePageState extends State<HomePage> {
                                                                   RealEstateInvestment(
                                                                     cat_id: snapshot
                                                                         .data
-                                                                        .result
-                                                                        .allCategories[
+                                                                        ?.result
+                                                                        ?.allCategories?[
                                                                             3]
                                                                         .catId
                                                                         .toString(),
@@ -473,7 +473,7 @@ class _HomePageState extends State<HomePage> {
                                                               builder: (_) =>
                                                                   NotLogged(
                                                                       title:
-                                                                          "${snapshot.data.result.allCategories[3].categoryName}")));
+                                                                          "${snapshot.data?.result?.allCategories?[3].categoryName}")));
                                                 },
                                                 child: Column(
                                                   mainAxisAlignment:
@@ -484,11 +484,12 @@ class _HomePageState extends State<HomePage> {
                                                       decoration: BoxDecoration(
                                                           image: DecorationImage(
                                                               image: NetworkImage(snapshot
-                                                                  .data
-                                                                  .result
-                                                                  .allCategories[
-                                                                      3]
-                                                                  .categoryImg),
+                                                                      .data
+                                                                      ?.result
+                                                                      ?.allCategories?[
+                                                                          3]
+                                                                      .categoryImg ??
+                                                                  ""),
                                                               fit:
                                                                   BoxFit.cover),
                                                           border: Border.all(),
@@ -506,7 +507,7 @@ class _HomePageState extends State<HomePage> {
                                                               3),
                                                       child: Container(
                                                         child: Text(
-                                                          "${snapshot.data.result.allCategories[3].categoryName}",
+                                                          "${snapshot.data?.result?.allCategories?[3].categoryName}",
                                                           textAlign:
                                                               TextAlign.center,
                                                           textDirection:
@@ -552,8 +553,8 @@ class _HomePageState extends State<HomePage> {
                                                               otherServices(
                                                                 cat_id: snapshot
                                                                     .data
-                                                                    .result
-                                                                    .allCategories[
+                                                                    ?.result
+                                                                    ?.allCategories?[
                                                                         4]
                                                                     .catId
                                                                     .toString(),
@@ -564,7 +565,7 @@ class _HomePageState extends State<HomePage> {
                                                       MaterialPageRoute(
                                                           builder: (_) => NotLogged(
                                                               title:
-                                                                  "${snapshot.data.result.allCategories[4].categoryName}")));
+                                                                  "${snapshot.data?.result?.allCategories?[4].categoryName}")));
                                             },
                                             child: Column(
                                               mainAxisAlignment:
@@ -574,12 +575,14 @@ class _HomePageState extends State<HomePage> {
                                                   decoration: BoxDecoration(
                                                       image: DecorationImage(
                                                           image: NetworkImage(
-                                                              snapshot
-                                                                  .data
-                                                                  .result
-                                                                  .allCategories[
-                                                                      4]
-                                                                  .categoryImg),
+                                                            snapshot
+                                                                    .data
+                                                                    ?.result
+                                                                    ?.allCategories?[
+                                                                        4]
+                                                                    .categoryImg ??
+                                                                "",
+                                                          ),
                                                           fit: BoxFit.cover),
                                                       border: Border.all(),
                                                       borderRadius:
@@ -597,7 +600,7 @@ class _HomePageState extends State<HomePage> {
                                                       const EdgeInsets.all(5.0),
                                                   child: Container(
                                                     child: Text(
-                                                      "${snapshot.data.result.allCategories[4].categoryName}",
+                                                      "${snapshot.data?.result?.allCategories?[4].categoryName}",
                                                       textAlign:
                                                           TextAlign.center,
                                                       textDirection:
@@ -644,8 +647,8 @@ class _HomePageState extends State<HomePage> {
                                                               DesignNowHome(
                                                                 cat_id: snapshot
                                                                     .data
-                                                                    .result
-                                                                    .allCategories[
+                                                                    ?.result
+                                                                    ?.allCategories?[
                                                                         5]
                                                                     .catId
                                                                     .toString(),
@@ -656,7 +659,7 @@ class _HomePageState extends State<HomePage> {
                                                       MaterialPageRoute(
                                                           builder: (_) => NotLogged(
                                                               title:
-                                                                  "${snapshot.data.result.allCategories[5].categoryName}")));
+                                                                  "${snapshot.data?.result?.allCategories?[5].categoryName}")));
                                             },
                                             child: Column(
                                               mainAxisAlignment:
@@ -665,13 +668,13 @@ class _HomePageState extends State<HomePage> {
                                                 Container(
                                                   decoration: BoxDecoration(
                                                       image: DecorationImage(
-                                                          image: NetworkImage(
-                                                              snapshot
+                                                          image: NetworkImage(snapshot
                                                                   .data
-                                                                  .result
-                                                                  .allCategories[
+                                                                  ?.result
+                                                                  ?.allCategories?[
                                                                       5]
-                                                                  .categoryImg),
+                                                                  .categoryImg ??
+                                                              ""),
                                                           fit: BoxFit.cover),
                                                       border: Border.all(),
                                                       borderRadius:
@@ -689,7 +692,7 @@ class _HomePageState extends State<HomePage> {
                                                       const EdgeInsets.all(5.0),
                                                   child: Container(
                                                     child: Text(
-                                                      "${snapshot.data.result.allCategories[5].categoryName}",
+                                                      "${snapshot.data?.result?.allCategories?[5].categoryName}",
                                                       textAlign:
                                                           TextAlign.center,
                                                       textDirection:
@@ -736,8 +739,8 @@ class _HomePageState extends State<HomePage> {
                                                               GeneralFix(
                                                                 cat_id: snapshot
                                                                     .data
-                                                                    .result
-                                                                    .allCategories[
+                                                                    ?.result
+                                                                    ?.allCategories?[
                                                                         6]
                                                                     .catId
                                                                     .toString(),
@@ -748,7 +751,7 @@ class _HomePageState extends State<HomePage> {
                                                       MaterialPageRoute(
                                                           builder: (_) => NotLogged(
                                                               title:
-                                                                  "${snapshot.data.result.allCategories[6].categoryName}")));
+                                                                  "${snapshot.data?.result?.allCategories?[6].categoryName}")));
                                             },
                                             child: Column(
                                               mainAxisAlignment:
@@ -756,20 +759,21 @@ class _HomePageState extends State<HomePage> {
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                          image: NetworkImage(
-                                                              snapshot
-                                                                  .data
-                                                                  .result
-                                                                  .allCategories[
-                                                                      6]
-                                                                  .categoryImg),
-                                                          fit: BoxFit.cover),
-                                                      border: Border.all(),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  20))),
+                                                    image: DecorationImage(
+                                                        image: NetworkImage(snapshot
+                                                                .data
+                                                                ?.result
+                                                                ?.allCategories?[
+                                                                    6]
+                                                                .categoryImg ??
+                                                            ""),
+                                                        fit: BoxFit.cover),
+                                                    border: Border.all(),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(20),
+                                                    ),
+                                                  ),
                                                   width: sWidth * .2,
                                                   height: sWidth * .2,
                                                 ),
@@ -781,7 +785,7 @@ class _HomePageState extends State<HomePage> {
                                                       const EdgeInsets.all(5.0),
                                                   child: Container(
                                                     child: Text(
-                                                      "${snapshot.data.result.allCategories[6].categoryName}",
+                                                      "${snapshot.data?.result?.allCategories?[6].categoryName}",
                                                       textAlign:
                                                           TextAlign.center,
                                                       textDirection:
@@ -831,13 +835,13 @@ class _HomePageState extends State<HomePage> {
                                                 Container(
                                                   decoration: BoxDecoration(
                                                       image: DecorationImage(
-                                                          image: NetworkImage(
-                                                              snapshot
+                                                          image: NetworkImage(snapshot
                                                                   .data
-                                                                  .result
-                                                                  .allCategories[
+                                                                  ?.result
+                                                                  ?.allCategories?[
                                                                       7]
-                                                                  .categoryImg),
+                                                                  .categoryImg ??
+                                                              ""),
                                                           fit: BoxFit.cover),
                                                       border: Border.all(),
                                                       borderRadius:
@@ -855,7 +859,7 @@ class _HomePageState extends State<HomePage> {
                                                       const EdgeInsets.all(5.0),
                                                   child: Container(
                                                     child: Text(
-                                                      "${snapshot.data.result.allCategories[7].categoryName}",
+                                                      "${snapshot.data?.result?.allCategories?[7].categoryName}",
                                                       textAlign:
                                                           TextAlign.center,
                                                       textDirection:
@@ -903,7 +907,7 @@ class _HomePageState extends State<HomePage> {
                                                       MaterialPageRoute(
                                                           builder: (_) => NotLogged(
                                                               title:
-                                                                  "${snapshot.data.result.allCategories[8].categoryName}")));
+                                                                  "${snapshot.data?.result?.allCategories?[8].categoryName}")));
                                             },
                                             child: Column(
                                               mainAxisAlignment:
@@ -912,13 +916,13 @@ class _HomePageState extends State<HomePage> {
                                                 Container(
                                                   decoration: BoxDecoration(
                                                       image: DecorationImage(
-                                                          image: NetworkImage(
-                                                              snapshot
+                                                          image: NetworkImage(snapshot
                                                                   .data
-                                                                  .result
-                                                                  .allCategories[
+                                                                  ?.result
+                                                                  ?.allCategories?[
                                                                       8]
-                                                                  .categoryImg),
+                                                                  .categoryImg ??
+                                                              ""),
                                                           fit: BoxFit.cover),
                                                       border: Border.all(),
                                                       borderRadius:
@@ -933,7 +937,7 @@ class _HomePageState extends State<HomePage> {
                                                       const EdgeInsets.all(3),
                                                   child: Container(
                                                     child: Text(
-                                                      "${snapshot.data.result.allCategories[8].categoryName}",
+                                                      "${snapshot.data?.result?.allCategories?[8].categoryName}",
                                                       textAlign:
                                                           TextAlign.center,
                                                       textDirection:
@@ -1455,12 +1459,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   Color _getColorFromHex(String hexColor) {
+    // Remove the hash (#) if it's there
     hexColor = hexColor.replaceAll("#", "");
+
+    // Check for length and prepend alpha if necessary
     if (hexColor.length == 6) {
-      hexColor = "FF" + hexColor;
+      hexColor = "FF" + hexColor; // Add alpha value if missing
+    } else if (hexColor.length != 8) {
+      throw ArgumentError("Invalid hex color format");
     }
-    if (hexColor.length == 8) {
-      return Color(int.parse("0x$hexColor"));
-    }
+
+    // Parse the hex color to a Color
+    return Color(int.parse("0x$hexColor"));
   }
 }

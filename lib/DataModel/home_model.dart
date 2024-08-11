@@ -12,10 +12,10 @@ class HomeM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory HomeM.fromJson(String str) => HomeM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class HomeM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -42,8 +42,8 @@ class Result {
     this.allCategories,
   });
 
-  List<MainOffer> mainOffers;
-  List<AllCategory> allCategories;
+  List<MainOffer>? mainOffers;
+  List<AllCategory>? allCategories;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -55,8 +55,8 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "main_offers": List<dynamic>.from(mainOffers.map((x) => x.toMap())),
-    "all_categories": List<dynamic>.from(allCategories.map((x) => x.toMap())),
+    "main_offers": List<dynamic>.from(mainOffers!.map((x) => x.toMap())),
+    "all_categories": List<dynamic>.from(allCategories!.map((x) => x.toMap())),
   };
 }
 
@@ -67,9 +67,9 @@ class AllCategory {
     this.catId,
   });
 
-  String categoryImg;
-  String categoryName;
-  int catId;
+  String? categoryImg;
+  String? categoryName;
+  int? catId;
 
   factory AllCategory.fromJson(String str) => AllCategory.fromMap(json.decode(str));
 
@@ -94,8 +94,8 @@ class MainOffer {
     this.link,
   });
 
-  String image;
-  String link;
+  String ? image;
+  String ? link;
 
   factory MainOffer.fromJson(String str) => MainOffer.fromMap(json.decode(str));
 

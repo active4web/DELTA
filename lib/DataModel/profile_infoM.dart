@@ -14,10 +14,10 @@ class ProfileInfoM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory ProfileInfoM.fromJson(String str) => ProfileInfoM.fromMap(json.decode(str));
 
@@ -34,7 +34,7 @@ class ProfileInfoM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -43,7 +43,7 @@ class Result {
     this.customerInfo,
   });
 
-  CustomerInfo customerInfo;
+  CustomerInfo? customerInfo;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -54,7 +54,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "customer_info": customerInfo.toMap(),
+    "customer_info": customerInfo!.toMap(),
   };
 }
 
@@ -70,14 +70,14 @@ class CustomerInfo {
     this.email
   });
 
-  int id;
-  String name;
-  String phone;
-  String address;
-  String countryName;
-  String countryId;
-  String email;
-  String token;
+  int? id;
+  String? name;
+  String? phone;
+  String? address;
+  String? countryName;
+  String? countryId;
+  String? email;
+  String? token;
 
   factory CustomerInfo.fromJson(String str) => CustomerInfo.fromMap(json.decode(str));
 

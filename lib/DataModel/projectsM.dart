@@ -13,11 +13,11 @@ class ProjectsM {
     this.result,
   });
 
-  String message;
-  int messageid;
-  bool status;
-  int total;
-  Result result;
+  String? message;
+  int? messageid;
+  bool? status;
+  int? total;
+  Result? result;
 
   factory ProjectsM.fromJson(String str) => ProjectsM.fromMap(json.decode(str));
 
@@ -36,7 +36,7 @@ class ProjectsM {
     "Messageid": messageid,
     "status": status,
     "total": total,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -45,7 +45,7 @@ class Result {
     this.allProjects,
   });
 
-  List<AllProject> allProjects;
+  List<AllProject>? allProjects;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -56,7 +56,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "all_projects": List<dynamic>.from(allProjects.map((x) => x.toMap())),
+    "all_projects": List<dynamic>.from(allProjects!.map((x) => x.toMap())),
   };
 }
 
@@ -69,11 +69,11 @@ class AllProject {
     this.projectId,
   });
 
-  List<AllSlider> allSlider;
-  String articlesImage;
-  String projectName;
-  String smallDescription;
-  int projectId;
+  List<AllSlider>? allSlider;
+  String? articlesImage;
+  String? projectName;
+  String? smallDescription;
+  int? projectId;
 
   factory AllProject.fromJson(String str) => AllProject.fromMap(json.decode(str));
 
@@ -88,7 +88,7 @@ class AllProject {
   );
 
   Map<String, dynamic> toMap() => {
-    "all_slider": List<dynamic>.from(allSlider.map((x) => x.toMap())),
+    "all_slider": List<dynamic>.from(allSlider!.map((x) => x.toMap())),
     "articles_image": articlesImage,
     "project_name": projectName,
     "small_description": smallDescription,
@@ -102,8 +102,8 @@ class AllSlider {
     this.depId,
   });
 
-  String img;
-  int depId;
+  String? img;
+  int? depId;
 
   factory AllSlider.fromJson(String str) => AllSlider.fromMap(json.decode(str));
 

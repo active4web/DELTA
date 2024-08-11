@@ -7,14 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'order_details.dart';
 
 class OrderTrack extends StatefulWidget {
-  const OrderTrack({Key key}) : super(key: key);
 
   @override
   _OrderTrackState createState() => _OrderTrackState();
 }
 
 class _OrderTrackState extends State<OrderTrack> {
-  String token;
+  String? token;
 
   Future<Null> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -81,20 +80,20 @@ class _OrderTrackState extends State<OrderTrack> {
       ),
       endDrawer: NewWidget(size: size, token: token),
       body: StreamBuilder<OrdersM>(
-        stream: _repo.getOrdes(key: '1234567890', token_id: token, lang: 'ar').asStream(),
+        stream: _repo.getOrdes(key: '1234567890', token_id: token!, lang: 'ar').asStream(),
         builder: (context, snapshot) {
           if(snapshot.data!=null)
          {
-           if(snapshot.data.result.orderDetails!=[])
+           if(snapshot.data?.result?.orderDetails!=[])
              { return ListView.builder(
                shrinkWrap: true,
-               itemCount: snapshot.data.result.orderDetails.length,
+               itemCount: snapshot.data?.result?.orderDetails?.length??0,
                itemBuilder: (context, index) {
                  if(snapshot.data!=null){
                    return SingleChildScrollView(
                      child: GestureDetector(
                        onTap: (){
-                         Navigator.push(context, MaterialPageRoute(builder: (_)=>OrderDetails(jwt: token,orderId: snapshot.data.result.orderDetails[index].idOrder.toString(),name: snapshot.data.result.orderDetails[index].requestName,)));
+                         Navigator.push(context, MaterialPageRoute(builder: (_)=>OrderDetails(jwt: token,orderId: snapshot.data?.result?.orderDetails?[index].idOrder.toString(),name: snapshot.data?.result?.orderDetails?[index].requestName,)));
                        },
                        child: Padding(
                          padding: const EdgeInsets.all(8.0),
@@ -115,7 +114,7 @@ class _OrderTrackState extends State<OrderTrack> {
                                            height: size.height * .03,
 
                                            child: Text(
-                                             "${snapshot.data.result.orderDetails[index].date.toString().substring(0,10)}",
+                                             "${snapshot.data?.result?.orderDetails?[index].date.toString().substring(0,10)}",
                                              textDirection: TextDirection.rtl,
                                              style: TextStyle(
                                                fontFamily: 'GE SS Two',
@@ -138,7 +137,7 @@ class _OrderTrackState extends State<OrderTrack> {
                                                width: size.width * .27,
                                                height: size.height * .08,
                                                child: Text(
-                                                 "${snapshot.data.result.orderDetails[index].requestName}",
+                                                 "${snapshot.data?.result?.orderDetails?[index].requestName}",
                                                  textDirection: TextDirection.rtl,
                                                  style: TextStyle(
                                                    fontFamily: 'GE SS Two',
@@ -167,7 +166,7 @@ class _OrderTrackState extends State<OrderTrack> {
                                                width: size.width * .23,
                                                height: size.height * .08,
                                                child: Text(
-                                                 "${snapshot.data.result.orderDetails[index].viewStore}",
+                                                 "${snapshot.data?.result?.orderDetails?[index].viewStore}",
                                                  textDirection: TextDirection.rtl,
                                                  style: TextStyle(
                                                    fontFamily: 'GE SS Two',
@@ -196,7 +195,7 @@ class _OrderTrackState extends State<OrderTrack> {
                                                width: size.width * .23,
                                                height: size.height * .08,
                                                child: Text(
-                                                 "${snapshot.data.result.orderDetails[index].totalPrice}" '/'  "${snapshot.data.result.orderDetails[index].currencyName}",
+                                                 "${snapshot.data?.result?.orderDetails?[index].totalPrice}" '/'  "${snapshot.data?.result?.orderDetails?[index].currencyName}",
                                                  textDirection: TextDirection.rtl,
                                                  style: TextStyle(
                                                    fontFamily: 'GE SS Two',

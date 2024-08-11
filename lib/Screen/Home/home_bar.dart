@@ -1,10 +1,4 @@
-import 'package:delta/Screen/DrawerNav/about_app.dart';
-import 'package:delta/Screen/DrawerNav/blogs.dart';
-import 'package:delta/Screen/DrawerNav/contact_us.dart';
-import 'package:delta/Screen/DrawerNav/notifications.dart';
-import 'package:delta/Screen/Home/projectDetails.dart';
-import 'package:delta/Screen/DrawerNav/profile.dart';
-import 'package:delta/Screen/DrawerNav/technical_support.dart';
+
 import 'package:flutter/material.dart';
 
 import 'designs.dart';
@@ -12,7 +6,6 @@ import 'home_page.dart';
 import 'order_track.dart';
 
 class HomeBar extends StatefulWidget {
-   HomeBar({Key key}) : super(key: key);
 
   @override
   _HomeBarState createState() => _HomeBarState();
@@ -20,10 +13,10 @@ class HomeBar extends StatefulWidget {
 
 class _HomeBarState extends State<HomeBar> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    OrderTrack(),
-    Designs()
+     OrderTrack(),
+     Designs()
   ];
 
   void _onItemTapped(int index) {

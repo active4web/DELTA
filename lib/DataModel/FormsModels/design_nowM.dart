@@ -12,10 +12,10 @@ class DesignNowM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory DesignNowM.fromJson(String str) => DesignNowM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class DesignNowM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -42,8 +42,8 @@ class Result {
     this.lableList,
   });
 
-  CategoryDate categoryDate;
-  List<LableList> lableList;
+  CategoryDate? categoryDate;
+  List<LableList>? lableList;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -55,8 +55,8 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "category_date": categoryDate.toMap(),
-    "lable_list": List<dynamic>.from(lableList.map((x) => x.toMap())),
+    "category_date": categoryDate!.toMap(),
+    "lable_list": List<dynamic>.from(lableList!.map((x) => x.toMap())),
   };
 }
 
@@ -68,10 +68,10 @@ class CategoryDate {
     this.details,
   });
 
-  String title;
+  String? title;
   dynamic description;
-  int id;
-  String details;
+  int? id;
+  String?details;
 
   factory CategoryDate.fromJson(String str) => CategoryDate.fromMap(json.decode(str));
 
@@ -98,8 +98,8 @@ class LableList {
     this.lebalId,
   });
 
-  String title;
-  int lebalId;
+  String? title;
+  int? lebalId;
 
   factory LableList.fromJson(String str) => LableList.fromMap(json.decode(str));
 

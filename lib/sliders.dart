@@ -1,17 +1,13 @@
 import 'dart:async';
-
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
-// import 'package:intro_slider/slide_object.dart';
-// import 'package:intro_slider/scrollbar_behavior_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'DataModel/introM.dart';
 import 'Screen/login.dart';
 
 class IntroScreen extends StatefulWidget {
-  IntroScreen({Key key}) : super(key: key);
 
   @override
   IntroScreenState createState() => new IntroScreenState();
@@ -25,20 +21,40 @@ class IntroScreenState extends State<IntroScreen> {
   var myStream;
 
   @override
+
   void initState() {
+    super.initState();
     Timer(Duration(seconds: 0), () async {
-      SharedPreferences preferences;
-      preferences = await SharedPreferences.getInstance();
-      print(preferences.getBool("SliderState"));
-      if (preferences.getBool("SliderState") != null) {
-        if (preferences.getBool("SliderState")) {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomeBar()));
-        }
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      bool? sliderState = preferences.getBool("SliderState");
+
+      // Print the value (for debugging purposes)
+      debugPrint('SliderState: $sliderState');
+
+      // Check if the value is not null and is true
+      if (sliderState != null && sliderState) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeBar()),
+        );
       }
     });
-    super.initState();
   }
+
+  // void initState() {
+  //   Timer(Duration(seconds: 0), () async {
+  //     SharedPreferences preferences;
+  //     preferences = await SharedPreferences.getInstance();
+  //     print(preferences.getBool("SliderState"));
+  //     if (preferences.getBool("SliderState") != null) {
+  //       if (preferences.getBool("SliderState")) {
+  //         Navigator.pushReplacement(
+  //             context, MaterialPageRoute(builder: (context) => HomeBar()));
+  //       }
+  //     }
+  //   });
+  //   super.initState();
+  // }
 
   void onDonePress() {
     //  Do what you want
@@ -92,8 +108,8 @@ class IntroScreenState extends State<IntroScreen> {
                 backgroundColor: Colors.white,
                 widgetTitle: Column(
                   children: [
-                    snapshot.data.result.txtImg1 == null ||
-                            snapshot.data.result.txtImg1 == ''
+                    snapshot.data?.result?.txtImg1 == null ||
+                            snapshot.data?.result?.txtImg1 == ''
                         ? Container(
                             width: MediaQuery.of(context).size.width * .8,
                             height: MediaQuery.of(context).size.height * .8,
@@ -110,7 +126,7 @@ class IntroScreenState extends State<IntroScreen> {
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                        snapshot.data.result.txtImg1,
+                                        snapshot.data?.result?.txtImg1??"",
                                       ),
                                       fit: BoxFit.cover)),
                             ),
@@ -118,7 +134,7 @@ class IntroScreenState extends State<IntroScreen> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        "${snapshot.data.result.titleT1}",
+                        "${snapshot.data?.result?.titleT1}",
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -132,7 +148,7 @@ class IntroScreenState extends State<IntroScreen> {
                     Container(
                       width: MediaQuery.of(context).size.width * .9,
                       child: Text(
-                        "${snapshot.data.result.txtT1}",
+                        "${snapshot.data?.result?.txtT1}",
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -154,8 +170,8 @@ class IntroScreenState extends State<IntroScreen> {
                 marginTitle: EdgeInsets.zero,
                 widgetTitle: Column(
                   children: [
-                    snapshot.data.result.txtImg3 == null ||
-                            snapshot.data.result.txtImg == ''
+                    snapshot.data?.result?.txtImg3 == null ||
+                            snapshot.data?.result?.txtImg == ''
                         ? Container(
                             width: MediaQuery.of(context).size.width * .8,
                             height: MediaQuery.of(context).size.width * .8,
@@ -172,7 +188,7 @@ class IntroScreenState extends State<IntroScreen> {
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                        snapshot.data.result.txtImg,
+                                        snapshot.data?.result?.txtImg??"",
                                       ),
                                       fit: BoxFit.cover)),
                             ),
@@ -180,7 +196,7 @@ class IntroScreenState extends State<IntroScreen> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        "${snapshot.data.result.titleT2}",
+                        "${snapshot.data?.result?.titleT2}",
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -194,7 +210,7 @@ class IntroScreenState extends State<IntroScreen> {
                     Container(
                       width: MediaQuery.of(context).size.width * .9,
                       child: Text(
-                        "${snapshot.data.result.txtT2}",
+                        "${snapshot.data?.result?.txtT2}",
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -218,8 +234,8 @@ class IntroScreenState extends State<IntroScreen> {
                 marginTitle: EdgeInsets.zero,
                 widgetTitle: Column(
                   children: [
-                    snapshot.data.result.txtImg3 == null ||
-                            snapshot.data.result.txtImg3 == ''
+                    snapshot.data?.result?.txtImg3 == null ||
+                            snapshot.data?.result?.txtImg3 == ''
                         ? Container(
                             width: MediaQuery.of(context).size.width * .8,
                             height: MediaQuery.of(context).size.width * .8,
@@ -236,7 +252,7 @@ class IntroScreenState extends State<IntroScreen> {
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                        snapshot.data.result.txtImg3,
+                                        snapshot.data?.result?.txtImg3??"",
                                       ),
                                       fit: BoxFit.cover)),
                             ),
@@ -244,7 +260,7 @@ class IntroScreenState extends State<IntroScreen> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        "${snapshot.data.result.titleT3}",
+                        "${snapshot.data?.result?.titleT3}",
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -258,7 +274,7 @@ class IntroScreenState extends State<IntroScreen> {
                     Container(
                       width: MediaQuery.of(context).size.width * .9,
                       child: Text(
-                        "${snapshot.data.result.txtT3}",
+                        "${snapshot.data?.result?.txtT3}",
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
                         style: TextStyle(

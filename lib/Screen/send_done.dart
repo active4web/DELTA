@@ -8,12 +8,13 @@ import '../Repository/Repository.dart';
 import 'Home/home_page.dart';
 
 class SendDone extends StatefulWidget {
-  SendDone({Key key,this.message, this.token, this.cat_id}) : super(key: key);
-  String cat_id;
-  String token;
-  String message;
+  String?  cat_id;
+  String? token;
+  String? message;
   @override
   _SendDoneState createState() => _SendDoneState();
+
+  SendDone({this.cat_id, this.token, this.message});
 }
 
 
@@ -145,8 +146,8 @@ class _SendDoneState extends State<SendDone> {
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 20,
-                        primary: Color(0xfff3a005),
-                        onPrimary: Colors.orangeAccent,
+                        backgroundColor: Color(0xfff3a005), // Button background color
+                        foregroundColor: Colors.orangeAccent, // Button text color
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                             BorderRadius.all(Radius.circular(15))),

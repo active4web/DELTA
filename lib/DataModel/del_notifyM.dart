@@ -11,9 +11,9 @@ class DeleteNotifyM {
     this.status,
   });
 
-  String message;
-  int codenum;
-  bool status;
+  String? message;
+  int? codenum;
+  bool? status;
 
   factory DeleteNotifyM.fromJson(String str) => DeleteNotifyM.fromMap(json.decode(str));
 

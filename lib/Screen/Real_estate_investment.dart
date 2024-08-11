@@ -9,11 +9,13 @@ import 'Home/home_bar.dart';
 import 'send_done.dart';
 
 class RealEstateInvestment extends StatefulWidget {
-  RealEstateInvestment({Key key, this.jwt, this.cat_id}) : super(key: key);
-  String cat_id;
-  String jwt;
+
+  String? cat_id;
+  String? jwt;
   @override
   _RealEstateInvestmentState createState() => _RealEstateInvestmentState();
+
+  RealEstateInvestment({this.cat_id, this.jwt});
 }
 
 enum SingingCharacterDirection { north, South, east, West }
@@ -37,6 +39,7 @@ SingingCharacter2 _character7 = SingingCharacter2.daily;
 SingingCharacter3 _character8 = SingingCharacter3.private;
 SingingCharacter4 _character9 = SingingCharacter4.female;
 
+TextEditingController Id0 = TextEditingController();
 TextEditingController Id1 = TextEditingController();
 TextEditingController Id2 = TextEditingController();
 TextEditingController Id3 = TextEditingController();
@@ -47,34 +50,39 @@ TextEditingController Id7 = TextEditingController();
 TextEditingController Id8 = TextEditingController();
 TextEditingController Id9 = TextEditingController();
 TextEditingController Id10 = TextEditingController();
-List _list1;
-int listId1;
-List _list2;
-int listId2;
-List _list3;
-int listId3;
-List _list4;
-int listId4;
-List _list5;
-int listId5;
-List _list6;
-int listId6;
-List _list7;
-int listId7;
-List _list8;
-int listId8;
-List _list9;
-int listId9;
-List _list10;
-int listId10;
-List _list22;
-int listId22;
-List _list11;
-int Id11;
-List _list12;
-int Id12;
-List _list13;
-int Id13;
+TextEditingController Id11 = TextEditingController();
+TextEditingController Id12 = TextEditingController();
+TextEditingController Id13 = TextEditingController();
+TextEditingController Id23 = TextEditingController();
+TextEditingController Id27 = TextEditingController();
+List?_list1;
+int? listId1;
+List?_list2;
+int? listId2;
+List?_list3;
+int? listId3;
+List?_list4;
+int? listId4;
+List?_list5;
+int? listId5;
+List?_list6;
+int? listId6;
+List?_list7;
+int? listId7;
+List?_list8;
+int? listId8;
+List?_list9;
+int? listId9;
+List?_list10;
+int? listId10;
+List?_list22;
+int? listId22;
+List?_list11;
+int? id11;
+List?_list12;
+int? id12;
+List?_list13;
+int? id13;
 
 class _RealEstateInvestmentState extends State<RealEstateInvestment> {
   var dropdownValue1 = 'نوع المبني المطلوب';
@@ -132,14 +140,14 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
   }
 
   var baseurl = 'https://mdecco.com/app/';
-  String token;
+  String? token;
   Dio dio = Dio();
-  Future<RealStateM> getRealStateF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<RealStateM?> getRealStateF({
+    required String?  key,
+    required String?  token_id,
+    required String?  cat_id,
   }) async {
-    RealStateM data;
+    RealStateM? data;
     FormData formData = new FormData.fromMap(
         {"key": key, "token_id": token_id, "cat_id": cat_id});
     await dio
@@ -153,20 +161,20 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
       data = RealStateM.fromMap(value.data);
     });
     setState(() {
-      _list1 = data.result.lableList[0].listAnwser.toList();
-      _list7 = data.result.lableList[6].listAnwser.toList();
-      _list2 = data.result.lableList[14].listAnwser.toList();
-      _list3 = data.result.lableList[15].listAnwser.toList();
-      _list4 = data.result.lableList[16].listAnwser.toList();
-      _list5 = data.result.lableList[17].listAnwser.toList();
-      _list6 = data.result.lableList[18].listAnwser.toList();
-      _list8 = data.result.lableList[19].listAnwser.toList();
-      _list9 = data.result.lableList[20].listAnwser.toList();
-      _list10 =data.result.lableList[21].listAnwser.toList();
-      _list22 =data.result.lableList[22].listAnwser.toList();
-      _list11 =data.result.lableList[11].listAnwser.toList();
-      _list12 =data.result.lableList[12].listAnwser.toList();
-      _list13 =data.result.lableList[13].listAnwser.toList();
+      _list1 = data?.result?.lableList?[0]. listAnwser?.toList();
+      _list7 = data?.result?.lableList?[6]. listAnwser?.toList();
+      _list2 = data?.result?.lableList?[14].listAnwser?.toList();
+      _list3 = data?.result?.lableList?[15].listAnwser?.toList();
+      _list4 = data?.result?.lableList?[16].listAnwser?.toList();
+      _list5 = data?.result?.lableList?[17].listAnwser?.toList();
+      _list6 = data?.result?.lableList?[18].listAnwser?.toList();
+      _list8 = data?.result?.lableList?[19].listAnwser?.toList();
+      _list9 = data?.result?.lableList?[20].listAnwser?.toList();
+      _list10 =data?.result?.lableList?[21].listAnwser?.toList();
+      _list22 =data?.result?.lableList?[22].listAnwser?.toList();
+      _list11 =data?.result?.lableList?[11].listAnwser?.toList();
+      _list12 =data?.result?.lableList?[12].listAnwser?.toList();
+      _list13 =data?.result?.lableList?[13].listAnwser?.toList();
     });
     return data;
   }
@@ -200,7 +208,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
           stream: _repo
               .getRealStateF(
                   key: '1234567890',
-                  token_id: widget.jwt,
+                  token_id: widget.jwt??"",
                   cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
@@ -236,7 +244,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "${snapshot.data.result.categoryDate.title}",
+                          "${snapshot.data?.result?.categoryDate?.title}",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
                             fontSize: 17,
@@ -256,7 +264,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "${snapshot.data.result.categoryDate.title}",
+                            "${snapshot.data?.result?.categoryDate?.title}",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontFamily: 'GE SS Two',
@@ -278,7 +286,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.categoryDate.description}",
+                                "${snapshot.data?.result?.categoryDate?.description}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -304,7 +312,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[0].title}",
+                                "${snapshot.data?.result?.lableList?[0].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -317,7 +325,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[0].type ==
+                                child: snapshot.data?.result?.lableList?[0].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -348,7 +356,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                 child: _list1 != null
                                                     ? DropdownButton(
                                                         isExpanded: true,
-                                                        items: _list1.map((e) {
+                                                        items: _list1?.map((e) {
                                                           return new DropdownMenuItem(
                                                             child: Container(
                                                                 alignment: Alignment
@@ -376,7 +384,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         }).toList(),
                                                         onChanged: (val) {
                                                           setState(() {
-                                                            listId1 = val;
+                                                            listId1 = int.parse(val.toString());
                                                             print(
                                                                 Id3.toString());
                                                           });
@@ -408,7 +416,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[1].title}",
+                                "${snapshot.data?.result?.lableList?[1].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -422,7 +430,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
                                   child: snapshot
-                                              .data.result.lableList[1].type ==
+                                              .data?.result?.lableList?[1].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -499,7 +507,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[2].title}",
+                                "${snapshot.data?.result?.lableList?[2].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -512,7 +520,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[2].type ==
+                                child: snapshot.data?.result?.lableList?[2].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -590,7 +598,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[3].title}",
+                                "${snapshot.data?.result?.lableList?[3].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -603,7 +611,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[3].type ==
+                                child: snapshot.data?.result?.lableList?[3].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -681,7 +689,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[4].title}",
+                                "${snapshot.data?.result?.lableList?[4].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -694,7 +702,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[4].type ==
+                                child: snapshot.data?.result?.lableList?[4].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -772,7 +780,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[5].title}",
+                                "${snapshot.data?.result?.lableList?[5].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -785,7 +793,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[5].type ==
+                                child: snapshot.data?.result?.lableList?[5].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -864,7 +872,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[6].title}",
+                                "${snapshot.data?.result?.lableList?[6].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -877,7 +885,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[6].type ==
+                                child: snapshot.data?.result?.lableList?[6].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -908,7 +916,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                 child: _list7 != null
                                                     ? DropdownButton(
                                                         isExpanded: true,
-                                                        items: _list7.map((e) {
+                                                        items: _list7?.map((e) {
                                                           return new DropdownMenuItem(
                                                             child: Container(
                                                                 alignment: Alignment
@@ -936,7 +944,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         }).toList(),
                                                         onChanged: (val) {
                                                           setState(() {
-                                                            listId7 = val;
+                                                            listId7  = int.parse(val.toString());
                                                             print(
                                                                 Id5.toString());
                                                           });
@@ -968,7 +976,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[7].title}",
+                                "${snapshot.data?.result?.lableList?[7].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -982,7 +990,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
                                   child: snapshot
-                                              .data.result.lableList[7].type ==
+                                              .data?.result?.lableList?[7].type ==
                                           2
                                       ? Container(
                                           width: sWidth * .8,
@@ -1074,7 +1082,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[8].title}",
+                                "${snapshot.data?.result?.lableList?[8].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1087,7 +1095,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[8].type ==
+                                child: snapshot.data?.result?.lableList?[8].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -1164,7 +1172,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[9].title}",
+                                "${snapshot.data?.result?.lableList?[9].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1177,7 +1185,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
-                                child: snapshot.data.result.lableList[9].type ==
+                                child: snapshot.data?.result?.lableList?[9].type ==
                                         2
                                     ? Container(
                                         width: sWidth * .8,
@@ -1255,7 +1263,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[10].title}",
+                                "${snapshot.data?.result?.lableList?[10].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1269,7 +1277,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(5.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[10].type == 2
+                                    snapshot.data?.result?.lableList?[10].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: Container(
@@ -1346,7 +1354,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[11].title}",
+                                "${snapshot.data?.result?.lableList?[11].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1360,7 +1368,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[11].type == 2
+                                    snapshot.data?.result?.lableList?[11].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1386,7 +1394,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list11
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1416,7 +1424,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id11 = val;
+                                                                Id11.text = val.toString();
                                                                 print(Id11
                                                                     .toString());
                                                               });
@@ -1448,7 +1456,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[12].title}",
+                                "${snapshot.data?.result?.lableList?[12].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1462,7 +1470,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[12].type == 2
+                                    snapshot.data?.result?.lableList?[12].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1488,7 +1496,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list12
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1518,7 +1526,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id12 = val;
+                                                                Id12.text = val.toString();
                                                                 print(Id12
                                                                     .toString());
                                                               });
@@ -1550,7 +1558,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[13].title}",
+                                "${snapshot.data?.result?.lableList?[13].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1564,7 +1572,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[13].type == 2
+                                    snapshot.data?.result?.lableList?[13].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1590,7 +1598,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list13
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1620,7 +1628,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                Id13 = val;
+                                                                Id13.text = val.toString();
                                                                 print(Id12
                                                                     .toString());
                                                               });
@@ -1651,7 +1659,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[14].title}",
+                                "${snapshot.data?.result?.lableList?[14].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1665,7 +1673,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[14].type == 2
+                                    snapshot.data?.result?.lableList?[14].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1691,7 +1699,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items:
-                                                                _list2.map((e) {
+                                                                _list2?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1721,9 +1729,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId2 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId2 = int.parse(val.toString());
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId2,
@@ -1752,7 +1760,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[15].title}",
+                                "${snapshot.data?.result?.lableList?[15].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1766,7 +1774,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[15].type == 2
+                                    snapshot.data?.result?.lableList?[15].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1792,7 +1800,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items:
-                                                                _list3.map((e) {
+                                                                _list3?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1822,9 +1830,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId3 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId3 = int.parse(val.toString());
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId3,
@@ -1853,7 +1861,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[16].title}",
+                                "${snapshot.data?.result?.lableList?[16].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1867,7 +1875,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[16].type == 2
+                                    snapshot.data?.result?.lableList?[16].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1893,7 +1901,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items:
-                                                                _list4.map((e) {
+                                                                _list4?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -1923,9 +1931,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId4 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId4 = int.parse(val.toString());
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId4,
@@ -1954,7 +1962,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[17].title}",
+                                "${snapshot.data?.result?.lableList?[17].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -1968,7 +1976,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[17].type == 2
+                                    snapshot.data?.result?.lableList?[17].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -1994,7 +2002,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items:
-                                                                _list5.map((e) {
+                                                                _list5?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2024,9 +2032,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId5 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId5 = int.parse(val.toString());
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId5,
@@ -2055,7 +2063,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[18].title}",
+                                "${snapshot.data?.result?.lableList?[18].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -2069,7 +2077,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[18].type == 2
+                                    snapshot.data?.result?.lableList?[18].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -2095,7 +2103,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items:
-                                                                _list6.map((e) {
+                                                                _list6?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2125,9 +2133,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId6 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId6 = int.parse(val.toString());
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId6,
@@ -2156,7 +2164,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[19].title}",
+                                "${snapshot.data?.result?.lableList?[19].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -2170,7 +2178,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[19].type == 2
+                                    snapshot.data?.result?.lableList?[19].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -2196,7 +2204,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items:
-                                                                _list8.map((e) {
+                                                                _list8?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2226,9 +2234,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId8 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId8 = int.parse(val.toString());;
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId8,
@@ -2257,7 +2265,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[20].title}",
+                                "${snapshot.data?.result?.lableList?[20].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -2271,7 +2279,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[20].type == 2
+                                    snapshot.data?.result?.lableList?[20].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -2297,7 +2305,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items:
-                                                                _list9.map((e) {
+                                                                _list9?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2327,9 +2335,8 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId9 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId9 =  int.parse(val.toString());;
+                                                                // print(Id12.toString());
                                                               });
                                                             },
                                                             value: listId9,
@@ -2358,7 +2365,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[21].title}",
+                                "${snapshot.data?.result?.lableList?[21].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -2372,7 +2379,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[21].type == 2
+                                    snapshot.data?.result?.lableList?[21].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -2398,7 +2405,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list10
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2428,9 +2435,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId10 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId10 = int.parse(val.toString());
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId10,
@@ -2459,7 +2466,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${snapshot.data.result.lableList[22].title}",
+                                "${snapshot.data?.result?.lableList?[22].title}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: Color(0xffaa6414),
@@ -2473,7 +2480,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child:
-                                    snapshot.data.result.lableList[22].type == 2
+                                    snapshot.data?.result?.lableList?[22].type == 2
                                         ? Container(
                                             width: sWidth * .8,
                                             child: TextField())
@@ -2499,7 +2506,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                         ? DropdownButton(
                                                             isExpanded: true,
                                                             items: _list22
-                                                                .map((e) {
+                                                                ?.map((e) {
                                                               return new DropdownMenuItem(
                                                                 child:
                                                                     Container(
@@ -2529,9 +2536,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
-                                                                listId22 = val;
-                                                                print(Id12
-                                                                    .toString());
+                                                                listId22 = int.parse(val.toString());
+                                                                // print(Id12
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: listId22,
@@ -2558,7 +2565,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
 
                             //  alignment: Alignment.center,
                             child: Text(
-                                "${snapshot.data.result.categoryDate.details}",
+                                "${snapshot.data?.result?.categoryDate?.details}",
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   fontFamily: 'GE SS Two',
@@ -2597,8 +2604,10 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xfff3a005),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xfff3a005), // Button background color
+                                    foregroundColor: Colors.orangeAccent,
+                                    // primary: Color(0xfff3a005),
+                                    // onPrimary: Colors.orangeAccent,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -2625,9 +2634,9 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                       Id7.text = '';
                                       Id8.text = '';
                                       Id10.text = '';
-                                      Id11 = null;
-                                      Id12 = null;
-                                      Id13 = null;
+                                      Id11.text = '';
+                                      Id12.text = '';
+                                      Id13.text = '';
                                     });
                                   }),
                             ),
@@ -2655,8 +2664,11 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xfff3a005),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xfff3a005), // Button background color
+                                    foregroundColor: Colors.orangeAccent, // Button text color
+                                    //
+                                    // primary: Color(0xfff3a005),
+                                    // onPrimary: Colors.orangeAccent,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -2673,64 +2685,64 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         listId9 != null &&
                                         listId10 != null &&
                                         listId22 != null &&
-                                        Id1.text != '' &&
-                                        Id2.text != '' &&
-                                        Id2.text != '' &&
-                                        Id3.text != '' &&
-                                        Id4.text != '' &&
-                                        Id5.text != '' &&
-                                        Id6.text != '' &&
-                                        Id7.text != '' &&
-                                        Id8.text != '' &&
+                                        Id1?.text != '' &&
+                                        Id2?.text != '' &&
+                                        Id2?.text != '' &&
+                                        Id3?.text != '' &&
+                                        Id4?.text != '' &&
+                                        Id5?.text != '' &&
+                                        Id6?.text != '' &&
+                                        Id7?.text != '' &&
+                                        Id8?.text != '' &&
                                         Id11 != null &&
                                         Id12 != null &&
                                         Id13 != null) {
-                                      String a0 =
-                                          '${snapshot.data.result.lableList[0].lebalId}."$listId1"';
-                                      String a1 =
-                                          '${snapshot.data.result.lableList[1].lebalId}."${Id1.text}"';
-                                      String a2 =
-                                          '${snapshot.data.result.lableList[2].lebalId}."${Id2.text}"';
+                                      String?  a0 =
+                                          '${snapshot.data?.result?.lableList?[0].lebalId}."$listId1"';
+                                      String?  a1 =
+                                          '${snapshot.data?.result?.lableList?[1].lebalId}."${Id1?.text}"';
+                                      String?  a2 =
+                                          '${snapshot.data?.result?.lableList?[2].lebalId}."${Id2?.text}"';
                                       String a3 =
-                                          '${snapshot.data.result.lableList[3].lebalId}."${Id3.text}"';
+                                          '${snapshot.data?.result?.lableList?[3].lebalId}."${Id3?.text}"';
                                       String a4 =
-                                          '${snapshot.data.result.lableList[4].lebalId}."${Id4.text}"';
+                                          '${snapshot.data?.result?.lableList?[4].lebalId}."${Id4?.text}"';
                                       String a5 =
-                                          '${snapshot.data.result.lableList[5].lebalId}."${Id5.text}"';
+                                          '${snapshot.data?.result?.lableList?[5].lebalId}."${Id5?.text}"';
                                       String a6 =
-                                          '${snapshot.data.result.lableList[6].lebalId}."${Id6.text}"';
+                                          '${snapshot.data?.result?.lableList?[6].lebalId}."${Id6?.text}"';
                                       String a7 =
-                                          '${snapshot.data.result.lableList[7].lebalId}."${Id7.text}"';
+                                          '${snapshot.data?.result?.lableList?[7].lebalId}."${Id7?.text}"';
                                       String a8 =
-                                          '${snapshot.data.result.lableList[8].lebalId}."${Id8.text}"';
+                                          '${snapshot.data?.result?.lableList?[8].lebalId}."${Id8?.text}"';
                                       String a9 =
-                                          '${snapshot.data.result.lableList[9].lebalId}."${Id9.text}"';
+                                          '${snapshot.data?.result?.lableList?[9].lebalId}."${Id9?.text}"';
                                       String a10 =
-                                          '${snapshot.data.result.lableList[10].lebalId}."${Id10.text}"';
+                                          '${snapshot.data?.result?.lableList?[10].lebalId}."${Id10?.text}"';
                                       String a11 =
-                                          "${snapshot.data.result.lableList[11].lebalId}.$Id11";
+                                          "${snapshot.data?.result?.lableList?[11].lebalId}.$Id11";
                                       String a12 =
-                                          "${snapshot.data.result.lableList[12].lebalId}.$Id12";
+                                          "${snapshot.data?.result?.lableList?[12].lebalId}.$Id12";
                                       String a13 =
-                                          "${snapshot.data.result.lableList[13].lebalId}.$Id13";
+                                          "${snapshot.data?.result?.lableList?[13].lebalId}.$Id13";
                                       String a14 =
-                                          "${snapshot.data.result.lableList[14].lebalId}.$listId2";
+                                          "${snapshot.data?.result?.lableList?[14].lebalId}.$listId2";
                                       String a15 =
-                                          "${snapshot.data.result.lableList[15].lebalId}.$listId3";
+                                          "${snapshot.data?.result?.lableList?[15].lebalId}.$listId3";
                                       String a16 =
-                                          "${snapshot.data.result.lableList[16].lebalId}.$listId4";
+                                          "${snapshot.data?.result?.lableList?[16].lebalId}.$listId4";
                                       String a17 =
-                                          "${snapshot.data.result.lableList[17].lebalId}.$listId5";
+                                          "${snapshot.data?.result?.lableList?[17].lebalId}.$listId5";
                                       String a18 =
-                                          "${snapshot.data.result.lableList[18].lebalId}.$listId6";
+                                          "${snapshot.data?.result?.lableList?[18].lebalId}.$listId6";
                                       String a19 =
-                                          "${snapshot.data.result.lableList[19].lebalId}.$listId8";
+                                          "${snapshot.data?.result?.lableList?[19].lebalId}.$listId8";
                                       String a20 =
-                                          "${snapshot.data.result.lableList[20].lebalId}.$listId9";
+                                          "${snapshot.data?.result?.lableList?[20].lebalId}.$listId9";
                                       String a21 =
-                                          "${snapshot.data.result.lableList[21].lebalId}.$listId10";
+                                          "${snapshot.data?.result?.lableList?[21].lebalId}.$listId10";
                                       String a22 =
-                                          "${snapshot.data.result.lableList[22].lebalId}.$listId22";
+                                          "${snapshot.data?.result?.lableList?[22].lebalId}.$listId22";
                                       String answer =
                                           '$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14,$a15,$a16,$a17,$a18,$a19,$a20,$a21,$a22';
                                       _repo
@@ -2795,8 +2807,10 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     elevation: 20,
-                                    primary: Color(0xfff3a005),
-                                    onPrimary: Colors.orangeAccent,
+                                    backgroundColor: Color(0xfff3a005), // Button background color
+                                    foregroundColor: Colors.orangeAccent,
+                                    // primary: Color(0xfff3a005),
+                                    // onPrimary: Colors.orangeAccent,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),

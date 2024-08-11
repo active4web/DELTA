@@ -49,392 +49,38 @@ class Repository {
   var baseurl = 'https://mdecco.com/app/';
   Dio dio = new Dio();
 
-  Future<SetReplay> done({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+  Future<SetReplay?> done({
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    SetReplay data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_replay',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = SetReplay.fromJson(value.data);
-    });
-    return data;
-  }
-
-  //Intro
-  Future<IntroM> getIntro({
-    @required String key,
-  }) async {
-    IntroM data;
-    FormData formData = new FormData.fromMap({
-      "key": key,
-    });
-    await dio
-        .post(
-      baseurl + '/user_api/get_intro',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = IntroM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  Future<OffersAndDesignsModel> getOffersAndDesigns({
-    @required String key,
-    @required String token,
-    @required String catId,
-  }) async {
-    OffersAndDesignsModel data;
-    FormData formData =
-        new FormData.fromMap({"key": key, "token_id": token, "cat_id": catId});
-    await dio
-        .post(
-      baseurl + '/user_api/types_housing',
-      data: formData,
-    )
-        .then((value) {
-      print(value.data);
-      data = OffersAndDesignsModel.fromJson(value.data);
-    });
-    return data;
-  }
-
-  Future<OffersAndDesignsModel> getConstructionCosts({
-    @required String key,
-    @required String token,
-    @required String catId,
-  }) async {
-    OffersAndDesignsModel data;
-    FormData formData =
-        new FormData.fromMap({"key": key, "token_id": token, "cat_id": catId});
-    await dio
-        .post(
-      baseurl + '/user_api/set_construction_costs',
-      data: formData,
-    )
-        .then((value) {
-      print(value.data);
-      data = OffersAndDesignsModel.fromJson(value.data);
-    });
-    return data;
-  }
-
-  Future<RegisterationModel> registerAccount(
-      {@required String phone,
-      @required String key,
-      @required String fullname,
-      @required String password,
-      @required String email,
-      @required String address,
-      @required String lang,
-      @required String firebase_id,
-      @required String country}) async {
-    RegisterationModel data;
-    FormData formData = new FormData.fromMap({
-      "phone": phone,
-      "key": key,
-      "password": password,
-      "email": email,
-      "fullname": fullname,
-      "address": address,
-      "lang": lang,
-      "firebase_id": firebase_id,
-      "country": country
-    });
-    await dio
-        .post(
-      baseurl + '/user_api/set_registration',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = RegisterationModel.fromJson(value.data);
-    });
-    return data;
-  }
-
-  //registerListCountry
-  Future<RegistrationListM> registerListCountry(
-      {@required String key, @required String lang}) async {
-    RegistrationListM data;
-    FormData formData = new FormData.fromMap({"key": key, "lang": lang});
-    await dio
-        .post(
-      baseurl + '/user_api/preparation_registeration',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = RegistrationListM.fromMap(value.data);
-    });
-    return data;
-  }
-
-//Login
-  Future<LoginM> loginAccount({
-    @required String phone,
-    @required String password,
-    @required String firebase_id,
-    @required String key,
-  }) async {
-    print(phone);
-    print(password);
-    LoginM data;
-    FormData formData = new FormData.fromMap({
-      "phone": phone,
-      "password": password,
-      "firebase_id": firebase_id,
-      "key": key,
-    });
-    await dio
-        .post(
-      baseurl + '/pages/set_login',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = LoginM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //home
-  Future<HomeM> getHome({
-    @required String token_id,
-    @required String key,
-  }) async {
-    HomeM data;
-    FormData formData = new FormData.fromMap({
-      "token_id": token_id,
-      "key": key,
-    });
-    await dio
-        .post(
-      baseurl + '/user_api/get_home',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = HomeM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //ArticleCat
-
-  Future<ArticleCatM> getArticleCat({
-    @required String token_id,
-    @required String key,
-  }) async {
-    ArticleCatM data;
-    FormData formData = new FormData.fromMap({
-      "token_id": token_id,
-      "key": key,
-    });
-    await dio
-        .post(
-      baseurl + '/user_api/get_all_article_categories',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ArticleCatM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //Contact Info
-  Future<ContactInfoM> getContact({
-    @required String token_id,
-    @required String key,
-  }) async {
-    ContactInfoM data;
-    FormData formData = new FormData.fromMap({
-      "token_id": token_id,
-      "key": key,
-    });
-    await dio
-        .post(
-      baseurl + '/pages/get_contact_info',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ContactInfoM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //about App
-  Future<AboutUsM> getAboutApp({
-    @required String token_id,
-    @required String key,
-  }) async {
-    AboutUsM data;
-    FormData formData = new FormData.fromMap({
-      "token_id": token_id,
-      "key": key,
-    });
-    await dio
-        .post(
-      baseurl + '/pages/about',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = AboutUsM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //Article
-  Future<ArticleM> getArticle(
-      {@required String token_id,
-      @required String key,
-      @required String article_id}) async {
-    ArticleM data;
-    FormData formData = new FormData.fromMap(
-        {"token_id": token_id, "key": key, "article_id": article_id});
-    await dio
-        .post(
-      baseurl + '/user_api/get_all_articles_details',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ArticleM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //getTickets
-  Future<UserTicketsM> getTickets({
-    @required String token_id,
-    @required String key,
-    @required String limit,
-    @required String page_number,
-  }) async {
-    UserTicketsM data;
-    FormData formData = new FormData.fromMap({
-      "token_id": token_id,
-      "key": key,
-      "limit": limit,
-      "page_number": page_number
-    });
-    await dio
-        .post(
-      baseurl + '/pages/tickets',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = UserTicketsM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //TicketList
-  Future<UserTicketsListM> TicketList(
-      {@required String key, @required String token}) async {
-    UserTicketsListM data;
-    FormData formData = new FormData.fromMap({"key": key, "token_id": token});
-    await dio
-        .post(
-      baseurl + '/pages/tickets_types',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = UserTicketsListM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //makeTicket
-  Future<MakeTicketM> makeTicket({
-    @required String key,
-    @required String token,
-    @required String ticket_type_id,
-    @required String title,
-    @required String content,
-  }) async {
-    MakeTicketM data;
-    FormData formData = new FormData.fromMap({
-      "key": key,
-      "token_id": token,
-      "ticket_type_id": ticket_type_id,
-      "title": title,
-      "content": content
-    });
-    await dio
-        .post(
-      baseurl + '/pages/new_ticket',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = MakeTicketM.fromMap(value.data);
-    });
-    return data;
-  }
-
-//makeTicket
-  Future<TicketInfoM> getTicketInfo({
-    @required String key,
-    @required String token_id,
-    @required String ticket_id,
-  }) async {
-    TicketInfoM data;
-    FormData formData = new FormData.fromMap({
+    SetReplay? data;  // Make data nullable
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
-      "ticket_id": ticket_id,
+      "cat_id": cat_id,
     });
-    await dio
-        .post(
-      baseurl + '/pages/ticket',
-      data: formData,
-    )
-        .then((value) {
+    try {
+      final response = await dio.post(
+        baseurl + '/user_api/set_replay',
+        data: formData,
+      );
       print('done');
-      print(value.data);
-      data = TicketInfoM.fromMap(value.data);
-    });
+      print(response.data);
+      data = SetReplay.fromJson(response.data);
+    } catch (e) {
+      print('Error: $e');
+      // Handle the error as needed
+    }
     return data;
   }
-
-  //get_Notify
-
-  Future<NotifyListM> get_Notify({
-    @required String key,
-    @required String token_id,
-    @required String limit,
-    @required String page_number,
+  Future<NotifyListM?> get_Notify({
+   required String? key,
+   required String? token_id,
+   required String? limit,
+   required String? page_number,
   }) async {
-    NotifyListM data;
+    NotifyListM? data;
     FormData formData = new FormData.fromMap({
       "key": key,
       "token_id": token_id,
@@ -453,417 +99,787 @@ class Repository {
     });
     return data;
   }
+  //Intro
+  Future<IntroM> getIntro({
+    required String key,
+  }) async {
+    IntroM data = IntroM(); // Initialize with a default value
+    FormData formData = new FormData.fromMap({
+      "key": key,
+    });
+    try {
+      final response = await dio.post(
+        baseurl + '/user_api/get_intro',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      data = IntroM.fromMap(response.data);
+    } catch (e) {
+      // Handle error
+      print('Error: $e');
+    }
+    return data;
+  }
 
-  //
+  Future<OffersAndDesignsModel> getOffersAndDesigns({
+    required String key,
+    required String token,
+    required String catId,
+  }) async {
+    OffersAndDesignsModel data = OffersAndDesignsModel(); // Initialize with a default value
+    FormData formData = new FormData.fromMap({"key": key, "token_id": token, "cat_id": catId});
+    try {
+      final response = await dio.post(
+        baseurl + '/user_api/types_housing',
+        data: formData,
+      );
+      print(response.data);
+      data = OffersAndDesignsModel.fromJson(response.data);
+    } catch (e) {
+      // Handle error
+      print('Error: $e');
+    }
+    return data;
+  }
 
-  //get_Notify_Det
 
+  Future<OffersAndDesignsModel> getConstructionCosts({
+    required String? key,
+    required String? token,
+    required String? catId,
+  }) async {
+    try {
+      final formData = FormData.fromMap({"key": key, "token_id": token, "cat_id": catId});
+      final response = await dio.post(
+        '$baseurl/user_api/set_construction_costs',
+        data: formData,
+      );
+      print(response.data);
+      return OffersAndDesignsModel.fromJson(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+  Future<RegisterationModel> registerAccount({
+    required String? phone,
+    required String? key,
+    required String? fullname,
+    required String? password,
+    required String? email,
+    required String? address,
+    required String? lang,
+    required String? firebase_id,
+    required String? country,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "phone": phone,
+        "key": key,
+        "password": password,
+        "email": email,
+        "fullname": fullname,
+        "address": address,
+        "lang": lang,
+        "firebase_id": firebase_id,
+        "country": country,
+      });
+      final response = await dio.post(
+        '$baseurl/user_api/set_registration',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return RegisterationModel.fromJson(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Register List Country
+  Future<RegistrationListM> registerListCountry({
+    required String key,
+    required String lang,
+  }) async {
+    try {
+      final formData = FormData.fromMap({"key": key, "lang": lang});
+      final response = await dio.post(
+        '$baseurl/user_api/preparation_registeration',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return RegistrationListM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Login
+  Future<LoginM> loginAccount({
+    required String? phone,
+    required String password,
+    required String firebase_id,
+    required String key,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "phone": phone,
+        "password": password,
+        "firebase_id": firebase_id,
+        "key": key,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/set_login',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return LoginM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Home
+  Future<HomeM> getHome({
+    required String token_id,
+    required String key,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "token_id": token_id,
+        "key": key,
+      });
+      final response = await dio.post(
+        '$baseurl/user_api/get_home',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return HomeM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Article Categories
+  Future<ArticleCatM> getArticleCat({
+    required String token_id,
+    required String key,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "token_id": token_id,
+        "key": key,
+      });
+      final response = await dio.post(
+        '$baseurl/user_api/get_all_article_categories',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return ArticleCatM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Contact Info
+  Future<ContactInfoM> getContact({
+    required String token_id,
+    required String key,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "token_id": token_id,
+        "key": key,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/get_contact_info',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return ContactInfoM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// About App
+  Future<AboutUsM> getAboutApp({
+    required String token_id,
+    required String key,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "token_id": token_id,
+        "key": key,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/about',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return AboutUsM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Article
+  Future<ArticleM> getArticle({
+    required String token_id,
+    required String key,
+    required String article_id,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "token_id": token_id,
+        "key": key,
+        "article_id": article_id,
+      });
+      final response = await dio.post(
+        '$baseurl/user_api/get_all_articles_details',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return ArticleM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Get Tickets
+  Future<UserTicketsM> getTickets({
+    required String token_id,
+    required String key,
+    required String limit,
+    required String page_number,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "token_id": token_id,
+        "key": key,
+        "limit": limit,
+        "page_number": page_number,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/tickets',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return UserTicketsM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Ticket List
+  Future<UserTicketsListM> getTicketList({
+    required String key,
+    required String token,
+  }) async {
+    try {
+      final formData = FormData.fromMap({"key": key, "token_id": token});
+      final response = await dio.post(
+        '$baseurl/pages/tickets_types',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return UserTicketsListM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Make Ticket
+  Future<MakeTicketM> makeTicket({
+    required String key,
+    required String token,
+    required String ticket_type_id,
+    required String? title,
+    required String? content,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "key": key,
+        "token_id": token,
+        "ticket_type_id": ticket_type_id,
+        "title": title,
+        "content": content,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/new_ticket',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return MakeTicketM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Get Ticket Info
+  Future<TicketInfoM> getTicketInfo({
+    required String key,
+    required String token_id,
+    required String ticket_id,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+        "ticket_id": ticket_id,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/ticket',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return TicketInfoM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Get Notifications
+  Future<NotifyListM> getNotifications({
+    required String key,
+    required String token_id,
+    required String limit,
+    required String page_number,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+        "limit": limit,
+        "page_number": page_number,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/get_list_notifications',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return NotifyListM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// Get Notification Details
   Future<NotifyDetailsM> getNotifyDetails({
-    @required String key,
-    @required String token_id,
-    @required String id_notify,
+    required String key,
+    required String token_id,
+    required String? id_notify,
   }) async {
-    NotifyDetailsM data;
-    FormData formData = new FormData.fromMap({
-      "key": key,
-      "token_id": token_id,
-      "id_notify": id_notify,
-    });
-    await dio
-        .post(
-      baseurl + '/pages/get_notification_details',
-      data: formData,
-    )
-        .then((value) {
+    try {
+      final formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+        "id_notify": id_notify,
+      });
+      final response = await dio.post(
+        '$baseurl/pages/get_notification_details',
+        data: formData,
+      );
       print('done');
-      print(value.data);
-      data = NotifyDetailsM.fromMap(value.data);
-    });
-    return data;
+      print(response.data);
+      return NotifyDetailsM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
   }
 
-  //del_Notify
 
-  Future<DeleteNotifyM> del_Notify({
-    @required String key,
-    @required String token_id,
-    @required String id_notfy,
+  // del_Notify
+  Future<DeleteNotifyM> delNotify({
+    required String key,
+    required String token_id,
+    required String? id_notfy,
   }) async {
-    DeleteNotifyM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "id_notfy": id_notfy});
-    await dio
-        .post(
-      baseurl + '/pages/delete_notification',
-      data: formData,
-    )
-        .then((value) {
+    try {
+      FormData formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+        "id_notfy": id_notfy,
+      });
+      Response response = await dio.post(
+        baseurl + '/pages/delete_notification',
+        data: formData,
+      );
       print('done');
-      print(value.data);
-      data = DeleteNotifyM.fromMap(value.data);
-    });
-    return data;
+      print(response.data);
+      return DeleteNotifyM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
   }
 
-  //message
-
+// messageSentReply
   Future<MessageSentM> messageSentReply({
-    @required String key,
-    @required String token_id,
-    @required String name,
-    @required String phone,
-    @required String message,
+    required String key,
+    required String token_id,
+    required String? name,
+    String? phone,
+    String? message,
   }) async {
-    MessageSentM data;
-    FormData formData = new FormData.fromMap({
-      "key": key,
-      "token_id": token_id,
-      "name": name,
-      "phone": phone,
-      "message": message
-    });
-    await dio
-        .post(
-      baseurl + '/pages/send_message',
-      data: formData,
-    )
-        .then((value) {
+    try {
+      FormData formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+        "name": name,
+        "phone": phone,
+        "message": message,
+      });
+      Response response = await dio.post(
+        baseurl + '/pages/send_message',
+        data: formData,
+      );
       print('done');
-      print(value.data);
-      data = MessageSentM.fromMap(value.data);
-    });
-    return data;
+      print(response.data);
+      return MessageSentM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
   }
 
-//ticketReply
-
-  Future<TicketReplyM> ticketReply(
-      {@required String key,
-      @required String token_id,
-      @required String ticket_id,
-      @required String content}) async {
-    TicketReplyM data;
-    FormData formData = new FormData.fromMap({
-      "key": key,
-      "token_id": token_id,
-      "ticket_id": ticket_id,
-      "content": content
-    });
-    await dio
-        .post(
-      baseurl + '/pages/new_reply',
-      data: formData,
-    )
-        .then((value) {
+// ticketReply
+  Future<TicketReplyM> ticketReply({
+    required String key,
+    required String token_id,
+    required String ticket_id,
+    required String? content,
+  }) async {
+    try {
+      FormData formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+        "ticket_id": ticket_id,
+        "content": content,
+      });
+      Response response = await dio.post(
+        baseurl + '/pages/new_reply',
+        data: formData,
+      );
       print('done');
-      print(value.data);
-      data = TicketReplyM.fromMap(value.data);
-    });
-    return data;
+      print(response.data);
+      return TicketReplyM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
   }
 
-  //proInfo
+// proInfo
   Future<ProfileInfoM> proInfo({
-    @required String key,
-    @required String token_id,
+    required String key,
+    required String token_id,
   }) async {
-    ProfileInfoM data;
-    FormData formData = new FormData.fromMap({
+    try {
+      FormData formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+      });
+      Response response = await dio.post(
+        baseurl + '/pages/preparation_profile',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return ProfileInfoM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+// getCostBuildF
+  Future<BuildCostM> getCostBuildF({
+    required String? key,
+    required String? token_id,
+    required String? cat_id,
+  }) async {
+    try {
+      FormData formData = FormData.fromMap({
+        "key": key,
+        "token_id": token_id,
+        "cat_id": cat_id,
+      });
+      Response response = await dio.post(
+        baseurl + '/user_api/set_commissioning_estimate',
+        data: formData,
+      );
+      print('done');
+      print(response.data);
+      return BuildCostM.fromMap(response.data);
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+  Future<BuildCostM> getBuildingCostFinishedKey({
+    required String key,
+    required String token_id,
+    required String? cat_id,
+  }) async {
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
+      "cat_id": cat_id,
     });
-    await dio
-        .post(
-      baseurl + '/pages/preparation_profile',
+    final response = await dio.post(
+      '$baseurl/user_api/set_buildingcostfinishKey',
       data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ProfileInfoM.fromMap(value.data);
-    });
-    return data;
+    );
+    print('done');
+    print(response.data);
+    return BuildCostM.fromMap(response.data);
   }
 
-  //getCostBuildF
-  Future<BuildCostM> getCostBuildF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
-  }) async {
-    BuildCostM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_commissioning_estimate',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = BuildCostM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  Future<BuildCostM> getBuildingCostFinishedKey({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
-  }) async {
-    BuildCostM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_buildingcostfinishKey',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = BuildCostM.fromMap(value.data);
-    });
-    return data;
-  }
-
-  //getContractingOffersM
+  // getContractingOffersF
   Future<ContractingOffersM> getContractingOffersF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    ContractingOffersM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_contracting_offers',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ContractingOffersM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_contracting_offers',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return ContractingOffersM.fromMap(response.data);
   }
 
-  //getengineering_services
+  // getEngineeringServicesF
   Future<EngineeringServicesOffersM> getEngineeringServicesF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    EngineeringServicesOffersM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_engineering_services_Offers',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = EngineeringServicesOffersM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_engineering_services_Offers',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return EngineeringServicesOffersM.fromMap(response.data);
   }
 
-  //getReal_stae
+  // getRealStateF
   Future<RealStateM> getRealStateF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    RealStateM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_real_estate_investment_offers',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = RealStateM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_real_estate_investment_offers',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return RealStateM.fromMap(response.data);
   }
 
-  //getOtherServicesF
+  // getOtherServicesF
   Future<OtherServicesM> getOtherServicesF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    OtherServicesM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_other_services',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = OtherServicesM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_other_services',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return OtherServicesM.fromMap(response.data);
   }
 
-  //getdesignnow
+  // getDesignNowF
   Future<DesignNowM> getDesignNowF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    DesignNowM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_design_now',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = DesignNowM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_design_now',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return DesignNowM.fromMap(response.data);
   }
 
-  //getResidentialTypes
+  // getResidentialTypesF
   Future<ResidentialTypesM> getResidentialTypesF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    ResidentialTypesM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_types_housing',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ResidentialTypesM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_types_housing',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return ResidentialTypesM.fromMap(response.data);
   }
 
-  //getArchResidential
+  // getArchResidentialF
   Future<ArchResidentialM> getArchResidentialF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    ArchResidentialM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/architectural_residential_design',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ArchResidentialM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/architectural_residential_design',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return ArchResidentialM.fromMap(response.data);
   }
 
-  //getConstResidentialF
+  // getConstResidentialF
   Future<ConstResidentialM> getConstResidentialF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    ConstResidentialM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/residential_construction_designn',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ConstResidentialM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/residential_construction_designn',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return ConstResidentialM.fromMap(response.data);
   }
 
-  //getCommercialServiceF
+  // getCommercialServiceF
   Future<CommercialDesignM> getCommercialServiceF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    CommercialDesignM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_commercial_service',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = CommercialDesignM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_commercial_service',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return CommercialDesignM.fromMap(response.data);
   }
 
-  //getGeneralFixF
+
+  // getGeneralFixF
   Future<GeneralFixM> getGeneralFixF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
+    required String key,
+    required String token_id,
+    required String? cat_id,
   }) async {
-    GeneralFixM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "cat_id": cat_id});
-    await dio
-        .post(
-      baseurl + '/user_api/set_general_maintenance',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = GeneralFixM.fromMap(value.data);
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "cat_id": cat_id,
     });
-    return data;
+    final response = await dio.post(
+      '$baseurl/user_api/set_general_maintenance',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return GeneralFixM.fromMap(response.data);
   }
 
-  //sendCostBuildF
+  // sendCostBuildF
   Future<ResAnsM> sendCostBuildF({
-    @required String key,
-    @required String token_id,
-    @required String cat_id,
-    @required String answer,
-    @required String st1,
-    @required String st2,
-    @required String elevators,
-    @required String floors,
-    @required String space,
+    String? key,
+    String? token_id,
+    String? cat_id,
+    String? answer,
+    String? st1,
+    String? st2,
+    String? elevators,
+    String? floors,
+    String? space,
     dynamic file,
     dynamic file2,
   }) async {
-    ResAnsM data;
-    FormData formData = new FormData.fromMap({
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
       "cat_id": cat_id,
@@ -876,208 +892,195 @@ class Repository {
       "pdffile": file,
       "pdffile2": file2,
     });
-    await dio
-        .post(
-      baseurl + '/user_api/set_replay',
+    final response = await dio.post(
+      '$baseurl/user_api/set_replay',
       data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ResAnsM.fromMap(value.data);
-    });
-    return data;
+    );
+    print('done');
+    print(response.data);
+    return ResAnsM.fromMap(response.data);
   }
 
-  //Projects
+  // getProjects
   Future<ProjectsM> getProjects({
-    @required String key,
-    @required String token_id,
-    @required String limit,
-    @required String page_number,
+    required String key,
+    required String token_id,
+    required String limit,
+    required String page_number,
   }) async {
-    ProjectsM data;
-    FormData formData = new FormData.fromMap({
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
       "limit": limit,
-      "page_number": page_number
+      "page_number": page_number,
     });
-    await dio
-        .post(
-      baseurl + '/user_api/get_all_projects',
+    final response = await dio.post(
+      '$baseurl/user_api/get_all_projects',
       data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ProjectsM.fromMap(value.data);
-    });
-    return data;
+    );
+    print('done');
+    print(response.data);
+    return ProjectsM.fromMap(response.data);
   }
-
-  //ProjectsDetails
+  // getProDetails
   Future<ProjectDetailsM> getProDetails({
-    @required String key,
-    @required String token_id,
-    @required String project_id,
+    required String key,
+    required String token_id,
+    required String project_id,
   }) async {
-    ProjectDetailsM data;
-    FormData formData = new FormData.fromMap({
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
       "project_id": project_id,
     });
-    await dio
-        .post(
-      baseurl + '/user_api/get_project_details',
+    final response = await dio.post(
+      '$baseurl/user_api/get_project_details',
       data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = ProjectDetailsM.fromMap(value.data);
-    });
-    return data;
+    );
+    print('done');
+    print(response.data);
+    return ProjectDetailsM.fromMap(response.data);
   }
 
-  //EditPro
+  // editPro
   Future<EditProM> editPro({
-    @required String key,
-    @required String token_id,
-    @required String fullname,
-    @required String phone,
-    @required String address,
-    @required String country,
-    @required String email,
+     String? key,
+     String? token_id,
+     String? fullname,
+     String? phone,
+     String? email,
+     String? country,
+     String? project_id,
+     String? address,
+     String? description,
+     String? status,
+     String? services,
+     String? cost,
   }) async {
-    EditProM data;
-    FormData formData = new FormData.fromMap({
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
       "fullname": fullname,
       "phone": phone,
+      "email": email,
+      "project_id": project_id,
       "address": address,
+      "description": description,
+      "status": status,
       "country": country,
-      "email": email
+      "services": services,
+      "cost": cost,
     });
-    await dio
-        .post(
-      baseurl + '/pages/edit_profile',
+    final response = await dio.post(
+      '$baseurl/user_api/edit_project',
       data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = EditProM.fromMap(value.data);
-    });
-    return data;
+    );
+    print('done');
+    print(response.data);
+    return EditProM.fromMap(response.data);
   }
 
   //OrdersList
   Future<OrdersM> getOrdes({
-    @required String key,
-    @required String token_id,
-    @required String lang,
+    required String key,
+    required String token_id,
+    required String lang,
   }) async {
-    OrdersM data;
-    FormData formData = new FormData.fromMap({
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
       "lang": lang,
     });
-    await dio
-        .post(
-      baseurl + '/store/get_list_myorders',
+
+    final response = await dio.post(
+      '$baseurl/store/get_list_myorders',
       data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = OrdersM.fromMap(value.data);
-    });
-    return data;
+    );
+    print('done');
+    print(response.data);
+    return OrdersM.fromMap(response.data);
   }
+
 
   //OrderDetailsList
-  Future<OrderDetailsM> getOrderDetails(
-      {@required String key,
-      @required String token_id,
-      @required String lang,
-      @required String id_order}) async {
-    OrderDetailsM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "lang": lang, "id_order": id_order});
-    await dio
-        .post(
-      baseurl + '/store/get_order_details',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = OrderDetailsM.fromMap(value.data);
+  Future<OrderDetailsM> getOrderDetails({
+    required String key,
+    required String token_id,
+    required String lang,
+    required String? id_order,
+  }) async {
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "lang": lang,
+      "id_order": id_order,
     });
-    return data;
+
+    final response = await dio.post(
+      '$baseurl/store/get_order_details',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return OrderDetailsM.fromMap(response.data);
   }
+
 
   //OrderDetailsMoney
-  Future<OrderDetailsMoneyM> getOrderDetailsMoney(
-      {@required String key,
-      @required String token_id,
-      @required String id_order}) async {
-    OrderDetailsMoneyM data;
-    FormData formData = new FormData.fromMap(
-        {"key": key, "token_id": token_id, "id_order": id_order});
-    await dio
-        .post(
-      baseurl + '/store/get_select_payment',
-      data: formData,
-    )
-        .then((value) {
-      print('done');
-      print(value.data);
-      data = OrderDetailsMoneyM.fromMap(value.data);
+  Future<OrderDetailsMoneyM> getOrderDetailsMoney({
+    required String key,
+    required String token_id,
+    required String? id_order,
+  }) async {
+    FormData formData = FormData.fromMap({
+      "key": key,
+      "token_id": token_id,
+      "id_order": id_order,
     });
-    return data;
+
+    final response = await dio.post(
+      '$baseurl/store/get_select_payment',
+      data: formData,
+    );
+    print('done');
+    print(response.data);
+    return OrderDetailsMoneyM.fromMap(response.data);
   }
 
-  Future<GalleryOfferModel> getAllDesigns(
-      {@required String key,
-      @required String token_id,
-      @required String lang,
-      @required String limit,
-      @required String pageNumber}) async {
-    GalleryOfferModel data;
-    FormData formData = new FormData.fromMap({
+  Future<GalleryOfferModel> getAllDesigns({
+     String? key,
+     String? token_id,
+     String? lang,
+     String? limit,
+     String? pageNumber,
+  }) async {
+    FormData formData = FormData.fromMap({
       "key": key,
       "token_id": token_id,
       "limit": limit,
-      "page_number": pageNumber
+      "page_number": pageNumber,
     });
-    await dio
-        .post(
-      baseurl + '/store/get_all_designs',
+
+    final response = await dio.post(
+      '$baseurl/store/get_all_designs',
       data: formData,
-    )
-        .then((value) {
-      print(value.data);
-      data = GalleryOfferModel.fromJson(value.data);
-    });
-    return data;
+    );
+    print(response.data);
+    return GalleryOfferModel.fromJson(response.data);
   }
 
-  Future<Response> sendPaymentDetails(
-      {@required String token_id,
-      @required int designId,
-      @required String name,
-      @required String phone,
-      @required String address,
-      @required String message,
-      @required String email,
-      @required int paymentType}) async {
-    Response data;
-    FormData formData = new FormData.fromMap({
+
+  Future<Response> sendPaymentDetails({
+    required String token_id,
+    required int designId,
+    required String? name,
+    required String? phone,
+    required String? address,
+    required String? message,
+    required String? email,
+    required int paymentType,
+  }) async {
+    FormData formData = FormData.fromMap({
       "key": "1234567890",
       "token_id": token_id,
       "id_design": designId,
@@ -1086,17 +1089,15 @@ class Repository {
       "phone": phone,
       "address": address,
       "message": message,
-      "payment_type": paymentType
+      "payment_type": paymentType,
     });
-    await dio
-        .post(
-      baseurl + '/store/add_to_cart',
+
+    final response = await dio.post(
+      '$baseurl/store/add_to_cart',
       data: formData,
-    )
-        .then((value) {
-      print(value.data);
-      data = value;
-    });
-    return data;
+    );
+    print(response.data);
+    return response;
   }
+
 }

@@ -12,10 +12,10 @@ class IntroM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory IntroM.fromJson(String str) => IntroM.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class IntroM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -49,15 +49,15 @@ class Result {
     this.txtT3,
   });
 
-  String txtImg;
-  String txtImg1;
-  String txtImg3;
-  String titleT1;
-  String txtT1;
-  String titleT2;
-  String txtT2;
-  String titleT3;
-  String txtT3;
+  String? txtImg;
+  String? txtImg1;
+  String? txtImg3;
+  String? titleT1;
+  String? txtT1;
+  String? titleT2;
+  String? txtT2;
+  String? titleT3;
+  String? txtT3;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 

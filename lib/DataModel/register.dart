@@ -1,8 +1,8 @@
 class RegisterationModel {
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   RegisterationModel({this.message, this.codenum, this.status, this.result});
 
@@ -20,43 +20,44 @@ class RegisterationModel {
     data['codenum'] = this.codenum;
     data['status'] = this.status;
     if (this.result != null) {
-      data['result'] = this.result.toJson();
+      data['result'] = this.result!.toJson();
     }
     return data;
   }
 }
 
 class Result {
-  List<ClientData> clientData;
+  List<ClientData>? clientData;
 
   Result({this.clientData});
 
   Result.fromJson(Map<String, dynamic> json) {
     if (json['client_data'] != null) {
-      clientData = new List<ClientData>();
+      clientData = <ClientData>[]; // Initialize as an empty list of ClientData
       json['client_data'].forEach((v) {
-        clientData.add(new ClientData.fromJson(v));
+        clientData!.add(ClientData.fromJson(v)); // Correctly create and add ClientData instances
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{}; // Initialize as an empty map
     if (this.clientData != null) {
-      data['client_data'] = this.clientData.map((v) => v.toJson()).toList();
+      data['client_data'] = this.clientData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
+
 class ClientData {
-  String name;
-  String phone;
-  int id;
-  String fullname;
-  String lang;
-  String country;
-  String token;
+  String? name;
+  String? phone;
+  int? id;
+  String? fullname;
+  String? lang;
+  String? country;
+  String? token;
 
   ClientData(
       {this.name,

@@ -14,10 +14,10 @@ class NotifyDetailsM {
     this.result,
   });
 
-  String message;
-  int codenum;
-  bool status;
-  Result result;
+  String? message;
+  int? codenum;
+  bool? status;
+  Result? result;
 
   factory NotifyDetailsM.fromJson(String str) => NotifyDetailsM.fromMap(json.decode(str));
 
@@ -34,7 +34,7 @@ class NotifyDetailsM {
     "message": message,
     "codenum": codenum,
     "status": status,
-    "result": result.toMap(),
+    "result": result!.toMap(),
   };
 }
 
@@ -43,7 +43,7 @@ class Result {
     this.notificationDetails,
   });
 
-  NotificationDetails notificationDetails;
+  NotificationDetails? notificationDetails;
 
   factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
 
@@ -54,7 +54,7 @@ class Result {
   );
 
   Map<String, dynamic> toMap() => {
-    "notification_details": notificationDetails.toMap(),
+    "notification_details": notificationDetails!.toMap(),
   };
 }
 
@@ -68,12 +68,12 @@ class NotificationDetails {
     this.img,
   });
 
-  String title;
-  int id;
-  String body;
-  int isRead;
-  DateTime createdAt;
-  String img;
+  String? title;
+  int? id;
+  String? body;
+  int? isRead;
+  DateTime? createdAt;
+  String? img;
 
   factory NotificationDetails.fromJson(String str) => NotificationDetails.fromMap(json.decode(str));
 
@@ -93,7 +93,7 @@ class NotificationDetails {
     "id": id,
     "body": body,
     "is_read": isRead,
-    "created_at": "${createdAt.year.toString().padLeft(4, '0')}-${createdAt.month.toString().padLeft(2, '0')}-${createdAt.day.toString().padLeft(2, '0')}",
+    "created_at": "${createdAt!.year.toString().padLeft(4, '0')}-${createdAt!.month.toString().padLeft(2, '0')}-${createdAt!.day.toString().padLeft(2, '0')}",
     "img": img,
   };
 }
