@@ -1,7 +1,6 @@
 import 'package:delta/DataModel/notify_detailsM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';
 import 'notifications.dart';

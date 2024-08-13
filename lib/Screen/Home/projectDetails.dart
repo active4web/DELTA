@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:delta/DataModel/project_detailsM.dart';
 import 'package:delta/DataModel/projectsM.dart';
 import 'package:delta/draw.dart';
@@ -17,7 +17,7 @@ class ProjectDetails extends StatefulWidget {
 }
 
 class _ProjectDetailsState extends State<ProjectDetails> {
-  Repository _repo = Repository();
+  Repository? _repo = Repository();
   String? token;
   List<Widget> itemSliders = [];
   Future<String?> gettoken() async {
@@ -79,10 +79,9 @@ class _ProjectDetailsState extends State<ProjectDetails> {
         ),
         endDrawer: NewWidget(size: size, token: token),
         body: StreamBuilder<ProjectDetailsM>(
-            stream: _repo
-                .getProDetails(
+            stream: _repo?.getProDetails(
                     key: "1234567890",
-                    token_id: token!,
+                    token_id: token??"",
                     project_id: widget.project!.projectId.toString())
                 .asStream(),
             builder: (context, snapshot) {

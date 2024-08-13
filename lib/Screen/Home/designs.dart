@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:delta/DataModel/projectsM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/Home/projectDetails.dart';
@@ -85,7 +85,7 @@ class _DesignsState extends State<Designs> {
               stream: _repo
                   .getProjects(
                       key: "1234567890",
-                      token_id: token!,
+                      token_id: token??"",
                       limit: '20',
                       page_number: '0')
                   .asStream(),
@@ -133,8 +133,8 @@ class _DesignsState extends State<Designs> {
                                     children: [
                                       Container(
                                         alignment: Alignment.topCenter,
-                                        width: size.width * .44,
-                                        height: size.height * .193,
+                                        width: size.width * .42,
+                                        height: size.height * .18,
                                         child: null ??
                                             ClipRRect(
                                               borderRadius:

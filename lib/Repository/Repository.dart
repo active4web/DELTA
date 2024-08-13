@@ -38,8 +38,7 @@ import 'package:delta/DataModel/totify_listM.dart';
 import 'package:delta/DataModel/user_ticketM.dart';
 import 'package:delta/DataModel/user_tickets_listM.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
 
 import '../DataModel/FormsModels/set_replayM.dart';
 
@@ -222,9 +221,9 @@ class Repository {
 // Login
   Future<LoginM> loginAccount({
     required String? phone,
-    required String password,
-    required String firebase_id,
-    required String key,
+    required String? password,
+     String? firebase_id,
+    required String? key,
   }) async {
     try {
       final formData = FormData.fromMap({
@@ -294,8 +293,8 @@ class Repository {
 
 // Contact Info
   Future<ContactInfoM> getContact({
-    required String token_id,
-    required String key,
+    required String? token_id,
+    required String? key,
   }) async {
     try {
       final formData = FormData.fromMap({

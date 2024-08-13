@@ -1,11 +1,9 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:delta/DataModel/ArticleM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';
-
 
 class Articles extends StatefulWidget {
   String? articleId;
@@ -82,7 +80,7 @@ class _ArticlesState extends State<Articles> {
         ),
         endDrawer: NewWidget(size: size, token: token),
         body:      StreamBuilder<ArticleM>(
-          stream: _repo.getArticle(token_id: token!, key: '1234567890', article_id: widget.articleId!).asStream(),
+          stream: _repo.getArticle(token_id: token??"", key: '1234567890', article_id: widget.articleId!).asStream(),
           builder: (context, snapshot) {
              if(snapshot.data!=null)
        {
@@ -123,7 +121,7 @@ class _ArticlesState extends State<Articles> {
                    height: size.height*.22,
                    child:null??   ClipRRect (
                      borderRadius: BorderRadius.circular(20),
-                     child: CarouselSlider(
+                     child:CarouselSlider(
                        items: itemSliders,
                        options: CarouselOptions(
                          autoPlay: true,
@@ -133,6 +131,19 @@ class _ArticlesState extends State<Articles> {
                          enlargeCenterPage: true,
                        ),
                      ),
+
+
+
+                     // CarouselSlider(
+                     //   items: itemSliders,
+                     //   options: CarouselOptions(
+                     //     autoPlay: true,
+                     //     viewportFraction: .95,
+                     //     aspectRatio: 2,
+                     //     height: size.height * .35,
+                     //     enlargeCenterPage: true,
+                     //   ),
+                     // ),
                    ),
 
                  ),

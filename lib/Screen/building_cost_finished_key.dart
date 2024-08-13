@@ -162,6 +162,7 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
     if (hexColor.length == 8) {
       return Color(int.parse("0x$hexColor"));
     }
+    return null;
   }
 
   Repository _repo = Repository();
@@ -3326,13 +3327,6 @@ class _BuildingCostFinishKeyState extends State<BuildingCostFinishKey> {
                                           Id5 != null &&
                                           Id6 != null &&
                                           Id7 != null &&
-                                          bedRoomNumberController.text != null &&
-                                          bathRoomNumberController.text != null &&
-                                          kitchenController.text != null &&
-                                          resipitionController.text != null &&
-                                          areaController.text != null &&
-                                          phoneNumberController.text != null &&
-                                          EmailAddressController.text != null &&
                                           areaController.text != "" &&
                                           resipitionController.text != "" &&
                                           kitchenController.text != "" &&

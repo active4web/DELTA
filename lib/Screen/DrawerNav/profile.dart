@@ -117,7 +117,7 @@ class _ProfileState extends State<Profile> {
         endDrawer: NewWidget(size: size, token: token),
         body: StreamBuilder<ProfileInfoM>(
             stream:
-                _repo.proInfo(key: '1234567890', token_id: token!).asStream(),
+                _repo.proInfo(key: '1234567890', token_id: token??"").asStream(),
             builder: (context, snapshot) {
               if (snapshot.data != null) {
                 return SingleChildScrollView(

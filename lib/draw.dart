@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:delta/Screen/Home/designs.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:delta/Screen/Home/order_track.dart';
 

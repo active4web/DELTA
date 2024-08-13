@@ -184,7 +184,7 @@ class _LoginState extends State<Login> {
                           String? fbToken = await FirebaseMessaging.instance.getToken();
                           if (controllerPassword.text != null || controllerPassword.text != '') {
                             if (controllerPhone.text != null || controllerPhone.text != '') {
-                              if (controllerPhone.text != null && controllerPassword.text != null && controllerPhone.text != '' && controllerPassword.text != '') {
+                              if (controllerPhone.text != '' && controllerPassword.text != '') {
                                 _repo
                                     .loginAccount(
                                         phone: controllerPhone.text,

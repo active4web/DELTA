@@ -4,7 +4,6 @@ import 'package:delta/DataModel/user_ticketM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/DrawerNav/send-tickets.dart';
 import 'package:delta/Screen/DrawerNav/ticket_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';

@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:delta/DataModel/home_model.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/DesignNow/design_now_home.dart';
@@ -86,8 +86,8 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Color(0xff3b6745),
       ),
       endDrawer: NewWidget(size: size, token: token),
-      body: StreamBuilder<HomeM>(
-          stream: _repo.getHome(token_id: token!, key: "1234567890").asStream(),
+      body: StreamBuilder<HomeM?>(
+          stream: _repo.getHome(token_id: token??"", key: "1234567890").asStream(),
           builder: (context, snapshot) {
             int? mainOffers = snapshot.data?.result?.mainOffers?.length ?? 0;
             if (snapshot.data != null) {
@@ -153,7 +153,8 @@ class _HomePageState extends State<HomePage> {
                                     crossAxisCount: 3,
                                     mainAxisSpacing: 6.0,
                                     crossAxisSpacing: 6.0,
-                                    childAspectRatio: (itemWidth / itemHeight),
+
+                                    childAspectRatio: (24/32),
                                     controller: new ScrollController(
                                         keepScrollOffset: false),
                                     shrinkWrap: true,
@@ -254,13 +255,13 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                               ))),
                                       Padding(
-                                          padding: const EdgeInsets.all(3),
+                                          padding: const EdgeInsets.all(6),
                                           child: Container(
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
                                               margin: EdgeInsets.symmetric(
-                                                  horizontal: 5.0),
+                                                  horizontal: 2.0),
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -958,7 +959,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                       )
-                                    ]),
+                                    ],),
                               )
 
                               // Padding(

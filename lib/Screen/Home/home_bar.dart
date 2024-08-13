@@ -28,7 +28,7 @@ class _HomeBarState extends State<HomeBar> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
     return Scaffold(
       key: scaffoldKey,
       body: _widgetOptions.elementAt(_selectedIndex),

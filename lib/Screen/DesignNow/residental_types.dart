@@ -46,7 +46,7 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
           stream: _repo
               .getAllDesigns(
                 key: '1234567890',
-                token_id: widget.jwt!,
+                token_id: widget.jwt??"",
                 limit: "20",
                 pageNumber: "0",
               )
@@ -100,7 +100,7 @@ class _ResidentialTypesState extends State<ResidentialTypes> {
                     padding: EdgeInsets.all(10),
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
-                    childAspectRatio: 0.55,
+                    childAspectRatio: 0.49,
                     mainAxisSpacing: 10,
                     children: List.generate(
                         snapshot.data?.result?.allDesigns?.length ?? 0,

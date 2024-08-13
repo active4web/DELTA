@@ -1,0 +1,1 @@
+ C:\\Users\\hossa\\Downloads\\DELTA-main\\DELTA\\.dart_tool\\flutter_build\\2ad475bf0b3ab7d60f4057c9e69f6b60\\native_assets.yaml: 

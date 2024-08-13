@@ -43,7 +43,8 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
               .getResidentialTypesF(
                   key: '1234567890',
                   token_id: widget.jwt??"",
-                  cat_id: widget.cat_id)
+                  cat_id: widget.cat_id,
+          )
               .asStream(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
@@ -81,7 +82,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                           "${snapshot.data?.result?.categoryDate?.title} ",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
-                            fontSize: 17,
+                            fontSize: 15,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
@@ -108,8 +109,8 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            height: size.height * .06,
-                            width: size.width * .8,
+                            height: size.height * .08,
+                            width: size.width * .9,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
@@ -123,7 +124,7 @@ class _SpecialDesignNowOffersState extends State<SpecialDesignNowOffers> {
                                     "${(snapshot.data?.result?.lableList?[1].title ?? '') + (snapshot.data?.result?.lableList?[0].title ?? '')}",
                                     style: TextStyle(
                                       fontFamily: 'GE SS Two',
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: const Color(0xFFFAF4F4),
                                       fontWeight: FontWeight.w300,
                                     ),

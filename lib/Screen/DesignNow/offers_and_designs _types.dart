@@ -1,15 +1,11 @@
-import 'package:delta/DataModel/FormsModels/design_nowM.dart';
 import 'package:delta/DataModel/offers_and_dsigns_model.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/DesignNow/special_design_now_offers.dart';
-import 'package:delta/Screen/other_services.dart';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../draw.dart';
 import 'residental_types.dart';
-import 'architectural_residential_design.dart';
 
 class OffersAndDesigns extends StatefulWidget {
 
@@ -33,7 +29,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
   void initState() {
     gettoken();
     _repo.getOffersAndDesigns(
-        key: "1234567890", token: token!, catId: widget.cat_id!);
+        key: "1234567890", token: token??"", catId: widget.cat_id!);
     super.initState();
   }
 
@@ -48,7 +44,7 @@ class _OffersAndDesignsState extends State<OffersAndDesigns> {
         child: StreamBuilder<OffersAndDesignsModel>(
       stream: _repo
           .getOffersAndDesigns(
-              key: "1234567890", token: token.toString(), catId: widget.cat_id!)
+              key: "1234567890", token: token.toString(), catId: widget.cat_id??"")
           .asStream(),
       builder: (context, snapshot) {
         return snapshot.data != null

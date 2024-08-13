@@ -278,16 +278,16 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                                                       TextDirection
                                                                           .rtl,
                                                                 )),
-                                                            value: e.answerId,
+                                                            value: e.answerId.toString(),
                                                           );
                                                         }).toList(),
                                                         onChanged: (val) {
                                                           setState(() {
                                                             Id0.text = val.toString();
-                                                            print(val);
+                                                            // print(val);
                                                           });
                                                         },
-                                                        value: Id0,
+                                                        value: Id0.text.isEmpty ? null : Id0.text,
                                                       )
                                                     : Container(),
                                               ),
@@ -1202,7 +1202,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1327,8 +1327,7 @@ class _EngineeringServicesState extends State<EngineeringServices> {
                                             Radius.circular(15))),
                                   ),
                                   onPressed: () {
-                                    if (Id0 != null &&
-                                        Id1.text != '' &&
+                                    if (Id1.text != '' &&
                                         Id2.text != '' &&
                                         Id2.text != '' &&
                                         Id3.text != '' &&

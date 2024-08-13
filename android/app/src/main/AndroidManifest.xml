@@ -2,6 +2,11 @@
     package="com.delta.triangle">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
    <application
        android:label="Mdecco"
        android:name="${applicationName}"

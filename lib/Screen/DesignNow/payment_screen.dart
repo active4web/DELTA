@@ -33,7 +33,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Future<String?> gettoken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     token = pref.getString("token");
-    info = await _repo.proInfo(key: '1234567890', token_id: token!);
+    info = await _repo.proInfo(key: '1234567890',token_id: token??"");
     setState(() {});
     return token;
   }
@@ -409,7 +409,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     onPressed: () async {
                                       await Repository()
                                           .sendPaymentDetails(
-                                              token_id: token!,
+                                          token_id: token??"",
                                               address: addressController.text,
                                               name: nameController.text,
                                               phone: phoneController.text,

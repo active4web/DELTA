@@ -1,0 +1,702 @@
+[
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/xml_ga_ad_services_config.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-measurement-api-22.0.2-23:/xml/ga_ad_services_config.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi_splash.png.flat",
+        "source": "com.delta.triangle.app-main-39:/drawable-mdpi/splash.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_media.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_call_answer.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_call_decline_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/ic_call_decline_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/animator_fragment_close_enter.xml.flat",
+        "source": "com.delta.triangle.app-fragment-1.7.1-0:/animator/fragment_close_enter.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_call_answer_video.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/ic_call_answer_video.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi_splash.png.flat",
+        "source": "com.delta.triangle.app-main-39:/drawable-xhdpi/splash.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_call_answer_video_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/color_common_google_signin_btn_text_light.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-mdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/anim-v21_fragment_fast_out_extra_slow_in.xml.flat",
+        "source": "com.delta.triangle.app-fragment-1.7.1-0:/anim-v21/fragment_fast_out_extra_slow_in.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_passkey.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-hdpi-v4/ic_passkey.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_call_answer_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_other_sign_in.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-hdpi-v4/ic_other_sign_in.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_common_full_open_on_phone.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-hdpi-v4/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_other_sign_in.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-ldpi-v4/ic_other_sign_in.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_other_sign_in.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-mdpi-v4/ic_other_sign_in.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_password.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xxhdpi-v4/ic_password.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_passkey.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xhdpi-v4/ic_passkey.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_call_answer_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxhdpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_icon_dark_normal.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_notification_oversize_large_icon_bg.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/notification_oversize_large_icon_bg.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-mdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_call_answer_video.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-anydpi-v21/ic_call_answer_video.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-watch-v20_common_google_signin_btn_text_disabled.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-auth-20.7.0-32:/drawable-watch-v20/common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_icon_light_focused.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_password.xml.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-anydpi-v21/ic_password.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_other_sign_in.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xxxhdpi-v4/ic_other_sign_in.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_text_light_normal.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.delta.triangle.app-main-39:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_call_decline.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxxhdpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_icon_dark_focused.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_call_answer_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-ldpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_media_cancel_action.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_text_light_focused.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_text_light_focused.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_call_decline.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxhdpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_notification_bg_low.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_password.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-ldpi-v4/ic_password.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_ime_secondary_split_test_activity.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout/ime_secondary_split_test_activity.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_call_decline.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-anydpi-v21/ic_call_decline.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_text_dark.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_text_disabled.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_password.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xhdpi-v4/ic_password.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout-v21_notification_action_tombstone.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_custom_dialog.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-watch-v20_common_google_signin_btn_text_light_normal.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-auth-20.7.0-32:/drawable-watch-v20/common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_call_answer_video.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxxhdpi-v4/ic_call_answer_video.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.delta.triangle.app-main-39:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_password.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-mdpi-v4/ic_password.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/animator_fragment_open_enter.xml.flat",
+        "source": "com.delta.triangle.app-fragment-1.7.1-0:/animator/fragment_open_enter.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-v21_launch_background.xml.flat",
+        "source": "com.delta.triangle.app-main-39:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_call_answer_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/animator_fragment_close_exit.xml.flat",
+        "source": "com.delta.triangle.app-fragment-1.7.1-0:/animator/fragment_close_exit.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_media_custom.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_template_media_custom.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_passkey.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-mdpi-v4/ic_passkey.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xhdpi-v4/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_call_decline.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-ldpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_call_decline.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/animator_fragment_fade_enter.xml.flat",
+        "source": "com.delta.triangle.app-fragment-1.7.1-0:/animator/fragment_fade_enter.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_call_answer.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_call_answer.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-anydpi-v21/ic_call_answer.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_big_media_narrow.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_passkey.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-ldpi-v4/ic_passkey.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_call_decline_low.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-anydpi-v21/ic_call_decline_low.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/color_common_google_signin_btn_tint.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout-v21_notification_template_custom_big.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_call_answer_video.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-ldpi-v4/ic_call_answer_video.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_big_media_narrow_custom.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi_splash.png.flat",
+        "source": "com.delta.triangle.app-main-39:/drawable-xxhdpi/splash.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_part_chronometer.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_password.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-hdpi-v4/ic_password.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-hdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_call_answer_video_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxxhdpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/color_common_google_signin_btn_text_dark.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout-v21_notification_template_icon_group.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_call_answer_video_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxhdpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_ime_base_split_test_activity.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout/ime_base_split_test_activity.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_passkey.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xxhdpi-v4/ic_passkey.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi_splash.png.flat",
+        "source": "com.delta.triangle.app-main-39:/drawable-hdpi/splash.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/animator_fragment_open_exit.xml.flat",
+        "source": "com.delta.triangle.app-fragment-1.7.1-0:/animator/fragment_open_exit.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_call_answer_video.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/ic_call_answer_video.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_call_answer.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v24_ic_passkey.xml.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-anydpi-v24/ic_passkey.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_big_media.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_notification_tile_bg.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_call_decline_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxxhdpi-v4/ic_call_decline_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_call_answer_low.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-anydpi-v21/ic_call_answer_low.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_corner.xml.flat",
+        "source": "com.delta.triangle.app-packaged_res-57:/drawable/corner.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_other_sign_in.xml.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-anydpi-v21/ic_other_sign_in.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.delta.triangle.app-main-39:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_call_answer.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxxhdpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_password.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xxxhdpi-v4/ic_password.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_browser_actions_context_menu_page.xml.flat",
+        "source": "com.delta.triangle.app-browser-1.4.0-28:/layout/browser_actions_context_menu_page.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/animator_fragment_fade_exit.xml.flat",
+        "source": "com.delta.triangle.app-fragment-1.7.1-0:/animator/fragment_fade_exit.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-watch-v20_common_google_signin_btn_text_dark_normal.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-auth-20.7.0-32:/drawable-watch-v20/common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_browser_actions_context_menu_row.xml.flat",
+        "source": "com.delta.triangle.app-browser-1.4.0-28:/layout/browser_actions_context_menu_row.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_text_dark_normal.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_other_sign_in.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xxhdpi-v4/ic_other_sign_in.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_call_answer_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout-v21_notification_action.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/raw_firebase_common_keep.xml.flat",
+        "source": "com.delta.triangle.app-jetified-firebase-common-21.0.0-25:/raw/firebase_common_keep.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-hdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_call_answer_video.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxhdpi-v4/ic_call_answer_video.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-v21_notification_action_background.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_call_answer_video.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/ic_call_answer_video.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_call_answer_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxxhdpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi-v4_ic_passkey.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xxxhdpi-v4/ic_passkey.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_icon_disabled.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_icon_disabled.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_lines_media.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_template_lines_media.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_toast_bg.xml.flat",
+        "source": "com.delta.triangle.app-packaged_res-57:/drawable/toast_bg.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xhdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/xml_image_share_filepaths.xml.flat",
+        "source": "com.delta.triangle.app-browser-1.4.0-28:/xml/image_share_filepaths.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_call_decline.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_notification_bg.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.delta.triangle.app-main-39:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_ic_call_decline_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/ic_call_decline_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_call_decline.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_media_action.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_icon_dark.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-anydpi-v21_ic_call_answer_video_low.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-anydpi-v21/ic_call_answer_video_low.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_notification_icon_background.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-v21_splash.png.flat",
+        "source": "com.delta.triangle.app-main-39:/drawable-v21/splash.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_call_answer.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxhdpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_call_answer.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-ldpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_other_sign_in.png.flat",
+        "source": "com.delta.triangle.app-jetified-credentials-1.2.0-rc01-21:/drawable-xhdpi-v4/ic_other_sign_in.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_toast_custom.xml.flat",
+        "source": "com.delta.triangle.app-packaged_res-57:/layout/toast_custom.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxxhdpi_splash.png.flat",
+        "source": "com.delta.triangle.app-main-39:/drawable-xxxhdpi/splash.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.delta.triangle.app-main-39:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_call_answer_video_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xxhdpi-v4_ic_call_decline_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xxhdpi-v4/ic_call_decline_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_ic_call_answer_video_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-hdpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_text_light.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_call_decline_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-ldpi-v4/ic_call_decline_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_text_dark_focused.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_text_dark_focused.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_part_time.xml.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-hdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-xhdpi-v4_ic_call_decline_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-xhdpi-v4/ic_call_decline_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable-ldpi-v4_ic_call_answer_video_low.png.flat",
+        "source": "com.delta.triangle.app-core-1.13.1-37:/drawable-ldpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/layout_notification_template_big_media_custom.xml.flat",
+        "source": "com.delta.triangle.app-media-1.1.0-13:/layout/notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_icon_light_normal.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_icon_light_normal.xml"
+    },
+    {
+        "merged": "com.delta.triangle.app-merged_res-47:/drawable_common_google_signin_btn_icon_light.xml.flat",
+        "source": "com.delta.triangle.app-jetified-play-services-base-18.0.1-1:/drawable/common_google_signin_btn_icon_light.xml"
+    }
+]

@@ -147,7 +147,7 @@ class _ContractOffersState extends State<ContractOffers> {
     gettoken();
     print(token);
     this.getContractingOffersF(
-        key: '1234567890', token_id: widget.jwt!, cat_id: widget.cat_id);
+        key: '1234567890', token_id: widget.jwt??"", cat_id: widget.cat_id);
     super.initState();
   }
 
@@ -198,9 +198,8 @@ class _ContractOffersState extends State<ContractOffers> {
     var sWidth = MediaQuery.of(context).size.width;
 
     return StreamBuilder<ContractingOffersM>(
-        stream: _repo
-            .getContractingOffersF(
-                key: '1234567890', token_id: token!, cat_id: widget.cat_id)
+        stream: _repo.getContractingOffersF(
+                key: '1234567890', token_id: token??"", cat_id: widget.cat_id??"")
             .asStream(),
         builder: (context, snapshot) {
           return Scaffold(
@@ -350,24 +349,22 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                 return new DropdownMenuItem(
                                                                   child: Container(
                                                                       alignment: Alignment.centerRight,
-                                                                      child: new Text(
-                                                                        e.title,
+                                                                      child: new Text(e.title,
                                                                         style:
-                                                                            TextStyle(
+                                                                        TextStyle(
                                                                           fontFamily:
-                                                                              'GE SS Two',
+                                                                          'GE SS Two',
                                                                           fontSize:
-                                                                              17,
+                                                                          17,
                                                                           color:
-                                                                              const Color(-384871238),
+                                                                          const Color(-384871238),
                                                                           fontWeight:
-                                                                              FontWeight.w300,
+                                                                          FontWeight.w300,
                                                                         ),
                                                                         textDirection:
-                                                                            TextDirection.rtl,
+                                                                        TextDirection.rtl,
                                                                       )),
-                                                                  value: e
-                                                                      .answerId,
+                                                                  value: e.answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -377,7 +374,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                   //     .toString());
                                                                 });
                                                               },
-                                                              value: Id0,
+                                                              value: Id0.text.isEmpty ? null : Id0.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -418,9 +415,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child:
-                                        snapshot.data?.result?.lableList?[1]
-                                                    .type ==
-                                                2
+                                        snapshot.data?.result?.lableList?[1].type == 2
                                             ? Container(
                                                 width: sWidth * .8,
                                                 child: TextField())
@@ -445,14 +440,12 @@ class _ContractOffersState extends State<ContractOffers> {
                                                         width: size.width * .8,
                                                         child: _list1 != null
                                                             ? DropdownButton(
-                                                                isExpanded:
-                                                                    true,
-                                                                items: _list1
-                                                                    ?.map((e) {
-                                                                  return new DropdownMenuItem(
+                                                                isExpanded: true,
+                                                                items: _list1?.map((e) {
+                                                                  return  DropdownMenuItem(
                                                                     child: Container(
                                                                         alignment: Alignment.centerRight,
-                                                                        child: new Text(
+                                                                        child:  Text(
                                                                           e.title,
                                                                           style:
                                                                               TextStyle(
@@ -468,19 +461,18 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                           textDirection:
                                                                               TextDirection.rtl,
                                                                         )),
-                                                                    value: e
-                                                                        .answerId,
+                                                                    value: e.answerId.toString(),
                                                                   );
                                                                 }).toList(),
                                                                 onChanged:
                                                                     (val) {
                                                                   setState(() {
                                                                     Id1.text = val.toString();
-                                                                    print(Id1
-                                                                        .toString());
+                                                                    // print(Id1
+                                                                    //     .toString());
                                                                   });
                                                                 },
-                                                                value: Id1,
+                                                                value: Id1.text.isEmpty ? null : Id1.text,
                                                               )
                                                             : Container(),
                                                       ),
@@ -572,8 +564,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                         textDirection:
                                                                             TextDirection.rtl,
                                                                       )),
-                                                                  value: e
-                                                                      .answerId,
+                                                                  value: e.answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -583,7 +574,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id2,
+                                                              value: Id2.text.isEmpty ? null : Id2.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -676,17 +667,17 @@ class _ContractOffersState extends State<ContractOffers> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
                                                                   Id3.text = val.toString();
-                                                                  print(Id3
-                                                                      .toString());
+                                                                  // print(Id3
+                                                                  //     .toString());
                                                                 });
                                                               },
-                                                              value: Id3,
+                                                              value: Id3.text.isEmpty ? null : Id3.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -2813,23 +2804,7 @@ class _ContractOffersState extends State<ContractOffers> {
                                               Radius.circular(15))),
                                     ),
                                     onPressed: () {
-                                      if (Id0 != null &&
-                                          Id1 != null &&
-                                          Id2 != null &&
-                                          Id3 != null &&
-                                          Id4.text != null &&
-                                          Id5.text != null &&
-                                          Id6.text != null &&
-                                          Id7.text != null &&
-                                          Id8.text != null &&
-                                          Id9.text != null &&
-                                          Id10.text != null &&
-                                          Id11.text != null &&
-                                          Id12.text != null &&
-                                          Id13.text != null &&
-                                          Id14.text != null &&
-                                          Id15.text != null &&
-                                          Id4.text != '' &&
+                                      if (Id4.text != '' &&
                                           Id5.text != '' &&
                                           Id6.text != '' &&
                                           Id7.text != '' &&

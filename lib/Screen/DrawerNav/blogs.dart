@@ -1,24 +1,12 @@
 import 'package:delta/DataModel/atricle_cat.dart';
 import 'package:delta/Repository/Repository.dart';
-import 'package:delta/Screen/Home/designs.dart';
-import 'package:delta/Screen/Home/home_bar.dart';
-import 'package:delta/Screen/Home/order_track.dart';
 import 'package:delta/custom_bar.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../draw.dart';
-import '../login.dart';
-import 'about_app.dart';
+
 import 'articls.dart';
-import 'blogs.dart';
-import 'contact_us.dart';
-import 'not_logged_in.dart';
-import 'notifications.dart';
-import '../Home/projectDetails.dart';
-import 'profile.dart';
-import 'technical_support.dart';
+
 
 class Blogs extends StatefulWidget {
   @override
@@ -92,7 +80,7 @@ class _BlogsState extends State<Blogs> {
         endDrawer: NewWidget(size: size, token: token),
         body: StreamBuilder<ArticleCatM>(
             stream: _repo
-                .getArticleCat(token_id: token!, key: '1234567890')
+                .getArticleCat(token_id: token??"", key: '1234567890')
                 .asStream(),
             builder: (context, snapshot) {
               if (snapshot.data != null) {
@@ -117,7 +105,7 @@ class _BlogsState extends State<Blogs> {
                         StreamBuilder<ArticleCatM>(
                             stream: _repo
                                 .getArticleCat(
-                                    token_id: token!, key: '1234567890')
+                                token_id: token??"", key: '1234567890')
                                 .asStream(),
                             builder: (context, snapshot) {
                               if (snapshot.data != null) {

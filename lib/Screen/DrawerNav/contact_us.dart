@@ -27,7 +27,7 @@ class _ContactUsState extends State<ContactUs> {
   void initState() {
     token = "";
     gettoken();
-    print(token);
+    // print(token??"");
   }
   Repository _repo = Repository();
   @override
@@ -76,9 +76,11 @@ class _ContactUsState extends State<ContactUs> {
         ),
         endDrawer: NewWidget(size: size, token: token),
         body: StreamBuilder<ContactInfoM>(
-          stream: _repo.getContact(token_id: token!, key: "1234567890").asStream(),
+          stream: _repo.getContact(token_id: token??"", key: "1234567890").asStream(),
           builder: (context, snapshot) {
-            if(snapshot.data!=null){ return SingleChildScrollView(
+            if(snapshot.data!=null)
+            {
+              return SingleChildScrollView(
               child: Column(children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0, bottom: 8.0),
@@ -431,11 +433,14 @@ class _ContactUsState extends State<ContactUs> {
                           ),
                           onPressed: () async{
 
-                            if(controllerContent.text!=""&&controllerContent.text!=null
-                            &&controllerPhone.text!=""&&controllerPhone.text!=null
-                            &&controllerName.text!=""&&controllerName.text!=null)
+                            if(controllerContent.text!=""
+                            &&controllerPhone.text!=""
+                            &&controllerName.text!="")
                             {
-                             _repo.messageSentReply(key: '1234567890', token_id: token!, name: controllerName.text, phone: controllerPhone.text, message: controllerContent.text)
+                             _repo.messageSentReply(key: '1234567890',token_id: token??"",
+                                 name: controllerName.text,
+                                  phone: controllerPhone.text,
+                                 message: controllerContent.text)
                                  .then((value) {
                              if  (value.status!=false){
                                var snackBar = SnackBar(content: Text('${value.message}'));
@@ -460,7 +465,8 @@ class _ContactUsState extends State<ContactUs> {
                 ),
               ]),
             );}
-           else{return  Center(child: CircularProgressIndicator(backgroundColor: Colors.green,),);}
+           else{return  Center(
+              child: CircularProgressIndicator(backgroundColor: Colors.green,),);}
           }
         ));
   }

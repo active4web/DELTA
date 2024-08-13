@@ -7,7 +7,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Home/home_bar.dart';
-import 'package:http/http.dart' as http;
 
 class SignUp extends StatefulWidget {
 
@@ -449,10 +448,9 @@ class _SignUpState extends State<SignUp> {
                                   BorderRadius.all(Radius.circular(30))),
                         ),
                         onPressed: () async {
-                          String? fb_id =
-                          await FirebaseMessaging.instance.getToken();
+                          String? fb_id = await FirebaseMessaging.instance.getToken();
                           print(fb_id);
-                          if (controllerPassword.text != null && controllerPassword.text != '') {
+                          if (controllerPassword.text != '') {
                             if (controllerPassword.text == controllerPassword2.text) {
                               _repo
                                   .registerAccount(

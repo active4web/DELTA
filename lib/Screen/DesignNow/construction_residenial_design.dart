@@ -105,7 +105,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
     return Material(
       child: StreamBuilder<ConstResidentialM>(
           stream: _repo?.getConstResidentialF(
-                  key: '1234567890', token_id: token!, cat_id: widget.cat_id)
+                  key: '1234567890', token_id: token??"", cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
@@ -275,7 +275,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -285,7 +285,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                                   //     .toString());
                                                                 });
                                                               },
-                                                              value: Id0,
+                                                              value: Id0.text.isEmpty ? null : Id0.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -378,7 +378,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -388,7 +388,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id1,
+                                                              value: Id1.text.isEmpty ? null : Id1.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -481,7 +481,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -491,7 +491,7 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id2,
+                                                              value: Id2.text.isEmpty ? null : Id2.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -807,49 +807,39 @@ class _ConstResidenialState extends State<ConstResidenial> {
                                               Radius.circular(15))),
                                     ),
                                     onPressed: () {
-                                      if (Id2 != null &&
-                                          Id1 != null &&
-                                          Id0 != null) {
-                                        String a0 =
-                                            "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
-                                        String a1 =
-                                            "${snapshot.data?.result?.lableList?[1].lebalId}.$Id1";
-                                        String a2 =
-                                            "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
-                                        String a3 =
-                                            "${snapshot.data?.result?.lableList?[4].lebalId}.${1}";
+                                      String a0 =
+                                          "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
+                                      String a1 =
+                                          "${snapshot.data?.result?.lableList?[1].lebalId}.$Id1";
+                                      String a2 =
+                                          "${snapshot.data?.result?.lableList?[2].lebalId}.$Id2";
+                                      String a3 =
+                                          "${snapshot.data?.result?.lableList?[4].lebalId}.${1}";
 
-                                        String answer = '$a0,$a1,$a2,$a3';
-                                        _repo?.sendCostBuildF(
-                                          key: '1234567890',
-                                          token_id: widget.jwt,
-                                          cat_id: widget.cat_id,
-                                          file: proFile1! + proFile2!,
-                                          answer: "$answer",
-                                        )
-                                            .then((value) {
-                                          if (value.status == true) {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        SendDone(message: value.message)));
-                                          } else {
-                                            var snackBar = SnackBar(
-                                                content: Text(
-                                                    'حدث خطأ يرجي اعادة المحاولة '));
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(snackBar);
-                                          }
-                                        });
-                                      } else {
-                                        var snackBar = SnackBar(
-                                            content: Text(
-                                                'من فضلك ادخل جميع البيانات صحيحة '));
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(snackBar);
-                                      }
-                                    }),
+                                      String answer = '$a0,$a1,$a2,$a3';
+                                      _repo?.sendCostBuildF(
+                                        key: '1234567890',
+                                        token_id: widget.jwt,
+                                        cat_id: widget.cat_id,
+                                        file: proFile1! + proFile2!,
+                                        answer: "$answer",
+                                      )
+                                          .then((value) {
+                                        if (value.status == true) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) =>
+                                                      SendDone(message: value.message)));
+                                        } else {
+                                          var snackBar = SnackBar(
+                                              content: Text(
+                                                  'حدث خطأ يرجي اعادة المحاولة '));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(snackBar);
+                                        }
+                                      });
+                                                                        }),
                               ),
                             ),
                           ],

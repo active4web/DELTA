@@ -358,7 +358,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                           "${snapshot.data?.result?.categoryDate?.title}",
                           style: TextStyle(
                             fontFamily: 'GE SS Two',
-                            fontSize: 17,
+                            fontSize: 16,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
@@ -560,7 +560,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                                 .centerRight,
                                                                         child:
                                                                             new Text(
-                                                                          "e.title",
+                                                                          e.title,
                                                                           style:
                                                                               TextStyle(
                                                                             fontFamily:
@@ -576,7 +576,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -586,7 +586,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id0,
+                                                            value: Id0.text.isEmpty ? null : Id0.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -682,7 +682,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -692,7 +692,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id1,
+                                                            value: Id1.text.isEmpty ? null : Id1.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -788,7 +788,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -798,7 +798,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id2,
+                                                            value: Id2.text.isEmpty ? null : Id2.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -893,7 +893,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -903,7 +903,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id3,
+                                                            value: Id3.text.isEmpty ? null : Id3.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -999,7 +999,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1009,7 +1009,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id4,
+                                                            value: Id4.text.isEmpty ? null : Id4.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -1575,7 +1575,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1585,7 +1585,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id10,
+                                                            value: Id10.text.isEmpty ? null : Id10.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -1681,7 +1681,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1691,7 +1691,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id11,
+                                                            value: Id11.text.isEmpty ? null : Id11.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -1787,7 +1787,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1797,7 +1797,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id12,
+                                                            value: Id12.text.isEmpty ? null : Id12.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -1892,7 +1892,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1902,7 +1902,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id13,
+                                                            value: Id13.text.isEmpty ? null : Id13.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2001,10 +2001,10 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             onChanged: (val) {
                                                               setState(() {
                                                                 Id19.text = val.toString();
-                                                                print(Id19.toString());
+                                                                // print(Id19.toString());
                                                               });
                                                             },
-                                                            value: Id19,
+                                                            value: Id19.text.isEmpty ? null : Id19.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2104,8 +2104,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             onChanged: (val) {
                                                               setState(() {
                                                                 answer20 = int.parse(val.toString());
-                                                                print(answer20
-                                                                    .toString());
+                                                                // print(answer20
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: answer20,
@@ -2202,17 +2202,17 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
                                                                 Id21.text = val.toString();
-                                                                print(Id21
-                                                                    .toString());
+                                                                // print(Id21
+                                                                //     .toString());
                                                               });
                                                             },
-                                                            value: Id21,
+                                                            value: Id21.text.isEmpty ? null : Id21.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2306,7 +2306,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -2316,7 +2316,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                 //     .toString());
                                                               });
                                                             },
-                                                            value: Id22,
+                                                            value: Id22.text.isEmpty ? null : Id22.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2410,7 +2410,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -2420,7 +2420,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id23,
+                                                            value: Id23.text.isEmpty ? null : Id23.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2514,7 +2514,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -2524,7 +2524,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id24,
+                                                            value: Id24.text.isEmpty ? null : Id24.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2618,17 +2618,17 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
                                                                 Id26.text = val.toString();
-                                                                print(Id26
-                                                                    .toString());
+                                                                // print(Id26
+                                                                //     .toString());
                                                               });
                                                             },
-                                                            value: Id26,
+                                                            value: Id26.text.isEmpty ? null : Id26.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2722,17 +2722,17 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
                                                                 Id27.text = val.toString();
-                                                                print(Id27
-                                                                    .toString());
+                                                                // print(Id27
+                                                                //     .toString());
                                                               });
                                                             },
-                                                            value: Id27,
+                                                            value: Id27.text.isEmpty ? null : Id27.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2826,17 +2826,17 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
                                                               setState(() {
                                                                 Id28.text = val.toString();
-                                                                print(Id28
-                                                                    .toString());
+                                                                // print(Id28
+                                                                //     .toString());
                                                               });
                                                             },
-                                                            value: Id28,
+                                                            value: Id28.text.isEmpty ? null : Id28.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -3271,8 +3271,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                                             onChanged: (val) {
                                                               setState(() {
                                                                 answer31 = int.parse(val.toString());
-                                                                print(answer31
-                                                                    .toString());
+                                                                // print(answer31
+                                                                //     .toString());
                                                               });
                                                             },
                                                             value: answer31,
@@ -3387,16 +3387,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                             Id9.text != '' &&
                                             Id14.text != '' &&
                                             Id15.text != '' &&
-                                            Id16.text != '' &&
-                                            Id0 != null &&
-                                            Id1 != null &&
-                                            Id2 != null &&
-                                            Id3 != null &&
-                                            Id4 != null &&
-                                            Id10 != null &&
-                                            Id11 != null &&
-                                            Id12 != null &&
-                                            Id13 != null) {
+                                            Id16.text != '') {
                                           String a0 =
                                               "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";
                                           String a1 =
@@ -3497,8 +3488,8 @@ class _CommercialDesignState extends State<CommercialDesign> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Container(
-                                height: size.height * .06,
-                                width: size.width * .55,
+                                height: size.height * .07,
+                                width: size.width * .65,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
@@ -3512,7 +3503,7 @@ class _CommercialDesignState extends State<CommercialDesign> {
                                         'الرجوع للقائمة الرئيسية',
                                         style: TextStyle(
                                           fontFamily: 'GE SS Two',
-                                          fontSize: 17,
+                                          fontSize: 16,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300,
                                         ),

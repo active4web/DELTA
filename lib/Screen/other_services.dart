@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../draw.dart';
-import 'Home/home_bar.dart';
 
 class otherServices extends StatefulWidget {
   otherServices({ this.cat_id, this.jwt});

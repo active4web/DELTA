@@ -33,10 +33,10 @@ dependencies:
   firebase_core:
   firebase_analytics:
   firebase_auth:
-  firebase_messaging: ^14.1.0
-  cloud_firestore: ^4.5.0
-  flutter_local_notifications: ^15.1.0
-  carousel_slider:
+  firebase_messaging: ^14.6.9
+  cloud_firestore: ^4.9.3
+  flutter_local_notifications: ^17.0.1
+  carousel_slider_plus: ^7.0.0
   url_launcher: ^6.0.7
   # flutter_app_name: Removed due to version conflict
   intro_slider: ^3.0.2
@@ -47,6 +47,14 @@ dependencies:
 
   cupertino_icons: ^1.0.6
 
+  cloud_firestore_web: any
+  firebase_analytics_web: any
+  firebase_auth_web: any
+  firebase_core_web: any
+  firebase_messaging_web: any
+  shared_preferences_web: any
+  url_launcher_web: any
+  flutter_web_plugins: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

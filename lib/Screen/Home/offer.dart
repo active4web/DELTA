@@ -2,9 +2,7 @@ import 'package:delta/DataModel/order_details_moneyM.dart';
 import 'package:delta/Repository/Repository.dart';
 
 import 'package:delta/draw.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Offer extends StatefulWidget {

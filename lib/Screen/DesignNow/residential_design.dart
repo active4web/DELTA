@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 
 import '../send_done.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
-import 'package:flutter/material.dart';
 
 class ResidentalDesign extends StatefulWidget {
 

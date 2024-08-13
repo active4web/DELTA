@@ -2,7 +2,6 @@ import 'package:delta/DataModel/FormsModels/cost_buildM.dart';
 import 'package:delta/Repository/Repository.dart';
 import 'package:delta/Screen/Home/home_bar.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -354,17 +353,17 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
                                                                   Id0.text = val.toString();
-                                                                  print(Id0
-                                                                      .toString());
+                                                                  // print(Id0
+                                                                  //     .toString());
                                                                 });
                                                               },
-                                                              value: Id0,
+                                                              value: Id0.text.isEmpty ? null : Id0.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -458,7 +457,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                         textDirection:
                                                                             TextDirection.rtl,
                                                                       )),
-                                                                  value: e.answerId,
+                                                                  value: e.answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -470,7 +469,8 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id1,
+                                                              value: Id1.text.isEmpty ? null : Id0.text,
+
                                                             )
                                                           : Container(),
                                                     ),
@@ -563,7 +563,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -574,7 +574,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id2,
+                                                              value: Id2.text.isEmpty ? null : Id2.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -667,7 +667,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -677,7 +677,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id3,
+                                                              value: Id3.text.isEmpty ? null : Id3.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -770,7 +770,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -780,7 +780,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id4,
+                                                              value: Id4.text.isEmpty ? null : Id4.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -873,7 +873,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -883,7 +883,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id5,
+                                                              value: Id5.text.isEmpty ? null : Id5.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -976,7 +976,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -986,7 +986,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id6,
+                                                              value: Id6.text.isEmpty ? null : Id6.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1079,7 +1079,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1089,7 +1089,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id7,
+                                                              value: Id7.text.isEmpty ? null : Id7.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1182,7 +1182,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1192,7 +1192,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id8,
+                                                              value: Id8.text.isEmpty ? null : Id8.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1285,7 +1285,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1295,7 +1295,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id9,
+                                                              value: Id9.text.isEmpty ? null : Id9.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1388,7 +1388,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1398,7 +1398,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id10,
+                                                              value: Id10.text.isEmpty ? null : Id10.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1491,7 +1491,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1501,7 +1501,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id11,
+                                                              value: Id11.text.isEmpty ? null : Id11.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1597,7 +1597,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1607,7 +1607,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id12,
+                                                              value: Id12.text.isEmpty ? null : Id12.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1702,7 +1702,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1712,7 +1712,7 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id13,
+                                                              value: Id13.text.isEmpty ? null : Id13.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1845,26 +1845,12 @@ class _ConcreteStructureState extends State<ConcreteStructure> {
                                               Radius.circular(15))),
                                     ),
                                     onPressed: () {
-                                      if (Id0 != null &&
-                                          (workersController.text != '' &&
-                                              workersController.text != null) &&
+                                      if ((workersController.text != '') &&
                                           (snapshot.data?.result?.lableList?[2]
                                                       .type !=
-                                                  2 &&
-                                              Id2 != null) &&
-                                          // Id2 != null&&
-                                          Id3 != null &&
-                                          Id4 != null &&
-                                          Id5 != null &&
-                                          Id6 != null &&
-                                          Id7 != null &&
-                                          Id10 != null &&
-                                          // Id11 != null &&
-                                          cityController.text != null &&
+                                                  2) &&
                                           cityController.text != "" &&
-                                          elevatorsNumController.text != null &&
                                           elevatorsNumController.text != '' &&
-                                          floorsNumController.text != null &&
                                           floorsNumController.text != '') {
                                         String a0 =
                                             "${snapshot.data?.result?.lableList?[0].lebalId}.$Id0";

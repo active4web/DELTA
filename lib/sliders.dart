@@ -18,7 +18,7 @@ class IntroScreenState extends State<IntroScreen> {
   List<Slide> slides = [];
 
   int netimg = 0;
-  var myStream;
+  // var myStream;
 
   @override
 
@@ -30,14 +30,17 @@ class IntroScreenState extends State<IntroScreen> {
 
       // Print the value (for debugging purposes)
       debugPrint('SliderState: $sliderState');
-
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeBar()),
+      );
       // Check if the value is not null and is true
-      if (sliderState != null && sliderState) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomeBar()),
-        );
-      }
+      // if (sliderState != null && sliderState) {
+      //   Navigator.pushReplacement(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => HomeBar()),
+      //   );
+      // }
     });
   }
 
@@ -88,9 +91,9 @@ class IntroScreenState extends State<IntroScreen> {
 
   ButtonStyle myButtonStyle() {
     return ButtonStyle(
-      shape: MaterialStateProperty.all<OutlinedBorder>(StadiumBorder()),
-      backgroundColor: MaterialStateProperty.all<Color>(Color(0x33F3B4BA)),
-      overlayColor: MaterialStateProperty.all<Color>(Color(0x33FFA8B0)),
+      shape: WidgetStateProperty.all<OutlinedBorder>(StadiumBorder()),
+      backgroundColor: WidgetStateProperty.all<Color>(Color(0x33F3B4BA)),
+      overlayColor: WidgetStateProperty.all<Color>(Color(0x33FFA8B0)),
     );
   }
 

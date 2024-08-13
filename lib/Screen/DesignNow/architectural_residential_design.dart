@@ -184,7 +184,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
       child: StreamBuilder<ArchResidentialM>(
           stream: _repo
               .getArchResidentialF(
-                  key: '1234567890', token_id: token!, cat_id: widget.cat_id)
+                  key: '1234567890',token_id: token??"", cat_id: widget.cat_id)
               .asStream(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
@@ -218,13 +218,17 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "${snapshot.data?.result?.categoryDate?.title}",
-                        style: TextStyle(
-                          fontFamily: 'GE SS Two',
-                          fontSize: 17,
-                          fontWeight: FontWeight.w300,
-                        ),
+                      Column(
+                        children: [
+                          Text(
+                            "${snapshot.data?.result?.categoryDate?.title}",
+                            style: TextStyle(
+                              fontFamily: 'GE SS Two',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -537,18 +541,16 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
                                                                 setState(() {
-                                                                  Id2.text = val
-                                                                      .toString();
-                                                                  print(Id2
-                                                                      .toString());
+                                                                  Id2.text = val.toString();
+                                                                  // print(Id2.toString());
                                                                 });
                                                               },
-                                                              value: Id2,
+                                                              value: Id2.text.isEmpty ? null : Id2.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -642,7 +644,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -653,7 +655,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id3,
+                                                              value: Id3.text.isEmpty ? null : Id3.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -747,7 +749,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -758,7 +760,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id4,
+                                                              value: Id4.text.isEmpty ? null : Id4.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -852,7 +854,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -863,7 +865,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id5,
+                                                              value: Id5.text.isEmpty ? null : Id5.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -957,7 +959,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -968,7 +970,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id6,
+                                                              value: Id6.text.isEmpty ? null : Id6.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -1062,7 +1064,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                             TextDirection.rtl,
                                                                       )),
                                                                   value: e
-                                                                      .answerId,
+                                                                      .answerId.toString(),
                                                                 );
                                                               }).toList(),
                                                               onChanged: (val) {
@@ -1073,7 +1075,7 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                                                       .toString());
                                                                 });
                                                               },
-                                                              value: Id7,
+                                                              value: Id7.text.isEmpty ? null : Id7.text,
                                                             )
                                                           : Container(),
                                                     ),
@@ -3672,27 +3674,8 @@ class _ArchResidentialDesignState extends State<ArchResidentialDesign> {
                                               Radius.circular(15))),
                                     ),
                                     onPressed: () {
-                                      if (Id0.text != null &&
-                                          Id1.text != null &&
-                                          Id0.text != '' &&
+                                      if (Id0.text != '' &&
                                           Id1.text != '' &&
-                                          Id2 != null &&
-                                          Id3 != null &&
-                                          Id4 != null &&
-                                          Id5 != null &&
-                                          Id6 != null &&
-                                          Id7 != null &&
-                                          Id14.text != null &&
-                                          Id15.text != null &&
-                                          Id16.text != null &&
-                                          Id17.text != null &&
-                                          Id8.text != null &&
-                                          Id9.text != null &&
-                                          Id10.text != null &&
-                                          // Id11.text != null &&
-                                          Id12.text != null &&
-                                          Id14.text != null &&
-                                          Id15.text != null &&
                                           Id14.text != '' &&
                                           Id15.text != '' &&
                                           Id16.text != '' &&

@@ -7,8 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../draw.dart';
 import 'commercial_design.dart';
-import 'residental_types.dart';
-import 'architectural_residential_design.dart';
 
 class DesignNowHome extends StatefulWidget {
   DesignNowHome({this.jwt, this.cat_id});
@@ -170,7 +168,7 @@ class _DesignNowHomeState extends State<DesignNowHome> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (_) => OffersAndDesigns(
-                                                  cat_id: snapshot.data?.result?.lableList?[0].lebalId.toString(),
+                                                  cat_id: '${snapshot.data?.result?.lableList?[0].lebalId}',
                                                   jwt: token,
                                                 )));
                                   }),

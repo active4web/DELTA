@@ -357,11 +357,11 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                     ? DropdownButton(
                                                         isExpanded: true,
                                                         items: _list1?.map((e) {
-                                                          return new DropdownMenuItem(
+                                                          return  DropdownMenuItem(
                                                             child: Container(
                                                                 alignment: Alignment
                                                                     .centerRight,
-                                                                child: new Text(
+                                                                child:  Text(
                                                                   e.title,
                                                                   style:
                                                                       TextStyle(
@@ -379,7 +379,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                       TextDirection
                                                                           .rtl,
                                                                 )),
-                                                            value: e.answerId,
+                                                            value: e.answerId
                                                           );
                                                         }).toList(),
                                                         onChanged: (val) {
@@ -389,7 +389,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                 Id3.toString());
                                                           });
                                                         },
-                                                        value: listId1,
+                                                  value: listId1,
                                                       )
                                                     : Container(),
                                               ),
@@ -1045,7 +1045,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                   //                                   TextDirection
                                   //                                       .rtl,
                                   //                             )),
-                                  //                         value: e.answerId,
+                                  //                         value: e.answerId.toString(),
                                   //                       );
                                   //                     }).toList(),
                                   //                     onChanged: (val) {
@@ -1419,7 +1419,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1429,7 +1429,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id11,
+                                                            value: Id11.text.isEmpty ? null : Id11.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -1521,7 +1521,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1531,7 +1531,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id12,
+                                                            value: Id12.text.isEmpty ? null : Id12.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -1623,7 +1623,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                               TextDirection.rtl,
                                                                         )),
                                                                 value:
-                                                                    e.answerId,
+                                                                    e.answerId.toString(),
                                                               );
                                                             }).toList(),
                                                             onChanged: (val) {
@@ -1633,7 +1633,7 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                                                     .toString());
                                                               });
                                                             },
-                                                            value: Id13,
+                                                            value: Id13.text.isEmpty ? null : Id13.text,
                                                           )
                                                         : Container(),
                                                   ),
@@ -2685,40 +2685,37 @@ class _RealEstateInvestmentState extends State<RealEstateInvestment> {
                                         listId9 != null &&
                                         listId10 != null &&
                                         listId22 != null &&
-                                        Id1?.text != '' &&
-                                        Id2?.text != '' &&
-                                        Id2?.text != '' &&
-                                        Id3?.text != '' &&
-                                        Id4?.text != '' &&
-                                        Id5?.text != '' &&
-                                        Id6?.text != '' &&
-                                        Id7?.text != '' &&
-                                        Id8?.text != '' &&
-                                        Id11 != null &&
-                                        Id12 != null &&
-                                        Id13 != null) {
+                                        Id1.text != '' &&
+                                        Id2.text != '' &&
+                                        Id2.text != '' &&
+                                        Id3.text != '' &&
+                                        Id4.text != '' &&
+                                        Id5.text != '' &&
+                                        Id6.text != '' &&
+                                        Id7.text != '' &&
+                                        Id8.text != '') {
                                       String?  a0 =
                                           '${snapshot.data?.result?.lableList?[0].lebalId}."$listId1"';
                                       String?  a1 =
-                                          '${snapshot.data?.result?.lableList?[1].lebalId}."${Id1?.text}"';
+                                          '${snapshot.data?.result?.lableList?[1].lebalId}."${Id1.text}"';
                                       String?  a2 =
-                                          '${snapshot.data?.result?.lableList?[2].lebalId}."${Id2?.text}"';
+                                          '${snapshot.data?.result?.lableList?[2].lebalId}."${Id2.text}"';
                                       String a3 =
-                                          '${snapshot.data?.result?.lableList?[3].lebalId}."${Id3?.text}"';
+                                          '${snapshot.data?.result?.lableList?[3].lebalId}."${Id3.text}"';
                                       String a4 =
-                                          '${snapshot.data?.result?.lableList?[4].lebalId}."${Id4?.text}"';
+                                          '${snapshot.data?.result?.lableList?[4].lebalId}."${Id4.text}"';
                                       String a5 =
-                                          '${snapshot.data?.result?.lableList?[5].lebalId}."${Id5?.text}"';
+                                          '${snapshot.data?.result?.lableList?[5].lebalId}."${Id5.text}"';
                                       String a6 =
-                                          '${snapshot.data?.result?.lableList?[6].lebalId}."${Id6?.text}"';
+                                          '${snapshot.data?.result?.lableList?[6].lebalId}."${Id6.text}"';
                                       String a7 =
-                                          '${snapshot.data?.result?.lableList?[7].lebalId}."${Id7?.text}"';
+                                          '${snapshot.data?.result?.lableList?[7].lebalId}."${Id7.text}"';
                                       String a8 =
-                                          '${snapshot.data?.result?.lableList?[8].lebalId}."${Id8?.text}"';
+                                          '${snapshot.data?.result?.lableList?[8].lebalId}."${Id8.text}"';
                                       String a9 =
-                                          '${snapshot.data?.result?.lableList?[9].lebalId}."${Id9?.text}"';
+                                          '${snapshot.data?.result?.lableList?[9].lebalId}."${Id9.text}"';
                                       String a10 =
-                                          '${snapshot.data?.result?.lableList?[10].lebalId}."${Id10?.text}"';
+                                          '${snapshot.data?.result?.lableList?[10].lebalId}."${Id10.text}"';
                                       String a11 =
                                           "${snapshot.data?.result?.lableList?[11].lebalId}.$Id11";
                                       String a12 =

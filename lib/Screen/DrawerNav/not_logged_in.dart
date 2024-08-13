@@ -1,20 +1,9 @@
 
-
-
-import 'package:delta/Screen/Home/home_bar.dart';
-import 'package:delta/Screen/Home/order_track.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../draw.dart';
 import '../login.dart';
-import '../signup.dart';
-import 'about_app.dart';
-import 'blogs.dart';
-import 'contact_us.dart';
-import 'notifications.dart';
-import 'profile.dart';
-import 'technical_support.dart';
+
 
 
 class NotLogged extends StatefulWidget {
