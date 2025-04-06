@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.delta.triangle.app-mergeReleaseResources-59:/values-el/values-el.xml",
+            "outputFile": "com.deltaTriangle.activeweb.app-mergeReleaseResources-59:/values-el/values-el.xml",
             "map": [
                 {
                     "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\72d29592a1324ffedf80cf375a971ef1\\transformed\\jetified-credentials-1.2.0-rc01\\res\\values-el\\values-el.xml",

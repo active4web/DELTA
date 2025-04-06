@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.delta.triangle.app-mergeReleaseResources-59:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.deltaTriangle.activeweb.app-mergeReleaseResources-59:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "D:\\DELTA\\android\\app\\src\\main\\res\\values-night\\styles.xml",

@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.delta.triangle"
+3    package="com.deltaTriangle.activeweb"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -65,12 +65,12 @@
 33
 34    <permission
 34-->[androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-35        android:name="com.delta.triangle.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+35        android:name="com.deltaTriangle.activeweb.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 35-->[androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
 36        android:protectionLevel="signature" />
 36-->[androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 37
-38    <uses-permission android:name="com.delta.triangle.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+38    <uses-permission android:name="com.deltaTriangle.activeweb.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 38-->[androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
 38-->[androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 39
@@ -98,7 +98,7 @@
 57
 58        <activity
 58-->D:\DELTA\android\app\src\main\AndroidManifest.xml:26:9-58:20
-59            android:name="com.delta.triangle.MainActivity"
+59            android:name="com.deltaTriangle.activeweb.MainActivity"
 59-->D:\DELTA\android\app\src\main\AndroidManifest.xml:27:13-41
 60            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 60-->D:\DELTA\android\app\src\main\AndroidManifest.xml:32:13-163
@@ -312,7 +312,7 @@
 181-->[:firebase_messaging] D:\DELTA\build\firebase_messaging\intermediates\merged_manifest\release\AndroidManifest.xml:41:9-45:38
 182            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
 182-->[:firebase_messaging] D:\DELTA\build\firebase_messaging\intermediates\merged_manifest\release\AndroidManifest.xml:42:13-102
-183            android:authorities="com.delta.triangle.flutterfirebasemessaginginitprovider"
+183            android:authorities="com.deltaTriangle.activeweb.flutterfirebasemessaginginitprovider"
 183-->[:firebase_messaging] D:\DELTA\build\firebase_messaging\intermediates\merged_manifest\release\AndroidManifest.xml:43:13-88
 184            android:exported="false"
 184-->[:firebase_messaging] D:\DELTA\build\firebase_messaging\intermediates\merged_manifest\release\AndroidManifest.xml:44:13-37
@@ -332,7 +332,7 @@
 192-->[androidx.work:work-runtime:2.9.1] C:\Users\OMAR\.gradle\caches\transforms-3\6188c15e498945a5f19f0ab17a812837\transformed\work-runtime-2.9.1\AndroidManifest.xml:29:9-37:20
 193            android:name="androidx.startup.InitializationProvider"
 193-->[androidx.work:work-runtime:2.9.1] C:\Users\OMAR\.gradle\caches\transforms-3\6188c15e498945a5f19f0ab17a812837\transformed\work-runtime-2.9.1\AndroidManifest.xml:30:13-67
-194            android:authorities="com.delta.triangle.androidx-startup"
+194            android:authorities="com.deltaTriangle.activeweb.androidx-startup"
 194-->[androidx.work:work-runtime:2.9.1] C:\Users\OMAR\.gradle\caches\transforms-3\6188c15e498945a5f19f0ab17a812837\transformed\work-runtime-2.9.1\AndroidManifest.xml:31:13-68
 195            android:exported="false" >
 195-->[androidx.work:work-runtime:2.9.1] C:\Users\OMAR\.gradle\caches\transforms-3\6188c15e498945a5f19f0ab17a812837\transformed\work-runtime-2.9.1\AndroidManifest.xml:32:13-37
@@ -688,7 +688,7 @@
 383-->[com.google.firebase:firebase-common:21.0.0] C:\Users\OMAR\.gradle\caches\transforms-3\dc4b37399f7bab60835b97688caf0864\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:23:9-28:39
 384            android:name="com.google.firebase.provider.FirebaseInitProvider"
 384-->[com.google.firebase:firebase-common:21.0.0] C:\Users\OMAR\.gradle\caches\transforms-3\dc4b37399f7bab60835b97688caf0864\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:24:13-77
-385            android:authorities="com.delta.triangle.firebaseinitprovider"
+385            android:authorities="com.deltaTriangle.activeweb.firebaseinitprovider"
 385-->[com.google.firebase:firebase-common:21.0.0] C:\Users\OMAR\.gradle\caches\transforms-3\dc4b37399f7bab60835b97688caf0864\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:25:13-72
 386            android:directBootAware="true"
 386-->[com.google.firebase:firebase-common:21.0.0] C:\Users\OMAR\.gradle\caches\transforms-3\dc4b37399f7bab60835b97688caf0864\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:26:13-43

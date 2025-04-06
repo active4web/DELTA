@@ -32,7 +32,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace 'com.delta.triangle'
+    namespace 'com.deltaTriangle.activeweb'
 
     compileSdkVersion flutter.compileSdkVersion
 
@@ -59,7 +59,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.delta.triangle"
+        applicationId "com.deltaTriangle.activeweb"
         minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

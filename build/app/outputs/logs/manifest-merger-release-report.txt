@@ -227,7 +227,7 @@ MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] C:\Users\OMAR\.gradle\cach
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] C:\Users\OMAR\.gradle\caches\transforms-3\db365897300785f99fbff8153d28508f\transformed\jetified-protolite-well-known-types-18.0.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\OMAR\.gradle\caches\transforms-3\b84ee6ff3ec0b149300d427a5f0f0e92\transformed\jetified-core-common-2.0.3\AndroidManifest.xml:2:1-21:12
 	package
-		ADDED from D:\DELTA\android\app\src\main\AndroidManifest.xml:2:5-33
+		ADDED from D:\DELTA\android\app\src\main\AndroidManifest.xml:2:5-42
 		INJECTED from D:\DELTA\android\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\DELTA\android\app\src\main\AndroidManifest.xml
@@ -283,7 +283,7 @@ MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Use
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Users\OMAR\.gradle\caches\transforms-3\fd8c90fafddf7b20a0a2f2b936f29b08\transformed\jetified-play-services-cloud-messaging-17.2.0\AndroidManifest.xml:11:5-82
 	android:name
 		ADDED from D:\DELTA\android\app\src\main\AndroidManifest.xml:8:22-79
-activity#com.delta.triangle.MainActivity
+activity#com.deltaTriangle.activeweb.MainActivity
 ADDED from D:\DELTA\android\app\src\main\AndroidManifest.xml:26:9-58:20
 	android:launchMode
 		ADDED from D:\DELTA\android\app\src\main\AndroidManifest.xml:29:13-43
@@ -1277,7 +1277,7 @@ ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3
 		ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-permission#com.delta.triangle.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#com.deltaTriangle.activeweb.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
@@ -1287,7 +1287,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
-uses-permission#com.delta.triangle.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#com.deltaTriangle.activeweb.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.13.1] C:\Users\OMAR\.gradle\caches\transforms-3\9f2168adbababe3a593c54d7813dc254\transformed\core-1.13.1\AndroidManifest.xml:26:22-94

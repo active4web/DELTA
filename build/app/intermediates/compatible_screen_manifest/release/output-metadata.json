@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.delta.triangle",
+  "applicationId": "com.deltaTriangle.activeweb",
   "variantName": "release",
   "elements": []
 }

@@ -1,4 +1,4 @@
-package com.delta.triangle
+package com.deltaTriangle.activeweb
 
 import io.flutter.embedding.android.FlutterActivity
 

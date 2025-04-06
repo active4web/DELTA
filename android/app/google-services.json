@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "178919107447",
-    "project_id": "delta-5d362",
-    "storage_bucket": "delta-5d362.appspot.com"
+    "project_number": "467023163568",
+    "project_id": "deltatriangle-88241",
+    "storage_bucket": "deltatriangle-88241.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:178919107447:android:dff08fc4382be4e112cf72",
+        "mobilesdk_app_id": "1:467023163568:android:ecc500cef46b7201a48b75",
         "android_client_info": {
-          "package_name": "com.delta.triangle"
+          "package_name": "com.deltaTriangle.activeweb"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "178919107447-pc6mgbbc8b9r2k9c0dibq3c21fs7jemg.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAumMT8PP9H_kkKIDVsSUPDzLj2x31XPo4"
+          "current_key": "AIzaSyB_RCUoRNBh38QHjFMCd4oZUDMtg6erwPo"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178919107447-pc6mgbbc8b9r2k9c0dibq3c21fs7jemg.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

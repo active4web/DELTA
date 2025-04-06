@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.delta.triangle.app-mergeReleaseResources-59:/values-fr-rCA/values-fr-rCA.xml",
+            "outputFile": "com.deltaTriangle.activeweb.app-mergeReleaseResources-59:/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
                     "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\043f5583db39b1ec1e26dc0e6d2071ab\\transformed\\browser-1.8.0\\res\\values-fr-rCA\\values-fr-rCA.xml",

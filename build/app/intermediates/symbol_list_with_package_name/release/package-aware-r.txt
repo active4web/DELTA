@@ -1,4 +1,4 @@
-com.delta.triangle
+com.deltaTriangle.activeweb
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -1194,7 +1194,6 @@ string common_signin_button_text
 string common_signin_button_text_long
 string copy
 string copy_toast_msg
-string default_web_client_id
 string expand_button_title
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser

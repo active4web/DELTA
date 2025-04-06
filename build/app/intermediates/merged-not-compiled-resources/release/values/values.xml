@@ -433,22 +433,21 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="copy">Copy</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
-    <string name="default_web_client_id" translatable="false">178919107447-pc6mgbbc8b9r2k9c0dibq3c21fs7jemg.apps.googleusercontent.com</string>
     <string name="expand_button_title">Advanced</string>
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
-    <string name="gcm_defaultSenderId" translatable="false">178919107447</string>
-    <string name="google_api_key" translatable="false">AIzaSyAumMT8PP9H_kkKIDVsSUPDzLj2x31XPo4</string>
-    <string name="google_app_id" translatable="false">1:178919107447:android:dff08fc4382be4e112cf72</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAumMT8PP9H_kkKIDVsSUPDzLj2x31XPo4</string>
-    <string name="google_storage_bucket" translatable="false">delta-5d362.appspot.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">467023163568</string>
+    <string name="google_api_key" translatable="false">AIzaSyB_RCUoRNBh38QHjFMCd4oZUDMtg6erwPo</string>
+    <string name="google_app_id" translatable="false">1:467023163568:android:ecc500cef46b7201a48b75</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyB_RCUoRNBh38QHjFMCd4oZUDMtg6erwPo</string>
+    <string name="google_storage_bucket" translatable="false">deltatriangle-88241.firebasestorage.app</string>
     <string name="not_set">Not set</string>
     <string name="preference_copied">
         \"<ns1:g example="Version 1.1" id="summary">%1$s</ns1:g>\" copied to clipboard.
     </string>
-    <string name="project_id" translatable="false">delta-5d362</string>
+    <string name="project_id" translatable="false">deltatriangle-88241</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="summary_collapsed_preference_list"><ns1:g id="current_items">%1$s</ns1:g>, <ns1:g id="added_items">%2$s</ns1:g></string>

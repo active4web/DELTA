@@ -4,7 +4,6 @@ color splash_color
 drawable launch_background
 drawable splash
 mipmap ic_launcher
-string default_web_client_id
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id

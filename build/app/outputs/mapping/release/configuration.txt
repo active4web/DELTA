@@ -154,7 +154,7 @@
 -keep class androidx.work.impl.diagnostics.DiagnosticsReceiver { <init>(); }
 -keep class androidx.work.impl.foreground.SystemForegroundService { <init>(); }
 -keep class androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver { <init>(); }
--keep class com.delta.triangle.MainActivity { <init>(); }
+-keep class com.deltaTriangle.activeweb.MainActivity { <init>(); }
 -keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
 -keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
 -keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }

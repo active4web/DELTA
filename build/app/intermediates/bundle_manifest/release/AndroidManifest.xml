@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.delta.triangle"
+    package="com.deltaTriangle.activeweb"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -32,10 +32,10 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <permission
-        android:name="com.delta.triangle.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.deltaTriangle.activeweb.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.delta.triangle.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.deltaTriangle.activeweb.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:name="android.app.Application"
@@ -56,7 +56,7 @@
         <!-- </service> -->
 
         <activity
-            android:name="com.delta.triangle.MainActivity"
+            android:name="com.deltaTriangle.activeweb.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"
@@ -180,7 +180,7 @@
 
         <provider
             android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
-            android:authorities="com.delta.triangle.flutterfirebasemessaginginitprovider"
+            android:authorities="com.deltaTriangle.activeweb.flutterfirebasemessaginginitprovider"
             android:exported="false"
             android:initOrder="99" />
 
@@ -191,7 +191,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.delta.triangle.androidx-startup"
+            android:authorities="com.deltaTriangle.activeweb.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.work.WorkManagerInitializer"
@@ -382,7 +382,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.delta.triangle.firebaseinitprovider"
+            android:authorities="com.deltaTriangle.activeweb.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />

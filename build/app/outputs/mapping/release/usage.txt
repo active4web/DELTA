@@ -13480,12 +13480,12 @@ androidx.work.multiprocess.IWorkManagerImplCallback$Stub
 androidx.work.multiprocess.IWorkManagerImplCallback
 androidx.work.multiprocess.RemoteWorkContinuation
 androidx.work.multiprocess.RemoteWorkManager
-com.delta.triangle.R$color
-com.delta.triangle.R$drawable
-com.delta.triangle.R$mipmap
-com.delta.triangle.R$string
-com.delta.triangle.R$style
-com.delta.triangle.R
+com.deltaTriangle.activeweb.R$color
+com.deltaTriangle.activeweb.R$drawable
+com.deltaTriangle.activeweb.R$mipmap
+com.deltaTriangle.activeweb.R$string
+com.deltaTriangle.activeweb.R$style
+com.deltaTriangle.activeweb.R
 com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver:
     public static final java.lang.String ACTION_TAPPED
     private static final java.lang.String TAG
