@@ -470,6 +470,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "pretty_dio_logger",
+      "rootUri": "file:///C:/Users/OMAR/AppData/Local/Pub/Cache/hosted/pub.dev/pretty_dio_logger-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "process",
       "rootUri": "file:///C:/Users/OMAR/AppData/Local/Pub/Cache/hosted/pub.dev/process-4.2.4",
       "packageUri": "lib/",
@@ -728,7 +734,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2025-04-06T11:04:51.223797Z",
+  "generated": "2025-04-06T15:12:25.892363Z",
   "generator": "pub",
   "generatorVersion": "3.6.1",
   "flutterRoot": "file:///C:/flutter",
