@@ -3,6 +3,5 @@
 3    package="io.flutter.plugins.sharedpreferences" >
 4
 5    <uses-sdk android:minSdkVersion="19" />
-5-->C:\Users\hossa\AppData\Local\Pub\Cache\hosted\pub.dev\shared_preferences_android-2.2.4\android\src\main\AndroidManifest.xml
 6
 7</manifest>

@@ -1,6 +1,6 @@
 [
     {
-        "merged": "io.flutter.plugins.firebase.auth.firebase_auth-merged_res-30:/drawable-v21/notification_action_background.xml",
-        "source": "io.flutter.plugins.firebase.auth.firebase_auth-core-1.13.1-22:/drawable-v21/notification_action_background.xml"
+        "merged": "io.flutter.plugins.firebase.auth.firebase_auth-merged_res-33:/drawable-v21/notification_action_background.xml",
+        "source": "io.flutter.plugins.firebase.auth.firebase_auth-core-1.13.1-15:/drawable-v21/notification_action_background.xml"
     }
 ]

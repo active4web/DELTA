@@ -1,16 +1,33 @@
 {
     "logs": [
         {
-            "outputFile": "com.delta.triangle.app-mergeReleaseResources-45:/values-v24/values-v24.xml",
+            "outputFile": "com.delta.triangle.app-mergeReleaseResources-59:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\79970fd75baf1d0484dc924155067aae\\transformed\\media-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\e89fe3fa079ceaa1a60d724dd903b726\\transformed\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\7165fdb279dffded37dd58197ffc14e2\\transformed\\media-1.1.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
                         "startOffsets": "55,121,182,248",
                         "endColumns": "65,60,65,66",
                         "endOffsets": "116,177,243,310"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "347,413,474,540",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "408,469,535,602"
                     }
                 }
             ]

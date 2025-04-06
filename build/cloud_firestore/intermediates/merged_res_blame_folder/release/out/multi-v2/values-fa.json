@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "io.flutter.plugins.firebase.firestore.cloud_firestore-merged_res-29:/values-fa/values-fa.xml",
+            "outputFile": "io.flutter.plugins.firebase.firestore.cloud_firestore-merged_res-28:/values-fa/values-fa.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\e22c14e3993e8901377da30f8913a365\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-fa\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "150",
-                        "endOffsets": "345"
-                    },
-                    "to": {
-                        "startLines": "17",
-                        "startColumns": "4",
-                        "startOffsets": "1758",
-                        "endColumns": "154",
-                        "endOffsets": "1908"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\135063a3e43b7ac9bc4fea2f02946d24\\transformed\\jetified-play-services-base-18.0.1\\res\\values-fa\\values.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\f9f69c954b11472ba9eaf8664548096f\\transformed\\jetified-play-services-base-18.1.0\\res\\values-fa\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\f890df799befff4eccbd6ff915ff25e3\\transformed\\core-1.13.1\\res\\values-fa\\values-fa.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\9f2168adbababe3a593c54d7813dc254\\transformed\\core-1.13.1\\res\\values-fa\\values-fa.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -52,32 +35,32 @@
                         "startOffsets": "55,154,256,355,455,556,662,3005",
                         "endColumns": "98,101,98,99,100,105,116,100",
                         "endOffsets": "149,251,350,450,551,657,774,3101"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\ef12fef0165a343f746904eb5fe2bc9b\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-fa\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "150",
+                        "endOffsets": "345"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "1758",
+                        "endColumns": "154",
+                        "endOffsets": "1908"
                     }
                 }
             ]
         },
         {
-            "outputFile": "io.flutter.plugins.firebase.firestore.cloud_firestore-mergeReleaseResources-27:/values-fa/values-fa.xml",
+            "outputFile": "io.flutter.plugins.firebase.firestore.cloud_firestore-mergeReleaseResources-26:/values-fa/values-fa.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\e22c14e3993e8901377da30f8913a365\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-fa\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "150",
-                        "endOffsets": "345"
-                    },
-                    "to": {
-                        "startLines": "17",
-                        "startColumns": "4",
-                        "startOffsets": "1758",
-                        "endColumns": "154",
-                        "endOffsets": "1908"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\135063a3e43b7ac9bc4fea2f02946d24\\transformed\\jetified-play-services-base-18.0.1\\res\\values-fa\\values.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\f9f69c954b11472ba9eaf8664548096f\\transformed\\jetified-play-services-base-18.1.0\\res\\values-fa\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -94,7 +77,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\f890df799befff4eccbd6ff915ff25e3\\transformed\\core-1.13.1\\res\\values-fa\\values-fa.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\9f2168adbababe3a593c54d7813dc254\\transformed\\core-1.13.1\\res\\values-fa\\values-fa.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -108,6 +91,23 @@
                         "startOffsets": "55,154,256,355,455,556,662,3005",
                         "endColumns": "98,101,98,99,100,105,116,100",
                         "endOffsets": "149,251,350,450,551,657,774,3101"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\ef12fef0165a343f746904eb5fe2bc9b\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-fa\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "150",
+                        "endOffsets": "345"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "1758",
+                        "endColumns": "154",
+                        "endOffsets": "1908"
                     }
                 }
             ]

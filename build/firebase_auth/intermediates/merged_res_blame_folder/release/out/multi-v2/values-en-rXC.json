@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-merged_res-30:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-merged_res-33:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\bf2ce25cc1a78e23c8cadc861c20a83a\\transformed\\browser-1.4.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\d1c6fc75c7235616370404c471306a06\\transformed\\browser-1.4.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -13,15 +13,15 @@
                         "endOffsets": "250,449,660,862"
                     },
                     "to": {
-                        "startLines": "9,10,11,12",
+                        "startLines": "11,12,13,14",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "1482,1682,1881,2092",
+                        "startOffsets": "1913,2113,2312,2523",
                         "endColumns": "199,198,210,201",
-                        "endOffsets": "1677,1876,2087,2289"
+                        "endOffsets": "2108,2307,2518,2720"
                     }
                 },
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\f890df799befff4eccbd6ff915ff25e3\\transformed\\core-1.13.1\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\9f2168adbababe3a593c54d7813dc254\\transformed\\core-1.13.1\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -30,20 +30,30 @@
                         "endOffsets": "246,451,652,853,1060,1265,1477,1681"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,13",
+                        "startLines": "4,5,6,7,8,9,10,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,251,456,657,858,1065,1270,2294",
+                        "startOffsets": "486,682,887,1088,1289,1496,1701,2725",
                         "endColumns": "195,204,200,200,206,204,211,203",
-                        "endOffsets": "246,451,652,853,1060,1265,1477,2493"
+                        "endOffsets": "677,882,1083,1284,1491,1696,1908,2924"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\72d29592a1324ffedf80cf375a971ef1\\transformed\\jetified-credentials-1.2.0-rc01\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,270",
+                        "endColumns": "214,215",
+                        "endOffsets": "265,481"
                     }
                 }
             ]
         },
         {
-            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-mergeReleaseResources-28:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-mergeReleaseResources-31:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\bf2ce25cc1a78e23c8cadc861c20a83a\\transformed\\browser-1.4.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\d1c6fc75c7235616370404c471306a06\\transformed\\browser-1.4.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -52,15 +62,15 @@
                         "endOffsets": "250,449,660,862"
                     },
                     "to": {
-                        "startLines": "9,10,11,12",
+                        "startLines": "11,12,13,14",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "1482,1682,1881,2092",
+                        "startOffsets": "1913,2113,2312,2523",
                         "endColumns": "199,198,210,201",
-                        "endOffsets": "1677,1876,2087,2289"
+                        "endOffsets": "2108,2307,2518,2720"
                     }
                 },
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\f890df799befff4eccbd6ff915ff25e3\\transformed\\core-1.13.1\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\9f2168adbababe3a593c54d7813dc254\\transformed\\core-1.13.1\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -69,11 +79,21 @@
                         "endOffsets": "246,451,652,853,1060,1265,1477,1681"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,13",
+                        "startLines": "4,5,6,7,8,9,10,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,251,456,657,858,1065,1270,2294",
+                        "startOffsets": "486,682,887,1088,1289,1496,1701,2725",
                         "endColumns": "195,204,200,200,206,204,211,203",
-                        "endOffsets": "246,451,652,853,1060,1265,1477,2493"
+                        "endOffsets": "677,882,1083,1284,1491,1696,1908,2924"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\72d29592a1324ffedf80cf375a971ef1\\transformed\\jetified-credentials-1.2.0-rc01\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,270",
+                        "endColumns": "214,215",
+                        "endOffsets": "265,481"
                     }
                 }
             ]

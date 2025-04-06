@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-merged_res-30:/values-pt/values-pt.xml",
+            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-mergeReleaseResources-31:/values-pt/values-pt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\f890df799befff4eccbd6ff915ff25e3\\transformed\\core-1.13.1\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\72d29592a1324ffedf80cf375a971ef1\\transformed\\jetified-credentials-1.2.0-rc01\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,164",
+                        "endColumns": "108,121",
+                        "endOffsets": "159,281"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\9f2168adbababe3a593c54d7813dc254\\transformed\\core-1.13.1\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -13,15 +23,15 @@
                         "endOffsets": "147,249,348,448,555,665,785,886"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,13",
+                        "startLines": "4,5,6,7,8,9,10,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,152,254,353,453,560,670,1222",
+                        "startOffsets": "286,383,485,584,684,791,901,1453",
                         "endColumns": "96,101,98,99,106,109,119,100",
-                        "endOffsets": "147,249,348,448,555,665,785,1318"
+                        "endOffsets": "378,480,579,679,786,896,1016,1549"
                     }
                 },
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\bf2ce25cc1a78e23c8cadc861c20a83a\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\d1c6fc75c7235616370404c471306a06\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -30,20 +40,30 @@
                         "endOffsets": "165,264,376,482"
                     },
                     "to": {
-                        "startLines": "9,10,11,12",
+                        "startLines": "11,12,13,14",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "790,905,1004,1116",
+                        "startOffsets": "1021,1136,1235,1347",
                         "endColumns": "114,98,111,105",
-                        "endOffsets": "900,999,1111,1217"
+                        "endOffsets": "1131,1230,1342,1448"
                     }
                 }
             ]
         },
         {
-            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-mergeReleaseResources-28:/values-pt/values-pt.xml",
+            "outputFile": "io.flutter.plugins.firebase.auth.firebase_auth-merged_res-33:/values-pt/values-pt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\f890df799befff4eccbd6ff915ff25e3\\transformed\\core-1.13.1\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\72d29592a1324ffedf80cf375a971ef1\\transformed\\jetified-credentials-1.2.0-rc01\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,164",
+                        "endColumns": "108,121",
+                        "endOffsets": "159,281"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\9f2168adbababe3a593c54d7813dc254\\transformed\\core-1.13.1\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -52,15 +72,15 @@
                         "endOffsets": "147,249,348,448,555,665,785,886"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,13",
+                        "startLines": "4,5,6,7,8,9,10,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,152,254,353,453,560,670,1222",
+                        "startOffsets": "286,383,485,584,684,791,901,1453",
                         "endColumns": "96,101,98,99,106,109,119,100",
-                        "endOffsets": "147,249,348,448,555,665,785,1318"
+                        "endOffsets": "378,480,579,679,786,896,1016,1549"
                     }
                 },
                 {
-                    "source": "C:\\Users\\hossa\\.gradle\\caches\\transforms-3\\bf2ce25cc1a78e23c8cadc861c20a83a\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\OMAR\\.gradle\\caches\\transforms-3\\d1c6fc75c7235616370404c471306a06\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -69,11 +89,11 @@
                         "endOffsets": "165,264,376,482"
                     },
                     "to": {
-                        "startLines": "9,10,11,12",
+                        "startLines": "11,12,13,14",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "790,905,1004,1116",
+                        "startOffsets": "1021,1136,1235,1347",
                         "endColumns": "114,98,111,105",
-                        "endOffsets": "900,999,1111,1217"
+                        "endOffsets": "1131,1230,1342,1448"
                     }
                 }
             ]
