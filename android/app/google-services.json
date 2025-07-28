@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:467023163568:android:d825846850314293a48b75",
+        "android_client_info": {
+          "package_name": "com.active.deltaTriangl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_RCUoRNBh38QHjFMCd4oZUDMtg6erwPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:467023163568:android:ecc500cef46b7201a48b75",
         "android_client_info": {
           "package_name": "com.deltaTriangle.activeweb"

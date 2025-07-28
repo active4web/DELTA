@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB_RCUoRNBh38QHjFMCd4oZUDMtg6erwPo',
-    appId: '1:467023163568:android:ecc500cef46b7201a48b75',
+    appId: '1:467023163568:android:d825846850314293a48b75',
     messagingSenderId: '467023163568',
     projectId: 'deltatriangle-88241',
     storageBucket: 'deltatriangle-88241.firebasestorage.app',
@@ -59,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBpEr5qEwsSlP7olMg65Fr4c5_KpHYMSPw',
-    appId: '1:467023163568:ios:026e945b9012199ca48b75',
+    appId: '1:467023163568:ios:7606d6c932124bf8a48b75',
     messagingSenderId: '467023163568',
     projectId: 'deltatriangle-88241',
     storageBucket: 'deltatriangle-88241.firebasestorage.app',
-    iosBundleId: 'com.deltaTriangle.activeweb',
+    iosBundleId: 'com.active.deltaTriangl',
   );
+
 }
