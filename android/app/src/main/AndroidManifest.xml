@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.active.deltaTriangl">
+    package="com.active4.DeltaTrianglE">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 

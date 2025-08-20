@@ -1,4 +1,4 @@
-package com.active.deltaTriangl
+package com.active4.DeltaTrianglE
 
 import io.flutter.embedding.android.FlutterActivity
 
